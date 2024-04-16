@@ -1,0 +1,508 @@
+openapi: "3.0.2"
+info:
+  title: IAM API
+  description: IAM API description
+  version: "1.0"
+servers:
+  - url: https://main.iam.ad.ext.azure.com/api
+
+#security:
+#  - OAuth2: [read]
+
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/token
+          scopes: {}
+  schemas:
+    passwordProfile:
+      type: object
+      properties:
+        forceChangePasswordNextLogin:
+          type: boolean
+        password:
+          type: string
+    ## TODO: what is roles entity
+    rolesEntity:
+      type: object
+      properties:
+        adminType:
+          type: string
+        enabledRoles:
+          type: string
+    userDetails:
+      type: object
+      properties:
+        givenName:
+          type: string
+        surname:
+          type: string
+        jobTitle:
+          type: string
+        department:
+          type: string
+        selectedGroupIds:
+          type: string
+        displayName:
+          type: string
+        userPrincipalName:
+          type: string
+        passwordProfile:
+          $ref: "#/components/schemas/passwordProfile"
+        rolesEntity:
+          $ref: "#/components/schemas/rolesEntity"
+    userInvite:
+      type: object
+      properties:
+        userToInvite:
+          $ref: "#/components/schemas/userDetails"
+        inviteMessage:
+          type: string
+    managedApplicationList:
+      type: object
+      properties:
+        accountEnabled:
+          type: boolean
+        isAppVisible:
+          type: boolean
+        appListQuery:
+          type: number
+        top:
+          type: number
+        loadLogo:
+          type: boolean
+        putCachedLogoUrlOnly:
+          type: boolean
+        nextLink:
+          type: string
+        usedFirstPartyAppIds:
+          type: string
+        __ko_mapping__:
+          type: object
+          properties:
+            ignore:
+              type: array
+              items:
+                type: string
+            include:
+              type: array
+              items:
+                type: string
+            copy:
+              type: array
+              items:
+                type: string
+            observe:
+              type: array
+              items:
+                type: string
+            mappedProperties:
+              type: object
+              properties:
+                accountEnabled:
+                  type: boolean
+                isAppVisble:
+                  type: boolean
+                appListQuery:
+                  type: boolean
+                searchText:
+                  type: boolean
+                top:
+                  type: boolean
+                loadLogo:
+                  type: boolean
+                putCachedLogoUrlOnly:
+                  type: boolean
+                nextLink:
+                  type: boolean
+                usedFirstPartyAppIds:
+                  type: boolean
+            copiedProperties:
+              type: object
+
+  parameters:
+    UserPrincipalName:
+      name: userPrincipalName
+      in: path
+      description: User Principal Name
+      required: true
+      schema:
+        type: string
+    UserPrincipalNameQuery:
+      name: userPrincipalName
+      in: query
+      description: User Principal Name
+      required: true
+      schema:
+        type: string
+    UserId:
+      name: userId
+      in: path
+      description: User object ID
+      required: true
+      schema:
+        type: string
+        format: uuid
+    AppId:
+      name: appId
+      in: path
+      description: Application ID
+      required: true
+      schema:
+        type: string
+        format: uuid
+    SpId:
+      name: spId
+      in: path
+      description: Application ID
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBodies:
+    managedApplicationList:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/managedApplicationList"
+    userDetails:
+      description: A JSON object containing user details
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/userDetails"
+    userInvite:
+      description: A JSON object containing user invite
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/userInvite"
+
+paths:
+  /Directories:
+    post:
+      security:
+        - OAuth2: []
+      responses:
+        "200":
+          description: OK
+
+  /Directories/ADConnectStatus:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /AccountSkus/GroupAssignments:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /WhatIf/Evaluate:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /RoamingSettings:
+    get:
+      responses:
+        "200":
+          description: OK
+  
+  /AccountSkus/Group/{groupId}:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /AccountSkus/Group/{groupId}/Reprocess:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /MdmApplications/{appId}:
+    put:
+      responses:
+        "200":
+          description: OK
+  
+  /MultifactorAuthentication/HardwareToken/enable:
+    post:
+      responses:
+        "200":
+          description: OK
+
+  /MultifactorAuthentication/HardwareToken/users:
+    get:
+      responses:
+        "200":
+          description: OK
+
+
+  /Directories/List:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /TenantSkuInfo:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Permissions:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /AuthenticationMethods/AuthenticationMethodsPolicy:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /AuthenticationMethods/PasswordPolicy:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /MultiFactorAuthentication/GetOrCreateExpandedTenantModel:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Directories/DomainAvailability/:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /ManagedApplications/List:
+    post:
+      requestBody:
+        $ref: "#/components/requestBodies/managedApplicationList"
+      responses:
+        "200":
+          description: OK
+
+  /ManagedApplications/{appId}/AppRoleAssignments:
+    post:
+      responses:
+        "200":
+          description: OK
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Policies/Policies:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /User/TemporaryPassword:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Policies:
+    post:
+      responses:
+        "200":
+          description: OK
+
+  /Directories/Properties:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Directories/PropertiesV2:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Directories/SsgmProperties:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /RegisteredApplications/{AppId}:
+    get:
+      parameters:
+        - $ref: "#/components/parameters/AppId"
+      responses:
+        "200":
+          description: OK
+  /RegisteredApplications/{AppId}/Consent:
+    post:
+      parameters:
+        - $ref: "#/components/parameters/AppId"
+        - in: query
+          name: onBehalfOfAll
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: OK
+
+  # Users?searchText=&top=100&nextLink=&orderByThumbnails=false&maxThumbnailCount=999&filterValue=All&state=All&adminUnit=
+  /Users:
+    get:
+      responses:
+        "200":
+          description: OK
+    delete:
+      responses:
+        "200":
+          description: OK
+
+  /Users/PermanentDelete:
+    delete:
+      responses:
+        "200":
+          description: OK
+
+  /Users/{userId}:
+    parameters:
+      - $ref: "#/components/parameters/UserId"
+    get:
+      responses:
+        "200":
+          description: OK
+    delete:
+      responses:
+        "200":
+          description: OK
+
+  /UserDetails:
+    post:
+      requestBody:
+        $ref: "#/components/requestBodies/userDetails"
+      responses:
+        "200":
+          description: OK
+
+  /Users/Invite:
+    post:
+      requestBody:
+        $ref: "#/components/requestBodies/userInvite"
+      responses:
+        "200":
+          description: OK
+
+  /Users/IsUPNUniqueOrPending/{userPrincipalName}:
+    parameters:
+      - $ref: "#/components/parameters/UserPrincipalName"
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Roles/User/{userId}:
+    parameters:
+      - $ref: "#/components/parameters/UserId"
+    put:
+      responses:
+        "200":
+          description: OK
+
+  /Reports/SignInEventsV2:
+    post:
+      responses:
+        "200":
+          description: OK
+
+  /MoeraDomain:
+    post:
+      responses:
+        "200":
+          description: OK
+
+  /LoginTenantBrandings:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /AccountSKUs:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /EnterpriseApplications/{spId}/ServicePrincipalPermissions:
+    parameters:
+      - $ref: "#/components/parameters/SpId"
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /EnterpriseApplications/UserSettings:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /PasswordReset/PasswordResetPolicies:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Devices:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /PasswordReset/OnPremisesPasswordResetPolicies:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /PasswordReset/ResetPasswordByUpn:
+    parameters:
+      - $ref: "#/components/parameters/UserPrincipalNameQuery"
+    put:
+      responses:
+        "200":
+          description: OK
+
+  /B2B/b2bpolicy:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /LoginTenantBrandings/0:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /PasswordReset/PasswordResetPolicies/:
+    get:
+      responses:
+        "200":
+          description: OK
