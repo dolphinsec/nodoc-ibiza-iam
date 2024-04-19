@@ -1,0 +1,132 @@
+components:
+  schemas:
+    passwordProfile:
+      type: object
+      properties:
+        forceChangePasswordNextLogin:
+          type: boolean
+        password:
+          type: string
+    ## TODO: what is roles entity
+    rolesEntity:
+      type: object
+      properties:
+        adminType:
+          type: string
+        enabledRoles:
+          type: string
+    userDetails:
+      type: object
+      properties:
+        givenName:
+          type: string
+        surname:
+          type: string
+        jobTitle:
+          type: string
+        department:
+          type: string
+        selectedGroupIds:
+          type: string
+        displayName:
+          type: string
+        userPrincipalName:
+          type: string
+        passwordProfile:
+          $ref: "#/components/schemas/passwordProfile"
+        rolesEntity:
+          $ref: "#/components/schemas/rolesEntity"
+    userInvite:
+      type: object
+      properties:
+        userToInvite:
+          $ref: "#/components/schemas/userDetails"
+        inviteMessage:
+          type: string
+  
+  requestBodies:
+    userDetails:
+      description: A JSON object containing user details
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/userDetails"
+
+paths:
+  /User/TemporaryPassword:
+    get:
+      responses:
+        "200":
+          description: OK
+
+    # Users?searchText=&top=100&nextLink=&orderByThumbnails=false&maxThumbnailCount=999&filterValue=All&state=All&adminUnit=
+  /Users:
+    get:
+      responses:
+        "200":
+          description: OK
+    delete:
+      responses:
+        "200":
+          description: OK
+
+  /Users/Invite:
+    post:
+      requestBody:
+        description: A JSON object containing user invite
+        required: true
+        content:
+            application/json:
+                schema:
+                    $ref: "users.yml#/components/schemas/userInvite"
+      responses:
+        "200":
+          description: OK
+
+  /Users/PermanentDelete:
+    delete:
+      responses:
+        "200":
+          description: OK
+
+
+  /Users/{userId}:
+    parameters:
+        - in: path
+          name: userId
+          description: The object ID of the user.
+          required: true
+          schema:
+            $ref: "common.yml#/components/schemas/UserId"
+    get:
+      responses:
+        "200":
+          description: OK
+    delete:
+      responses:
+        "200":
+          description: OK
+
+  /Users/IsUPNUniqueOrPending/{userPrincipalName}:
+    parameters:
+        - in: path
+          name: userPrincipalName
+          description: The User Principal Name (UPN) to check status of.
+          required: true
+          schema:
+            $ref: "common.yml#/components/schemas/UserPrincipalName"
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /UserDetails:
+    post:
+      requestBody:
+        $ref: "#/components/requestBodies/userDetails"
+      responses:
+        "200":
+          description: OK
+
+

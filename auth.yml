@@ -1,0 +1,50 @@
+paths:
+  /AuthenticationMethods/AuthenticationMethodsPolicy:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /AuthenticationMethods/PasswordPolicy:
+    get:
+      responses:
+        "200":
+          description: OK
+          
+  /MultiFactorAuthentication/GetOrCreateExpandedTenantModel:
+    get:
+      responses:
+        "200":
+          description: OK
+          
+  /MultiFactorAuthentication/HardwareToken/enable:
+    post:
+      responses:
+        "200":
+          description: OK
+
+  /MultiFactorAuthentication/HardwareToken/users:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /PasswordReset/OnPremisesPasswordResetPolicies:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /PasswordReset/PasswordResetPolicies:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /PasswordReset/ResetPasswordByUpn:
+    parameters:
+      - $ref: "common.yml#/components/parameters/UserPrincipalNameQuery"
+    put:
+      responses:
+        "200":
+          description: OK

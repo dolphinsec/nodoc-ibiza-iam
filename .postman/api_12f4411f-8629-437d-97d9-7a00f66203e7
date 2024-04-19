@@ -13,8 +13,15 @@ rootDirectory = postman/collections
 [config.relations.collections.metaData]
 
 [config.relations.apiDefinition]
-files[] = {"path":"iam.yml","metaData":{}}
+files[] = {"path":"account_sku.yml","metaData":{}}
+files[] = {"path":"applications.yml","metaData":{}}
+files[] = {"path":"auth.yml","metaData":{}}
+files[] = {"path":"common.yml","metaData":{}}
+files[] = {"path":"directories.yml","metaData":{}}
+files[] = {"path":"misc.yml","metaData":{}}
+files[] = {"path":"openapi.yml","metaData":{}}
+files[] = {"path":"users.yml","metaData":{}}
 
 [config.relations.apiDefinition.metaData]
 type = openapi:3
-rootFiles[] = iam.yml
+rootFiles[] = openapi.yml

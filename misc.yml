@@ -1,0 +1,97 @@
+paths:
+
+  /B2B/b2bpolicy:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Devices:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /FeatureConfigurations:
+    get:
+      parameters:
+        - in: query
+          name: SupportAU
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: OK
+
+  /LoginTenantBrandings:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /LoginTenantBrandings/0:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /MoeraDomain:
+    post:
+      responses:
+        "200":
+          description: OK
+
+  /Permissions:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Policies:
+    post:
+      responses:
+        "200":
+          description: OK
+
+  /Policies/Policies:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Reports/SignInEventsV2:
+    post:
+      responses:
+        "200":
+          description: OK
+
+  /RoamingSettings:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Roles/User/{userId}:
+    parameters:
+        - in: path
+          name: userId
+          description: The object ID of the user to retrieve role assignments for.
+          required: true
+          schema:
+            $ref: "common.yml#/components/schemas/UserId"
+    put:
+      responses:
+        "200":
+          description: OK
+
+  /TenantSkuInfo:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /WhatIf/Evaluate:
+    get:
+      responses:
+        "200":
+          description: OK

@@ -1,0 +1,168 @@
+components:
+  schemas:
+    managedApplicationList:
+      type: object
+      properties:
+        accountEnabled:
+          type: boolean
+        isAppVisible:
+          type: boolean
+        appListQuery:
+          type: number
+        top:
+          type: number
+        loadLogo:
+          type: boolean
+        putCachedLogoUrlOnly:
+          type: boolean
+        nextLink:
+          type: string
+        usedFirstPartyAppIds:
+          type: string
+        __ko_mapping__:
+          type: object
+          properties:
+            ignore:
+              type: array
+              items:
+                type: string
+            include:
+              type: array
+              items:
+                type: string
+            copy:
+              type: array
+              items:
+                type: string
+            observe:
+              type: array
+              items:
+                type: string
+            mappedProperties:
+              type: object
+              properties:
+                accountEnabled:
+                  type: boolean
+                isAppVisble:
+                  type: boolean
+                appListQuery:
+                  type: boolean
+                searchText:
+                  type: boolean
+                top:
+                  type: boolean
+                loadLogo:
+                  type: boolean
+                putCachedLogoUrlOnly:
+                  type: boolean
+                nextLink:
+                  type: boolean
+                usedFirstPartyAppIds:
+                  type: boolean
+            copiedProperties:
+              type: object
+    requestBodies:
+        managedApplicationList:
+            required: true
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/managedApplicationList"
+
+paths:
+  /EnterpriseApplications/{spId}/ServicePrincipalPermissions:
+    parameters:
+        - in: path
+          name: spId
+          description: The object ID of the service principal (enterprise application) to retrieve permissions for.
+          required: true
+          schema:
+            $ref: "common.yml#/components/schemas/ServicePrincipalId"
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /EnterpriseApplications/UserSettings:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /ManagedApplications/List:
+    post:
+      requestBody:
+        $ref: "common.yml#/components/requestBodies/managedApplicationList"
+      responses:
+        "200":
+          description: OK
+
+  /ManagedApplications/{appId}/AppRoleAssignments:
+    parameters:
+        - in: path
+          name: appId
+          description: The application ID (client ID) of the application to manage app role assignments for.
+          required: true
+          schema:
+            $ref: "common.yml#/components/schemas/ApplicationId"
+    post:
+      responses:
+        "200":
+          description: OK
+    get:
+      responses:
+        "200":
+          description: OK
+
+
+  /MdmApplications/{appId}:
+    parameters:
+        - in: path
+          name: appId
+          description: The application ID (client ID) of the application to manage. # need to check this
+          required: true
+          schema:
+            $ref: "common.yml#/components/schemas/ApplicationId"
+    put:
+      responses:
+        "200":
+          description: OK
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /RegisteredApplications/{appId}:
+    parameters:
+        - in: path
+          name: appId
+          description: The application ID (client ID) of the application registration to manage.
+          required: true
+          schema:
+            $ref: "common.yml#/components/schemas/ApplicationId"
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /RegisteredApplications/{appId}/Consent:
+    parameters:
+        - in: path
+          name: appId
+          description: The application ID (client ID) of the application registration to consent.
+          required: true
+          schema:
+            $ref: "common.yml#/components/schemas/ApplicationId"
+    post:
+      parameters:
+        - in: query
+          name: onBehalfOfAll
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: OK
+
+
+
+

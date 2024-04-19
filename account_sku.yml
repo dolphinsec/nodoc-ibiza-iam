@@ -1,0 +1,706 @@
+components:
+  parameters:
+    accountSkuId:
+        in: query
+        name: accountSkuId
+        schema:
+          type: string
+        required: true
+  schemas:
+    servicePlanStatus:
+        type: object
+        description: The status of the SKU service.
+        properties:
+            provisioningStatus:
+                type: string
+                enum: [Success, PendingInput, PendingActivation]
+                description: The provisioning status of the service.
+            servicePlan:
+                type: object
+                description: The service plan for the service.
+                properties:
+                    serviceName:
+                        type: string
+                        description: The name of the service.
+                    servicePlanId:
+                        type: string
+                        format: uuid
+                        description: The unique ID of the service plan.
+                    serviceType:
+                        type: string
+                        description: The type of the service.
+                    displayName:
+                        type: string
+                        description: The service display name.
+    AccountSku:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the SKU.
+        accountId:
+          type: string
+          description: The unique ID of the account (tenant) that the SKU is associated with.
+        accountSkuId:
+          type: string
+          description: The unique string ID of the account (tenant) & SKU combination.
+        availableUnits:
+          type: integer
+          description: The number of available licences.
+        totalUnits:
+          type: integer
+          description: The total number of licences.
+        consumedUnits:
+          type: integer
+          description: The number of consumed licences.
+        skuId:
+          type: string
+          format: uuid
+          description: The unique ID of the SKU.
+        isDepartment:
+          type: boolean
+          description: pending
+        warningUnits:
+          type: integer
+          description: pending
+        serviceStatuses:
+          type: array
+          description: A list of service statuses.
+          items:
+            $ref: "#/components/schemas/servicePlanStatus"
+
+    GroupAssignment:
+        type: object
+        description: pending
+        properties:
+            objectId:
+                $ref: "common.yml#/components/schemas/ObjectId"
+            displayName:
+                type: string
+                description: The display name of the group.
+            licenses:
+                type: array
+                description: A list of licenses assigned to the group.
+                items:
+                    allOf:
+                      - $ref: "#/components/schemas/License"
+                      - type: object
+                        properties:
+                            hasErrors:
+                                type: boolean
+                                description: Does the license assignment have errors?
+                                nullable: true
+                            errorCount:
+                                type: number
+                                description: Number of errors that the license assignment has.
+            licenseProcessingStatus:
+                type: string
+                enum: [Unknown, Queued, Ready, Processing]
+                description: The status of license processing.
+            groupType:
+                type: string
+             #   enum: ["", security, mailenabledsecurity]
+    License:    
+        type: object
+        description: A license.
+        properties:
+            accountSkuId:
+                type: string
+                description: The 
+            disabledServicePlans:
+                type: array
+                items:
+                    type: string
+        required:
+            - accountSkuId
+            - disabledServicePlans
+
+    LicenseModify:
+        type: object
+        properties:
+            assignments:
+              type: array
+              items:
+                type: object
+                description: A list of licenses to modify.
+                properties:
+                  objectId:
+                    $ref: "common.yml#/components/schemas/ObjectId"
+                  displayName:
+                    type: string
+                    description: The display name of the user/group to manage assignments for.
+                  isUser:
+                    type: boolean
+                    description: Is the referenced object a user?
+                  addLicenses:
+                    type: array
+                    description: A list of licenses to add.
+                    items:
+                        $ref: "#/components/schemas/License"
+                  removeLicenses:
+                    type: array
+                    description: A list of licences to remove.
+                    items:
+                      type: string
+                      description: The license ID.
+                  updateLicenses:
+                    type: array
+                    description: A list of licences to update.
+                    items:
+                        $ref: "#/components/schemas/License"
+                required:
+                    - objectId
+                    - addLicenses
+                    - removeLicenses
+                    - updateLicenses
+        required:
+            - assignments
+
+paths:
+  /AccountSkus:
+    get:
+      parameters:
+        - in: query
+          name: backfillTenants
+          schema:
+            type: boolean
+          required: false
+        - $ref: "common.yml#/components/parameters/$filter"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: "common.yml#/components/headers/Cache-Control"
+            Content-Encoding:
+              $ref: "common.yml#/components/headers/Content-Encoding"
+            Vary:
+                $ref: "common.yml#/components/headers/Vary"
+            X-Content-Type-Options:
+                $ref: "common.yml#/components/headers/X-Content-Type-Options"
+            X-XSS-Protection:
+                $ref: "common.yml#/components/headers/X-XSS-Protection"
+            x-ms-version:
+                $ref: "common.yml#/components/headers/x-ms-version"
+            Strict-Transport-Security:
+                $ref: "common.yml#/components/headers/Strict-Transport-Security"
+            Access-Control-Expose-Headers:
+                $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+            x-ms-correlation-id:
+                $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+            x-ms-operation-maturity:
+                $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+            x-ms-expected-duration:
+                $ref: "common.yml#/components/headers/x-ms-expected-duration"
+            X-UA-Compatible:
+                $ref: "common.yml#/components/headers/X-UA-Compatible"
+            Date:
+                $ref: "common.yml#/components/headers/Date"
+            Content-Length:
+                $ref: "common.yml#/components/headers/Content-Length"
+          content:
+            application/json:
+                schema:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/AccountSku"
+
+  /AccountSkus/Assign:
+    post:
+      parameters:
+      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: "#/components/schemas/LicenseModify"
+      responses:
+        "204":
+          description: No Content
+        "400":
+            $ref: "common.yml#/components/responses/ClientException"
+        "500":
+            $ref: "common.yml#/components/responses/ClientException"
+
+  /AccountSkus/AssignUpdateRemove:
+    post:
+      parameters:
+      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: "#/components/schemas/LicenseModify"
+      responses:
+        "204":
+          description: No Content
+        "400":
+            $ref: "common.yml#/components/responses/ClientException"
+        "500":
+            $ref: "common.yml#/components/responses/ClientException"
+
+  /AccountSkus/CreateTrial:
+    post:
+        responses:
+            "200":
+                description: Ok
+
+  /AccountSkus/Group/{groupId}:
+        parameters:
+            - in: path
+              name: groupId
+              description: The object ID of the group to retrieve Account SKU records for.
+              required: true
+              schema:
+                $ref: "common.yml#/components/schemas/UserId"
+        get:
+            responses:
+                "200":
+                    description: OK
+                    headers:
+                        Cache-Control:
+                            $ref: "common.yml#/components/headers/Cache-Control"
+                        Content-Encoding:
+                            $ref: "common.yml#/components/headers/Content-Encoding"
+                        Vary:
+                            $ref: "common.yml#/components/headers/Vary"
+                        X-Content-Type-Options:
+                            $ref: "common.yml#/components/headers/X-Content-Type-Options"
+                        X-XSS-Protection:
+                            $ref: "common.yml#/components/headers/X-XSS-Protection"
+                        x-ms-version:
+                            $ref: "common.yml#/components/headers/x-ms-version"
+                        Strict-Transport-Security:
+                            $ref: "common.yml#/components/headers/Strict-Transport-Security"
+                        Access-Control-Expose-Headers:
+                            $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+                        x-ms-correlation-id:
+                            $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+                        x-ms-operation-maturity:
+                            $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+                        x-ms-expected-duration:
+                            $ref: "common.yml#/components/headers/x-ms-expected-duration"
+                        X-UA-Compatible:
+                            $ref: "common.yml#/components/headers/X-UA-Compatible"
+                        Date:
+                            $ref: "common.yml#/components/headers/Date"
+                        Content-Length:
+                            $ref: "common.yml#/components/headers/Content-Length"
+                    content:
+                      application/json:
+                        schema:
+                            $ref: "#/components/schemas/GroupAssignment"
+
+  /AccountSkus/Group/{groupId}/AssignmentErrors:
+    parameters:
+      - in: path
+        name: groupId
+        description: The object ID of the group to retrieve assignment errors for.
+        required: true
+        schema:
+            $ref: "common.yml#/components/schemas/GroupId"
+      - $ref: "common.yml#/components/parameters/top"
+      - $ref: "common.yml#/components/parameters/nextLink"
+    get:
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+                schema:
+                    type: object
+                    properties:
+                      sortedList:
+                        type: boolean
+                      items:
+                        type: array
+                        items:
+                            type: object
+                      nextLink:
+                        $ref: "common.yml#/components/schemas/NextLink"
+                      firstPage:
+                        $ref: "common.yml#/components/schemas/FirstPage"
+                      lastPage:
+                        $ref: "common.yml#/components/schemas/LastPage"    
+
+  /AccountSkus/Group/{groupId}/Reprocess:
+    parameters:
+      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      - in: path
+        name: groupId
+        description: The object ID of the group to reprocess Account SKU records for.
+        required: true
+        schema:
+            $ref: "common.yml#/components/schemas/GroupId"
+    post:
+      responses:
+        "204":
+          description: No Content
+          headers:
+            Cache-Control:
+              $ref: "common.yml#/components/headers/Cache-Control"
+            X-Content-Type-Options:
+                $ref: "common.yml#/components/headers/X-Content-Type-Options"
+            X-XSS-Protection:
+                $ref: "common.yml#/components/headers/X-XSS-Protection"
+            x-ms-version:
+                $ref: "common.yml#/components/headers/x-ms-version"
+            Strict-Transport-Security:
+                $ref: "common.yml#/components/headers/Strict-Transport-Security"
+            Access-Control-Expose-Headers:
+                $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+            x-ms-correlation-id:
+                $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+            x-ms-operation-maturity:
+                $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+            x-ms-expected-duration:
+                $ref: "common.yml#/components/headers/x-ms-expected-duration"
+            X-UA-Compatible:
+                $ref: "common.yml#/components/headers/X-UA-Compatible"
+            Date:
+                $ref: "common.yml#/components/headers/Date"
+
+  /AccountSkus/GroupAssignments:
+    get:
+      parameters:
+        - $ref: "#/components/parameters/accountSkuId"
+        - $ref: "common.yml#/components/parameters/searchText"
+        - $ref: "common.yml#/components/parameters/sortOrder"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: "common.yml#/components/headers/Cache-Control"
+            Content-Encoding:
+              $ref: "common.yml#/components/headers/Content-Encoding"
+            Vary:
+                $ref: "common.yml#/components/headers/Vary"
+            X-Content-Type-Options:
+                $ref: "common.yml#/components/headers/X-Content-Type-Options"
+            X-XSS-Protection:
+                $ref: "common.yml#/components/headers/X-XSS-Protection"
+            x-ms-version:
+                $ref: "common.yml#/components/headers/x-ms-version"
+            Strict-Transport-Security:
+                $ref: "common.yml#/components/headers/Strict-Transport-Security"
+            Access-Control-Expose-Headers:
+                $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+            x-ms-correlation-id:
+                $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+            x-ms-operation-maturity:
+                $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+            x-ms-expected-duration:
+                $ref: "common.yml#/components/headers/x-ms-expected-duration"
+            X-UA-Compatible:
+                $ref: "common.yml#/components/headers/X-UA-Compatible"
+            Date:
+                $ref: "common.yml#/components/headers/Date"
+            Content-Length:
+                $ref: "common.yml#/components/headers/Content-Length"
+          content:
+            application/json:
+                schema:
+                    allOf:
+                      - $ref: "common.yml#/components/schemas/PagedResponse"
+                      - type: object
+                        properties:
+                            items:
+                                type: array
+                                items:
+                                    $ref: "#/components/schemas/GroupAssignment"
+
+  /AccountSkus/GroupsWithLicensingErrors:
+    get:
+        parameters:
+          - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+          - $ref: "#/components/parameters/top"
+          - $ref: "#/components/parameters/nextLink"
+          - in: query
+            name: includeErrorCount
+            schema:
+                type: boolean
+        responses:
+          "200":
+            description: Ok
+            headers:
+                Cache-Control:
+                    $ref: "common.yml#/components/headers/Cache-Control"
+                Content-Encoding:
+                    $ref: "common.yml#/components/headers/Content-Encoding"
+                Vary:
+                    $ref: "common.yml#/components/headers/Vary"
+                X-Content-Type-Options:
+                    $ref: "common.yml#/components/headers/X-Content-Type-Options"
+                X-XSS-Protection:
+                    $ref: "common.yml#/components/headers/X-XSS-Protection"
+                x-ms-version:
+                    $ref: "common.yml#/components/headers/x-ms-version"
+                Strict-Transport-Security:
+                    $ref: "common.yml#/components/headers/Strict-Transport-Security"
+                Access-Control-Expose-Headers:
+                    $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+                x-ms-correlation-id:
+                    $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+                x-ms-operation-maturity:
+                    $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+                x-ms-expected-duration:
+                    $ref: "common.yml#/components/headers/x-ms-expected-duration"
+                X-UA-Compatible:
+                    $ref: "common.yml#/components/headers/X-UA-Compatible"
+                Date:
+                    $ref: "common.yml#/components/headers/Date"
+                Content-Length:
+                    $ref: "common.yml#/components/headers/Content-Length"
+            content:
+              application/json:
+                schema:
+                    allOf:
+                      - $ref: "common.yml#/components/schemas/PagedResponse"
+                      - type: object
+                        properties:
+                            items:
+                                type: array
+                                items:
+                                    $ref: "#/components/schemas/GroupAssignment"
+
+  /AccountSkus/Remove:
+    post:
+      parameters:
+      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: "#/components/schemas/LicenseModify"
+      responses:
+        "204":
+          description: No Content
+        "400":
+            $ref: "common.yml#/components/responses/ClientException"
+        "500":
+            $ref: "common.yml#/components/responses/ClientException"
+
+  /AccountSkus/User/{userId}:
+    parameters:
+      - in: path
+        name: userId
+        description: The object ID of the user to retrieve Account SKU records for.
+        required: true
+        schema:
+            $ref: "common.yml#/components/schemas/UserId"
+    get:
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+                schema:
+                    type: object
+                    properties:
+                      objectId:
+                        $ref: "common.yml#/components/schemas/ObjectId"
+                      userPrincipalName:
+                        type: string
+                      displayName:
+                        type: string
+                      imageUrl:
+                        type: string
+                        format: uri
+                        nullable: true
+                      licenses:
+                        type: array
+                        items:
+                            type: object
+                            properties:
+                              accountSkuId:
+                                type: string
+                              groupsAssigningLicense:
+                                type: array
+                                items:
+                                    type: string
+                                    format: uuid
+                              serviceStatuses:
+                                type: array
+                                items:
+                                    $ref: "#/components/schemas/servicePlanStatus"
+                              indirectLicenseErrors:
+                                type: array
+                                items:
+                                    type: string
+                              licenseAssignmentDetails:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                      accountSkuId:
+                                        type: string
+                                      assignments:
+                                        type: object
+                                        properties:
+                                          disabledServicePlans:
+                                            type: array
+                                            items:
+                                                type: string
+                                          error:
+                                            type: string
+                                          referencedObjectId:
+                                            $ref: "common.yml#/components/schemas/ObjectId"
+                                          referencedObjectDisplayName:
+                                            type: string
+                                          licenseAssignmentStatus:
+                                            type: string
+                                            enum: [active, activewitherror, error]
+                            
+
+  /AccountSkus/User/{userId}/Reprocess:
+    parameters:
+      - in: path
+        name: userId
+        description: The object ID of the user to reprocess Account SKU records for.
+        required: true
+        schema:
+            $ref: "common.yml#/components/schemas/UserId"
+    post:
+      responses:
+        "204":
+          description: No Content
+
+  /AccountSkus/UserAssignments:
+    get:
+      parameters:
+        - $ref: "#/components/parameters/accountSkuId"
+        - $ref: "common.yml#/components/parameters/nextLink"
+        - $ref: "common.yml#/components/parameters/searchText"
+        - $ref: "common.yml#/components/parameters/sortOrder"
+        - $ref: "common.yml#/components/parameters/columnName"
+      responses:
+        "200":
+          description: OK
+
+  /AccountSkus/Update:
+    post:
+      parameters:
+      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: "#/components/schemas/LicenseModify"
+      responses:
+        "204":
+          description: No Content
+        "400":
+            $ref: "common.yml#/components/responses/ClientException"
+        "500":
+            $ref: "common.yml#/components/responses/ClientException"
+    
+  /Licenses/DirectoryMembersImageUrlFromIds:
+    parameters:
+    - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    post:
+        requestBody:
+            content:
+              application/json:
+                schema:
+                    type: array
+                    items:
+                        $ref: "common.yml#/components/schemas/UserId"
+        responses:
+            "200":
+                description: Ok
+                headers:
+                    Cache-Control:
+                      $ref: "common.yml#/components/headers/Cache-Control"
+                    Content-Encoding:
+                        $ref: "common.yml#/components/headers/Content-Encoding"
+                    Vary:
+                        $ref: "common.yml#/components/headers/Vary"
+                    X-Content-Type-Options:
+                        $ref: "common.yml#/components/headers/X-Content-Type-Options"
+                    X-XSS-Protection:
+                        $ref: "common.yml#/components/headers/X-XSS-Protection"
+                    x-ms-version:
+                        $ref: "common.yml#/components/headers/x-ms-version"
+                    Strict-Transport-Security:
+                        $ref: "common.yml#/components/headers/Strict-Transport-Security"
+                    Access-Control-Expose-Headers:
+                        $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+                    x-ms-correlation-id:
+                        $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+                    x-ms-operation-maturity:
+                        $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+                    x-ms-expected-duration:
+                        $ref: "common.yml#/components/headers/x-ms-expected-duration"
+                    X-UA-Compatible:
+                        $ref: "common.yml#/components/headers/X-UA-Compatible"
+                    Date:
+                        $ref: "common.yml#/components/headers/Date"
+                    Content-Length:
+                        $ref: "common.yml#/components/headers/Content-Length"
+                content:
+                  application/json:
+                    schema:
+                        type: object
+                        description: A map of user IDs to their image URL.
+
+  /ViralSubscriptions:
+    parameters:
+    - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    get:
+        responses:
+            "200":
+                description: List of viral subscriptions.
+                headers:
+                    Cache-Control:
+                      $ref: "common.yml#/components/headers/Cache-Control"
+                    Content-Encoding:
+                        $ref: "common.yml#/components/headers/Content-Encoding"
+                    Vary:
+                        $ref: "common.yml#/components/headers/Vary"
+                    X-Content-Type-Options:
+                        $ref: "common.yml#/components/headers/X-Content-Type-Options"
+                    X-XSS-Protection:
+                        $ref: "common.yml#/components/headers/X-XSS-Protection"
+                    x-ms-version:
+                        $ref: "common.yml#/components/headers/x-ms-version"
+                    Strict-Transport-Security:
+                        $ref: "common.yml#/components/headers/Strict-Transport-Security"
+                    Access-Control-Expose-Headers:
+                        $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+                    x-ms-correlation-id:
+                        $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+                    x-ms-operation-maturity:
+                        $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+                    x-ms-expected-duration:
+                        $ref: "common.yml#/components/headers/x-ms-expected-duration"
+                    X-UA-Compatible:
+                        $ref: "common.yml#/components/headers/X-UA-Compatible"
+                    Date:
+                        $ref: "common.yml#/components/headers/Date"
+                    Content-Length:
+                        $ref: "common.yml#/components/headers/Content-Length"
+                content:
+                  application/json:
+                    schema:
+                        type: array
+                        items:
+                            type: object
+                            properties:
+                              targetClass:
+                                type: string
+                              name:
+                                type: string
+                              availableUnits:
+                                type: integer
+                              skuId:
+                                type: string
+                                format: uuid
+                              consumedUnits:
+                                type: integer
+
+  /ViralSku/delete:
+    post:
+        responses:
+            "200":
+              description: Ok

@@ -1,0 +1,172 @@
+components:
+    schemas:
+    directoryProperties:
+        type: object
+        properties:
+            objectId:
+                type: string
+            displayName:
+                type: string
+            usersCanRegisterApps:
+                type: boolean
+            isAnyAccessPanelPreviewFeaturesAvailable:
+                type: boolean
+            showMyGroupsFeature:
+                type: boolean
+            myGroupsFeatureValue:
+                type: string
+                format: nullable
+            myGroupsGroupId:
+                type: string
+                format: nullable
+            myGroupsGroupName:
+                type: string
+                format: nullable
+            showMyAppsFeature:
+                type: boolean
+            myAppsFeatureValue:
+                type: string
+                format: nullable
+            myAppsGroupId:
+                type: string
+                format: nullable
+            myAppsGroupName:
+                type: string
+                format: nullable
+            showUserActivityReportsFeature:
+                type: boolean
+            userActivityReportsFeatureValue:
+                type: string
+                format: nullable
+            userActivityReportsGroupId:
+                type: string
+                format: nullable
+            userActivityReportsGroupName:
+                type: string
+                format: nullable
+            showRegisteredAuthMethodFeature:
+                type: boolean
+            registeredAuthMethodFeatureValue:
+                type: string
+                format: nullable
+            registeredAuthMethodGroupId:
+                type: string
+                format: nullable
+            registeredAuthMethodGroupName:
+                type: string
+                format: nullable
+            usersCanAddExternalUsers:
+                type: boolean
+            limitedAccessCanAddExternalUsers:
+                type: boolean
+            restrictDirectoryAccess:
+                type: boolean
+            groupsInAccessPanelEnabled:
+                type: boolean
+            selfServiceGroupManagementEnabled:
+                type: boolean
+            securityGroupsEnabled:
+                type: boolean
+            usersCanManageSecurityGroups:
+                type: string
+                format: nullable
+            office365GroupsEnabled:
+                type: boolean
+            usersCanManageOfficeGroups:
+                type: string
+                format: nullable
+            allUsersGroupEnabled:
+                type: boolean
+            scopingGroupIdForManagingSecurityGroups:
+                type: string
+                format: nullable
+            scopingGroupIdForManagingOfficeGroups:
+                type: string
+                format: nullable
+            scopingGroupNameForManagingSecurityGroups:
+                type: string
+                format: nullable
+            scopingGroupNameForManagingOfficeGroups:
+                type: string
+                format: nullable
+            objectIdForAllUserGroup:
+                type: string
+                format: nullable
+            allowInvitations:
+                type: boolean
+            isB2CTenant:
+                type: boolean
+            restrictNonAdminUsers:
+                type: boolean
+            enableLinkedInAppFamily:
+                type: integer
+                format: int32
+            toEnableLinkedInUsers:
+                type: array
+                items: 
+                    type: object
+                    properties:
+                        PENDING:
+                            type: string
+            toDisableLinkedInUsers:
+                type: array
+                items: 
+                    type: object
+                    properties:
+                        PENDING:
+                            type: string
+            linkedInSelectedGroupObjectId:
+                type: string
+                format: nullable
+            linkedInSelectedGroupDisplayName:
+                type: string
+                format: nullable
+
+paths:
+  /Directories:
+    post:
+      responses:
+        "200":
+          description: OK
+
+  /Directories/ADConnectStatus:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Directories/List:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Directories/DomainAvailability:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Directories/Properties:
+    parameters:
+      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+                schema:
+                    $ref: "directories.yml#/components/schemas/directoryProperties"
+          description: OK
+
+  /Directories/PropertiesV2:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Directories/SsgmProperties:
+    get:
+      responses:
+        "200":
+          description: OK

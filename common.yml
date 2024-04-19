@@ -1,0 +1,236 @@
+components:
+  headers:
+    Cache-Control:
+      schema:
+        type: string
+    Content-Encoding:
+      schema:
+        type: string
+    Vary:
+      schema:
+        type: string
+    Pragma:
+      schema:
+        type: string
+    X-Content-Type-Options:
+      schema:
+        type: string
+    X-XSS-Protection:
+      schema:
+        type: string
+    x-ms-version:
+      schema:
+        type: string
+    Strict-Transport-Security:
+      schema:
+        type: string
+    Access-Control-Expose-Headers :
+      schema:
+        type: string
+    x-ms-correlation-id:
+      schema:
+        type: string
+        format: uuid
+    x-ms-operation-maturity:
+      schema:
+        type: string
+    x-ms-expected-duration:
+      schema:
+        type: integer
+    X-UA-Compatible:
+      schema:
+        type: string
+    Date:
+      schema:
+        type: string
+    Content-Length:
+      schema:
+        type: integer
+    Expires:
+      schema:
+        type: number
+
+  responses:
+    ClientException:
+        description: A structured client exception
+        headers:
+            Cache-Control:
+              $ref: "common.yml#/components/headers/Cache-Control"
+            Pragma:
+              $ref: "common.yml#/components/headers/Pragma"
+            X-Content-Type-Options:
+                $ref: "common.yml#/components/headers/X-Content-Type-Options"
+            X-XSS-Protection:
+                $ref: "common.yml#/components/headers/X-XSS-Protection"
+            x-ms-version:
+                $ref: "common.yml#/components/headers/x-ms-version"
+            Strict-Transport-Security:
+                $ref: "common.yml#/components/headers/Strict-Transport-Security"
+            Access-Control-Expose-Headers:
+                $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+            x-ms-correlation-id:
+                $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+            x-ms-operation-maturity:
+                $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+            x-ms-expected-duration:
+                $ref: "common.yml#/components/headers/x-ms-expected-duration"
+            X-UA-Compatible:
+                $ref: "common.yml#/components/headers/X-UA-Compatible"
+            Date:
+                $ref: "common.yml#/components/headers/Date"
+            Content-Length:
+                $ref: "common.yml#/components/headers/Content-Length"
+            Expires:
+                $ref: "common.yml#/components/headers/Expires"
+        content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ClassName:
+                    type: string
+                  Message:
+                    type: string
+                  Data:
+                    type: object
+                  HResult:
+                    type: number
+                  XMsServerRequestId:
+                    type: string
+                    format: uuid
+                    nullable: true
+                  Source:
+                    type: string
+                  HttpStatusCode:
+                    type: integer
+                  ClientData:
+                    type: object
+                    properties:
+                      errorCode:
+                        type: string
+                      localizedErrorDetails:
+                        type: string
+                        nullable: true
+                    #  operationResults:
+                    #    type: array
+                    #    items:
+                    #        type: object
+                      timeStampUtc:
+                        type: string
+                        format: datetime
+                      clientRequestId:
+                        type: string
+                        format: uuid
+                      internalTransactionId:
+                        type: string
+                        format: uuid
+                      tenantId:
+                        type: string
+                        format: uuid
+                        nullable: true
+                      userObjectId:
+                        type: string
+                        format: uuid
+                      exceptionType:
+                        format: string
+
+  parameters:
+    XMsClientRequestId:
+        name: X-Ms-Client-Request-Id
+        in: header
+        description: X-Ms-Client-Request-Id header.
+        required: true
+        schema:
+            type: string
+            format: uuid
+    XMsClientSessionId:
+        name: X-Ms-Client-Session-Id
+        in: header
+        description: X-Ms-Client-Session-Id header.
+        required: true
+        schema:
+            type: string
+            format: uuid
+    nextLink:
+        name: nextLink
+        in: query
+        description: nextLink query parameter for paging.
+        schema:
+            $ref: "#/components/schemas/NextLink"
+    searchText:
+        name: searchText
+        in: query
+        description: pending
+        schema:
+            type: string
+    sortOrder:
+        name: sortOrder
+        in: query
+        description: pending
+        schema:
+            type: string
+    top:
+        name: top
+        in: query
+        description: The number of records to return.
+        schema:
+            type: integer
+    $filter:
+        name: $filter
+        in: query
+        description: A filter query to apply to results.
+        schema:
+            type: integer
+
+  schemas:
+    PagedResponse:
+        type: object
+        properties:
+          firstPage:
+            type: boolean
+          lastPage:
+            type: boolean
+          nextLink:
+            $ref: "#components/schemas/NextLink"
+        required:
+            - firstPage
+            - lastPage
+            - nextLink
+    NextLink:
+        type: string
+        format: base64
+        nullable: true
+    UserPrincipalName:
+        type: string
+        description: The User Principal Name (UPN) for the user.
+        example: User@Contoso.com
+    UserId:
+        type: string
+        format: uuid
+        description: The object ID of the user.
+        example: c822926c-40f7-41c1-b220-21639fe755a7
+    GroupId:
+        type: string
+        format: uuid
+        description: The object ID of the group.
+        example: f8b378b5-152f-4a32-bd1a-bf5ba02cdaa9
+    ObjectId:
+        type: string
+        format: uuid
+        description: The ID of the directory object.
+        example: 9bfcbcd9-3843-42bc-aec6-70e7815f5757
+    ApplicationId:
+        type: string
+        format: uuid
+        description: The application ID (client ID) of the application.
+        example: 693d2d81-7ad4-41ba-a844-070680da77f9
+    AppObjectId:
+        type: string
+        format: uuid
+        description: The object ID of the application registration.
+        example: 693d2d81-7ad4-41ba-a844-070680da77f9
+    ServicePrincipalId:
+        type: string
+        format: uuid
+        description: The object ID of the service principal (enterprise application).
+        example: 9679fc4f-a7b6-40aa-8a45-32e61e30a204
