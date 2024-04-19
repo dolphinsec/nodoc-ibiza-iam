@@ -105,16 +105,10 @@ components:
                 type: array
                 items: 
                     type: object
-                    properties:
-                        PENDING:
-                            type: string
             toDisableLinkedInUsers:
                 type: array
                 items: 
                     type: object
-                    properties:
-                        PENDING:
-                            type: string
             linkedInSelectedGroupObjectId:
                 type: string
                 format: nullable
