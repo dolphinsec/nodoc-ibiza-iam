@@ -156,7 +156,7 @@ paths:
           content:
             application/json:
                 schema:
-                    $ref: "directories.yml#/components/schemas/directoryProperties"
+                    $ref: "#/components/schemas/directoryProperties"
           description: OK
 
   /Directories/PropertiesV2:
