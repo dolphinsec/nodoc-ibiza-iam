@@ -139,7 +139,7 @@ paths:
   /Reports:
     $ref: "reports.yml#/paths/~1Reports"
   /Reports/{reportId}:
-    $ref: "reports.yml#/paths/~1Reports~1S{reportId}"
+    $ref: "reports.yml#/paths/~1Reports~1{reportId}"
   /Reports/AuditActivityTypes:
     $ref: "reports.yml#/paths/~1Reports~1AuditActivityTypes"
   /Reports/AuditActivityTypesV2:

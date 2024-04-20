@@ -43,7 +43,10 @@ paths:
 
   /PasswordReset/ResetPasswordByUpn:
     parameters:
-      - $ref: "common.yml#/components/parameters/UserPrincipalNameQuery"
+      - in: query
+        name: UserPrincipalName
+        schema:
+          $ref: "common.yml#/components/schemas/UserPrincipalName"
     put:
       responses:
         "200":
