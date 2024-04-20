@@ -69,7 +69,7 @@ components:
             Access-Control-Expose-Headers:
                 $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
             x-ms-correlation-id:
-                $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+                $ref: "common.yml#/components/headers/x-ms-correlation-id"
             x-ms-operation-maturity:
                 $ref: "common.yml#/components/headers/x-ms-operation-maturity"
             x-ms-expected-duration:
@@ -163,6 +163,12 @@ components:
         description: pending
         schema:
             type: string
+    columnName:
+        name: searchText
+        in: query
+        description: pending
+        schema:
+            type: string
     sortOrder:
         name: sortOrder
         in: query
@@ -183,6 +189,10 @@ components:
             type: integer
 
   schemas:
+    NextLink:
+        type: string
+        format: base64
+        nullable: true
     PagedResponse:
         type: object
         properties:
@@ -191,15 +201,11 @@ components:
           lastPage:
             type: boolean
           nextLink:
-            $ref: "#components/schemas/NextLink"
+            $ref: "#/components/schemas/NextLink"
         required:
             - firstPage
             - lastPage
             - nextLink
-    NextLink:
-        type: string
-        format: base64
-        nullable: true
     UserPrincipalName:
         type: string
         description: The User Principal Name (UPN) for the user.

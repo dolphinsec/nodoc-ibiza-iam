@@ -92,7 +92,7 @@ paths:
   /ManagedApplications/List:
     post:
       requestBody:
-        $ref: "common.yml#/components/requestBodies/managedApplicationList"
+        $ref: "#/components/requestBodies/managedApplicationList"
       responses:
         "200":
           description: OK

@@ -1,11 +1,11 @@
 components:
   schemas:
     request:
-      schema:
-        type: string
+      type: string
   parameters:
     Request:
       in: query
+      name: request
       schema:
         $ref: "#/components/schemas/request"
 
@@ -18,8 +18,9 @@ paths:
 
   /Reports/{reportId}:
     parameters:
-      - in: query
+      - in: path
         name: reportId
+        required: true
         schema:
           type: string
     get:
@@ -53,7 +54,7 @@ paths:
 
   /Reports/GroupsActivitySummary:
     parameters:
-      - $ref: "#/components/parameters/request"
+      - $ref: "#/components/parameters/Request"
     get:
       responses:
         "200":
@@ -91,7 +92,7 @@ paths:
 
   /Reports/UsersActivitySummary:
     parameters:
-      - $ref: "#/components/parameters/request"
+      - $ref: "#/components/parameters/Request"
     get:
       responses:
         "200":

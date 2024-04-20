@@ -15,7 +15,7 @@ components:
                 type: boolean
             anyIPCEnabled:
                 type: boolean
-      DeleteRestriction:
+      DeletionRestriction:
         type: string
         enum:
             - UserCountExceeded
