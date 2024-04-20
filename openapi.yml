@@ -79,7 +79,7 @@ paths:
   /Directories/PropertiesV2:
     $ref: "directories.yml#/paths/~1Directories~1PropertiesV2"
   /Directories/RecommendedPayloads:
-    $ref: "directories.yml#/paths/~1RecommendedPayloads"
+    $ref: "directories.yml#/paths~1RecommendedPayloads"
   /Directories/SsgmProperties:
     $ref: "directories.yml#/paths/~1Directories~1SsgmProperties"
   /Directories/Summary:

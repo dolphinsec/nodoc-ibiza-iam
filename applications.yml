@@ -61,13 +61,7 @@ components:
                   type: boolean
             copiedProperties:
               type: object
-    requestBodies:
-        managedApplicationList:
-            required: true
-            content:
-                application/json:
-                    schema:
-                        $ref: "#/components/schemas/managedApplicationList"
+
 
 paths:
   /EnterpriseApplications/{spId}/ServicePrincipalPermissions:
@@ -92,7 +86,10 @@ paths:
   /ManagedApplications/List:
     post:
       requestBody:
-        $ref: "#/components/requestBodies/managedApplicationList"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/managedApplicationList"
       responses:
         "200":
           description: OK
