@@ -219,6 +219,11 @@ components:
         format: uuid
         description: The ID of the directory object.
         example: 9bfcbcd9-3843-42bc-aec6-70e7815f5757
+    TenantId:
+        type: string
+        format: uuid
+        description: The unique ID of the tenant.
+        example: d2a1929a-5e50-4960-8994-bceecb95c3ff
     ApplicationId:
         type: string
         format: uuid

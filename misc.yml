@@ -1,7 +1,18 @@
 paths:
-
   /B2B/b2bpolicy:
     get:
+      responses:
+        "200":
+          description: OK
+
+  /BrowserOperations:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Common/GetObjectsByObjectIds:
+    post:
       responses:
         "200":
           description: OK
@@ -23,18 +34,6 @@ paths:
         "200":
           description: OK
 
-  /LoginTenantBrandings:
-    get:
-      responses:
-        "200":
-          description: OK
-
-  /LoginTenantBrandings/0:
-    get:
-      responses:
-        "200":
-          description: OK
-
   /MoeraDomain:
     post:
       responses:
@@ -47,6 +46,31 @@ paths:
         "200":
           description: OK
 
+  /Permissions/IsTenantRegionScopeAllowed:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Permissions/{unknown}/IsOwner:
+    parameters:
+      - in: path
+        name: unknown
+        required: true
+        schema:
+            type: string
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Permissions/GetUserSystemRoleTemplateIds:
+    get:
+      responses:
+        "200":
+          description: OK
+
+
   /Policies:
     post:
       responses:
@@ -55,12 +79,6 @@ paths:
 
   /Policies/Policies:
     get:
-      responses:
-        "200":
-          description: OK
-
-  /Reports/SignInEventsV2:
-    post:
       responses:
         "200":
           description: OK

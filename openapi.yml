@@ -54,32 +54,52 @@ paths:
     $ref: "auth.yml#/paths/~1AuthenticationMethods~1PasswordPolicy"
   /B2B/b2bpolicy:
     $ref: "misc.yml#/paths/~1B2B~1b2bpolicy"
+  /BrowserOperations:
+    $ref: "misc.yml#/paths/~1BrowserOperations"
+  /Common/GetObjectsByObjectIds:
+    $ref: "misc.yml#/paths/~1Common~1GetObjectsByObjectIds"
   /Devices:
     $ref: "misc.yml#/paths/~1Devices"
   /Directories:
     $ref: "directories.yml#/paths/~1Directories"
   /Directories/ADConnectStatus:
     $ref: "directories.yml#/paths/~1Directories~1ADConnectStatus"
-  /Directories/List:
-    $ref: "directories.yml#/paths/~1Directories~1List"
   /Directories/DomainAvailability:
     $ref: "directories.yml#/paths/~1Directories~1DomainAvailability"
+  /Directories/DeletionRestrictions:
+    $ref: "directories.yml#/paths/~1Directories~1DeletionRestrictions"
+  /Directories/GetSeamlessSingleSignOnDomains:
+    $ref: "directories.yml#/paths/~1Directories~1GetSeamlessSingleSignOnDomains"
+  /Directories/GetPasswordSyncStatus:
+    $ref: "directories.yml#/paths/~1Directories~1GetPasswordSyncStatus"
+  /Directories/List:
+    $ref: "directories.yml#/paths/~1Directories~1List"
   /Directories/Properties:
     $ref: "directories.yml#/paths/~1Directories~1Properties"
   /Directories/PropertiesV2:
     $ref: "directories.yml#/paths/~1Directories~1PropertiesV2"
+  /Directories/RecommendedPayloads:
+    $ref: "directories.yml#/paths/~1/RecommendedPayloads"
   /Directories/SsgmProperties:
     $ref: "directories.yml#/paths/~1Directories~1SsgmProperties"
+  /Directories/Summary:
+    $ref: "directories.yml#/paths/~1Directories~1Summary"
+  /directoryObjects/{objectId}:
+    $ref: "directories.yml#/paths/~1directoryObjects~1{objectId}"
   /EnterpriseApplications/{spId}/ServicePrincipalPermissions:
     $ref: "applications.yml#/paths/~1EnterpriseApplications~1{spId}~1ServicePrincipalPermissions"
   /EnterpriseApplications/UserSettings:
     $ref: "applications.yml#/paths/~1EnterpriseApplications~1UserSettings"
+  /FeatureConfigurations:
+    $ref: "misc.yml#/paths/~1FeatureConfigurations"
   /Licenses/DirectoryMembersImageUrlFromIds:
     $ref: "account_sku.yml#/paths/~1Licenses~1DirectoryMembersImageUrlFromIds"
   /LoginTenantBrandings:
-    $ref: "misc.yml#/paths/~1LoginTenantBrandings"
+    $ref: "directories.yml#/paths/~1LoginTenantBrandings"
   /LoginTenantBrandings/0:
-    $ref: "misc.yml#/paths/~1LoginTenantBrandings~10"
+    $ref: "directories.yml#/paths/~1LoginTenantBrandings~10"
+  /LoginTenantBrandings/BannerImage/{unknown}:
+    $ref: "directories.yml#/paths/~1LoginTenantBrandings~1BannerImage~1{unknown}"
   /ManagedApplications/List:
     $ref: "applications.yml#/paths/~1ManagedApplications~1List"
   /ManagedApplications/{appId}/AppRoleAssignments:
@@ -102,6 +122,12 @@ paths:
     $ref: "auth.yml#/paths/~1PasswordReset~1ResetPasswordByUpn"
   /Permissions:
     $ref: "misc.yml#/paths/~1Permissions"
+  /Permissions/IsTenantRegionScopeAllowed:
+    $ref: "misc.yml#/paths/~1Permissions~1IsTenantRegionScopeAllowed"
+  /Permissions/{unknown}/IsOwner:
+    $ref: "misc.yml#/paths/~1Permissions~1{unknown}~1IsOwner"
+  /Permissions/GetUserSystemRoleTemplateIds:
+    $ref: "misc.yml#/paths/~1Permissions~1GetUserSystemRoleTemplateIds"
   /Policies:
     $ref: "misc.yml#/paths/~1Policies"
   /Policies/Policies:
@@ -110,12 +136,34 @@ paths:
     $ref: "applications.yml#/paths/~1RegisteredApplications~1{appId}"
   /RegisteredApplications/{appId}/Consent:
     $ref: "applications.yml#/paths/~1RegisteredApplications~1{appId}~1Consent"
+  /Reports:
+    $ref: "reports.yml#/paths/~1Reports"
+  /Reports/{reportId}:
+    $ref: "reports.yml#/paths/~1Reports~1S{reportId}"
+  /Reports/AuditActivityTypes:
+    $ref: "reports.yml#/paths/~1Reports~1AuditActivityTypes"
+  /Reports/AuditActivityTypesV2:
+    $ref: "reports.yml#/paths/~1Reports~1AuditActivityTypesV2"
+  /Reports/Groups/{groupId}:
+    $ref: "reports.yml#/paths/~1Reports~1Groups~1{groupId}"
+  /Reports/GroupsActivitySummary:
+    $ref: "reports.yml#/paths/~1Reports~1GroupsActivitySummary"
+  /Reports/ServicePrincipals/{spId}:
+    $ref: "reports.yml#/paths/~1Reports~1ServicePrincipals~1{spId}"
   /Reports/SignInEventsV2:
-    $ref: "misc.yml#/paths/~1Reports~1SignInEventsV2"
+    $ref: "reports.yml#/paths/~1Reports~1SignInEventsV2"
+  /Reports/Users/{userId}:
+    $ref: "reports.yml#/paths/~1Reports~1Users~1{userId}"
+  /Reports/UsersActivitySummary:
+    $ref: "reports.yml#/paths/~1Reports~1UsersActivitySummary"
   /RoamingSettings:
     $ref: "misc.yml#/paths/~1RoamingSettings"
   /Roles/User/{userId}:
     $ref: "misc.yml#/paths/~1Roles~1User~1{userId}"
+  /SecurityDefaults/GetSecurityDefaultStatus:
+    $ref: "directories.yml#/paths/~1SecurityDefaults~1GetSecurityDefaultStatus"
+  /SecurityDefaults/UpdateSecurityDefaultOnSave:
+    $ref: "directories.yml#/paths/~1SecurityDefaults~1UpdateSecurityDefaultOnSave"
   /TenantSkuInfo:
     $ref: "misc.yml#/paths/~1TenantSkuInfo"
   /User/TemporaryPassword:

@@ -269,7 +269,7 @@ paths:
             Access-Control-Expose-Headers:
                 $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
             x-ms-correlation-id:
-                $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+                $ref: "common.yml#/components/headers/x-ms-correlation-id"
             x-ms-operation-maturity:
                 $ref: "common.yml#/components/headers/x-ms-operation-maturity"
             x-ms-expected-duration:
@@ -367,7 +367,7 @@ paths:
                         Access-Control-Expose-Headers:
                             $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
                         x-ms-correlation-id:
-                            $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+                            $ref: "common.yml#/components/headers/x-ms-correlation-id"
                         x-ms-operation-maturity:
                             $ref: "common.yml#/components/headers/x-ms-operation-maturity"
                         x-ms-expected-duration:
@@ -416,7 +416,7 @@ paths:
             Access-Control-Expose-Headers:
                 $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
             x-ms-correlation-id:
-                $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+                $ref: "common.yml#/components/headers/x-ms-correlation-id"
             x-ms-operation-maturity:
                 $ref: "common.yml#/components/headers/x-ms-operation-maturity"
             x-ms-expected-duration:
@@ -468,7 +468,7 @@ paths:
             Access-Control-Expose-Headers:
                 $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
             x-ms-correlation-id:
-                $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+                $ref: "common.yml#/components/headers/x-ms-correlation-id"
             x-ms-operation-maturity:
                 $ref: "common.yml#/components/headers/x-ms-operation-maturity"
             x-ms-expected-duration:
@@ -505,7 +505,7 @@ paths:
             Access-Control-Expose-Headers:
                 $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
             x-ms-correlation-id:
-                $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+                $ref: "common.yml#/components/headers/x-ms-correlation-id"
             x-ms-operation-maturity:
                 $ref: "common.yml#/components/headers/x-ms-operation-maturity"
             x-ms-expected-duration:
@@ -558,7 +558,7 @@ paths:
                 Access-Control-Expose-Headers:
                     $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
                 x-ms-correlation-id:
-                    $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+                    $ref: "common.yml#/components/headers/x-ms-correlation-id"
                 x-ms-operation-maturity:
                     $ref: "common.yml#/components/headers/x-ms-operation-maturity"
                 x-ms-expected-duration:
@@ -643,7 +643,7 @@ paths:
                 Access-Control-Expose-Headers:
                     $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
                 x-ms-correlation-id:
-                    $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+                    $ref: "common.yml#/components/headers/x-ms-correlation-id"
                 x-ms-operation-maturity:
                     $ref: "common.yml#/components/headers/x-ms-operation-maturity"
                 x-ms-expected-duration:
@@ -728,7 +728,7 @@ paths:
                     Access-Control-Expose-Headers:
                         $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
                     x-ms-correlation-id:
-                        $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+                        $ref: "common.yml#/components/headers/x-ms-correlation-id"
                     x-ms-operation-maturity:
                         $ref: "common.yml#/components/headers/x-ms-operation-maturity"
                     x-ms-expected-duration:
@@ -770,7 +770,7 @@ paths:
                     Access-Control-Expose-Headers:
                         $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
                     x-ms-correlation-id:
-                        $ref: "common.yml#/components/headers/x-ms-correlation-id:"
+                        $ref: "common.yml#/components/headers/x-ms-correlation-id"
                     x-ms-operation-maturity:
                         $ref: "common.yml#/components/headers/x-ms-operation-maturity"
                     x-ms-expected-duration:

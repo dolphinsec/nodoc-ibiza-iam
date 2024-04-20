@@ -21,6 +21,7 @@ files[] = {"path":"common.yml","metaData":{}}
 files[] = {"path":"directories.yml","metaData":{}}
 files[] = {"path":"misc.yml","metaData":{}}
 files[] = {"path":"openapi.yml","metaData":{}}
+files[] = {"path":"reports.yml","metaData":{}}
 files[] = {"path":"users.yml","metaData":{}}
 
 [config.relations.apiDefinition.metaData]

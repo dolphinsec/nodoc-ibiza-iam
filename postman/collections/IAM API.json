@@ -4176,8 +4176,107 @@
 									"_postman_previewlanguage": "json",
 									"header": [
 										{
+											"key": "Cache-Control",
+											"value": "sint nostrud eu con",
+											"description": "",
+											"disabled": false,
+											"enabled": true
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "Excepteur eiusmod adipisicing in",
+											"description": "",
+											"disabled": false,
+											"enabled": true
+										},
+										{
+											"key": "Vary",
+											"value": "laboris exercitation cupidatat",
+											"description": "",
+											"disabled": false,
+											"enabled": true
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "voluptate ullamco",
+											"description": "",
+											"disabled": false,
+											"enabled": true
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "magna fugiat reprehenderit",
+											"description": "",
+											"disabled": false,
+											"enabled": true
+										},
+										{
+											"key": "x-ms-version",
+											"value": "consequ",
+											"description": "",
+											"disabled": false,
+											"enabled": true
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "nulla aute consectetur dolor",
+											"description": "",
+											"disabled": false,
+											"enabled": true
+										},
+										{
+											"key": "Access-Control-Expose-Headers",
+											"value": "in",
+											"description": "",
+											"disabled": false,
+											"enabled": true
+										},
+										{
+											"key": "x-ms-correlation-id",
+											"value": "[object Object]",
+											"description": "",
+											"disabled": false,
+											"enabled": true
+										},
+										{
+											"key": "x-ms-operation-maturity",
+											"value": "culpa mollit velit",
+											"description": "",
+											"disabled": false,
+											"enabled": true
+										},
+										{
+											"key": "x-ms-expected-duration",
+											"value": "41545010",
+											"description": "",
+											"disabled": false,
+											"enabled": true
+										},
+										{
+											"key": "X-UA-Compatible",
+											"value": "in",
+											"description": "",
+											"disabled": false,
+											"enabled": true
+										},
+										{
+											"key": "Date",
+											"value": "in ea sint laborum sunt",
+											"description": "",
+											"disabled": false,
+											"enabled": true
+										},
+										{
+											"key": "Content-Length",
+											"value": "45941058",
+											"description": "",
+											"disabled": false,
+											"enabled": true
+										},
+										{
 											"key": "Content-Type",
-											"value": "application/json"
+											"value": "application/json",
+											"enabled": true
 										}
 									],
 									"cookie": [],
@@ -4257,7 +4356,13 @@
 							},
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"description": "(Required) X-Ms-Client-Request-Id header.",
+										"key": "X-Ms-Client-Request-Id",
+										"value": "db2c98f8-cc5d-65de-a81f-47a92631c17b"
+									}
+								],
 								"url": {
 									"raw": "{{baseUrl}}/Directories/SsgmProperties",
 									"host": [
@@ -4296,8 +4401,141 @@
 									"status": "OK",
 									"code": 200,
 									"_postman_previewlanguage": "text",
-									"header": [],
-									"cookie": []
+									"header": [
+										{
+											"disabled": false,
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"disabled": false,
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											},
+											"key": "Cache-Control",
+											"value": "dolore voluptate"
+										},
+										{
+											"disabled": false,
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											},
+											"key": "Content-Encoding",
+											"value": "mollit commodo laboris dolore"
+										},
+										{
+											"disabled": false,
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											},
+											"key": "Vary",
+											"value": "pariatur reprehenderit incididunt dolore Ut"
+										},
+										{
+											"disabled": false,
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											},
+											"key": "X-Content-Type-Options",
+											"value": "aliqua et sint ea"
+										},
+										{
+											"disabled": false,
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											},
+											"key": "X-XSS-Protection",
+											"value": "sint culpa Ut consectetur id"
+										},
+										{
+											"disabled": false,
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											},
+											"key": "x-ms-version",
+											"value": "voluptate amet ad"
+										},
+										{
+											"disabled": false,
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											},
+											"key": "Strict-Transport-Security",
+											"value": "adipisicing nostrud"
+										},
+										{
+											"disabled": false,
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											},
+											"key": "Access-Control-Expose-Headers",
+											"value": "fugiat irure tempor"
+										},
+										{
+											"disabled": false,
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											},
+											"key": "x-ms-correlation-id",
+											"value": "[object Object]"
+										},
+										{
+											"disabled": false,
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											},
+											"key": "x-ms-operation-maturity",
+											"value": "Excepteur"
+										},
+										{
+											"disabled": false,
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											},
+											"key": "x-ms-expected-duration",
+											"value": "-60921881"
+										},
+										{
+											"disabled": false,
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											},
+											"key": "X-UA-Compatible",
+											"value": "enim dolor"
+										},
+										{
+											"disabled": false,
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											},
+											"key": "Date",
+											"value": "voluptate exercitation in reprehe"
+										},
+										{
+											"disabled": false,
+											"description": {
+												"content": "",
+												"type": "text/plain"
+											},
+											"key": "Content-Length",
+											"value": "-49144519"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"objectId\": \"d2a1929a-5e50-4960-8994-bceecb95c3ff\",\n  \"displayName\": \"adipisicing veniam occaecat minim\",\n  \"usersCanRegisterApps\": true,\n  \"isAnyAccessPanelPreviewFeaturesAvailable\": true,\n  \"showMyGroupsFeature\": false,\n  \"myGroupsFeatureValue\": \"Duis minim et\",\n  \"myGroupsGroupId\": \"id cupidatat et irure veniam\",\n  \"myGroupsGroupName\": \"anim enim exercitation\",\n  \"showMyAppsFeature\": true,\n  \"myAppsFeatureValue\": \"quis voluptate occaecat\",\n  \"myAppsGroupId\": \"incididunt aliquip qui fugiat\",\n  \"myAppsGroupName\": \"exercitation incididunt\",\n  \"showUserActivityReportsFeature\": false,\n  \"userActivityReportsFeatureValue\": \"ut minim\",\n  \"userActivityReportsGroupId\": \"in tempor\",\n  \"userActivityReportsGroupName\": \"magna Ut cillum mollit\",\n  \"showRegisteredAuthMethodFeature\": true,\n  \"registeredAuthMethodFeatureValue\": \"nulla anim\",\n  \"registeredAuthMethodGroupId\": \"ad nostrud ipsum\",\n  \"registeredAuthMethodGroupName\": \"proident voluptate exercitat\",\n  \"usersCanAddExternalUsers\": true,\n  \"limitedAccessCanAddExternalUsers\": true,\n  \"restrictDirectoryAccess\": true,\n  \"groupsInAccessPanelEnabled\": false,\n  \"selfServiceGroupManagementEnabled\": false,\n  \"securityGroupsEnabled\": true,\n  \"usersCanManageSecurityGroups\": \"sunt Duis\",\n  \"office365GroupsEnabled\": false,\n  \"usersCanManageOfficeGroups\": \"ullamco aute\",\n  \"allUsersGroupEnabled\": false,\n  \"scopingGroupIdForManagingSecurityGroups\": \"cupidatat consequat\",\n  \"scopingGroupIdForManagingOfficeGroups\": \"ullamco aliquip cupidatat\",\n  \"scopingGroupNameForManagingSecurityGroups\": \"tempor ut\",\n  \"scopingGroupNameForManagingOfficeGroups\": \"sint exercitation labore elit Lorem\",\n  \"objectIdForAllUserGroup\": \"eiusmod mollit sunt quis cillum\",\n  \"allowInvitations\": true,\n  \"isB2CTenant\": false,\n  \"restrictNonAdminUsers\": false,\n  \"enableLinkedInAppFamily\": -36520555,\n  \"linkedInSelectedGroupObjectId\": \"cillum Excepteur do\",\n  \"linkedInSelectedGroupDisplayName\": \"et\"\n}"
 								}
 							]
 						}
@@ -7205,6 +7443,1396 @@
 				}
 			],
 			"id": "16dcbbcd-9616-4dc1-a33d-775178497687"
+		},
+		{
+			"name": "/BrowserOperations",
+			"id": "cec0c1ba-90eb-42ca-a62a-3a36e1c48704",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/BrowserOperations",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"BrowserOperations"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "15b25aeb-c07c-429b-8115-eadf4a888c09",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/BrowserOperations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"BrowserOperations"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Common/GetObjectsByObjectIds",
+			"id": "edc88648-e453-43a2-a6e9-199ffca84007",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Common/GetObjectsByObjectIds",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Common",
+						"GetObjectsByObjectIds"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "28e6167d-8451-4889-8242-ee86a44fb3bd",
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Common/GetObjectsByObjectIds",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Common",
+								"GetObjectsByObjectIds"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Directories/DeletionRestrictions",
+			"id": "68757a6b-d6a9-4f05-8f0e-60f12b74e353",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) X-Ms-Client-Request-Id header.",
+						"key": "X-Ms-Client-Request-Id",
+						"value": "40e3e460-7114-ac91-85ab-b58d0726d2b5"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/Directories/DeletionRestrictions",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Directories",
+						"DeletionRestrictions"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "3d77c1da-289f-4e97-8877-f95806a01b98",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Directories/DeletionRestrictions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Directories",
+								"DeletionRestrictions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"disabled": false,
+							"enabled": true
+						}
+					],
+					"cookie": [],
+					"body": "[\n  {\n    \"value\": \"reference #/components/schemas/DeletionRestriction not found in the OpenAPI spec\"\n  },\n  {\n    \"value\": \"reference #/components/schemas/DeletionRestriction not found in the OpenAPI spec\"\n  }\n]"
+				}
+			]
+		},
+		{
+			"name": "/Directories/GetSeamlessSingleSignOnDomains",
+			"id": "c6fece7c-32a0-4441-bb1b-fa97b0a575cc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) X-Ms-Client-Request-Id header.",
+						"key": "X-Ms-Client-Request-Id",
+						"value": "c70883ea-0e7f-189b-fee1-08c05fe4fafe"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/Directories/GetSeamlessSingleSignOnDomains",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Directories",
+						"GetSeamlessSingleSignOnDomains"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "69549aee-6153-4eb4-8480-a52052511f4b",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Directories/GetSeamlessSingleSignOnDomains",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Directories",
+								"GetSeamlessSingleSignOnDomains"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"disabled": false,
+							"enabled": true
+						}
+					],
+					"cookie": [],
+					"body": "[]"
+				}
+			]
+		},
+		{
+			"name": "/Directories/GetPasswordSyncStatus",
+			"id": "74cfc727-d17b-47bc-8d92-1bd02957da87",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Directories/GetPasswordSyncStatus",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Directories",
+						"GetPasswordSyncStatus"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "b86321af-011a-4344-b189-8f12322a928d",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Directories/GetPasswordSyncStatus",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Directories",
+								"GetPasswordSyncStatus"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "Ut non",
+							"description": "",
+							"disabled": false,
+							"enabled": true
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "enim est",
+							"description": "",
+							"disabled": false,
+							"enabled": true
+						},
+						{
+							"key": "Vary",
+							"value": "mollit Excepteur magna in",
+							"description": "",
+							"disabled": false,
+							"enabled": true
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "Duis amet aliqua",
+							"description": "",
+							"disabled": false,
+							"enabled": true
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "aliquip l",
+							"description": "",
+							"disabled": false,
+							"enabled": true
+						},
+						{
+							"key": "x-ms-version",
+							"value": "dolor ull",
+							"description": "",
+							"disabled": false,
+							"enabled": true
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "sit irure dolor eu nulla",
+							"description": "",
+							"disabled": false,
+							"enabled": true
+						},
+						{
+							"key": "Access-Control-Expose-Headers",
+							"value": "ipsum incididunt cupidatat enim",
+							"description": "",
+							"disabled": false,
+							"enabled": true
+						},
+						{
+							"key": "x-ms-correlation-id",
+							"value": "[object Object]",
+							"description": "",
+							"disabled": false,
+							"enabled": true
+						},
+						{
+							"key": "x-ms-operation-maturity",
+							"value": "sit nulla magna Ut",
+							"description": "",
+							"disabled": false,
+							"enabled": true
+						},
+						{
+							"key": "x-ms-expected-duration",
+							"value": "56006171",
+							"description": "",
+							"disabled": false,
+							"enabled": true
+						},
+						{
+							"key": "X-UA-Compatible",
+							"value": "sit ullamco est id",
+							"description": "",
+							"disabled": false,
+							"enabled": true
+						},
+						{
+							"key": "Date",
+							"value": "esse ut nostrud Excepteur",
+							"description": "",
+							"disabled": false,
+							"enabled": true
+						},
+						{
+							"key": "Content-Length",
+							"value": "19347482",
+							"description": "",
+							"disabled": false,
+							"enabled": true
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"disabled": false,
+							"enabled": true
+						}
+					],
+					"cookie": [],
+					"body": "true"
+				}
+			]
+		},
+		{
+			"name": "/Directories/Summary",
+			"id": "dfd19c85-4493-4410-aac3-944bba7ab0a5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) X-Ms-Client-Request-Id header.",
+						"key": "X-Ms-Client-Request-Id",
+						"value": "685d5207-89ee-72fa-74a4-c0885d3eed8e"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/Directories/Summary",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Directories",
+						"Summary"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "75599dbb-9c7a-412e-b23e-26346539754d",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Directories/Summary",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Directories",
+								"Summary"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/directoryObjects/:objectId",
+			"id": "4a69049b-2dd4-426b-84fb-5a1e020244f1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/directoryObjects/:objectId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"directoryObjects",
+						":objectId"
+					],
+					"variable": [
+						{
+							"key": "objectId",
+							"value": "9bfcbcd9-3843-42bc-aec6-70e7815f5757",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "4f132ef8-abb6-43cb-bd45-b45e1c13bc18",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/directoryObjects/:objectId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"directoryObjects",
+								":objectId"
+							],
+							"variable": [
+								{
+									"key": "objectId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/FeatureConfigurations",
+			"id": "16be5b65-d4d1-4a51-a101-aa0b8474adeb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/FeatureConfigurations?SupportAU=true",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"FeatureConfigurations"
+					],
+					"query": [
+						{
+							"key": "SupportAU",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "8071783a-324f-41ee-a44d-17785f14d919",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/FeatureConfigurations?SupportAU=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"FeatureConfigurations"
+							],
+							"query": [
+								{
+									"key": "SupportAU",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/LoginTenantBrandings/BannerImage/:unknown",
+			"id": "6bfeff55-8c9e-48aa-baff-3bc503709019",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/LoginTenantBrandings/BannerImage/:unknown",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"LoginTenantBrandings",
+						"BannerImage",
+						":unknown"
+					],
+					"variable": [
+						{
+							"key": "unknown",
+							"value": "dolore quis laboris veniam",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "a57b8ae6-04fc-4791-8b79-a6a6501fc24c",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/LoginTenantBrandings/BannerImage/:unknown",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"LoginTenantBrandings",
+								"BannerImage",
+								":unknown"
+							],
+							"variable": [
+								{
+									"key": "unknown"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Permissions/IsTenantRegionScopeAllowed",
+			"id": "e33ec64e-5228-4a93-bdf6-69c5ca785780",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Permissions/IsTenantRegionScopeAllowed",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Permissions",
+						"IsTenantRegionScopeAllowed"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "29e45d83-fe41-4a92-82fa-9fa3c279fa7c",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Permissions/IsTenantRegionScopeAllowed",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Permissions",
+								"IsTenantRegionScopeAllowed"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Permissions/:unknown/IsOwner",
+			"id": "e0d79716-748c-4bed-b518-a1bfea28a48a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Permissions/:unknown/IsOwner",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Permissions",
+						":unknown",
+						"IsOwner"
+					],
+					"variable": [
+						{
+							"key": "unknown",
+							"value": "dolore quis laboris veniam",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "b1fbbf8f-07c6-4f34-88fd-b441f6885cc0",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Permissions/:unknown/IsOwner",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Permissions",
+								":unknown",
+								"IsOwner"
+							],
+							"variable": [
+								{
+									"key": "unknown"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Permissions/GetUserSystemRoleTemplateIds",
+			"id": "0f59b097-4d0c-4c17-a880-e2ab3dec8653",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Permissions/GetUserSystemRoleTemplateIds",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Permissions",
+						"GetUserSystemRoleTemplateIds"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "1ed12e24-fc16-4d7f-b271-56dc2f0566dd",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Permissions/GetUserSystemRoleTemplateIds",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Permissions",
+								"GetUserSystemRoleTemplateIds"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Reports",
+			"id": "19f9011c-bf03-4230-a1d6-1103dc37c408",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Reports",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Reports"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "2d31e26d-c2c7-4f90-806d-35ee57151b51",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Reports",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Reports"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Reports/AuditActivityTypes",
+			"id": "2c2378d1-8397-4341-a0d6-c18cd1f119a8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Reports/AuditActivityTypes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Reports",
+						"AuditActivityTypes"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "a62c574d-c4c5-4cb2-8824-207251415f36",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Reports/AuditActivityTypes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Reports",
+								"AuditActivityTypes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Reports/AuditActivityTypesV2",
+			"id": "801799b1-71ce-4251-b28d-3ced3b6733ac",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Reports/AuditActivityTypesV2",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Reports",
+						"AuditActivityTypesV2"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "5c6155bf-bad4-4a41-8b90-e359cc709239",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Reports/AuditActivityTypesV2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Reports",
+								"AuditActivityTypesV2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Reports/Groups/:groupId",
+			"id": "583dd085-4aa0-4d13-83dc-c03dd7da40ed",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Reports/Groups/:groupId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Reports",
+						"Groups",
+						":groupId"
+					],
+					"variable": [
+						{
+							"key": "groupId",
+							"value": "f8b378b5-152f-4a32-bd1a-bf5ba02cdaa9",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "ee7ac59e-1675-4d10-9061-7c047dea9f58",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Reports/Groups/:groupId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Reports",
+								"Groups",
+								":groupId"
+							],
+							"variable": [
+								{
+									"key": "groupId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Reports/GroupsActivitySummary",
+			"id": "f0935a77-5a80-4c46-8edb-fc336025d412",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Reports/GroupsActivitySummary",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Reports",
+						"GroupsActivitySummary"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "c9012776-ba94-457e-a9d5-ea84028f8f06",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Reports/GroupsActivitySummary",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Reports",
+								"GroupsActivitySummary"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Reports/ServicePrincipals/:spId",
+			"id": "804138fa-b084-491c-b92b-6afc4e577ec3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Reports/ServicePrincipals/:spId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Reports",
+						"ServicePrincipals",
+						":spId"
+					],
+					"variable": [
+						{
+							"key": "spId",
+							"value": "9679fc4f-a7b6-40aa-8a45-32e61e30a204",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "3ef01136-3fb7-4ef6-8910-6e0f44ad5bdf",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Reports/ServicePrincipals/:spId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Reports",
+								"ServicePrincipals",
+								":spId"
+							],
+							"variable": [
+								{
+									"key": "spId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Reports/Users/:userId",
+			"id": "3184e09f-cb45-463f-b53c-4f9792e16bb7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Reports/Users/:userId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Reports",
+						"Users",
+						":userId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "c822926c-40f7-41c1-b220-21639fe755a7",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "61aed5a1-c608-4256-b214-4fb6b04b1a69",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Reports/Users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Reports",
+								"Users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Reports/UsersActivitySummary",
+			"id": "7d8cd491-7e38-4139-a15d-b2c360621095",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Reports/UsersActivitySummary",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Reports",
+						"UsersActivitySummary"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "28a27d45-fe35-4382-88f6-ee2f0b765ba1",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Reports/UsersActivitySummary",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Reports",
+								"UsersActivitySummary"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/SecurityDefaults/GetSecurityDefaultStatus",
+			"id": "78c36dbc-2adf-49cf-83c9-d530838f1c44",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) X-Ms-Client-Request-Id header.",
+						"key": "X-Ms-Client-Request-Id",
+						"value": "9501c6ea-b630-328f-499c-70f7835398ac"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/SecurityDefaults/GetSecurityDefaultStatus",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"SecurityDefaults",
+						"GetSecurityDefaultStatus"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "393c5eb9-3f41-4f33-8f66-6fc5ffb8c7ea",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/SecurityDefaults/GetSecurityDefaultStatus",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"SecurityDefaults",
+								"GetSecurityDefaultStatus"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/SecurityDefaults/UpdateSecurityDefaultOnSave",
+			"id": "f51c3dcf-e5fb-4dd2-bc23-8be09acb9ae6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/SecurityDefaults/UpdateSecurityDefaultOnSave?enableSecurityDefaults=true",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"SecurityDefaults",
+						"UpdateSecurityDefaultOnSave"
+					],
+					"query": [
+						{
+							"key": "enableSecurityDefaults",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "b63743b8-c116-43f1-9c19-240680038609",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/SecurityDefaults/UpdateSecurityDefaultOnSave?enableSecurityDefaults=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"SecurityDefaults",
+								"UpdateSecurityDefaultOnSave"
+							],
+							"query": [
+								{
+									"key": "enableSecurityDefaults",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -7232,7 +8860,7 @@
 			"id": "6d9c0c68-47a0-48d7-9dd6-996f0ba37f65",
 			"key": "baseUrl",
 			"value": "https://main.iam.ad.ext.azure.com/api",
-			"type": "any"
+			"type": "string"
 		}
 	]
 }

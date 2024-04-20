@@ -1,0 +1,98 @@
+components:
+  schemas:
+    request:
+      schema:
+        type: string
+  parameters:
+    Request:
+      in: query
+      schema:
+        $ref: "#/components/schemas/request"
+
+paths:
+  /Reports:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Reports/{reportId}:
+    parameters:
+      - in: query
+        name: reportId
+        schema:
+          type: string
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Reports/AuditActivityTypes:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Reports/AuditActivityTypesV2:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Reports/Groups/{groupId}:
+    parameters:
+      - in: path
+        name: groupId
+        required: true
+        schema:
+          $ref: "common.yml#/components/schemas/GroupId" 
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Reports/GroupsActivitySummary:
+    parameters:
+      - $ref: "#/components/parameters/request"
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Reports/ServicePrincipals/{spId}:
+    parameters:
+      - in: path
+        name: spId
+        required: true
+        schema:
+          $ref: "common.yml#/components/schemas/ServicePrincipalId" 
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Reports/SignInEventsV2:
+    post:
+      responses:
+        "200":
+          description: OK
+
+  /Reports/Users/{userId}:
+    parameters:
+      - in: path
+        name: userId
+        required: true
+        schema:
+          $ref: "common.yml#/components/schemas/UserId" 
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Reports/UsersActivitySummary:
+    parameters:
+      - $ref: "#/components/parameters/request"
+    get:
+      responses:
+        "200":
+          description: OK
