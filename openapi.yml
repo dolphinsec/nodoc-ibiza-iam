@@ -20,7 +20,18 @@ components:
           scopes: {}
 
 "tags":
+    - name: Application
+      description: Operations relating to Application management including both Enterprise Applications, and Application Registrations.
+    - name: Authentication
+      description: Operations relating to Authentication, including authentication methods and password policies.
+    - name: Directory
+      description: Operations relating to Directory management.
     - name: Licensing
+      description: Operations relating to user and group licensing.
+    - name: Reports
+      description: Operations relating to report generation and management.
+    - name: Users and Groups
+      description: Operations relating to user and group management.
 
 paths:
   /AccountSkus:
