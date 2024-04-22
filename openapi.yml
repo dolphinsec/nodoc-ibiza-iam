@@ -97,6 +97,12 @@ paths:
     $ref: "applications.yml#/paths/~1EnterpriseApplications~1UserSettings"
   /FeatureConfigurations:
     $ref: "misc.yml#/paths/~1FeatureConfigurations"
+  /Groups:
+    $ref: "groups.yml#/paths/~1Groups"
+  /Groups/{groupId}:
+    $ref: "groups.yml#/paths/~1Groups~1{groupId}"
+  /Groups/{groupId}/owners/count:
+    $ref: "groups.yml#/paths/~1Groups~1{groupId}~1owners~1count"
   /Licenses/DirectoryMembersImageUrlFromIds:
     $ref: "account_sku.yml#/paths/~1Licenses~1DirectoryMembersImageUrlFromIds"
   /LoginTenantBrandings:

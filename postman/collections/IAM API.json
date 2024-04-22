@@ -7512,13 +7512,19 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/MultiFactorAuthentication/GetOrCreateExpandedTenantModel",
+									"raw": "{{baseUrl}}/MultiFactorAuthentication/GetOrCreateExpandedTenantModel?tenantName=aliquip ipsum",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"MultiFactorAuthentication",
 										"GetOrCreateExpandedTenantModel"
+									],
+									"query": [
+										{
+											"key": "tenantName",
+											"value": "aliquip ipsum"
+										}
 									]
 								}
 							},
@@ -11295,6 +11301,188 @@
 					],
 					"cookie": [],
 					"body": "false"
+				}
+			]
+		},
+		{
+			"name": "/Groups",
+			"id": "16c56c4b-5b3f-4b55-b047-2cd98c9d8c12",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Groups",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Groups"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "a0385873-7c88-4743-a9cf-7e7478df6597",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Groups",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Groups"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Groups/:groupId",
+			"id": "5e662cd6-3724-423a-a584-02fcb376b41e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Groups/:groupId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Groups",
+						":groupId"
+					],
+					"variable": [
+						{
+							"key": "groupId",
+							"value": "f8b378b5-152f-4a32-bd1a-bf5ba02cdaa9",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "8422b72b-295c-4804-bc9e-97cc30c70815",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Groups/:groupId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Groups",
+								":groupId"
+							],
+							"variable": [
+								{
+									"key": "groupId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
+				}
+			]
+		},
+		{
+			"name": "/Groups/:groupId/owners/count",
+			"id": "b7216ebf-6c48-4fb5-b916-2d0ca6ef0b10",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Groups/:groupId/owners/count",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Groups",
+						":groupId",
+						"owners",
+						"count"
+					],
+					"variable": [
+						{
+							"key": "groupId",
+							"value": "f8b378b5-152f-4a32-bd1a-bf5ba02cdaa9",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "b32c5020-8223-4f7a-95a7-da6fe87069fb",
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/Groups/:groupId/owners/count",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Groups",
+								":groupId",
+								"owners",
+								"count"
+							],
+							"variable": [
+								{
+									"key": "groupId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [],
+					"cookie": []
 				}
 			]
 		}
