@@ -19,6 +19,9 @@ components:
           tokenUrl: https://login.microsoftonline.com/common/oauth2/token
           scopes: {}
 
+"tags":
+    - name: Licensing
+
 paths:
   /AccountSkus:
     $ref: "account_sku.yml#/paths/~1AccountSkus"
@@ -86,6 +89,8 @@ paths:
     $ref: "directories.yml#/paths/~1Directories~1Summary"
   /directoryObjects/{objectId}:
     $ref: "directories.yml#/paths/~1directoryObjects~1{objectId}"
+  /DirectoryObjectPicker/DirectoryMembersFromIds:
+    $ref: "directories.yml#/paths/~1DirectoryObjectPicker~1DirectoryMembersFromIds"
   /EnterpriseApplications/{spId}/ServicePrincipalPermissions:
     $ref: "applications.yml#/paths/~1EnterpriseApplications~1{spId}~1ServicePrincipalPermissions"
   /EnterpriseApplications/UserSettings:
@@ -114,6 +119,8 @@ paths:
     $ref: "auth.yml#/paths/~1MultiFactorAuthentication~1HardwareToken~1enable"
   /MultiFactorAuthentication/HardwareToken/users:
     $ref: "auth.yml#/paths/~1MultiFactorAuthentication~1HardwareToken~1users"
+  /MultiFactorAuthentication/HasPaidSubscription:
+    $ref: "auth.yml#/paths/~1MultiFactorAuthentication~1HasPaidSubscription"
   /PasswordReset/OnPremisesPasswordResetPolicies:
     $ref: "auth.yml#/paths/~1PasswordReset~1OnPremisesPasswordResetPolicies"
   /PasswordReset/PasswordResetPolicies:

@@ -1,5 +1,14 @@
 components:
     schemas:
+      PayloadContent:
+        type: object
+        properties:
+          content:
+            type: string
+          reference:
+            type: string
+          preferReference:
+            type: boolean
       SecurityDefaultsConfiguration:
         type: object
         properties:
@@ -35,6 +44,7 @@ components:
                 $ref: "common.yml#/components/schemas/TenantId"
             displayName:
                 type: string
+                nullable: true
             usersCanRegisterApps:
                 type: boolean
             isAnyAccessPanelPreviewFeaturesAvailable:
@@ -43,46 +53,46 @@ components:
                 type: boolean
             myGroupsFeatureValue:
                 type: string
-                format: nullable
+                nullable: true
             myGroupsGroupId:
                 type: string
-                format: nullable
+                nullable: true
             myGroupsGroupName:
                 type: string
-                format: nullable
+                nullable: true
             showMyAppsFeature:
                 type: boolean
             myAppsFeatureValue:
                 type: string
-                format: nullable
+                nullable: true
             myAppsGroupId:
                 type: string
-                format: nullable
+                nullable: true
             myAppsGroupName:
                 type: string
-                format: nullable
+                nullable: true
             showUserActivityReportsFeature:
                 type: boolean
             userActivityReportsFeatureValue:
                 type: string
-                format: nullable
+                nullable: true
             userActivityReportsGroupId:
                 type: string
-                format: nullable
+                nullable: true
             userActivityReportsGroupName:
                 type: string
-                format: nullable
+                nullable: true
             showRegisteredAuthMethodFeature:
                 type: boolean
             registeredAuthMethodFeatureValue:
                 type: string
-                format: nullable
+                nullable: true
             registeredAuthMethodGroupId:
                 type: string
-                format: nullable
+                nullable: true
             registeredAuthMethodGroupName:
                 type: string
-                format: nullable
+                nullable: true
             usersCanAddExternalUsers:
                 type: boolean
             limitedAccessCanAddExternalUsers:
@@ -97,29 +107,31 @@ components:
                 type: boolean
             usersCanManageSecurityGroups:
                 type: string
-                format: nullable
+                nullable: true
             office365GroupsEnabled:
                 type: boolean
             usersCanManageOfficeGroups:
                 type: string
-                format: nullable
+                nullable: true
             allUsersGroupEnabled:
                 type: boolean
             scopingGroupIdForManagingSecurityGroups:
                 type: string
-                format: nullable
+                format: uuid
+                nullable: true
             scopingGroupIdForManagingOfficeGroups:
                 type: string
-                format: nullable
+                format: uuid
+                nullable: true
             scopingGroupNameForManagingSecurityGroups:
                 type: string
-                format: nullable
+                nullable: true
             scopingGroupNameForManagingOfficeGroups:
                 type: string
-                format: nullable
+                nullable: true
             objectIdForAllUserGroup:
                 type: string
-                format: nullable
+                nullable: true
             allowInvitations:
                 type: boolean
             isB2CTenant:
@@ -131,18 +143,20 @@ components:
                 format: int32
             toEnableLinkedInUsers:
                 type: array
+                nullable: true
                 items: 
                     type: object
             toDisableLinkedInUsers:
                 type: array
+                nullable: true
                 items: 
                     type: object
             linkedInSelectedGroupObjectId:
                 type: string
-                format: nullable
+                nullable: true
             linkedInSelectedGroupDisplayName:
                 type: string
-                format: nullable
+                nullable: true
 
 paths:
   /Directories:
@@ -151,11 +165,72 @@ paths:
         "200":
           description: OK
 
-  /Directories/ADConnectStatus:
-    get:
+  /Directories/B2C:
+    post:
       responses:
         "200":
           description: OK
+
+  /Directories/ADConnectStatus:
+    get:
+      parameters:
+        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: "common.yml#/components/headers/Cache-Control"
+            Content-Encoding:
+              $ref: "common.yml#/components/headers/Content-Encoding"
+            Vary:
+                $ref: "common.yml#/components/headers/Vary"
+            X-Content-Type-Options:
+                $ref: "common.yml#/components/headers/X-Content-Type-Options"
+            X-XSS-Protection:
+                $ref: "common.yml#/components/headers/X-XSS-Protection"
+            x-ms-version:
+                $ref: "common.yml#/components/headers/x-ms-version"
+            Strict-Transport-Security:
+                $ref: "common.yml#/components/headers/Strict-Transport-Security"
+            Access-Control-Expose-Headers:
+                $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+            x-ms-correlation-id:
+                $ref: "common.yml#/components/headers/x-ms-correlation-id"
+            x-ms-operation-maturity:
+                $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+            x-ms-expected-duration:
+                $ref: "common.yml#/components/headers/x-ms-expected-duration"
+            X-UA-Compatible:
+                $ref: "common.yml#/components/headers/X-UA-Compatible"
+            Date:
+                $ref: "common.yml#/components/headers/Date"
+            Content-Length:
+                $ref: "common.yml#/components/headers/Content-Length"
+          content:
+            application/json:
+                schema:
+                    type: object
+                    properties:
+                        verifiedDomainCount:
+                            type: integer
+                        verifiedCustomDomainCount:
+                            type: integer
+                        federatedDomainCount:
+                            type: integer
+                        numberOfHoursFromLastSync:
+                            type: integer
+                            nullable: true
+                        dirSyncEnabled:
+                            type: boolean
+                        dirSyncConfigured:
+                            type: boolean
+                        passThroughAuthenticationEnabled:
+                            type: boolean
+                            nullable: true
+                        seamlessSingleSignOnEnabled:
+                            type: boolean
+                            nullable: true
 
   /Directories/DeletionRestrictions:
     get:
@@ -164,6 +239,35 @@ paths:
       responses:
         "200":
           description: OK
+          headers:
+            Cache-Control:
+              $ref: "common.yml#/components/headers/Cache-Control"
+            Content-Encoding:
+              $ref: "common.yml#/components/headers/Content-Encoding"
+            Vary:
+                $ref: "common.yml#/components/headers/Vary"
+            X-Content-Type-Options:
+                $ref: "common.yml#/components/headers/X-Content-Type-Options"
+            X-XSS-Protection:
+                $ref: "common.yml#/components/headers/X-XSS-Protection"
+            x-ms-version:
+                $ref: "common.yml#/components/headers/x-ms-version"
+            Strict-Transport-Security:
+                $ref: "common.yml#/components/headers/Strict-Transport-Security"
+            Access-Control-Expose-Headers:
+                $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+            x-ms-correlation-id:
+                $ref: "common.yml#/components/headers/x-ms-correlation-id"
+            x-ms-operation-maturity:
+                $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+            x-ms-expected-duration:
+                $ref: "common.yml#/components/headers/x-ms-expected-duration"
+            X-UA-Compatible:
+                $ref: "common.yml#/components/headers/X-UA-Compatible"
+            Date:
+                $ref: "common.yml#/components/headers/Date"
+            Content-Length:
+                $ref: "common.yml#/components/headers/Content-Length"
           content:
             application/json:
                 schema:
@@ -172,7 +276,9 @@ paths:
                         $ref: "#/components/schemas/DeletionRestriction"
 
   /Directories/DomainAvailability:
-    get:
+    post:
+      parameters:
+        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
       responses:
         "200":
           description: OK
@@ -184,6 +290,35 @@ paths:
       responses:
         "200":
           description: OK
+          headers:
+            Cache-Control:
+              $ref: "common.yml#/components/headers/Cache-Control"
+            Content-Encoding:
+              $ref: "common.yml#/components/headers/Content-Encoding"
+            Vary:
+                $ref: "common.yml#/components/headers/Vary"
+            X-Content-Type-Options:
+                $ref: "common.yml#/components/headers/X-Content-Type-Options"
+            X-XSS-Protection:
+                $ref: "common.yml#/components/headers/X-XSS-Protection"
+            x-ms-version:
+                $ref: "common.yml#/components/headers/x-ms-version"
+            Strict-Transport-Security:
+                $ref: "common.yml#/components/headers/Strict-Transport-Security"
+            Access-Control-Expose-Headers:
+                $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+            x-ms-correlation-id:
+                $ref: "common.yml#/components/headers/x-ms-correlation-id"
+            x-ms-operation-maturity:
+                $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+            x-ms-expected-duration:
+                $ref: "common.yml#/components/headers/x-ms-expected-duration"
+            X-UA-Compatible:
+                $ref: "common.yml#/components/headers/X-UA-Compatible"
+            Date:
+                $ref: "common.yml#/components/headers/Date"
+            Content-Length:
+                $ref: "common.yml#/components/headers/Content-Length"
           content:
             application/json:
                 schema:
@@ -231,7 +366,9 @@ paths:
                 $ref: "common.yml#/components/headers/Content-Length"
 
   /Directories/List:
-    get:
+    parameters:
+      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    post:
       responses:
         "200":
           description: OK
@@ -278,16 +415,77 @@ paths:
                 $ref: "common.yml#/components/headers/Content-Length"
 
   /Directories/PropertiesV2:
-    get:
+    put:
       responses:
         "200":
           description: OK
 
   /Directories/RecommendedPayloads:
+    parameters:
+      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
     get:
       responses:
         "200":
           description: OK
+          headers:
+            Cache-Control:
+              $ref: "common.yml#/components/headers/Cache-Control"
+            Content-Encoding:
+              $ref: "common.yml#/components/headers/Content-Encoding"
+            Vary:
+                $ref: "common.yml#/components/headers/Vary"
+            X-Content-Type-Options:
+                $ref: "common.yml#/components/headers/X-Content-Type-Options"
+            X-XSS-Protection:
+                $ref: "common.yml#/components/headers/X-XSS-Protection"
+            x-ms-version:
+                $ref: "common.yml#/components/headers/x-ms-version"
+            Strict-Transport-Security:
+                $ref: "common.yml#/components/headers/Strict-Transport-Security"
+            Access-Control-Expose-Headers:
+                $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+            x-ms-correlation-id:
+                $ref: "common.yml#/components/headers/x-ms-correlation-id"
+            x-ms-operation-maturity:
+                $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+            x-ms-expected-duration:
+                $ref: "common.yml#/components/headers/x-ms-expected-duration"
+            X-UA-Compatible:
+                $ref: "common.yml#/components/headers/X-UA-Compatible"
+            Date:
+                $ref: "common.yml#/components/headers/Date"
+            Content-Length:
+                $ref: "common.yml#/components/headers/Content-Length"
+          content:
+            application/json:
+                schema:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            priority:
+                                type: string
+                            feature:
+                                type: string
+                            name:
+                                type: string
+                                nullable: true
+                            locale:
+                                type: string
+                            payloadContent: 
+                              type: object
+                              properties:
+                                title:
+                                  $ref: "#/components/schemas/PayloadContent"
+                                description:
+                                  $ref: "#/components/schemas/PayloadContent"
+                                link:
+                                  $ref: "#/components/schemas/PayloadContent"
+                                linkTet:
+                                  $ref: "#/components/schemas/PayloadContent"
+                                image:
+                                  $ref: "#/components/schemas/PayloadContent"                                                                                                      
+
 
   /Directories/SsgmProperties:
     get:
@@ -338,6 +536,62 @@ paths:
       responses:
         "200":
           description: OK
+          headers:
+            Cache-Control:
+              $ref: "common.yml#/components/headers/Cache-Control"
+            Content-Encoding:
+              $ref: "common.yml#/components/headers/Content-Encoding"
+            Vary:
+                $ref: "common.yml#/components/headers/Vary"
+            X-Content-Type-Options:
+                $ref: "common.yml#/components/headers/X-Content-Type-Options"
+            X-XSS-Protection:
+                $ref: "common.yml#/components/headers/X-XSS-Protection"
+            x-ms-version:
+                $ref: "common.yml#/components/headers/x-ms-version"
+            Strict-Transport-Security:
+                $ref: "common.yml#/components/headers/Strict-Transport-Security"
+            Access-Control-Expose-Headers:
+                $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+            x-ms-correlation-id:
+                $ref: "common.yml#/components/headers/x-ms-correlation-id"
+            x-ms-operation-maturity:
+                $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+            x-ms-expected-duration:
+                $ref: "common.yml#/components/headers/x-ms-expected-duration"
+            X-UA-Compatible:
+                $ref: "common.yml#/components/headers/X-UA-Compatible"
+            Date:
+                $ref: "common.yml#/components/headers/Date"
+            Content-Length:
+                $ref: "common.yml#/components/headers/Content-Length"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    imageUrl: 
+                      type: string
+                      format: uri
+                    displayName: 
+                      type: string
+                    objectId: 
+                      type: string
+                      format: uuid
+                    objectType: 
+                      type: string
+                      enum: [User, Group, AppRole, Worker]
+                    hasThumbnail:
+                      type: boolean
+                    isUser:
+                      type: boolean
+                    isGroup:
+                      type: boolean
+                    isGuest:
+                      type: boolean
+
 
   /directoryObjects/{objectId}:
     parameters:

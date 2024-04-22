@@ -10,11 +10,331 @@ components:
     ## TODO: what is roles entity
     rolesEntity:
       type: object
+      nullable: true
       properties:
         adminType:
           type: string
         enabledRoles:
           type: string
+
+    CreatedUser:
+        type: object
+        properties:
+            accountEnabled:
+                type: boolean
+            usageLocation: 
+                type: string
+                nullable: true
+            mailNickname:
+                type: string
+                nullable: true
+            passwordProfile:
+                $ref: "#/components/schemas/passwordProfile"
+            passwordPolicies:
+                type: object
+                nullable: true
+            rolesEntity:
+                $ref: "#/components/schemas/rolesEntity"
+            "selectedRoleIds":
+                type: array
+                items:
+                    type: string
+            "selectedGroupIds":
+                type: array
+                items:
+                    type: string
+            "streetAddress":
+                type: string
+                nullable: true
+            "city":
+                type: string
+                nullable: true
+            "state":
+                type: string
+                nullable: true
+            "country":
+                type: string
+                nullable: true
+            "telephoneNumber":
+                type: string
+                nullable: true
+            "mobile":
+                type: string
+                nullable: true
+            "physicalDeliveryOfficeName":
+                type: string
+                nullable: true
+            "postalCode":
+                type: string
+                nullable: true
+            "authenticationPhoneNumber":
+                type: string
+                nullable: true
+            "authenticationAlternativePhoneNumber":
+                type: string
+                nullable: true
+            "authenticationEmail":
+                type: string
+                nullable: true
+            "strongAuthenticationDetail":
+                type: object
+            "defaultImageUrl":
+                type: string
+                nullable: true
+                format: uri
+            "ageGroup":
+                type: string
+                nullable: true
+            "consentProvidedForMinor":
+                type: boolean
+                nullable: true
+            "legalAgeGroupClassification":
+                type: string
+                nullable: true
+            objectId:
+                $ref: "common.yml#/components/schemas/UserId"
+            objectType:
+                type: string
+            displayName:
+                type: string
+            userPrincipalName:
+                $ref: "common.yml#/components/schemas/UserPrincipalName"
+            "thumbnailPhoto@odata.mediaContentType":
+                type: string
+                nullable: true
+            "givenName":
+                type: string
+                nullable: true
+            "surname":
+                type: string
+                nullable: true
+            "mail":
+                type: string
+                nullable: true
+            "dirSyncEnabled":
+                type: boolean
+                nullable: true
+            "alternativeSecurityIds":
+                type: array
+                items:
+                    type: string
+            "signInNamesInfo":
+                type: array
+                items:
+                    type: object
+            "signInNames":
+                type: array
+                items:
+                    type: string
+            "ownedDevices":
+                type: array
+                nullable: true
+                items:
+                    type: object
+            "jobTitle":
+                type: string
+                nullable: true
+            "department":
+                type: string
+                nullable: true
+            displayUserPrincipalName:
+                type: string
+                nullable: true
+            "hasThumbnail":
+                type: boolean
+                nullable: true
+            imageUrl:
+                type: string
+                nullable: true
+                format: uri
+            "imageDataToUpload":
+                type: object
+                nullable: true
+            "source":
+                type: integer
+                nullable: true
+            "sources":
+                type: array
+                items:
+                    type: string
+            sourceText:
+                type: string
+            "userFlags":
+                type: integer
+                nullable: true
+            "deletionTimestamp":
+                type: string
+                nullable: true
+                format: datetime
+            "permanentDeletionTime":
+                type: string
+                nullable: true
+                format: datetime
+            "alternateEmailAddress":
+                type: string
+                nullable: true
+            manager:
+                type: string
+                nullable: true
+            userType:
+                type: string
+            "isThumbnailUpdated":
+                type: boolean
+                nullable: true
+            "isAuthenticationContactInfoUpdated":
+                type: boolean
+                nullable: true
+            "searchableDeviceKey":
+                type: array
+                items:
+                    type: object
+            "displayEmail":
+                type: string
+                nullable: true
+            "creationType":
+                type: string
+                nullable: true
+            "userState":
+                type: string
+                nullable: true
+            "otherMails":
+                type: array
+                items:
+                    type: string
+            "invitedAsMail":
+                type: boolean
+                nullable: true
+            "proxyAddresses":
+                type: array
+                items:
+                    type: string
+            "companyName":
+                type: string
+                nullable: true
+            "employeeId":
+                type: string
+                nullable: true
+
+    User:
+        type: object
+        properties:
+            objectId:
+                $ref: "common.yml#/components/schemas/UserId"
+            objectType:
+                type: string
+                enum: [ "User" ]
+            displayName:
+                type: string
+            userPrincipalName:
+                $ref: "common.yml#/components/schemas/UserPrincipalName"
+            thumbnailPhoto@odata.mediaContentType:
+                type: string
+                nullable: true
+            givenName:
+                type: string
+                nullable: true
+            surname:
+                type: string
+                nullable: true
+            mail:
+                type: string
+            dirSyncEnabled:
+                type: boolean
+                nullable: true
+            alternativeSecurityIds:
+                type: array
+                items:
+                    type: string
+            signInNamesInfo:
+                type: array
+                items:
+                    type: string
+            signInNames:
+                type: array
+                items:
+                    type: string
+            ownedDevices:
+                type: array
+                nullable: true
+                items:
+                    type: object
+            jobTitle:
+                type: string
+                nullable: true
+            department:
+                type: string
+                nullable: true
+            displayUserPrincipalName:
+                type: string
+            hasThumbnail:
+                type: boolean
+            imageUrl:
+                type: string
+                format: uri
+            imageDataToUpload:
+                type: string
+                nullable: true
+            source:
+                type: integer
+            sources:
+                type: array
+                items:
+                    type: string
+            sourceText:
+                type: string
+            userFlags:
+                type: integer
+            deletionTimestamp:
+                type: string
+                nullable: true
+            permanentDeletionTime:
+                type: string
+                nullable: true
+            alternateEmailAddress:
+                type: string
+                nullable: true
+            manager:
+                type: string
+                nullable: true
+            userType:
+                format: string
+                enum: [Member]
+            isThumbnailUpdated:
+                type: boolean
+                nullable: true
+            isAuthenticationContactInfoUpdated:
+                type: boolean
+                nullable: true
+            searchableDeviceKey:
+                type: array
+                items:
+                    type: string
+            displayEmail:
+                type: string
+                nullable: true
+            creationType:
+                type: string
+                nullable: true
+            userState:
+                type: string
+                nullable: true
+            otherMails:
+                type: array
+                items:
+                    type: string
+            invitedAsMail:
+                type: boolean
+                nullable: true
+            proxyAddresses:
+                type: array
+                items:
+                    type: string
+            companyName:
+                type: string
+                nullable: true
+            employeeId:
+                type: string
+                nullable: true
     userDetails:
       type: object
       properties:
@@ -27,7 +347,9 @@ components:
         department:
           type: string
         selectedGroupIds:
-          type: string
+          type: array
+          items:
+            type: string
         displayName:
           type: string
         userPrincipalName:
@@ -36,13 +358,13 @@ components:
           $ref: "#/components/schemas/passwordProfile"
         rolesEntity:
           $ref: "#/components/schemas/rolesEntity"
-    userInvite:
-      type: object
-      properties:
-        userToInvite:
-          $ref: "#/components/schemas/userDetails"
-        inviteMessage:
-          type: string
+#    userInvite:
+#      type: object
+#      properties:
+#        userToInvite:
+#          $ref: "#/components/schemas/userDetails"
+#        inviteMessage:
+#          type: string
   
   requestBodies:
     userDetails:
@@ -59,57 +381,174 @@ paths:
       responses:
         "200":
           description: OK
+          content:
+            application/json:
+                schema:
+                    type: string
 
     # Users?searchText=&top=100&nextLink=&orderByThumbnails=false&maxThumbnailCount=999&filterValue=All&state=All&adminUnit=
   /Users:
-    get:
-      responses:
-        "200":
-          description: OK
+    parameters:
+      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
     delete:
-      responses:
-        "200":
-          description: OK
-
-  /Users/Invite:
-    post:
       requestBody:
-        description: A JSON object containing user invite
         required: true
         content:
             application/json:
                 schema:
-                    $ref: "users.yml#/components/schemas/userInvite"
+                    type: array
+                    items:
+                        $ref: "common.yml#/components/schemas/UserId"
       responses:
         "200":
           description: OK
+          content:
+            application/json:
+                schema:
+                    type: array
+                    items:
+                        $ref: "common.yml#/components/schemas/UserId"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+                schema:
+                    type: array
+                    items:
+                        $ref: "common.yml#/components/schemas/UserId"
+
+#  /Users/Invite:
+#    parameters:
+#      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+#    post:
+#      requestBody:
+#        description: A JSON object containing user invite
+#        required: true
+#        content:
+#            application/json:
+#                schema:
+#                    $ref: "users.yml#/components/schemas/userInvite"
+#      responses:
+#        "200":
+#          description: OK
 
   /Users/PermanentDelete:
+    parameters:
+      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
     delete:
+      requestBody:
+        required: true
+        content:
+            application/json:
+                schema:
+                    type: array
+                    items:
+                        $ref: "common.yml#/components/schemas/UserId"
       responses:
         "200":
           description: OK
+          content:
+            application/json:
+                schema:
+                    type: array
+                    items:
+                        $ref: "common.yml#/components/schemas/UserId"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+                schema:
+                    type: array
+                    items:
+                        $ref: "common.yml#/components/schemas/UserId"
 
 
   /Users/{userId}:
     parameters:
-        - in: path
-          name: userId
-          description: The object ID of the user.
-          required: true
-          schema:
-            $ref: "common.yml#/components/schemas/UserId"
+      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      - in: path
+        name: userId
+        required: true
+        schema:
+          $ref: "common.yml#/components/schemas/UserId"
     get:
       responses:
         "200":
           description: OK
+          headers:
+            Cache-Control:
+              $ref: "common.yml#/components/headers/Cache-Control"
+            Content-Encoding:
+              $ref: "common.yml#/components/headers/Content-Encoding"
+            Vary:
+                $ref: "common.yml#/components/headers/Vary"
+            X-Content-Type-Options:
+                $ref: "common.yml#/components/headers/X-Content-Type-Options"
+            X-XSS-Protection:
+                $ref: "common.yml#/components/headers/X-XSS-Protection"
+            x-ms-version:
+                $ref: "common.yml#/components/headers/x-ms-version"
+            Strict-Transport-Security:
+                $ref: "common.yml#/components/headers/Strict-Transport-Security"
+            Access-Control-Expose-Headers:
+                $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+            x-ms-correlation-id:
+                $ref: "common.yml#/components/headers/x-ms-correlation-id"
+            x-ms-operation-maturity:
+                $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+            x-ms-expected-duration:
+                $ref: "common.yml#/components/headers/x-ms-expected-duration"
+            X-UA-Compatible:
+                $ref: "common.yml#/components/headers/X-UA-Compatible"
+            Date:
+                $ref: "common.yml#/components/headers/Date"
+            Content-Length:
+                $ref: "common.yml#/components/headers/Content-Length"
+          content:
+            application/json:
+                schema:
+                    $ref: "#/components/schemas/User"
     delete:
       responses:
         "200":
           description: OK
+          headers:
+            Cache-Control:
+              $ref: "common.yml#/components/headers/Cache-Control"
+            Content-Encoding:
+              $ref: "common.yml#/components/headers/Content-Encoding"
+            Vary:
+                $ref: "common.yml#/components/headers/Vary"
+            X-Content-Type-Options:
+                $ref: "common.yml#/components/headers/X-Content-Type-Options"
+            X-XSS-Protection:
+                $ref: "common.yml#/components/headers/X-XSS-Protection"
+            x-ms-version:
+                $ref: "common.yml#/components/headers/x-ms-version"
+            Strict-Transport-Security:
+                $ref: "common.yml#/components/headers/Strict-Transport-Security"
+            Access-Control-Expose-Headers:
+                $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+            x-ms-correlation-id:
+                $ref: "common.yml#/components/headers/x-ms-correlation-id"
+            x-ms-operation-maturity:
+                $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+            x-ms-expected-duration:
+                $ref: "common.yml#/components/headers/x-ms-expected-duration"
+            X-UA-Compatible:
+                $ref: "common.yml#/components/headers/X-UA-Compatible"
+            Date:
+                $ref: "common.yml#/components/headers/Date"
+            Content-Length:
+                $ref: "common.yml#/components/headers/Content-Length"
+          content:
+            application/json:
+                schema:
+                    type: boolean
 
   /Users/IsUPNUniqueOrPending/{userPrincipalName}:
     parameters:
+        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
         - in: path
           name: userPrincipalName
           description: The User Principal Name (UPN) to check status of.
@@ -120,13 +559,24 @@ paths:
       responses:
         "200":
           description: OK
+          content:
+            application/json:
+                schema:
+                    type: string
+                    enum: [Unique, NotUnique]
 
   /UserDetails:
+    parameters:
+        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
     post:
       requestBody:
         $ref: "#/components/requestBodies/userDetails"
       responses:
         "200":
           description: OK
+          content:
+            application/json:
+                schema:
+                    $ref: "#/components/schemas/CreatedUser"
 
 
