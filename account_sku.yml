@@ -240,8 +240,8 @@ components:
 
 paths:
   /AccountSkus:
-    tags: [ Licensing ]
     get:
+      tags: [ Licensing ]
       parameters:
         - in: query
           name: backfillTenants
