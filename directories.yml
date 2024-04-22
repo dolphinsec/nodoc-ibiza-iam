@@ -605,6 +605,13 @@ paths:
         "200":
           description: OK 
 
+  /DirectoryObjectPicker/DirectoryMembersFromIds:
+
+    get:
+      responses:
+        "200":
+          description: OK 
+
   /LoginTenantBrandings:
     get:
       responses:

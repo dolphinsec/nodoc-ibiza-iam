@@ -64,6 +64,16 @@ components:
 
 
 paths:
+  /ApplicationSso/{appId}/SingleSignOn:
+    parameters:
+      - in: path
+        name: appId
+        required: true
+        schema:
+            $ref: "common.yml#/components/schemas/ApplicationId"
+    get:
+    post:
+
   /EnterpriseApplications/{spId}/ServicePrincipalPermissions:
     parameters:
         - in: path

@@ -177,8 +177,8 @@ paths:
     $ref: "users.yml#/paths/~1User~1TemporaryPassword"
   /Users:
     $ref: "users.yml#/paths/~1Users"
-  /Users/Invite:
-    $ref: "users.yml#/paths/~1Users~1Invite"
+#  /Users/Invite:
+#    $ref: "users.yml#/paths/~1Users~1Invite"
   /Users/PermanentDelete:
     $ref: "users.yml#/paths/~1Users~1PermanentDelete"
   /Users/{userId}:
