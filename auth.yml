@@ -262,6 +262,7 @@ components:
 paths:
   /AuthenticationMethods/AuthenticationMethodsPolicy:
     get:
+      tags: [Authentication]
       parameters:
         - $ref: "common.yml#/components/parameters/XMsClientRequestId"
       responses:
@@ -282,6 +283,7 @@ paths:
                             type: string
                             format: datetime
     post:
+        tags: [Authentication]
         parameters:
             - $ref: "common.yml#/components/parameters/XMsClientRequestId"
         requestBody:
@@ -315,6 +317,7 @@ paths:
                                 format: datetime
 
     delete:
+        tags: [Authentication]
         parameters:
             - $ref: "common.yml#/components/parameters/XMsClientRequestId"
         requestBody:
@@ -351,6 +354,7 @@ paths:
     parameters:
         - $ref: "common.yml#/components/parameters/XMsClientRequestId"
     get:
+      tags: [Authentication]
       responses:
         "200":
           description: OK
@@ -359,6 +363,7 @@ paths:
                 schema:
                     $ref: "#/components/schemas/PasswordPolicy"
     post:
+      tags: [Authentication]
       requestBody:
           content:
             application/json:
@@ -377,6 +382,7 @@ paths:
     parameters:
         - $ref: "common.yml#/components/parameters/XMsClientRequestId"
     get:
+      tags: [Authentication]
       parameters:
         - in: query
           name: tenantName
@@ -407,6 +413,7 @@ paths:
           schema:
             type: string    
     get:
+      tags: [Authentication]
       responses:
         "200":
           description: OK
@@ -417,6 +424,7 @@ paths:
           
   /MultiFactorAuthentication/HardwareToken/enable:
     post:
+      tags: [Authentication]
       requestBody:
         content:
             application/json:
@@ -438,6 +446,8 @@ paths:
 
   /MultiFactorAuthentication/HardwareToken/listUploads:
     get:
+      tags: [Authentication]
+      responses:
         "200":
           description: OK
           content:
@@ -452,6 +462,7 @@ paths:
 
   /MultiFactorAuthentication/HardwareToken/users:
     get:
+      tags: [Authentication]
       parameters:
           - in: query
             name: skipToken
@@ -483,6 +494,7 @@ paths:
 
   /MultiFactorAuthentication/TenantModel:
     get:
+        tags: [Authentication]
         parameters:
             - in: query
               name: licenseKey
@@ -501,6 +513,7 @@ paths:
                                       etag:
                                         type: string
     patch:
+        tags: [Authentication]
         parameters:
             - in: query
               name: licenseKey
@@ -528,6 +541,7 @@ paths:
     parameters:
         - $ref: "common.yml#/components/parameters/XMsClientRequestId"
     get:
+      tags: [Authentication]
       responses:
         "200":
           description: OK
@@ -536,6 +550,7 @@ paths:
                 schema:
                     $ref: "#/components/schemas/OnPremisesPasswordResetPolicy"
     put:
+        tags: [Authentication]
         responses:
             # need to update
             "200":
@@ -545,6 +560,7 @@ paths:
     parameters:
         - $ref: "common.yml#/components/parameters/XMsClientRequestId"
     get:
+      tags: [Authentication]
       responses:
         "200":
           description: OK
@@ -553,6 +569,7 @@ paths:
                 schema:
                     $ref: "#/components/schemas/PasswordResetPolicy"
     put:
+      tags: [Authentication]
       requestBody:
         content:
             application/json:
@@ -574,6 +591,7 @@ paths:
         schema:
           $ref: "common.yml#/components/schemas/UserPrincipalName"
     put:
+      tags: [Authentication]
       requestBody:
         content:
             application/json:

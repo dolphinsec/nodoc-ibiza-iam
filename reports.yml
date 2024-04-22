@@ -12,6 +12,7 @@ components:
 paths:
   /Reports:
     get:
+      tags: [Reports]
       responses:
         "200":
           description: OK
@@ -24,18 +25,21 @@ paths:
         schema:
           type: string
     get:
+      tags: [Reports]
       responses:
         "200":
           description: OK
 
   /Reports/AuditActivityTypes:
     get:
+      tags: [Reports]
       responses:
         "200":
           description: OK
 
   /Reports/AuditActivityTypesV2:
     get:
+      tags: [Reports]
       responses:
         "200":
           description: OK
@@ -48,6 +52,7 @@ paths:
         schema:
           $ref: "common.yml#/components/schemas/GroupId" 
     get:
+      tags: [Reports]
       responses:
         "200":
           description: OK
@@ -56,6 +61,7 @@ paths:
     parameters:
       - $ref: "#/components/parameters/Request"
     get:
+      tags: [Reports]
       responses:
         "200":
           description: OK
@@ -68,12 +74,14 @@ paths:
         schema:
           $ref: "common.yml#/components/schemas/ServicePrincipalId" 
     get:
+      tags: [Reports]
       responses:
         "200":
           description: OK
 
   /Reports/SignInEventsV2:
     post:
+      tags: [Reports]
       responses:
         "200":
           description: OK
@@ -86,6 +94,7 @@ paths:
         schema:
           $ref: "common.yml#/components/schemas/UserId" 
     get:
+      tags: [Reports]
       responses:
         "200":
           description: OK
@@ -94,6 +103,7 @@ paths:
     parameters:
       - $ref: "#/components/parameters/Request"
     get:
+      tags: [Reports]
       responses:
         "200":
           description: OK

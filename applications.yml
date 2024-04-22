@@ -72,7 +72,9 @@ paths:
         schema:
             $ref: "common.yml#/components/schemas/ApplicationId"
     get:
+      tags: [Application]
     post:
+      tags: [Application]
 
   /EnterpriseApplications/{spId}/ServicePrincipalPermissions:
     parameters:
@@ -83,18 +85,21 @@ paths:
           schema:
             $ref: "common.yml#/components/schemas/ServicePrincipalId"
     get:
+      tags: [Application]
       responses:
         "200":
           description: OK
 
   /EnterpriseApplications/UserSettings:
     get:
+      tags: [Application]
       responses:
         "200":
           description: OK
 
   /ManagedApplications/List:
     post:
+      tags: [Application]
       requestBody:
         content:
           application/json:
@@ -113,10 +118,12 @@ paths:
           schema:
             $ref: "common.yml#/components/schemas/ApplicationId"
     post:
+      tags: [Application]
       responses:
         "200":
           description: OK
     get:
+      tags: [Application]
       responses:
         "200":
           description: OK
@@ -131,10 +138,12 @@ paths:
           schema:
             $ref: "common.yml#/components/schemas/ApplicationId"
     put:
+      tags: [Application]
       responses:
         "200":
           description: OK
     get:
+      tags: [Application]
       responses:
         "200":
           description: OK
@@ -148,6 +157,7 @@ paths:
           schema:
             $ref: "common.yml#/components/schemas/ApplicationId"
     get:
+      tags: [Application]
       responses:
         "200":
           description: OK
@@ -161,6 +171,7 @@ paths:
           schema:
             $ref: "common.yml#/components/schemas/ApplicationId"
     post:
+      tags: [Application]
       parameters:
         - in: query
           name: onBehalfOfAll
