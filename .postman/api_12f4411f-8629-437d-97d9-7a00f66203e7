@@ -9,7 +9,7 @@ id = 12f4411f-8629-437d-97d9-7a00f66203e7
 
 [config.relations.collections]
 rootDirectory = postman/collections
-files[] = {"id":"18149627-b50dec33-6108-4dd8-b99d-1e30ccb2480b","path":"IAM API.json","metaData":{"generateCollectionPreferences":"{\"requestNameSource\":\"Fallback\",\"indentCharacter\":\"Space\",\"parametersResolution\":\"Example\",\"folderStrategy\":\"Paths\",\"includeAuthInfoInExample\":true,\"enableOptionalParameters\":true,\"keepImplicitHeaders\":false,\"includeDeprecated\":true,\"alwaysInheritAuthentication\":true,\"updateCollectionSync\":true,\"requestParametersResolution\":\"Example\",\"exampleParametersResolution\":\"Example\"}"}}
+files[] = {"id":"18149627-1eb0619a-61df-45ba-b77c-510bee7265b1","path":"IAM API.json","metaData":{"generateCollectionPreferences":"{\"requestNameSource\":\"Fallback\",\"indentCharacter\":\"Space\",\"parametersResolution\":\"Example\",\"folderStrategy\":\"Paths\",\"includeAuthInfoInExample\":true,\"enableOptionalParameters\":true,\"keepImplicitHeaders\":false,\"includeDeprecated\":true,\"alwaysInheritAuthentication\":true,\"updateCollectionSync\":true,\"requestParametersResolution\":\"Example\",\"exampleParametersResolution\":\"Example\"}"}}
 
 [config.relations.collections.metaData]
 
@@ -22,6 +22,7 @@ files[] = {"path":"directories.yml","metaData":{}}
 files[] = {"path":"groups.yml","metaData":{}}
 files[] = {"path":"misc.yml","metaData":{}}
 files[] = {"path":"openapi.yml","metaData":{}}
+files[] = {"path":"policies.yml","metaData":{}}
 files[] = {"path":"reports.yml","metaData":{}}
 files[] = {"path":"users.yml","metaData":{}}
 

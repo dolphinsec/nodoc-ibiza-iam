@@ -71,11 +71,11 @@ components:
                     membershipRuleProcessingState:
                         type: string
                         nullable: true
-                        enum: []
+                        enum: ['']
                     membershipProcessingStatus:
                         type: string
                         nullable: true
-                        enum: []
+                        enum: ['']
                     membershipProcessingError:
                         type: object
                         nullable: true
@@ -100,7 +100,7 @@ components:
                 type: string
                 enum: [Group]
             displayName:
-                ẗype: string
+                type: string
             imageUrl:
                 type: string
                 format: uri

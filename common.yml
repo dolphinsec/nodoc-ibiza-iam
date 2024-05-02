@@ -191,7 +191,6 @@ components:
   schemas:
     NextLink:
         type: string
-        format: base64
         nullable: true
     PagedResponse:
         type: object

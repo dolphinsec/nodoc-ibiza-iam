@@ -649,6 +649,15 @@ paths:
         "200":
           description: OK
 
+  /SecurityDefaults/Configuration:
+    get:
+      tags: [ Directory ]
+      parameters:
+        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      responses:
+        "200":
+          description: OK
+
   /SecurityDefaults/GetSecurityDefaultStatus:
     get:
       tags: [ Directory ]

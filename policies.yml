@@ -1,0 +1,643 @@
+components:
+    schemas:
+        PolicyConfiguration:
+            type: object
+            properties:
+                "usersV2":
+                    type: object
+                    properties:
+                        "allUsers":
+                            type: integer
+                            enum: [2]
+                        "included": 
+                            $ref: "#/components/schemas/PolicyInclusivity"
+                        "excluded": 
+                            $ref: "#/components/schemas/PolicyInclusivity"
+                "templateId":
+                    type: string
+                    format: uuid
+                    nullable: true
+                "servicePrincipals": 
+                    type: object
+                    properties:
+                        "allServicePrincipals":
+                            type: integer
+                            enum: [1]
+                        "included":
+                            type: object
+                            properties:
+                                ids:
+                                    type: array
+                                    items:
+                                        $ref: "common.yml#/components/schemas/ServicePrincipalId"
+                        "excluded":
+                            type: object
+                            properties:
+                                ids:
+                                    type: array
+                                    items:
+                                        $ref: "common.yml#/components/schemas/ServicePrincipalId"
+                        "filter":
+                            type: string
+                            nullable: true
+                        "includeAllMicrosoftApps":
+                            type: boolean
+                        "excludeAllMicrosoftApps":
+                            type: boolean
+                        "userActions":
+                            type: object
+                            nullable: true
+                        "stepUpTags":
+                            type: object
+                            nullable: true
+                        "networkAccess":
+                            type: object
+                            nullable: true
+                "controls":
+                    type: object
+                    properties:      
+                        "controlsOr":
+                            type: boolean
+                        "blockAccess":
+                            type: boolean
+                        "challengeWithMfa":
+                            type: boolean
+                        "requireAuthStrength":
+                            type: object
+                            nullable: true
+                        "compliantDevice":
+                            type: boolean
+                        "domainJoinedDevice":
+                            type: boolean
+                        "approvedClientApp":
+                            type: boolean
+                        "claimProviderControlIds":
+                            type: array
+                            items:
+                                type: string
+                        "requireCompliantApp":
+                            type: boolean
+                        "requirePasswordChange":
+                            type: boolean
+                        "requiredFederatedAuthMethod":
+                            type: integer
+                            enum: [0]
+                "sessionControls":
+                    type: object
+                    properties:
+                        "appEnforced":
+                            type: boolean
+                        "cas":
+                            type: boolean
+                        "cloudAppSecuritySessionControlType":
+                            type: integer
+                            enum: [0]
+                        "signInFrequencyTimeSpan":
+                            type: object
+                            properties:                                            
+                                "type":
+                                    type: integer
+                                    enum: [0, 1, 2]
+                                "value":
+                                    type: integer
+                                "authenticationType":
+                                    type: integer
+                                    enum: [0]
+                                "frequencyInterval":
+                                    type: integer
+                                    enum: [0]
+                        "signInFrequency":
+                                    type: integer
+                                    enum: [0]
+                        "persistentBrowserSessionMode":
+                                    type: integer
+                                    enum: [0]
+                        "continuousAccessEvaluation":
+                            type: integer
+                            enum: [0]
+                        "resiliencyDefaults":
+                            type: integer
+                            enum: [0, 20]
+                        "secureSignIn":
+                            type: boolean
+                        "secureApp":
+                            type: boolean
+                        "networkAccessSecurity":
+                            type: object
+                            nullable: true
+                "conditions":
+                    type: object
+                    properties:
+                        "minUserRisk":
+                            type: object
+                            properties:
+                                "lowRisk":
+                                    type: boolean
+                                "mediumRisk":
+                                    type: boolean
+                                "highRisk":
+                                    type: boolean
+                                "noRisk":
+                                    type: boolean
+                                "applyCondition":
+                                    type: boolean
+                        "minSigninRisk":
+                            type: object
+                            properties:
+                                "lowRisk":
+                                    type: boolean
+                                "mediumRisk":
+                                    type: boolean
+                                "highRisk":
+                                    type: boolean
+                                "noRisk":
+                                    type: boolean
+                                "applyCondition":
+                                    type: boolean
+                        "signInRiskDetections":
+                            type: object
+                            properties:                   
+                                "anonymousIPAddress":
+                                    type: boolean
+                                "unfamiliarFeatures":
+                                    type: boolean
+                                "realTimeThreatIntel":
+                                    type: boolean
+                                "applyCondition":
+                                    type: boolean
+                        "servicePrincipalRiskLevels":
+                            type: object
+                            properties:
+                                "lowRisk":
+                                    type: boolean
+                                "mediumRisk":
+                                    type: boolean
+                                "highRisk":
+                                    type: boolean
+                                "applyCondition":
+                                    type: boolean
+                        "devicePlatforms":
+                            type: object
+                            properties:
+                                "all":
+                                    type: integer
+                                    enum: [0, 1, 2]
+                                "included":
+                                    type: object
+                                    properties:     
+                                        "android":
+                                            type: boolean
+                                        "ios":
+                                            type: boolean
+                                        "windowsPhone":
+                                            type: boolean
+                                        "windows":
+                                            type: boolean
+                                        "macOs":
+                                            type: boolean
+                                        "linux":
+                                            type: boolean
+                                "excluded":
+                                    type: object
+                                    properties:
+                                        "android":
+                                            type: boolean
+                                        "ios":
+                                            type: boolean
+                                        "windowsPhone":
+                                            type: boolean
+                                        "windows":
+                                            type: boolean
+                                        "macOs":
+                                            type: boolean
+                                        "linux":
+                                            type: boolean
+                                "applyCondition":
+                                    type: boolean
+                        "locations":
+                            type: object
+                            properties:                 
+                                "includeLocationType":
+                                    type: integer
+                                    enum: [0]
+                                "excludeAllTrusted":
+                                    type: boolean
+                                "applyCondition":
+                                    type: boolean
+                        "namedNetworks":
+                            type: object
+                            properties:           
+                                "includeLocationType":
+                                    type: integer
+                                    enum: [0, 3]
+                                "excludeLocationType":
+                                    type: integer
+                                    enum: [2]
+                                "includeTrustedIps":
+                                    type: boolean
+                                "excludeTrustedIps":
+                                    type: boolean
+                                "includedNetworkIds":
+                                    type: array
+                                    items:
+                                        type: string
+                                "excludedNetworkIds":
+                                    type: array
+                                    items:
+                                        type: string
+                                "includeCorpnet":
+                                    type: boolean
+                                "excludeCorpnet":
+                                    type: boolean
+                                "applyCondition":
+                                    type: boolean
+                        "clientApps":
+                                type: object
+                                properties:
+                                    "specificClientApps":
+                                        type: boolean
+                                    "webBrowsers":
+                                        type: boolean
+                                    "mobileDesktop":
+                                        type: boolean
+                                    "exchangeActiveSync":
+                                        type: boolean
+                                    "onlyAllowSupportedPlatforms":
+                                        type: boolean
+                                    "applyCondition":
+                                        type: boolean
+                        "clientAppsV2":
+                            type: object
+                            properties:                                  
+                                "webBrowsers":
+                                    type: boolean
+                                "mobileDesktop":
+                                    type: boolean
+                                "modernAuth":
+                                    type: boolean
+                                "exchangeActiveSync":
+                                    type: boolean
+                                "onlyAllowSupportedPlatforms":
+                                    type: boolean
+                                "otherClients":
+                                    type: boolean
+                                "applyCondition":
+                                    type: boolean
+                        "time":
+                            type: object
+                            properties:                                     
+                                "all":
+                                    type: integer
+                                    enum: [0]
+                                "included":
+                                    $ref: "#/components/schemas/PolicyTimeInclusivity"
+                                "excluded":
+                                    $ref: "#/components/schemas/PolicyTimeInclusivity"
+                                "applyCondition":
+                                    type: boolean
+                        "deviceState":
+                            type: object
+                            properties:                          
+                                "includeDeviceStateType":
+                                    type: integer
+                                    enum: [0]
+                                "excludeDomainJoionedDevice":
+                                    type: boolean
+                                "excludeCompliantDevice":
+                                    type: boolean
+                                "filter":
+                                    $ref: "#/components/schemas/PolicyFilter"
+                                "applyCondition":
+                                    type: boolean
+                "clientApplications":
+                    type: object
+                    properties: 
+                        "allServicePrincipals":
+                            type: integer
+                            enum: [0]
+                        "filter":
+                            $ref: "#/components/schemas/PolicyFilter"
+                        "includedServicePrincipals":
+                            type: array
+                            nullable: true
+                            items:
+                                $ref: "common.yml#/components/schemas/ServicePrincipalId"
+                        "excludedServicePrincipals":
+                            type: array
+                            nullable: true
+                            items:
+                                $ref: "common.yml#/components/schemas/ServicePrincipalId"
+                "isAllProtocolsEnabled":
+                    type: boolean
+                "isUsersGroupsV2Enabled":
+                    type: boolean
+                "version":
+                    type: integer
+                "isFallbackUsed":
+                    type: boolean
+                "policyId":
+                    type: string
+                    format: uuid
+                "policyName":
+                    type: string
+                "applyRule":
+                    type: boolean
+                "policyState":
+                    type: integer
+                    enum: [1, 2, 3]
+                "usePolicyState":
+                    type: boolean
+                "baselineType":
+                    type: integer
+                    enum: [0]
+                "createdDateTime":
+                    type: string
+                    format: date-time
+                "modifiedDateTime":
+                    type: string
+                    format: date-time
+                                  
+        PolicyTimeInclusivity:
+            type: object
+            properties:
+                "type":
+                    type: integer
+                    enum: [0]
+                "timezoneId":
+                    type: string
+                    nullable: true
+                "dateRange":
+                    type: object
+                    properties:
+                        "startDateTime":
+                            type: string
+                        "endDateTime":
+                            type: string
+                "daysOfWeek":
+                    type: object
+                    properties:                    
+                        "day":
+                            type: array
+                            items:
+                                type: integer
+                                minimum: 0
+                                maximum: 6
+                        "startTime":
+                            type: string
+                        "endTime": 
+                            type: string
+                        "allDay":
+                            type: boolean
+                "isExcludeSet":
+                    type: boolean
+        PolicyInclusivity:
+            type: object
+            properties:
+                "allGuestUsers":
+                    type: boolean
+                "roles":
+                    type: boolean
+                "usersGroups":
+                    type: boolean
+                "roleIds":
+                    type: array
+                    items:
+                        $ref: "common.yml#/components/schemas/ObjectId"
+                "externalUsers":
+                    type: object
+                    nullable: true
+                    properties:
+                        "guestOrExternalUserTypes":
+                            type: string
+                            enum: [InternalGuest]
+                        "externalTenants":
+                            type: object
+                            properties:                      
+                                "membershipKind":
+                                    type: string
+                                    enum: [all]
+                                "@odata.type":
+                                    type: string
+                                    enum: ["#microsoft.graph.conditionalAccessAllExternalTenants"]
+                "groupIds":
+                    type: array
+                    items:
+                        $ref: "common.yml#/components/schemas/GroupId"
+                "userIds":
+                    type: array
+                    items:
+                        $ref: "common.yml#/components/schemas/UserId"
+        PolicyFilter:
+            type: object
+            nullable: true
+            properties:
+                "mode":
+                    type: string
+                    enum: [include, exclude]
+                "rule":
+                    type: string
+
+paths:
+  /ClaimProviders:
+    post:
+      responses:
+        "200":
+          description: OK
+    get:
+      responses:
+        "200":
+          description: OK
+    put:
+      responses:
+        "200":
+          description: OK
+    delete:
+      responses:
+        "200":
+          description: OK
+
+  /ClaimProviders/Controls:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /ClaimProviders/Validate:
+    post:
+      responses:
+        "200":
+          description: OK
+
+  /ClassicPolicies:
+    parameters:
+        - $ref: "common.yml#/components/parameters/nextLink"
+        - $ref: "common.yml#/components/parameters/top"
+        - in: query
+          name: filter
+          schema:
+            type: string
+    get:
+        responses:
+            "200":
+                description: OK
+                
+  /ClassicPolicies/Delete:
+    delete:
+        responses:
+            "200":
+                description: OK
+
+  /ClassicPolicies/Detail2:
+    get:
+        responses:
+            "200":
+                description: OK
+
+  /ClassicPolicies/Disable:
+    put:
+        responses:
+            "200":
+                description: OK
+
+  /ClassicPolicies/Migrate:
+    post:
+        responses:
+            "200":
+                description: OK
+
+  /ClassicPolicies/Save:
+    post:
+        responses:
+            "200":
+                description: OK
+
+  /Policies:
+    post:
+      responses:
+        "200":
+          description: OK
+
+  /Policies/Evaluate:
+    post:
+      responses:
+        "200":
+          description: OK
+
+  /Policies/Validate:
+    parameters:
+    - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    post:
+        requestBody:
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/PolicyConfiguration"
+        responses:
+           "200":
+             description: OK
+             content:
+                 application/json:
+                    schema:
+                        type: integer
+                        enum: [3, 11, 9]
+
+  /Policies/PolicyCountUnderMaxAllowedLimit:
+    get:
+      responses:
+        "200":
+          description: OK
+
+  /Policies/Policies:
+    get:
+      parameters:
+        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+        - in: query
+          name: top
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 999
+        - in: query
+          name: nextLink
+          required: true
+          schema:
+            $ref: "common.yml#/components/schemas/NextLink"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+                schema:
+                    type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                            type: object
+                            properties:
+                                "policyId":
+                                    type: string
+                                    format: uuid
+                                "policyName":
+                                    type: string
+                                "applyRule":
+                                    type: boolean
+                                "policyState":
+                                    type: integer
+                                    enum: [0, 1, 2]
+                                "usePolicyState":
+                                    type: boolean
+                                "baselineType":
+                                    type: integer
+                                    enum: [0, 1]
+                                "createdDateTime":
+                                    type: string
+                                    format: datetime
+                                "modifiedDateTime":
+                                    type: string
+                                    format: datetime
+                                    nullable: true
+                      nextLink:
+                        $ref: "common.yml#/components/schemas/NextLink"
+                      totalCount:
+                        type: integer
+
+  /Policies/{policyId}:
+    parameters:
+    - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    - in: path
+      name: policyId
+      required: true
+      schema:
+        type: string
+        format: uuid
+    put:
+        requestBody:
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/PolicyConfiguration"
+        responses:
+            "200":
+                description: OK
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/PolicyConfiguration"
+    delete:
+        responses:
+            "200":
+                description: OK
+                content:
+                    application/json:
+                        schema:
+                            type: boolean
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+                schema:
+                    $ref: "#/components/schemas/PolicyConfiguration"
