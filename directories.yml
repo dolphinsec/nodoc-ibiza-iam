@@ -27,72 +27,89 @@ components:
     DeletionRestriction:
       type: string
       enum:
-        - UserCountExceeded
-        - LinkedInApplicationProvisioned
-        - ActiveApplicationObject
-        - ActiveServicePrincipal
-        - TenantHasCommerceSubscriptions
-        - TenantHasActiveAzureSubscription
-        - TenantHasViralSubscription
-        - TenantHasDcaasConstraint
-        - TenantHasMfaCustomer
-        - VpnEnabled
+      - UserCountExceeded
+      - LinkedInApplicationProvisioned
+      - ActiveApplicationObject
+      - ActiveServicePrincipal
+      - TenantHasCommerceSubscriptions
+      - TenantHasActiveAzureSubscription
+      - TenantHasViralSubscription
+      - TenantHasDcaasConstraint
+      - TenantHasMfaCustomer
+      - VpnEnabled
     directoryProperties:
       type: object
       properties:
         objectId:
-          $ref: "common.yml#/components/schemas/TenantId"
+          $ref: common.yml#/components/schemas/tenantId
         displayName:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
+          description: The display name of the directory.
+          example: Contoso
         usersCanRegisterApps:
           type: boolean
+          description: Whether users can register applications with Entra.
+          example: true
         isAnyAccessPanelPreviewFeaturesAvailable:
           type: boolean
         showMyGroupsFeature:
           type: boolean
         myGroupsFeatureValue:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         myGroupsGroupId:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         myGroupsGroupName:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         showMyAppsFeature:
           type: boolean
         myAppsFeatureValue:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         myAppsGroupId:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         myAppsGroupName:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         showUserActivityReportsFeature:
           type: boolean
         userActivityReportsFeatureValue:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         userActivityReportsGroupId:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         userActivityReportsGroupName:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         showRegisteredAuthMethodFeature:
           type: boolean
         registeredAuthMethodFeatureValue:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         registeredAuthMethodGroupId:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         registeredAuthMethodGroupName:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         usersCanAddExternalUsers:
           type: boolean
         limitedAccessCanAddExternalUsers:
@@ -106,110 +123,126 @@ components:
         securityGroupsEnabled:
           type: boolean
         usersCanManageSecurityGroups:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         office365GroupsEnabled:
           type: boolean
         usersCanManageOfficeGroups:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         allUsersGroupEnabled:
           type: boolean
         scopingGroupIdForManagingSecurityGroups:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uuid
-          nullable: true
         scopingGroupIdForManagingOfficeGroups:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uuid
-          nullable: true
         scopingGroupNameForManagingSecurityGroups:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         scopingGroupNameForManagingOfficeGroups:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         objectIdForAllUserGroup:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         allowInvitations:
           type: boolean
         isB2CTenant:
           type: boolean
+          description: Whether the directory is an Azure AD B2C tenant.
+          example: true
         restrictNonAdminUsers:
           type: boolean
+          description: >-
+            Whether to restrict non-admin users from accessing the Microsoft Entra admin center.
+          example: true
         enableLinkedInAppFamily:
           type: integer
           format: int32
         toEnableLinkedInUsers:
-          type: array
-          nullable: true
+          type:
+          - array
+          - 'null'
           items:
             type: object
         toDisableLinkedInUsers:
-          type: array
-          nullable: true
+          type:
+          - array
+          - 'null'
           items:
             type: object
         linkedInSelectedGroupObjectId:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         linkedInSelectedGroupDisplayName:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
 
 paths:
   /Directories:
     post:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Directories/B2C:
     post:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Directories/ADConnectStatus:
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       parameters:
-        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Cache-Control:
-              $ref: "common.yml#/components/headers/Cache-Control"
+              $ref: common.yml#/components/headers/Cache-Control
             Content-Encoding:
-              $ref: "common.yml#/components/headers/Content-Encoding"
+              $ref: common.yml#/components/headers/Content-Encoding
             Vary:
-              $ref: "common.yml#/components/headers/Vary"
+              $ref: common.yml#/components/headers/Vary
             X-Content-Type-Options:
-              $ref: "common.yml#/components/headers/X-Content-Type-Options"
+              $ref: common.yml#/components/headers/X-Content-Type-Options
             X-XSS-Protection:
-              $ref: "common.yml#/components/headers/X-XSS-Protection"
+              $ref: common.yml#/components/headers/X-XSS-Protection
             x-ms-version:
-              $ref: "common.yml#/components/headers/x-ms-version"
+              $ref: common.yml#/components/headers/x-ms-version
             Strict-Transport-Security:
-              $ref: "common.yml#/components/headers/Strict-Transport-Security"
+              $ref: common.yml#/components/headers/Strict-Transport-Security
             Access-Control-Expose-Headers:
-              $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
             x-ms-correlation-id:
-              $ref: "common.yml#/components/headers/x-ms-correlation-id"
+              $ref: common.yml#/components/headers/x-ms-correlation-id
             x-ms-operation-maturity:
-              $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
             x-ms-expected-duration:
-              $ref: "common.yml#/components/headers/x-ms-expected-duration"
+              $ref: common.yml#/components/headers/x-ms-expected-duration
             X-UA-Compatible:
-              $ref: "common.yml#/components/headers/X-UA-Compatible"
+              $ref: common.yml#/components/headers/X-UA-Compatible
             Date:
-              $ref: "common.yml#/components/headers/Date"
+              $ref: common.yml#/components/headers/Date
             Content-Length:
-              $ref: "common.yml#/components/headers/Content-Length"
+              $ref: common.yml#/components/headers/Content-Length
           content:
             application/json:
               schema:
@@ -222,109 +255,112 @@ paths:
                   federatedDomainCount:
                     type: integer
                   numberOfHoursFromLastSync:
-                    type: integer
-                    nullable: true
+                    type:
+                    - integer
+                    - 'null'
                   dirSyncEnabled:
                     type: boolean
                   dirSyncConfigured:
                     type: boolean
                   passThroughAuthenticationEnabled:
-                    type: boolean
-                    nullable: true
+                    type:
+                    - boolean
+                    - 'null'
                   seamlessSingleSignOnEnabled:
-                    type: boolean
-                    nullable: true
+                    type:
+                    - boolean
+                    - 'null'
 
   /Directories/DeletionRestrictions:
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       parameters:
-        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Cache-Control:
-              $ref: "common.yml#/components/headers/Cache-Control"
+              $ref: common.yml#/components/headers/Cache-Control
             Content-Encoding:
-              $ref: "common.yml#/components/headers/Content-Encoding"
+              $ref: common.yml#/components/headers/Content-Encoding
             Vary:
-              $ref: "common.yml#/components/headers/Vary"
+              $ref: common.yml#/components/headers/Vary
             X-Content-Type-Options:
-              $ref: "common.yml#/components/headers/X-Content-Type-Options"
+              $ref: common.yml#/components/headers/X-Content-Type-Options
             X-XSS-Protection:
-              $ref: "common.yml#/components/headers/X-XSS-Protection"
+              $ref: common.yml#/components/headers/X-XSS-Protection
             x-ms-version:
-              $ref: "common.yml#/components/headers/x-ms-version"
+              $ref: common.yml#/components/headers/x-ms-version
             Strict-Transport-Security:
-              $ref: "common.yml#/components/headers/Strict-Transport-Security"
+              $ref: common.yml#/components/headers/Strict-Transport-Security
             Access-Control-Expose-Headers:
-              $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
             x-ms-correlation-id:
-              $ref: "common.yml#/components/headers/x-ms-correlation-id"
+              $ref: common.yml#/components/headers/x-ms-correlation-id
             x-ms-operation-maturity:
-              $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
             x-ms-expected-duration:
-              $ref: "common.yml#/components/headers/x-ms-expected-duration"
+              $ref: common.yml#/components/headers/x-ms-expected-duration
             X-UA-Compatible:
-              $ref: "common.yml#/components/headers/X-UA-Compatible"
+              $ref: common.yml#/components/headers/X-UA-Compatible
             Date:
-              $ref: "common.yml#/components/headers/Date"
+              $ref: common.yml#/components/headers/Date
             Content-Length:
-              $ref: "common.yml#/components/headers/Content-Length"
+              $ref: common.yml#/components/headers/Content-Length
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/DeletionRestriction"
+                  $ref: '#/components/schemas/DeletionRestriction'
 
   /Directories/DomainAvailability:
     post:
-        tags: [Directory]
-        parameters:
-          - $ref: "common.yml#/components/parameters/XMsClientRequestId"
-        responses:
-          "200":
-            description: OK
+      tags: [Directory]
+      parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      responses:
+        '200':
+          description: OK
 
   /Directories/GetSeamlessSingleSignOnDomains:
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       parameters:
-        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Cache-Control:
-              $ref: "common.yml#/components/headers/Cache-Control"
+              $ref: common.yml#/components/headers/Cache-Control
             Content-Encoding:
-              $ref: "common.yml#/components/headers/Content-Encoding"
+              $ref: common.yml#/components/headers/Content-Encoding
             Vary:
-              $ref: "common.yml#/components/headers/Vary"
+              $ref: common.yml#/components/headers/Vary
             X-Content-Type-Options:
-              $ref: "common.yml#/components/headers/X-Content-Type-Options"
+              $ref: common.yml#/components/headers/X-Content-Type-Options
             X-XSS-Protection:
-              $ref: "common.yml#/components/headers/X-XSS-Protection"
+              $ref: common.yml#/components/headers/X-XSS-Protection
             x-ms-version:
-              $ref: "common.yml#/components/headers/x-ms-version"
+              $ref: common.yml#/components/headers/x-ms-version
             Strict-Transport-Security:
-              $ref: "common.yml#/components/headers/Strict-Transport-Security"
+              $ref: common.yml#/components/headers/Strict-Transport-Security
             Access-Control-Expose-Headers:
-              $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
             x-ms-correlation-id:
-              $ref: "common.yml#/components/headers/x-ms-correlation-id"
+              $ref: common.yml#/components/headers/x-ms-correlation-id
             x-ms-operation-maturity:
-              $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
             x-ms-expected-duration:
-              $ref: "common.yml#/components/headers/x-ms-expected-duration"
+              $ref: common.yml#/components/headers/x-ms-expected-duration
             X-UA-Compatible:
-              $ref: "common.yml#/components/headers/X-UA-Compatible"
+              $ref: common.yml#/components/headers/X-UA-Compatible
             Date:
-              $ref: "common.yml#/components/headers/Date"
+              $ref: common.yml#/components/headers/Date
             Content-Length:
-              $ref: "common.yml#/components/headers/Content-Length"
+              $ref: common.yml#/components/headers/Content-Length
           content:
             application/json:
               schema:
@@ -334,9 +370,9 @@ paths:
 
   /Directories/GetPasswordSyncStatus:
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -344,128 +380,129 @@ paths:
                 type: boolean
           headers:
             Cache-Control:
-              $ref: "common.yml#/components/headers/Cache-Control"
+              $ref: common.yml#/components/headers/Cache-Control
             Content-Encoding:
-              $ref: "common.yml#/components/headers/Content-Encoding"
+              $ref: common.yml#/components/headers/Content-Encoding
             Vary:
-              $ref: "common.yml#/components/headers/Vary"
+              $ref: common.yml#/components/headers/Vary
             X-Content-Type-Options:
-              $ref: "common.yml#/components/headers/X-Content-Type-Options"
+              $ref: common.yml#/components/headers/X-Content-Type-Options
             X-XSS-Protection:
-              $ref: "common.yml#/components/headers/X-XSS-Protection"
+              $ref: common.yml#/components/headers/X-XSS-Protection
             x-ms-version:
-              $ref: "common.yml#/components/headers/x-ms-version"
+              $ref: common.yml#/components/headers/x-ms-version
             Strict-Transport-Security:
-              $ref: "common.yml#/components/headers/Strict-Transport-Security"
+              $ref: common.yml#/components/headers/Strict-Transport-Security
             Access-Control-Expose-Headers:
-              $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
             x-ms-correlation-id:
-              $ref: "common.yml#/components/headers/x-ms-correlation-id"
+              $ref: common.yml#/components/headers/x-ms-correlation-id
             x-ms-operation-maturity:
-              $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
             x-ms-expected-duration:
-              $ref: "common.yml#/components/headers/x-ms-expected-duration"
+              $ref: common.yml#/components/headers/x-ms-expected-duration
             X-UA-Compatible:
-              $ref: "common.yml#/components/headers/X-UA-Compatible"
+              $ref: common.yml#/components/headers/X-UA-Compatible
             Date:
-              $ref: "common.yml#/components/headers/Date"
+              $ref: common.yml#/components/headers/Date
             Content-Length:
-              $ref: "common.yml#/components/headers/Content-Length"
+              $ref: common.yml#/components/headers/Content-Length
 
   /Directories/List:
     parameters:
-      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Directories/Properties:
     parameters:
-      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/directoryProperties"
+                $ref: '#/components/schemas/directoryProperties'
           description: OK
           headers:
             Cache-Control:
-              $ref: "common.yml#/components/headers/Cache-Control"
+              $ref: common.yml#/components/headers/Cache-Control
             Content-Encoding:
-              $ref: "common.yml#/components/headers/Content-Encoding"
+              $ref: common.yml#/components/headers/Content-Encoding
             Vary:
-              $ref: "common.yml#/components/headers/Vary"
+              $ref: common.yml#/components/headers/Vary
             X-Content-Type-Options:
-              $ref: "common.yml#/components/headers/X-Content-Type-Options"
+              $ref: common.yml#/components/headers/X-Content-Type-Options
             X-XSS-Protection:
-              $ref: "common.yml#/components/headers/X-XSS-Protection"
+              $ref: common.yml#/components/headers/X-XSS-Protection
             x-ms-version:
-              $ref: "common.yml#/components/headers/x-ms-version"
+              $ref: common.yml#/components/headers/x-ms-version
             Strict-Transport-Security:
-              $ref: "common.yml#/components/headers/Strict-Transport-Security"
+              $ref: common.yml#/components/headers/Strict-Transport-Security
             Access-Control-Expose-Headers:
-              $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
             x-ms-correlation-id:
-              $ref: "common.yml#/components/headers/x-ms-correlation-id"
+              $ref: common.yml#/components/headers/x-ms-correlation-id
             x-ms-operation-maturity:
-              $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
             x-ms-expected-duration:
-              $ref: "common.yml#/components/headers/x-ms-expected-duration"
+              $ref: common.yml#/components/headers/x-ms-expected-duration
             X-UA-Compatible:
-              $ref: "common.yml#/components/headers/X-UA-Compatible"
+              $ref: common.yml#/components/headers/X-UA-Compatible
             Date:
-              $ref: "common.yml#/components/headers/Date"
+              $ref: common.yml#/components/headers/Date
             Content-Length:
-              $ref: "common.yml#/components/headers/Content-Length"
+              $ref: common.yml#/components/headers/Content-Length
 
   /Directories/PropertiesV2:
     put:
+      tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Directories/RecommendedPayloads:
     parameters:
-      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Cache-Control:
-              $ref: "common.yml#/components/headers/Cache-Control"
+              $ref: common.yml#/components/headers/Cache-Control
             Content-Encoding:
-              $ref: "common.yml#/components/headers/Content-Encoding"
+              $ref: common.yml#/components/headers/Content-Encoding
             Vary:
-              $ref: "common.yml#/components/headers/Vary"
+              $ref: common.yml#/components/headers/Vary
             X-Content-Type-Options:
-              $ref: "common.yml#/components/headers/X-Content-Type-Options"
+              $ref: common.yml#/components/headers/X-Content-Type-Options
             X-XSS-Protection:
-              $ref: "common.yml#/components/headers/X-XSS-Protection"
+              $ref: common.yml#/components/headers/X-XSS-Protection
             x-ms-version:
-              $ref: "common.yml#/components/headers/x-ms-version"
+              $ref: common.yml#/components/headers/x-ms-version
             Strict-Transport-Security:
-              $ref: "common.yml#/components/headers/Strict-Transport-Security"
+              $ref: common.yml#/components/headers/Strict-Transport-Security
             Access-Control-Expose-Headers:
-              $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
             x-ms-correlation-id:
-              $ref: "common.yml#/components/headers/x-ms-correlation-id"
+              $ref: common.yml#/components/headers/x-ms-correlation-id
             x-ms-operation-maturity:
-              $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
             x-ms-expected-duration:
-              $ref: "common.yml#/components/headers/x-ms-expected-duration"
+              $ref: common.yml#/components/headers/x-ms-expected-duration
             X-UA-Compatible:
-              $ref: "common.yml#/components/headers/X-UA-Compatible"
+              $ref: common.yml#/components/headers/X-UA-Compatible
             Date:
-              $ref: "common.yml#/components/headers/Date"
+              $ref: common.yml#/components/headers/Date
             Content-Length:
-              $ref: "common.yml#/components/headers/Content-Length"
+              $ref: common.yml#/components/headers/Content-Length
           content:
             application/json:
               schema:
@@ -478,103 +515,104 @@ paths:
                     feature:
                       type: string
                     name:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
                     locale:
                       type: string
                     payloadContent:
                       type: object
                       properties:
                         title:
-                          $ref: "#/components/schemas/PayloadContent"
+                          $ref: '#/components/schemas/PayloadContent'
                         description:
-                          $ref: "#/components/schemas/PayloadContent"
+                          $ref: '#/components/schemas/PayloadContent'
                         link:
-                          $ref: "#/components/schemas/PayloadContent"
+                          $ref: '#/components/schemas/PayloadContent'
                         linkTet:
-                          $ref: "#/components/schemas/PayloadContent"
+                          $ref: '#/components/schemas/PayloadContent'
                         image:
-                          $ref: "#/components/schemas/PayloadContent"
+                          $ref: '#/components/schemas/PayloadContent'
 
   /Directories/SsgmProperties:
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       parameters:
-        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/directoryProperties"
+                $ref: '#/components/schemas/directoryProperties'
           description: OK
           headers:
             Cache-Control:
-              $ref: "common.yml#/components/headers/Cache-Control"
+              $ref: common.yml#/components/headers/Cache-Control
             Content-Encoding:
-              $ref: "common.yml#/components/headers/Content-Encoding"
+              $ref: common.yml#/components/headers/Content-Encoding
             Vary:
-              $ref: "common.yml#/components/headers/Vary"
+              $ref: common.yml#/components/headers/Vary
             X-Content-Type-Options:
-              $ref: "common.yml#/components/headers/X-Content-Type-Options"
+              $ref: common.yml#/components/headers/X-Content-Type-Options
             X-XSS-Protection:
-              $ref: "common.yml#/components/headers/X-XSS-Protection"
+              $ref: common.yml#/components/headers/X-XSS-Protection
             x-ms-version:
-              $ref: "common.yml#/components/headers/x-ms-version"
+              $ref: common.yml#/components/headers/x-ms-version
             Strict-Transport-Security:
-              $ref: "common.yml#/components/headers/Strict-Transport-Security"
+              $ref: common.yml#/components/headers/Strict-Transport-Security
             Access-Control-Expose-Headers:
-              $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
             x-ms-correlation-id:
-              $ref: "common.yml#/components/headers/x-ms-correlation-id"
+              $ref: common.yml#/components/headers/x-ms-correlation-id
             x-ms-operation-maturity:
-              $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
             x-ms-expected-duration:
-              $ref: "common.yml#/components/headers/x-ms-expected-duration"
+              $ref: common.yml#/components/headers/x-ms-expected-duration
             X-UA-Compatible:
-              $ref: "common.yml#/components/headers/X-UA-Compatible"
+              $ref: common.yml#/components/headers/X-UA-Compatible
             Date:
-              $ref: "common.yml#/components/headers/Date"
+              $ref: common.yml#/components/headers/Date
             Content-Length:
-              $ref: "common.yml#/components/headers/Content-Length"
+              $ref: common.yml#/components/headers/Content-Length
 
   /Directories/Summary:
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       parameters:
-        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Cache-Control:
-              $ref: "common.yml#/components/headers/Cache-Control"
+              $ref: common.yml#/components/headers/Cache-Control
             Content-Encoding:
-              $ref: "common.yml#/components/headers/Content-Encoding"
+              $ref: common.yml#/components/headers/Content-Encoding
             Vary:
-              $ref: "common.yml#/components/headers/Vary"
+              $ref: common.yml#/components/headers/Vary
             X-Content-Type-Options:
-              $ref: "common.yml#/components/headers/X-Content-Type-Options"
+              $ref: common.yml#/components/headers/X-Content-Type-Options
             X-XSS-Protection:
-              $ref: "common.yml#/components/headers/X-XSS-Protection"
+              $ref: common.yml#/components/headers/X-XSS-Protection
             x-ms-version:
-              $ref: "common.yml#/components/headers/x-ms-version"
+              $ref: common.yml#/components/headers/x-ms-version
             Strict-Transport-Security:
-              $ref: "common.yml#/components/headers/Strict-Transport-Security"
+              $ref: common.yml#/components/headers/Strict-Transport-Security
             Access-Control-Expose-Headers:
-              $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
             x-ms-correlation-id:
-              $ref: "common.yml#/components/headers/x-ms-correlation-id"
+              $ref: common.yml#/components/headers/x-ms-correlation-id
             x-ms-operation-maturity:
-              $ref: "common.yml#/components/headers/x-ms-operation-maturity"
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
             x-ms-expected-duration:
-              $ref: "common.yml#/components/headers/x-ms-expected-duration"
+              $ref: common.yml#/components/headers/x-ms-expected-duration
             X-UA-Compatible:
-              $ref: "common.yml#/components/headers/X-UA-Compatible"
+              $ref: common.yml#/components/headers/X-UA-Compatible
             Date:
-              $ref: "common.yml#/components/headers/Date"
+              $ref: common.yml#/components/headers/Date
             Content-Length:
-              $ref: "common.yml#/components/headers/Content-Length"
+              $ref: common.yml#/components/headers/Content-Length
           content:
             application/json:
               schema:
@@ -604,81 +642,81 @@ paths:
 
   /directoryObjects/{objectId}:
     parameters:
-      - in: path
-        name: objectId
-        required: true
-        schema:
-          $ref: "common.yml#/components/schemas/ObjectId"
+    - in: path
+      name: objectId
+      required: true
+      schema:
+        $ref: common.yml#/components/schemas/objectId
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /DirectoryObjectPicker/DirectoryMembersFromIds:
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /LoginTenantBrandings:
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /LoginTenantBrandings/0:
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /LoginTenantBrandings/BannerImage/{unknown}:
     parameters:
-      - in: path
-        name: unknown
-        required: true
-        schema:
-          type: string
+    - in: path
+      name: unknown
+      required: true
+      schema:
+        type: string
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /SecurityDefaults/Configuration:
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       parameters:
-        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
 
   /SecurityDefaults/GetSecurityDefaultStatus:
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       parameters:
-        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SecurityDefaultsConfiguration"
+                $ref: '#/components/schemas/SecurityDefaultsConfiguration'
 
   /SecurityDefaults/UpdateSecurityDefaultOnSave:
     get:
-      tags: [ Directory ]
+      tags: [Directory]
       parameters:
-        - in: query
-          name: enableSecurityDefaults
-          schema:
-            type: boolean
+      - in: query
+        name: enableSecurityDefaults
+        schema:
+          type: boolean
       responses:
-        "200":
+        '200':
           description: OK

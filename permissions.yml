@@ -1,0 +1,66 @@
+paths:
+  /Permissions:
+    parameters:
+    - $ref: common.yml#/components/parameters/XMsClientRequestId
+    - in: query
+      name: forceRefresh
+      schema:
+        type: boolean
+    get:
+      tags: [Permissions]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allowedActions:
+                    type: object
+                  ownerConditionalActions:
+                    type: object
+                  notApplicableActions:
+                    type: object
+
+  /Permissions/IsTenantRegionScopeAllowed:
+    get:
+      tags: [Permissions]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /Permissions/{objectId}/IsOwner:
+    parameters:
+    - in: path
+      name: objectId
+      required: true
+      schema:
+        $ref: common.yml#/components/schemas/objectId
+    get:
+      tags: [Permissions]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /Permissions/GetUserSystemRoleTemplateIds:
+    get:
+      tags: [Permissions]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: uuid

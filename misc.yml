@@ -2,197 +2,87 @@ paths:
   /B2B/b2bpolicy:
     get:
       responses:
-        "200":
+        '200':
           description: OK
 
   /BrowserOperations:
     get:
       responses:
-        "200":
+        '200':
           description: OK
 
   /Common/GetObjectsByObjectIds:
     post:
       responses:
-        "200":
+        '200':
           description: OK
 
   /Devices:
     get:
       responses:
-        "200":
+        '200':
           description: OK
 
   /FeatureConfigurations:
     get:
       parameters:
-        - in: query
-          name: SupportAU
-          schema:
-            type: boolean
+      - in: query
+        name: SupportAU
+        schema:
+          type: boolean
       responses:
-        "200":
+        '200':
           description: OK
 
   /MoeraDomain:
     post:
       responses:
-        "200":
+        '200':
           description: OK
-        
+
   /NamedNetworksV2:
     get:
       responses:
-        "200":
+        '200':
           description: OK
 
   /NamedNetworksV2/CountryCodes:
     get:
       responses:
-        "200":
+        '200':
           description: OK
 
   /NamedNetworksV2/{id}:
     parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
+    - in: path
+      name: id
+      schema:
+        type: string
     get:
       responses:
-        "200":
+        '200':
           description: OK
 
   /NamedNetworksV2/ValidatePolicySize:
     get:
       responses:
-        "200":
+        '200':
           description: OK
 
 
   /NamedNetworksV2/ValidatePolicySize/{id}:
     parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
+    - in: path
+      name: id
+      schema:
+        type: string
     get:
       responses:
-        "200":
+        '200':
           description: OK
-
-
-
-  /Permissions:
-    parameters:
-      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
-      - in: query
-        name: forceRefresh
-        schema:
-          type: boolean
-    get:
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  allowedActions:
-                    type: object
-                  ownerConditionalActions:
-                    type: object
-                  notApplicableActions:
-                    type: object
-
-
-  /Permissions/IsTenantRegionScopeAllowed:
-    get:
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: boolean
-
-  /Permissions/{objectId}/IsOwner:
-    parameters:
-      - in: path
-        name: objectId
-        required: true
-        schema:
-            $ref: "common.yml#/components/schemas/ObjectId"
-    get:
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: boolean
-
-  /Permissions/GetUserSystemRoleTemplateIds:
-    get:
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
-                  format: uuid
-
-
-
 
   /RoamingSettings:
     get:
       responses:
-        "200":
-          description: OK
-
-  /Roles/User/{userId}:
-    parameters:
-        - in: path
-          name: userId
-          description: The object ID of the user to retrieve role assignments for.
-          required: true
-          schema:
-            $ref: "common.yml#/components/schemas/UserId"
-    put:
-      responses:
-        "200":
-          description: OK
-
-  /Roles/User/{userId}/RoleAssignments:
-    parameters:
-        - in: path
-          name: userId
-          description: The object ID of the user to retrieve role assignments for.
-          required: true
-          schema:
-            $ref: "common.yml#/components/schemas/UserId"
-        - in: query
-          name: scope
-          schema:
-            type: string
-    get:
-      responses:
-        "200":
-          description: OK
-
-  /TenantSkuInfo:
-    get:
-      responses:
-        "200":
-          description: OK
-
-  /WhatIf/Evaluate:
-    get:
-      responses:
-        "200":
+        '200':
           description: OK

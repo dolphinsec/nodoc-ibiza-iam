@@ -1,186 +1,206 @@
 components:
   schemas:
     Group:
-        type: object
-        properties:
-            name:
-                type: string
-                nullable: true
-            description:
-                type: string
-                nullable: true
-            mail:
-                type: string
-                nullable: true
-            mailNickname:
-                type: string
-                nullable: true
-            source:
-                type: string
-                nullable: true
-                enum: [Cloud]
-            deletionTimestamp:
-                type: string
-                format: datetime
-                nullable: true
-            permanentDeletionTimestamp:
-                type: string
-                format: datetime
-                nullable: true
-            ownerDisplayNames:
-                type: array
-                nullable: true
-                items:
-                    type: string
-            groupTypeDisplayName:
-                type: string
-                enum: [Security]
-            membershipType:
-                type: string
-                enum: [Assigned]
-            externalSource:
-                type: object
-                nullable: true
-            customAttributes:
-                type: object
-                nullable: true
-            dirSyncEnabled:
-                type: boolean
-                nullable: true
-            lastDirSyncTime:
-                type: string
-                format: datetime
-                nullable: true
-            selectedUserIds:
-                type: array
-                nullable: true
-                items:
-                    $ref: "common.yml#/components/schemas/UserId"
-            dynamicGroupProperties:
-                type: object
-                properties:
-                    membershipResourceType:
-                        type: integer
-                    membershipRuleType:
-                        type: integer
-                    isDynamic:
-                        type: boolean
-                    membershipRule:
-                        type: string
-                        nullable: true
-                    membershipRuleProcessingState:
-                        type: string
-                        nullable: true
-                        enum: ['']
-                    membershipProcessingStatus:
-                        type: string
-                        nullable: true
-                        enum: ['']
-                    membershipProcessingError:
-                        type: object
-                        nullable: true
-                    lastMembershipUpdateTime:
-                        type: string
-                        format: datetime
-                        nullable: true
-                    lastRefreshTime:
-                        type: string
-                        format: datetime
-                        nullable: true
-                    groupId:
-                        $ref: "common.yml#/components/schemas/GroupId"
-            groupType:
-                type: string
-                enum: [Security]
-            isExternallyManaged:
-                type: boolean
-            objectId:
-                $ref: "common.yml#/components/schemas/GroupId"
-            objectType:
-                type: string
-                enum: [Group]
-            displayName:
-                type: string
-            imageUrl:
-                type: string
-                format: uri
-            userType:
-                type: string
-                nullable: true
-                enum: [Member, Guest]
-            thumbnailPhoto@odata.mediaContentType:
-                type: string
-                nullable: true
-            hasThumbnail:
-                type: boolean
-                nullable: true
-            isUser:
-                type: boolean
-            isGroup:
-                type: boolean
-            isGuest:
-                type: boolean
-
-
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        mail:
+          type:
+          - string
+          - 'null'
+        mailNickname:
+          type:
+          - string
+          - 'null'
+        source:
+          type:
+          - string
+          - 'null'
+          enum: [Cloud]
+        deletionTimestamp:
+          type:
+          - string
+          - 'null'
+          format: datetime
+        permanentDeletionTimestamp:
+          type:
+          - string
+          - 'null'
+          format: datetime
+        ownerDisplayNames:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        groupTypeDisplayName:
+          type: string
+          enum: [Security]
+        membershipType:
+          type: string
+          enum: [Assigned]
+        externalSource:
+          type:
+          - object
+          - 'null'
+        customAttributes:
+          type:
+          - object
+          - 'null'
+        dirSyncEnabled:
+          type:
+          - boolean
+          - 'null'
+        lastDirSyncTime:
+          type:
+          - string
+          - 'null'
+          format: datetime
+        selectedUserIds:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: common.yml#/components/schemas/userId
+        dynamicGroupProperties:
+          type: object
+          properties:
+            membershipResourceType:
+              type: integer
+            membershipRuleType:
+              type: integer
+            isDynamic:
+              type: boolean
+            membershipRule:
+              type:
+              - string
+              - 'null'
+            membershipRuleProcessingState:
+              type:
+              - string
+              - 'null'
+              enum: ['']
+            membershipProcessingStatus:
+              type:
+              - string
+              - 'null'
+              enum: ['']
+            membershipProcessingError:
+              type:
+              - object
+              - 'null'
+            lastMembershipUpdateTime:
+              type:
+              - string
+              - 'null'
+              format: date-time
+            lastRefreshTime:
+              type:
+              - string
+              - 'null'
+              format: date-time
+            groupId:
+              $ref: common.yml#/components/schemas/groupId
+        groupType:
+          type: string
+          enum: [Security]
+        isExternallyManaged:
+          type: boolean
+        objectId:
+          $ref: common.yml#/components/schemas/groupId
+        objectType:
+          type: string
+          enum: [Group]
+        displayName:
+          type: string
+        imageUrl:
+          type: string
+          format: uri
+        userType:
+          type:
+          - string
+          - 'null'
+          enum: [Member, Guest]
+        thumbnailPhoto@odata.mediaContentType:
+          type:
+          - string
+          - 'null'
+        hasThumbnail:
+          type:
+          - boolean
+          - 'null'
+        isUser:
+          type: boolean
+        isGroup:
+          type: boolean
+        isGuest:
+          type: boolean
 
 paths:
   /Groups:
     parameters:
-      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Users and Groups]
       responses:
-        "200":
+        '200':
           description: OK
           content:
-              application/json:
-                schema:
-                    type: object
-                    properties:
-                        items:
-                            type: array
-                            items: 
-                                $ref: "#/components/schemas/Group"
-                        nextLink:
-                            type: string
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Group'
+                  nextLink:
+                    type: string
 
   /Groups/{groupId}:
     parameters:
-      - in: path
-        name: groupId
-        required: true
-        schema:
-            $ref: "common.yml#/components/schemas/GroupId"
-      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    - in: path
+      name: groupId
+      required: true
+      schema:
+        $ref: common.yml#/components/schemas/groupId
+    - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Users and Groups]
       responses:
-        "200":
+        '200':
           description: OK
           content:
-              application/json:
-                schema:
-                    $ref: "#/components/schemas/Group"
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
 
   /Groups/{groupId}/owners/count:
     parameters:
-      - in: path
-        name: groupId
-        required: true
-        schema:
-            $ref: "common.yml#/components/schemas/GroupId"
-      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    - in: path
+      name: groupId
+      required: true
+      schema:
+        $ref: common.yml#/components/schemas/groupId
+    - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
-        tags: [Users and Groups]
-        responses:
-          "200":
-            description: OK
-            content:
-                application/json:
-                    schema:
-                        type: object
-                        properties:
-                            ownerCount:
-                                type: integer
-                            totalOwnersValueRange:
-                                type: integer
+      tags: [Users and Groups]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ownerCount:
+                    type: integer
+                  totalOwnersValueRange:
+                    type: integer

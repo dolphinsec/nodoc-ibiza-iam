@@ -1,606 +1,626 @@
 components:
   schemas:
     TenantModel:
-        type: object
-        properties:
-            tenantId:
-                $ref: "common.yml#/components/schemas/TenantId"
-            licenseKey:
-                type: string
-            customerId:
-                type: integer
-            accountLockoutDurationMinutes:
-                type: integer
-                nullable: true
-            accountLockoutResetMinutes:
-                type: integer
-                nullable: true
-            accountLockoutThreshold:
-                type: integer
-                nullable: true
-            allowPhoneMenu:
-                type: boolean
-            blockForFraud:
-                type: boolean
-            callerId:
-                type: string
-                nullable: true
-            defaultBypassTimespan:
+      type: object
+      properties:
+        tenantId:
+          $ref: common.yml#/components/schemas/tenantId
+        licenseKey:
+          type: string
+        customerId:
+          type: integer
+        accountLockoutDurationMinutes:
+          type:
+          - integer
+          - 'null'
+        accountLockoutResetMinutes:
+          type:
+          - integer
+          - 'null'
+        accountLockoutThreshold:
+          type:
+          - integer
+          - 'null'
+        allowPhoneMenu:
+          type: boolean
+        blockForFraud:
+          type: boolean
+        callerId:
+          type:
+          - string
+          - 'null'
+        defaultBypassTimespan:
+          type: number
+          format: float
+        enableFraudAlert:
+          type: boolean
+        fraudCode:
+          type:
+          - string
+          - 'null'
+        fraudNotificationEmailAddresses:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        oneTimeBypassEmailAddresses:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        pinAttempts:
+          type:
+          - integer
+          - 'null'
+        sayExtensionDigits:
+          type: boolean
+        smsTimeoutSeconds:
+          type:
+          - integer
+          - 'null'
+        caches:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+        notifications:
+          type:
+          - object
+          - 'null'
+        notificationEmailAddresses:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        greetings:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+        blockedUsers:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        bypassedUsers:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        groups:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            properties:
+              id:
                 type: number
-                format: float
-            enableFraudAlert:
-                type: boolean
-            fraudCode:
+              groupName:
                 type: string
-                nullable: true
-            fraudNotificationEmailAddresses:
-                type: array
-                nullable: true
-                items:
-                    type: string
-            oneTimeBypassEmailAddresses:
-                type: array
-                nullable: true
-                items:
-                    type: string
-            pinAttempts:
-                type: integer
-                nullable: true
-            sayExtensionDigits:
-                type: boolean
-            smsTimeoutSeconds:
-                type: integer
-                nullable: true
-            caches:
-                type: array
-                nullable: true
-                items:
-                    type: object
-            notifications:
-                type: object
-                nullable: true
-            notificationEmailAddresses:
-                type: array
-                nullable: true
-                items:
-                    type: string
-            greetings:
-                type: array
-                nullable: true
-                items:
-                    type: object
-            blockedUsers:
-                type: array
-                nullable: true
-                items:
-                    type: string
-            bypassedUsers:
-                type: array
-                nullable: true
-                items:
-                    type: string
-            groups:
-                type: array
-                nullable: true
-                items:
-                    type: object
-                    properties:
-                        id:
-                            type: number
-                        groupName:
-                            type: string
-            etag:
-                type: string
-                nullable: true
+        etag:
+          type:
+          - string
+          - 'null'
     OnPremisesPasswordResetPolicy:
-        type: object
-        properties:
-            objectId:
-                type: string
-                nullable: true
-            passwordWritebackSupported:
-                type: boolean
-            accountUnlockSupporte:
-                type: boolean
-            accountUnlockEnabled:
-                type: boolean
-            enablementForTenant:
-                type: boolean
-            cloudProvisioningEnablementForTenant:
-                type: boolean
+      type: object
+      properties:
+        objectId:
+          type:
+          - string
+          - 'null'
+        passwordWritebackSupported:
+          type: boolean
+        accountUnlockSupporte:
+          type: boolean
+        accountUnlockEnabled:
+          type: boolean
+        enablementForTenant:
+          type: boolean
+        cloudProvisioningEnablementForTenant:
+          type: boolean
     PasswordResetPolicy:
-        type: object
-        properties:
-            objectId:
-                type: string
-            enablementType:
-                type: integer
-            numberOfAuthenticationMethodsRequired:
-                type: integer
-            emailOptionEnabled:
-                type: boolean
-            mobilePhoneOptionEnabled:
-                type: boolean
-            officePhoneOptionEnabled:
-                type: boolean
-            securityQuestionsOptionEnabled:
-                type: boolean
-            mobileAppNotificationEnabled:
-                type: boolean
-            mobileAppCodeEnabled:
-                type: boolean
-            numberOfQuestionsToRegister:
-                type: integer
-            numberOfQuestionsToReset:
-                type: integer
-            registrationRequiredOnSignIn:
-                type: boolean
-            registrationReconfirmIntevalInDays:
-                type: integer
-            skipRegistrationAllowed:
-                type: boolean
-            skipRegistrationMaxAllowedDays:
-                type: integer
-            customizeHelpdeskLink:
-                type: boolean
-            customHelpdeskEmailOrUrl:
-                type: string
-            notifyUsersOnPasswordReset:
-                type: boolean
-            notifyOnAdminPasswordReset:
-                type: boolean
-            passwordResetEnabledGroupIds:
-                type: array
-                items:
-                    $ref: "common.yml#/components/schemas/GroupId"
-            passwordResetEnabledGroupName:
-                type: string
-            securityQuestions:
-                type: array
-                items:
-                    type: string
-            registrationConditionalAccessPolicies:
-                type: array
-                items:
-                    type: string
-            emailOptionAllowed:
-                type: boolean
-            mobilePhoneOptionAllowed:
-                type: boolean
-            officePhoneOptionAllowed:
-                type: boolean
-            securityQuestionsOptionAllowed:
-                type: boolean
-            mobileAppNotificationOptionAllowed:
-                type: boolean
-            mobileAppCodeOptionAllowed:
-                type: boolean
+      type: object
+      properties:
+        objectId:
+          type: string
+        enablementType:
+          type: integer
+        numberOfAuthenticationMethodsRequired:
+          type: integer
+        emailOptionEnabled:
+          type: boolean
+        mobilePhoneOptionEnabled:
+          type: boolean
+        officePhoneOptionEnabled:
+          type: boolean
+        securityQuestionsOptionEnabled:
+          type: boolean
+        mobileAppNotificationEnabled:
+          type: boolean
+        mobileAppCodeEnabled:
+          type: boolean
+        numberOfQuestionsToRegister:
+          type: integer
+        numberOfQuestionsToReset:
+          type: integer
+        registrationRequiredOnSignIn:
+          type: boolean
+        registrationReconfirmIntevalInDays:
+          type: integer
+        skipRegistrationAllowed:
+          type: boolean
+        skipRegistrationMaxAllowedDays:
+          type: integer
+        customizeHelpdeskLink:
+          type: boolean
+        customHelpdeskEmailOrUrl:
+          type: string
+        notifyUsersOnPasswordReset:
+          type: boolean
+        notifyOnAdminPasswordReset:
+          type: boolean
+        passwordResetEnabledGroupIds:
+          type: array
+          items:
+            $ref: common.yml#/components/schemas/groupId
+        passwordResetEnabledGroupName:
+          type: string
+        securityQuestions:
+          type: array
+          items:
+            type: string
+        registrationConditionalAccessPolicies:
+          type: array
+          items:
+            type: string
+        emailOptionAllowed:
+          type: boolean
+        mobilePhoneOptionAllowed:
+          type: boolean
+        officePhoneOptionAllowed:
+          type: boolean
+        securityQuestionsOptionAllowed:
+          type: boolean
+        mobileAppNotificationOptionAllowed:
+          type: boolean
+        mobileAppCodeOptionAllowed:
+          type: boolean
 
     PasswordPolicy:
-        type: object
-        properties:
-            lockoutThreshold:
-                type: integer
-            lockoutDurationInSeconds:
-                type: integer
-            enforceCustomBannedPasswords:
-                type: boolean
-            customBannedPasswords:
-                type: array
-                items:
-                    type: string
-            enableBannedPasswordCheckOnPremises:
-                type: boolean
-            bannedPasswordCheckOnPremisesMode:
-                type: integer
+      type: object
+      properties:
+        lockoutThreshold:
+          type: integer
+        lockoutDurationInSeconds:
+          type: integer
+        enforceCustomBannedPasswords:
+          type: boolean
+        customBannedPasswords:
+          type: array
+          items:
+            type: string
+        enableBannedPasswordCheckOnPremises:
+          type: boolean
+        bannedPasswordCheckOnPremisesMode:
+          type: integer
 
     AuthenticationMethod:
-        type: object
-        properties:
-          id:
-            $ref: "common.yml#/components/schemas/ObjectId"
-          type:
-            type: integer
-          state:
-            type: integer
-            description: State of the method (0 is enabled, 1 is disabled)
-          includeConditions:
-            type: array
-            items:
-                type: object
-                properties:
-                    type:
-                        type: string
-                    id:
-                        type: string
-                    isRequired:
-                        type: boolean
-                    useForSignIn:
-                        type: boolean
-          voiceSettings:
+      type: object
+      properties:
+        id:
+          $ref: common.yml#/components/schemas/objectId
+        type:
+          type: integer
+        state:
+          type: integer
+          description: State of the method (0 is enabled, 1 is disabled)
+        includeConditions:
+          type: array
+          items:
             type: object
-            nullable: true
-          fidoSettings:
-            type: object
-            nullable: true
             properties:
-              allowSelfServiceSetup:
-                type:  boolean
-              enforceAttestation:
+              type:
+                type: string
+              id:
+                type: string
+              isRequired:
                 type: boolean
-              keyRestrictions:
-                type: object
-                properties:
-                    isEnforced:
-                        type: boolean
-                    enforcementType:
-                        type: string
-                        enum: ["Block"]
-                    aaGuids:
-                        type: array
-                        items:
-                            type: string
-                            format: uuid
-          accessPassSettings:
-            type: object
-            nullable: true
-            properties:
-                passLifetimeInMinutes:
-                    type: integer
-                length:
-                    type: integer
-                minimumLifetimeInMinues:
-                    type: integer
-                maximumLifetimeInMinutes:
-                    type: integer
-                isUsableOnce:
-                    type: boolean
-                notificationEmail:
+              useForSignIn:
+                type: boolean
+        voiceSettings:
+          type:
+          - object
+          - 'null'
+        fidoSettings:
+          type:
+          - object
+          - 'null'
+          properties:
+            allowSelfServiceSetup:
+              type: boolean
+            enforceAttestation:
+              type: boolean
+            keyRestrictions:
+              type: object
+              properties:
+                isEnforced:
+                  type: boolean
+                enforcementType:
+                  type: string
+                  enum: [Block]
+                aaGuids:
+                  type: array
+                  items:
                     type: string
-                    nullable: true
+                    format: uuid
+        accessPassSettings:
+          type:
+          - object
+          - 'null'
+          properties:
+            passLifetimeInMinutes:
+              type: integer
+            length:
+              type: integer
+            minimumLifetimeInMinues:
+              type: integer
+            maximumLifetimeInMinutes:
+              type: integer
+            isUsableOnce:
+              type: boolean
+            notificationEmail:
+              type:
+              - string
+              - 'null'
 
 paths:
   /AuthenticationMethods/AuthenticationMethodsPolicy:
     get:
       tags: [Authentication]
       parameters:
-        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
-                schema:
-                    type: object
-                    properties:
-                        authenticationMethods:
-                            type: array
-                            items:
-                                $ref: "#/components/schemas/AuthenticationMethod"
-                        policyObjectId:
-                            $ref: "common.yml#/components/schemas/ObjectId"
-                        lastModifiedTime:
-                            type: string
-                            format: datetime
+              schema:
+                type: object
+                properties:
+                  authenticationMethods:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AuthenticationMethod'
+                  policyObjectId:
+                    $ref: common.yml#/components/schemas/objectId
+                  lastModifiedTime:
+                    type: string
+                    format: datetime
     post:
-        tags: [Authentication]
-        parameters:
-            - $ref: "common.yml#/components/parameters/XMsClientRequestId"
-        requestBody:
-            content:
-                application/json:
-                    schema:
-                        type: object
-                        properties:
-                            authenticationMethods:
-                                type: array
-                                items:
-                                    $ref: "#/components/schemas/AuthenticationMethod"
-                            policyObjectId:
-                                $ref: "common.yml#/components/schemas/ObjectId"
-        responses:
-          "200":
-            description: OK
-            content:
-                application/json:
-                    schema:
-                        type: object
-                        properties:
-                            authenticationMethods:
-                                type: array
-                                items:
-                                    $ref: "#/components/schemas/AuthenticationMethod"
-                            policyObjectId:
-                                $ref: "common.yml#/components/schemas/ObjectId"
-                            lastModifiedTime:
-                                type: string
-                                format: datetime
+      tags: [Authentication]
+      parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                authenticationMethods:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/AuthenticationMethod'
+                policyObjectId:
+                  $ref: common.yml#/components/schemas/objectId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  authenticationMethods:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AuthenticationMethod'
+                  policyObjectId:
+                    $ref: common.yml#/components/schemas/objectId
+                  lastModifiedTime:
+                    type: string
+                    format: datetime
 
     delete:
-        tags: [Authentication]
-        parameters:
-            - $ref: "common.yml#/components/parameters/XMsClientRequestId"
-        requestBody:
-            content:
-                application/json:
-                    schema:
-                        type: object
-                        properties:
-                            authenticationMethods:
-                                type: array
-                                items:
-                                    $ref: "#/components/schemas/AuthenticationMethod"
-                            policyObjectId:
-                                $ref: "common.yml#/components/schemas/ObjectId"
-        responses:
-          "200":
-            description: OK
-            content:
-                application/json:
-                    schema:
-                        type: object
-                        properties:
-                            authenticationMethods:
-                                type: array
-                                items:
-                                    $ref: "#/components/schemas/AuthenticationMethod"
-                            policyObjectId:
-                                $ref: "common.yml#/components/schemas/ObjectId"
-                            lastModifiedTime:
-                                type: string
-                                format: datetime
+      tags: [Authentication]
+      parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                authenticationMethods:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/AuthenticationMethod'
+                policyObjectId:
+                  $ref: common.yml#/components/schemas/objectId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  authenticationMethods:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AuthenticationMethod'
+                  policyObjectId:
+                    $ref: common.yml#/components/schemas/objectId
+                  lastModifiedTime:
+                    type: string
+                    format: datetime
 
   /AuthenticationMethods/PasswordPolicy:
     parameters:
-        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Authentication]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
-                schema:
-                    $ref: "#/components/schemas/PasswordPolicy"
+              schema:
+                $ref: '#/components/schemas/PasswordPolicy'
     post:
       tags: [Authentication]
       requestBody:
-          content:
-            application/json:
-                schema:
-                    $ref: "#/components/schemas/PasswordPolicy"
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordPolicy'
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
-                schema:
-                    type: boolean
+              schema:
+                type: boolean
 
-          
+
   /MultiFactorAuthentication/GetOrCreateExpandedTenantModel:
     parameters:
-        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Authentication]
       parameters:
-        - in: query
-          name: tenantName
-          schema:
-            type: string
+      - in: query
+        name: tenantName
+        schema:
+          type: string
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
-                schema:
-                    allOf:
-                        - $ref: "#/components/schemas/TenantModel"
-                        - type: object
-                          properties:
-                            etag:
-                                type: string
-                                nullable: true
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/TenantModel'
+                - type: object
+                  properties:
+                    etag:
+                      type:
+                      - string
+                      - 'null'
 
   /MultiFactorAuthentication/HasPaidSubscription:
     parameters:
-        - in: query
-          name: ignoreEnforcementDate
-          schema:
-            type: boolean
-        - in: query
-          name: trialRestrictionKey
-          schema:
-            type: string    
+    - in: query
+      name: ignoreEnforcementDate
+      schema:
+        type: boolean
+    - in: query
+      name: trialRestrictionKey
+      schema:
+        type: string
     get:
       tags: [Authentication]
       responses:
-        "200":
+        '200':
           description: OK
           content:
-              application/json:
-                schema:
-                    type: boolean
-          
+            application/json:
+              schema:
+                type: boolean
+
   /MultiFactorAuthentication/HardwareToken/enable:
     post:
       tags: [Authentication]
       requestBody:
         content:
-            application/json:
-                schema:
-                    type: object
-                    properties:
-                        "@enableAction":
-                            type: string
-                            enum: [Activate]
-                        oathId:
-                            $ref: "common.yml#/components/schemas/ObjectId"
-                        objectId:
-                            $ref: "common.yml#/components/schemas/ObjectId"
-                        verificationCode:
-                            type: string
+          application/json:
+            schema:
+              type: object
+              properties:
+                '@enableAction':
+                  type: string
+                  enum: [Activate]
+                oathId:
+                  $ref: common.yml#/components/schemas/objectId
+                objectId:
+                  $ref: common.yml#/components/schemas/objectId
+                verificationCode:
+                  type: string
       responses:
-        "200":
+        '200':
           description: OK
 
   /MultiFactorAuthentication/HardwareToken/listUploads:
     get:
       tags: [Authentication]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
-                schema:
-                    type: object
-                    properties:
-                        items:
-                            type: array
-                            items:
-                                type: object
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
 
   /MultiFactorAuthentication/HardwareToken/users:
     get:
       tags: [Authentication]
       parameters:
-          - in: query
-            name: skipToken
-            schema:
-                type: string
-          - in: query
-            name: upn
-            schema:
-                $ref: "common.yml#/components/schemas/UserPrincipalName"
-          - in: query
-            name: enabledFilter
-            schema:
-                type: boolean
+      - in: query
+        name: skipToken
+        schema:
+          type: string
+      - in: query
+        name: upn
+        schema:
+          $ref: common.yml#/components/schemas/userPrincipalName
+      - in: query
+        name: enabledFilter
+        schema:
+          type: boolean
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
-                schema:
-                    type: object
-                    properties:
-                        skipToken:
-                            type: string
-                            nullable: true
-                        items:
-                            type: array
-                            items:
-                                type: object
+              schema:
+                type: object
+                properties:
+                  skipToken:
+                    type:
+                    - string
+                    - 'null'
+                  items:
+                    type: array
+                    items:
+                      type: object
 
   /MultiFactorAuthentication/TenantModel:
     get:
-        tags: [Authentication]
-        parameters:
-            - in: query
-              name: licenseKey
+      tags: [Authentication]
+      parameters:
+      - in: query
+        name: licenseKey
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
               schema:
-                type: string
-        responses:
-            "200":
-                description: OK
-                content:                        
-                    application/json:
-                        schema:
-                            allOf:
-                                - ref: "#/components/schemas/TenantModel"
-                                - type: object
-                                  properties:
-                                      etag:
-                                        type: string
+                allOf:
+                - ref: '#/components/schemas/TenantModel'
+                - type: object
+                  properties:
+                    etag:
+                      type: string
     patch:
-        tags: [Authentication]
-        parameters:
-            - in: query
-              name: licenseKey
+      tags: [Authentication]
+      parameters:
+      - in: query
+        name: licenseKey
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              ref: '#/components/schemas/TenantModel'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
               schema:
                 type: string
-        requestBody:
-            content:
-                application/json:
-                    schema:
-                        ref: "#/components/schemas/TenantModel"
-        responses:
-            "200":
-                description: OK
-                content:                        
-                    application/json:
-                        schema:
-                            type: string
-
-        
-
-
 
 
   /PasswordReset/OnPremisesPasswordResetPolicies:
     parameters:
-        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Authentication]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
-                schema:
-                    $ref: "#/components/schemas/OnPremisesPasswordResetPolicy"
+              schema:
+                $ref: '#/components/schemas/OnPremisesPasswordResetPolicy'
     put:
-        tags: [Authentication]
-        responses:
-            # need to update
-            "200":
-                description: OK
+      tags: [Authentication]
+      responses:
+        # need to update
+        '200':
+          description: OK
 
   /PasswordReset/PasswordResetPolicies:
     parameters:
-        - $ref: "common.yml#/components/parameters/XMsClientRequestId"
+    - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Authentication]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
-                schema:
-                    $ref: "#/components/schemas/PasswordResetPolicy"
+              schema:
+                $ref: '#/components/schemas/PasswordResetPolicy'
     put:
       tags: [Authentication]
       requestBody:
         content:
-            application/json:
-                schema:
-                    $ref: "#/components/schemas/PasswordResetPolicy" 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetPolicy'
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
-                schema:
-                    type: boolean
+              schema:
+                type: boolean
 
   /PasswordReset/ResetPasswordByUpn:
     parameters:
-      - $ref: "common.yml#/components/parameters/XMsClientRequestId"
-      - in: query
-        name: UserPrincipalName
-        schema:
-          $ref: "common.yml#/components/schemas/UserPrincipalName"
+    - $ref: common.yml#/components/parameters/XMsClientRequestId
+    - in: query
+      name: UserPrincipalName
+      schema:
+        $ref: common.yml#/components/schemas/userPrincipalName
     put:
       tags: [Authentication]
       requestBody:
         content:
-            application/json:
-                schema:
-                    type: object
+          application/json:
+            schema:
+              type: object
       responses:
-        "200":
+        '200':
           description: OK
           content:
-              application/json:
-                schema:
-                    type: string
+            application/json:
+              schema:
+                type: string

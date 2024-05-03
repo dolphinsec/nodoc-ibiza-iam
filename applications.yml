@@ -62,15 +62,14 @@ components:
             copiedProperties:
               type: object
 
-
 paths:
   /ApplicationSso/{appId}/SingleSignOn:
     parameters:
-      - in: path
-        name: appId
-        required: true
-        schema:
-            $ref: "common.yml#/components/schemas/ApplicationId"
+    - in: path
+      name: appId
+      required: true
+      schema:
+        $ref: common.yml#/components/schemas/ApplicationId
     get:
       tags: [Application]
     post:
@@ -78,23 +77,24 @@ paths:
 
   /EnterpriseApplications/{spId}/ServicePrincipalPermissions:
     parameters:
-        - in: path
-          name: spId
-          description: The object ID of the service principal (enterprise application) to retrieve permissions for.
-          required: true
-          schema:
-            $ref: "common.yml#/components/schemas/ServicePrincipalId"
+    - in: path
+      name: spId
+      description: >-
+        The object ID of the service principal (enterprise application) to retrieve permissions for.
+      required: true
+      schema:
+        $ref: common.yml#/components/schemas/servicePrincipalId
     get:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
 
   /EnterpriseApplications/UserSettings:
     get:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
 
   /ManagedApplications/List:
@@ -104,83 +104,79 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/managedApplicationList"
+              $ref: '#/components/schemas/managedApplicationList'
       responses:
-        "200":
+        '200':
           description: OK
 
   /ManagedApplications/{appId}/AppRoleAssignments:
     parameters:
-        - in: path
-          name: appId
-          description: The application ID (client ID) of the application to manage app role assignments for.
-          required: true
-          schema:
-            $ref: "common.yml#/components/schemas/ApplicationId"
+    - in: path
+      name: appId
+      description: >-
+        The application ID (client ID) of the application to manage app role assignments for.
+      required: true
+      schema:
+        $ref: common.yml#/components/schemas/applicationId
     post:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
     get:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
-
 
   /MdmApplications/{appId}:
     parameters:
-        - in: path
-          name: appId
-          description: The application ID (client ID) of the application to manage. # need to check this
-          required: true
-          schema:
-            $ref: "common.yml#/components/schemas/ApplicationId"
+    - in: path
+      name: appId
+      description: The application ID (client ID) of the application to manage.  # need to check
+      required: true
+      schema:
+        $ref: common.yml#/components/schemas/applicationId
     put:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
     get:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
 
   /RegisteredApplications/{appId}:
     parameters:
-        - in: path
-          name: appId
-          description: The application ID (client ID) of the application registration to manage.
-          required: true
-          schema:
-            $ref: "common.yml#/components/schemas/ApplicationId"
+    - in: path
+      name: appId
+      description: The application ID (client ID) of the application registration to manage.
+      required: true
+      schema:
+        $ref: common.yml#/components/schemas/applicationId
     get:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
 
   /RegisteredApplications/{appId}/Consent:
     parameters:
-        - in: path
-          name: appId
-          description: The application ID (client ID) of the application registration to consent.
-          required: true
-          schema:
-            $ref: "common.yml#/components/schemas/ApplicationId"
+    - in: path
+      name: appId
+      description: The application ID (client ID) of the application registration to consent.
+      required: true
+      schema:
+        $ref: common.yml#/components/schemas/applicationId
     post:
       tags: [Application]
       parameters:
-        - in: query
-          name: onBehalfOfAll
-          schema:
-            type: boolean
+      - in: query
+        name: onBehalfOfAll
+        schema:
+          type: boolean
       responses:
-        "200":
+        '200':
           description: OK
-
-
-
-

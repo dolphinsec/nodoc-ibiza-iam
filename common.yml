@@ -24,7 +24,7 @@ components:
     Strict-Transport-Security:
       schema:
         type: string
-    Access-Control-Expose-Headers :
+    Access-Control-Expose-Headers:
       schema:
         type: string
     x-ms-correlation-id:
@@ -51,196 +51,285 @@ components:
         type: number
 
   responses:
+    4XX:
+      description: Generic 4XX exception
+      content:
+        text/html:
+          type: object
+
+    Unauthorized:
+      description: Unauthorized
+      content:
+        text/html:
+          type: object
+
+    NotFound:
+      description: Item not found
+      content:
+        text/html:
+          type: object
+
     ClientException:
-        description: A structured client exception
-        headers:
-            Cache-Control:
-              $ref: "common.yml#/components/headers/Cache-Control"
-            Pragma:
-              $ref: "common.yml#/components/headers/Pragma"
-            X-Content-Type-Options:
-                $ref: "common.yml#/components/headers/X-Content-Type-Options"
-            X-XSS-Protection:
-                $ref: "common.yml#/components/headers/X-XSS-Protection"
-            x-ms-version:
-                $ref: "common.yml#/components/headers/x-ms-version"
-            Strict-Transport-Security:
-                $ref: "common.yml#/components/headers/Strict-Transport-Security"
-            Access-Control-Expose-Headers:
-                $ref: "common.yml#/components/headers/Access-Control-Expose-Headers"
-            x-ms-correlation-id:
-                $ref: "common.yml#/components/headers/x-ms-correlation-id"
-            x-ms-operation-maturity:
-                $ref: "common.yml#/components/headers/x-ms-operation-maturity"
-            x-ms-expected-duration:
-                $ref: "common.yml#/components/headers/x-ms-expected-duration"
-            X-UA-Compatible:
-                $ref: "common.yml#/components/headers/X-UA-Compatible"
-            Date:
-                $ref: "common.yml#/components/headers/Date"
-            Content-Length:
-                $ref: "common.yml#/components/headers/Content-Length"
-            Expires:
-                $ref: "common.yml#/components/headers/Expires"
-        content:
-            application/json:
-              schema:
+      description: A structured client exception
+      headers:
+        Cache-Control:
+          $ref: common.yml#/components/headers/Cache-Control
+        Pragma:
+          $ref: common.yml#/components/headers/Pragma
+        X-Content-Type-Options:
+          $ref: common.yml#/components/headers/X-Content-Type-Options
+        X-XSS-Protection:
+          $ref: common.yml#/components/headers/X-XSS-Protection
+        x-ms-version:
+          $ref: common.yml#/components/headers/x-ms-version
+        Strict-Transport-Security:
+          $ref: common.yml#/components/headers/Strict-Transport-Security
+        Access-Control-Expose-Headers:
+          $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+        x-ms-correlation-id:
+          $ref: common.yml#/components/headers/x-ms-correlation-id
+        x-ms-operation-maturity:
+          $ref: common.yml#/components/headers/x-ms-operation-maturity
+        x-ms-expected-duration:
+          $ref: common.yml#/components/headers/x-ms-expected-duration
+        X-UA-Compatible:
+          $ref: common.yml#/components/headers/X-UA-Compatible
+        Date:
+          $ref: common.yml#/components/headers/Date
+        Content-Length:
+          $ref: common.yml#/components/headers/Content-Length
+        Expires:
+          $ref: common.yml#/components/headers/Expires
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              ClassName:
+                description: The class name of the exception object.
+                type: string
+                examples:
+                - Microsoft.Portal.Framework.Exceptions.ClientException
+              Message:
+                description: The error message.
+                type: string
+                examples:
+                - One or more errors occurred.
+              Data:
+                description: An object containing data relating to the exception.
+                type: object
+              HResult:
+                description: The completion status of the called function.
+                type: number
+                examples:
+                - -2146233088
+              XMsServerRequestId:
+                description: Unknown internal value.
+                type:
+                - string
+                - 'null'
+                format: uuid
+                examples:
+                - c4865529-7684-47dd-8bd0-7224f80657cd
+              Source:
+                description: The source of the exception.
+                type: string
+                examples:
+                - Microsoft.ActiveDirectory.PortalExtension.ADExtension
+              HttpStatusCode:
+                description: The HTTP status code returned with the exception.
+                type: integer
+                examples:
+                - 400
+              ClientData:
+                description: The data for the client regarding the raised exception.
                 type: object
                 properties:
-                  ClassName:
+                  errorCode:
+                    description: The error code of the exception.
                     type: string
-                  Message:
+                    examples:
+                    - LicenseAssignmentError
+                  localizedErrorDetails:
+                    description: A localized copy of error details.
+                    type:
+                    - string
+                    - 'null'
+                    examples:
+                    - null
+                  operationResults:
+                    type: array
+                    items:
+                      type: object
+                  timeStampUtc:
+                    description: The UTC timestamp of the raised exception.
                     type: string
-                  Data:
-                    type: object
-                  HResult:
-                    type: number
-                  XMsServerRequestId:
+                    format: date-time
+                    examples:
+                    - 2024-05-03T09:49:09.8618153Z
+                  clientRequestId:
+                    description: >-
+                      The client request identifier,
+                      as provided in the `X-Ms-Client-Request-Id` request header.
                     type: string
                     format: uuid
-                    nullable: true
-                  Source:
+                    examples:
+                    - 839a1c0b-5f71-31f5-413f-94d00b06700b
+                  internalTransactionId:
+                    description: An internal tracking identifier.
                     type: string
-                  HttpStatusCode:
-                    type: integer
-                  ClientData:
-                    type: object
-                    properties:
-                      errorCode:
-                        type: string
-                      localizedErrorDetails:
-                        type: string
-                        nullable: true
-                    #  operationResults:
-                    #    type: array
-                    #    items:
-                    #        type: object
-                      timeStampUtc:
-                        type: string
-                        format: datetime
-                      clientRequestId:
-                        type: string
-                        format: uuid
-                      internalTransactionId:
-                        type: string
-                        format: uuid
-                      tenantId:
-                        type: string
-                        format: uuid
-                        nullable: true
-                      userObjectId:
-                        type: string
-                        format: uuid
-                      exceptionType:
-                        format: string
+                    format: uuid
+                    examples:
+                    - 0426f673-d518-471b-a9b7-3a6a012949a5
+                  tenantId:
+                    $ref: common.yml#/components/schemas/tenantId
+                  userObjectId:
+                    $ref: common.yml#/components/schemas/userId
+                  exceptionType:
+                    description: The type of the exception.
+                    type: string
+                    examples:
+                    - AggregateException
 
   parameters:
     XMsClientRequestId:
-        name: X-Ms-Client-Request-Id
-        in: header
-        description: X-Ms-Client-Request-Id header.
-        required: true
-        schema:
-            type: string
-            format: uuid
+      name: X-Ms-Client-Request-Id
+      description: X-Ms-Client-Request-Id header.
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
     XMsClientSessionId:
-        name: X-Ms-Client-Session-Id
-        in: header
-        description: X-Ms-Client-Session-Id header.
-        required: true
-        schema:
-            type: string
-            format: uuid
+      name: X-Ms-Client-Session-Id
+      description: X-Ms-Client-Session-Id header.
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
     nextLink:
-        name: nextLink
-        in: query
-        description: nextLink query parameter for paging.
-        schema:
-            $ref: "#/components/schemas/NextLink"
+      name: nextLink
+      description: nextLink query parameter for paging.
+      in: query
+      schema:
+        $ref: '#/components/schemas/nextLink'
     searchText:
-        name: searchText
-        in: query
-        description: pending
-        schema:
-            type: string
+      name: searchText
+      description: pending
+      in: query
+      schema:
+        type: string
     columnName:
-        name: searchText
-        in: query
-        description: pending
-        schema:
-            type: string
+      name: columnName
+      description: pending
+      in: query
+      schema:
+        type: string
     sortOrder:
-        name: sortOrder
-        in: query
-        description: pending
-        schema:
-            type: string
+      name: sortOrder
+      description: pending
+      in: query
+      schema:
+        type: string
     top:
-        name: top
-        in: query
-        description: The number of records to return.
-        schema:
-            type: integer
+      name: top
+      description: The number of records to return.
+      in: query
+      schema:
+        type: integer
     $filter:
-        name: $filter
-        in: query
-        description: A filter query to apply to results.
-        schema:
-            type: integer
+      name: $filter
+      description: A filter query to apply to results.
+      in: query
+      schema:
+        type: integer
 
   schemas:
-    NextLink:
-        type: string
-        nullable: true
+    nextLink:
+      description: The `nextLink` string to use for paging results.
+      type:
+      - string
+      - 'null'
+      examples:
+      - ''
     PagedResponse:
-        type: object
-        properties:
-          firstPage:
-            type: boolean
-          lastPage:
-            type: boolean
-          nextLink:
-            $ref: "#/components/schemas/NextLink"
-        required:
-            - firstPage
-            - lastPage
-            - nextLink
-    UserPrincipalName:
-        type: string
-        description: The User Principal Name (UPN) for the user.
-        example: User@Contoso.com
-    UserId:
-        type: string
-        format: uuid
-        description: The object ID of the user.
-        example: c822926c-40f7-41c1-b220-21639fe755a7
-    GroupId:
-        type: string
-        format: uuid
-        description: The object ID of the group.
-        example: f8b378b5-152f-4a32-bd1a-bf5ba02cdaa9
-    ObjectId:
-        type: string
-        format: uuid
-        description: The ID of the directory object.
-        example: 9bfcbcd9-3843-42bc-aec6-70e7815f5757
-    TenantId:
-        type: string
-        format: uuid
-        description: The unique ID of the tenant.
-        example: d2a1929a-5e50-4960-8994-bceecb95c3ff
-    ApplicationId:
-        type: string
-        format: uuid
-        description: The application ID (client ID) of the application.
-        example: 693d2d81-7ad4-41ba-a844-070680da77f9
-    AppObjectId:
-        type: string
-        format: uuid
-        description: The object ID of the application registration.
-        example: 693d2d81-7ad4-41ba-a844-070680da77f9
-    ServicePrincipalId:
-        type: string
-        format: uuid
-        description: The object ID of the service principal (enterprise application).
-        example: 9679fc4f-a7b6-40aa-8a45-32e61e30a204
+      type: object
+      properties:
+        firstPage:
+          description: Whether this response is the first page.
+          type: boolean
+          examples:
+          - true
+        lastPage:
+          description: Whether this response is the last page.
+          type: boolean
+          examples:
+          - true
+        nextLink:
+          $ref: '#/components/schemas/nextLink'
+      required:
+      - firstPage
+      - lastPage
+      - nextLink
+    userPrincipalName:
+      description: The User Principal Name (UPN) for the user.
+      type: string
+      examples:
+      - User@Contoso.com
+    userId:
+      description: The object ID of the user.
+      type: string
+      format: uuid
+      minLength: 36
+      maxLength: 36
+      examples:
+      - c822926c-40f7-41c1-b220-21639fe755a7
+    groupId:
+      description: The object ID of the group.
+      type: string
+      format: uuid
+      minLength: 36
+      maxLength: 36
+      examples:
+      - f8b378b5-152f-4a32-bd1a-bf5ba02cdaa9
+    objectId:
+      description: The ID of the directory object.
+      type: string
+      format: uuid
+      minLength: 36
+      maxLength: 36
+      examples:
+      - 9bfcbcd9-3843-42bc-aec6-70e7815f5757
+    tenantId:
+      description: The unique ID of the tenant.
+      type: string
+      format: uuid
+      minLength: 36
+      maxLength: 36
+      examples:
+      - d2a1929a-5e50-4960-8994-bceecb95c3ff
+    applicationId:
+      description: The application ID (client ID) of the application.
+      type: string
+      format: uuid
+      minLength: 36
+      maxLength: 36
+      examples:
+      - 693d2d81-7ad4-41ba-a844-070680da77f9
+    appObjectId:
+      description: The object ID of the application registration.
+      type: string
+      format: uuid
+      minLength: 36
+      maxLength: 36
+      examples:
+      - 693d2d81-7ad4-41ba-a844-070680da77f9
+    servicePrincipalId:
+      description: The object ID of the service principal (enterprise application).
+      type: string
+      format: uuid
+      minLength: 36
+      maxLength: 36
+      examples:
+      - 9679fc4f-a7b6-40aa-8a45-32e61e30a204

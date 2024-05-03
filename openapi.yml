@@ -1,13 +1,13 @@
-openapi: "3.0.2"
+openapi: 3.1.0
 info:
   title: IAM API
   description: IAM API description
-  version: "1.0"
+  version: '1.0'
 servers:
-  - url: https://main.iam.ad.ext.azure.com/api
+- url: https://main.iam.ad.ext.azure.com/api
 
 security:
-  - OAuth2: [read]
+- OAuth2: [read]
 
 components:
   securitySchemes:
@@ -19,220 +19,232 @@ components:
           tokenUrl: https://login.microsoftonline.com/common/oauth2/token
           scopes: {}
 
-"tags":
-    - name: Application
-      description: Operations relating to Application management including both Enterprise Applications, and Application Registrations.
-    - name: Authentication
-      description: Operations relating to Authentication, including authentication methods and password policies.
-    - name: Directory
-      description: Operations relating to Directory management.
-    - name: Licensing
-      description: Operations relating to user and group licensing.
-    - name: Reports
-      description: Operations relating to report generation and management.
-    - name: Users and Groups
-      description: Operations relating to user and group management.
+tags:
+- name: Application
+  description: >-
+    Operations relating to Application management,
+    including both Enterprise Applications, and Application Registrations.
+- name: Authentication
+  description: >-
+    Operations relating to Authentication,
+    including authentication methods and password policies.
+- name: Directory
+  description: Operations relating to Directory management.
+- name: Licensing
+  description: Operations relating to user and group licensing.
+- name: Permissions
+  description: Operations relating to permission management.
+- name: Policies
+  description: >-
+    Operations relating to policy management,
+    including Conditional Access policies.
+- name: Reports
+  description: Operations relating to report generation and management.
+- name: Roles
+  description: Operations relating to role management.
+- name: Users and Groups
+  description: Operations relating to user and group management.
 
 paths:
   /AccountSkus:
-    $ref: "account_sku.yml#/paths/~1AccountSkus"
+    $ref: account_sku.yml#/paths/~1AccountSkus
   /AccountSkus/Assign:
-    $ref: "account_sku.yml#/paths/~1AccountSkus~1Assign"
+    $ref: account_sku.yml#/paths/~1AccountSkus~1Assign
   /AccountSkus/AssignUpdateRemove:
-    $ref: "account_sku.yml#/paths/~1AccountSkus~1AssignUpdateRemove"
+    $ref: account_sku.yml#/paths/~1AccountSkus~1AssignUpdateRemove
   /AccountSkus/CreateTrial:
-    $ref: "account_sku.yml#/paths/~1AccountSkus~1CreateTrial"
+    $ref: account_sku.yml#/paths/~1AccountSkus~1CreateTrial
   /AccountSkus/Group/{groupId}:
-    $ref: "account_sku.yml#/paths/~1AccountSkus~1Group~1{groupId}"
+    $ref: account_sku.yml#/paths/~1AccountSkus~1Group~1{groupId}
   /AccountSkus/Group/{groupId}/AssignmentErrors:
-    $ref: "account_sku.yml#/paths/~1AccountSkus~1Group~1{groupId}~1AssignmentErrors"
+    $ref: account_sku.yml#/paths/~1AccountSkus~1Group~1{groupId}~1AssignmentErrors
   /AccountSkus/Group/{groupId}/Reprocess:
-    $ref: "account_sku.yml#/paths/~1AccountSkus~1Group~1{groupId}~1Reprocess"
+    $ref: account_sku.yml#/paths/~1AccountSkus~1Group~1{groupId}~1Reprocess
   /AccountSkus/GroupAssignments:
-    $ref: "account_sku.yml#/paths/~1AccountSkus~1GroupAssignments"
+    $ref: account_sku.yml#/paths/~1AccountSkus~1GroupAssignments
   /AccountSkus/GroupsWithLicensingErrors:
-    $ref: "account_sku.yml#/paths/~1AccountSkus~1GroupsWithLicensingErrors"
+    $ref: account_sku.yml#/paths/~1AccountSkus~1GroupsWithLicensingErrors
   /AccountSkus/Remove:
-    $ref: "account_sku.yml#/paths/~1AccountSkus~1Remove"
+    $ref: account_sku.yml#/paths/~1AccountSkus~1Remove
   /AccountSkus/User/{userId}:
-    $ref: "account_sku.yml#/paths/~1AccountSkus~1User~1{userId}"
+    $ref: account_sku.yml#/paths/~1AccountSkus~1User~1{userId}
   /AccountSkus/User/{userId}/Reprocess:
-    $ref: "account_sku.yml#/paths/~1AccountSkus~1User~1{userId}~1Reprocess"
+    $ref: account_sku.yml#/paths/~1AccountSkus~1User~1{userId}~1Reprocess
   /AccountSkus/UserAssignments:
-    $ref: "account_sku.yml#/paths/~1AccountSkus~1UserAssignments"
+    $ref: account_sku.yml#/paths/~1AccountSkus~1UserAssignments
   /AccountSkus/Update:
-    $ref: "account_sku.yml#/paths/~1AccountSkus~1Update"
+    $ref: account_sku.yml#/paths/~1AccountSkus~1Update
   /AuthenticationMethods/AuthenticationMethodsPolicy:
-    $ref: "auth.yml#/paths/~1AuthenticationMethods~1AuthenticationMethodsPolicy"
+    $ref: auth.yml#/paths/~1AuthenticationMethods~1AuthenticationMethodsPolicy
   /AuthenticationMethods/PasswordPolicy:
-    $ref: "auth.yml#/paths/~1AuthenticationMethods~1PasswordPolicy"
+    $ref: auth.yml#/paths/~1AuthenticationMethods~1PasswordPolicy
   /B2B/b2bpolicy:
-    $ref: "misc.yml#/paths/~1B2B~1b2bpolicy"
+    $ref: misc.yml#/paths/~1B2B~1b2bpolicy
   /BrowserOperations:
-    $ref: "misc.yml#/paths/~1BrowserOperations"
+    $ref: misc.yml#/paths/~1BrowserOperations
   /ClaimProviders:
-    $ref: "policies.yml#/paths/~1ClaimProviders"
+    $ref: policies.yml#/paths/~1ClaimProviders
   /ClaimProviders/Controls:
-    $ref: "policies.yml#/paths/~1ClaimProviders~1Controls"
+    $ref: policies.yml#/paths/~1ClaimProviders~1Controls
   /ClaimProviders/Validate:
-    $ref: "policies.yml#/paths/~1ClaimProviders~1Validate"
+    $ref: policies.yml#/paths/~1ClaimProviders~1Validate
   /ClassicPolicies:
-    $ref: "policies.yml#/paths/~1ClassicPolicies"
+    $ref: policies.yml#/paths/~1ClassicPolicies
   /ClassicPolicies/Delete:
-    $ref: "policies.yml#/paths/~1ClassicPolicies~1Delete"
+    $ref: policies.yml#/paths/~1ClassicPolicies~1Delete
   /ClassicPolicies/Detail2:
-    $ref: "policies.yml#/paths/~1ClassicPolicies~1Detail2"
+    $ref: policies.yml#/paths/~1ClassicPolicies~1Detail2
   /ClassicPolicies/Disable:
-    $ref: "policies.yml#/paths/~1ClassicPolicies~1Disable"
+    $ref: policies.yml#/paths/~1ClassicPolicies~1Disable
   /ClassicPolicies/Migrate:
-    $ref: "policies.yml#/paths/~1ClassicPolicies~1Migrate"
+    $ref: policies.yml#/paths/~1ClassicPolicies~1Migrate
   /ClassicPolicies/Save:
-    $ref: "policies.yml#/paths/~1ClassicPolicies~1Save"
+    $ref: policies.yml#/paths/~1ClassicPolicies~1Save
   /Common/GetObjectsByObjectIds:
-    $ref: "misc.yml#/paths/~1Common~1GetObjectsByObjectIds"
+    $ref: misc.yml#/paths/~1Common~1GetObjectsByObjectIds
   /Devices:
-    $ref: "misc.yml#/paths/~1Devices"
+    $ref: misc.yml#/paths/~1Devices
   /Directories:
-    $ref: "directories.yml#/paths/~1Directories"
+    $ref: directories.yml#/paths/~1Directories
   /Directories/ADConnectStatus:
-    $ref: "directories.yml#/paths/~1Directories~1ADConnectStatus"
+    $ref: directories.yml#/paths/~1Directories~1ADConnectStatus
   /Directories/DomainAvailability:
-    $ref: "directories.yml#/paths/~1Directories~1DomainAvailability"
+    $ref: directories.yml#/paths/~1Directories~1DomainAvailability
   /Directories/DeletionRestrictions:
-    $ref: "directories.yml#/paths/~1Directories~1DeletionRestrictions"
+    $ref: directories.yml#/paths/~1Directories~1DeletionRestrictions
   /Directories/GetSeamlessSingleSignOnDomains:
-    $ref: "directories.yml#/paths/~1Directories~1GetSeamlessSingleSignOnDomains"
+    $ref: directories.yml#/paths/~1Directories~1GetSeamlessSingleSignOnDomains
   /Directories/GetPasswordSyncStatus:
-    $ref: "directories.yml#/paths/~1Directories~1GetPasswordSyncStatus"
+    $ref: directories.yml#/paths/~1Directories~1GetPasswordSyncStatus
   /Directories/List:
-    $ref: "directories.yml#/paths/~1Directories~1List"
+    $ref: directories.yml#/paths/~1Directories~1List
   /Directories/Properties:
-    $ref: "directories.yml#/paths/~1Directories~1Properties"
+    $ref: directories.yml#/paths/~1Directories~1Properties
   /Directories/PropertiesV2:
-    $ref: "directories.yml#/paths/~1Directories~1PropertiesV2"
+    $ref: directories.yml#/paths/~1Directories~1PropertiesV2
   /Directories/RecommendedPayloads:
-    $ref: "directories.yml#/paths/~1Directories~1RecommendedPayloads"
+    $ref: directories.yml#/paths/~1Directories~1RecommendedPayloads
   /Directories/SsgmProperties:
-    $ref: "directories.yml#/paths/~1Directories~1SsgmProperties"
+    $ref: directories.yml#/paths/~1Directories~1SsgmProperties
   /Directories/Summary:
-    $ref: "directories.yml#/paths/~1Directories~1Summary"
+    $ref: directories.yml#/paths/~1Directories~1Summary
   /directoryObjects/{objectId}:
-    $ref: "directories.yml#/paths/~1directoryObjects~1{objectId}"
+    $ref: directories.yml#/paths/~1directoryObjects~1{objectId}
   /DirectoryObjectPicker/DirectoryMembersFromIds:
-    $ref: "directories.yml#/paths/~1DirectoryObjectPicker~1DirectoryMembersFromIds"
+    $ref: directories.yml#/paths/~1DirectoryObjectPicker~1DirectoryMembersFromIds
   /EnterpriseApplications/{spId}/ServicePrincipalPermissions:
-    $ref: "applications.yml#/paths/~1EnterpriseApplications~1{spId}~1ServicePrincipalPermissions"
+    $ref: applications.yml#/paths/~1EnterpriseApplications~1{spId}~1ServicePrincipalPermissions
   /EnterpriseApplications/UserSettings:
-    $ref: "applications.yml#/paths/~1EnterpriseApplications~1UserSettings"
+    $ref: applications.yml#/paths/~1EnterpriseApplications~1UserSettings
   /FeatureConfigurations:
-    $ref: "misc.yml#/paths/~1FeatureConfigurations"
+    $ref: misc.yml#/paths/~1FeatureConfigurations
   /Groups:
-    $ref: "groups.yml#/paths/~1Groups"
+    $ref: groups.yml#/paths/~1Groups
   /Groups/{groupId}:
-    $ref: "groups.yml#/paths/~1Groups~1{groupId}"
+    $ref: groups.yml#/paths/~1Groups~1{groupId}
   /Groups/{groupId}/owners/count:
-    $ref: "groups.yml#/paths/~1Groups~1{groupId}~1owners~1count"
+    $ref: groups.yml#/paths/~1Groups~1{groupId}~1owners~1count
   /Licenses/DirectoryMembersImageUrlFromIds:
-    $ref: "account_sku.yml#/paths/~1Licenses~1DirectoryMembersImageUrlFromIds"
+    $ref: account_sku.yml#/paths/~1Licenses~1DirectoryMembersImageUrlFromIds
   /LoginTenantBrandings:
-    $ref: "directories.yml#/paths/~1LoginTenantBrandings"
+    $ref: directories.yml#/paths/~1LoginTenantBrandings
   /LoginTenantBrandings/0:
-    $ref: "directories.yml#/paths/~1LoginTenantBrandings~10"
+    $ref: directories.yml#/paths/~1LoginTenantBrandings~10
   /LoginTenantBrandings/BannerImage/{unknown}:
-    $ref: "directories.yml#/paths/~1LoginTenantBrandings~1BannerImage~1{unknown}"
+    $ref: directories.yml#/paths/~1LoginTenantBrandings~1BannerImage~1{unknown}
   /ManagedApplications/List:
-    $ref: "applications.yml#/paths/~1ManagedApplications~1List"
+    $ref: applications.yml#/paths/~1ManagedApplications~1List
   /ManagedApplications/{appId}/AppRoleAssignments:
-    $ref: "applications.yml#/paths/~1ManagedApplications~1{appId}~1AppRoleAssignments"
+    $ref: applications.yml#/paths/~1ManagedApplications~1{appId}~1AppRoleAssignments
   /MdmApplications/{appId}:
-    $ref: "applications.yml#/paths/~1MdmApplications~1{appId}"
+    $ref: applications.yml#/paths/~1MdmApplications~1{appId}
   /MoeraDomain:
-    $ref: "misc.yml#/paths/~1MoeraDomain"
+    $ref: misc.yml#/paths/~1MoeraDomain
   /MultiFactorAuthentication/GetOrCreateExpandedTenantModel:
-    $ref: "auth.yml#/paths/~1MultiFactorAuthentication~1GetOrCreateExpandedTenantModel"
+    $ref: auth.yml#/paths/~1MultiFactorAuthentication~1GetOrCreateExpandedTenantModel
   /MultiFactorAuthentication/HardwareToken/enable:
-    $ref: "auth.yml#/paths/~1MultiFactorAuthentication~1HardwareToken~1enable"
+    $ref: auth.yml#/paths/~1MultiFactorAuthentication~1HardwareToken~1enable
   /MultiFactorAuthentication/HardwareToken/users:
-    $ref: "auth.yml#/paths/~1MultiFactorAuthentication~1HardwareToken~1users"
+    $ref: auth.yml#/paths/~1MultiFactorAuthentication~1HardwareToken~1users
   /MultiFactorAuthentication/HasPaidSubscription:
-    $ref: "auth.yml#/paths/~1MultiFactorAuthentication~1HasPaidSubscription"
+    $ref: auth.yml#/paths/~1MultiFactorAuthentication~1HasPaidSubscription
   /PasswordReset/OnPremisesPasswordResetPolicies:
-    $ref: "auth.yml#/paths/~1PasswordReset~1OnPremisesPasswordResetPolicies"
+    $ref: auth.yml#/paths/~1PasswordReset~1OnPremisesPasswordResetPolicies
   /PasswordReset/PasswordResetPolicies:
-    $ref: "auth.yml#/paths/~1PasswordReset~1PasswordResetPolicies"
+    $ref: auth.yml#/paths/~1PasswordReset~1PasswordResetPolicies
   /PasswordReset/ResetPasswordByUpn:
-    $ref: "auth.yml#/paths/~1PasswordReset~1ResetPasswordByUpn"
+    $ref: auth.yml#/paths/~1PasswordReset~1ResetPasswordByUpn
   /Permissions:
-    $ref: "misc.yml#/paths/~1Permissions"
+    $ref: permissions.yml#/paths/~1Permissions
   /Permissions/IsTenantRegionScopeAllowed:
-    $ref: "misc.yml#/paths/~1Permissions~1IsTenantRegionScopeAllowed"
+    $ref: permissions.yml#/paths/~1Permissions~1IsTenantRegionScopeAllowed
   /Permissions/{objectId}/IsOwner:
-    $ref: "misc.yml#/paths/~1Permissions~1{objectId}~1IsOwner"
+    $ref: permissions.yml#/paths/~1Permissions~1{objectId}~1IsOwner
   /Permissions/GetUserSystemRoleTemplateIds:
-    $ref: "misc.yml#/paths/~1Permissions~1GetUserSystemRoleTemplateIds"
+    $ref: permissions.yml#/paths/~1Permissions~1GetUserSystemRoleTemplateIds
   /Policies:
-    $ref: "policies.yml#/paths/~1Policies"
+    $ref: policies.yml#/paths/~1Policies
   /Policies/{policyId}:
-    $ref: "policies.yml#/paths/~1Policies~1{policyId}"
+    $ref: policies.yml#/paths/~1Policies~1{policyId}
   /Policies/Policies:
-    $ref: "policies.yml#/paths/~1Policies~1Policies"
+    $ref: policies.yml#/paths/~1Policies~1Policies
   /Policies/PolicyCountUnderMaxAllowedLimit:
-    $ref: "policies.yml#/paths/~1Policies~1PolicyCountUnderMaxAllowedLimit"
+    $ref: policies.yml#/paths/~1Policies~1PolicyCountUnderMaxAllowedLimit
   /Policies/Validate:
-    $ref: "policies.yml#/paths/~1Policies~1Validate"
+    $ref: policies.yml#/paths/~1Policies~1Validate
   /RegisteredApplications/{appId}:
-    $ref: "applications.yml#/paths/~1RegisteredApplications~1{appId}"
+    $ref: applications.yml#/paths/~1RegisteredApplications~1{appId}
   /RegisteredApplications/{appId}/Consent:
-    $ref: "applications.yml#/paths/~1RegisteredApplications~1{appId}~1Consent"
+    $ref: applications.yml#/paths/~1RegisteredApplications~1{appId}~1Consent
   /Reports:
-    $ref: "reports.yml#/paths/~1Reports"
+    $ref: reports.yml#/paths/~1Reports
   /Reports/{reportId}:
-    $ref: "reports.yml#/paths/~1Reports~1{reportId}"
+    $ref: reports.yml#/paths/~1Reports~1{reportId}
   /Reports/AuditActivityTypes:
-    $ref: "reports.yml#/paths/~1Reports~1AuditActivityTypes"
+    $ref: reports.yml#/paths/~1Reports~1AuditActivityTypes
   /Reports/AuditActivityTypesV2:
-    $ref: "reports.yml#/paths/~1Reports~1AuditActivityTypesV2"
+    $ref: reports.yml#/paths/~1Reports~1AuditActivityTypesV2
   /Reports/Groups/{groupId}:
-    $ref: "reports.yml#/paths/~1Reports~1Groups~1{groupId}"
+    $ref: reports.yml#/paths/~1Reports~1Groups~1{groupId}
   /Reports/GroupsActivitySummary:
-    $ref: "reports.yml#/paths/~1Reports~1GroupsActivitySummary"
+    $ref: reports.yml#/paths/~1Reports~1GroupsActivitySummary
   /Reports/ServicePrincipals/{spId}:
-    $ref: "reports.yml#/paths/~1Reports~1ServicePrincipals~1{spId}"
+    $ref: reports.yml#/paths/~1Reports~1ServicePrincipals~1{spId}
   /Reports/SignInEventsV2:
-    $ref: "reports.yml#/paths/~1Reports~1SignInEventsV2"
+    $ref: reports.yml#/paths/~1Reports~1SignInEventsV2
   /Reports/Users/{userId}:
-    $ref: "reports.yml#/paths/~1Reports~1Users~1{userId}"
+    $ref: reports.yml#/paths/~1Reports~1Users~1{userId}
   /Reports/UsersActivitySummary:
-    $ref: "reports.yml#/paths/~1Reports~1UsersActivitySummary"
+    $ref: reports.yml#/paths/~1Reports~1UsersActivitySummary
   /RoamingSettings:
-    $ref: "misc.yml#/paths/~1RoamingSettings"
+    $ref: misc.yml#/paths/~1RoamingSettings
   /Roles/User/{userId}:
-    $ref: "misc.yml#/paths/~1Roles~1User~1{userId}"
+    $ref: roles.yml#/paths/~1Roles~1User~1{userId}
   /Roles/User/{userId}/RoleAssignments:
-    $ref: "misc.yml#/paths/~1Roles~1User~1{userId}~1RoleAssignments"
+    $ref: roles.yml#/paths/~1Roles~1User~1{userId}~1RoleAssignments
   /SecurityDefaults/GetSecurityDefaultStatus:
-    $ref: "directories.yml#/paths/~1SecurityDefaults~1GetSecurityDefaultStatus"
+    $ref: directories.yml#/paths/~1SecurityDefaults~1GetSecurityDefaultStatus
   /SecurityDefaults/UpdateSecurityDefaultOnSave:
-    $ref: "directories.yml#/paths/~1SecurityDefaults~1UpdateSecurityDefaultOnSave"
+    $ref: directories.yml#/paths/~1SecurityDefaults~1UpdateSecurityDefaultOnSave
   /TenantSkuInfo:
-    $ref: "misc.yml#/paths/~1TenantSkuInfo"
+    $ref: account_sku.yml#/paths/~1TenantSkuInfo
   /User/TemporaryPassword:
-    $ref: "users.yml#/paths/~1User~1TemporaryPassword"
+    $ref: users.yml#/paths/~1User~1TemporaryPassword
   /Users:
-    $ref: "users.yml#/paths/~1Users"
-#  /Users/Invite:
-#    $ref: "users.yml#/paths/~1Users~1Invite"
+    $ref: users.yml#/paths/~1Users
+  #  /Users/Invite:
+  #    $ref: users.yml#/paths/~1Users~1Invite
   /Users/PermanentDelete:
-    $ref: "users.yml#/paths/~1Users~1PermanentDelete"
+    $ref: users.yml#/paths/~1Users~1PermanentDelete
   /Users/{userId}:
-    $ref: "users.yml#/paths/~1Users~1{userId}"
+    $ref: users.yml#/paths/~1Users~1{userId}
   /Users/IsUPNUniqueOrPending/{userPrincipalName}:
-    $ref: "users.yml#/paths/~1Users~1IsUPNUniqueOrPending~1{userPrincipalName}"
+    $ref: users.yml#/paths/~1Users~1IsUPNUniqueOrPending~1{userPrincipalName}
   /UserDetails:
-    $ref: "users.yml#/paths/~1UserDetails"
+    $ref: users.yml#/paths/~1UserDetails
   /ViralSubscriptions:
-    $ref: "account_sku.yml#/paths/~1ViralSubscriptions"
+    $ref: account_sku.yml#/paths/~1ViralSubscriptions
   /ViralSku/delete:
-    $ref: "account_sku.yml#/paths/~1ViralSku~1delete"
+    $ref: account_sku.yml#/paths/~1ViralSku~1delete
   /WhatIf/Evaluate:
-    $ref: "misc.yml#/paths/~1WhatIf~1Evaluate"
+    $ref: policies.yml#/paths/~1WhatIf~1Evaluate
