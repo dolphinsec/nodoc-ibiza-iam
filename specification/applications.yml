@@ -75,6 +75,34 @@ paths:
     post:
       tags: [Application]
 
+  /EnterpriseApplications/{spId}/Properties:
+    parameters:
+    - in: path
+      name: spId
+      description: >-
+        The object ID of the service principal (enterprise application) to retrieve properties for.
+      required: true
+      schema:
+        $ref: common.yml#/components/schemas/servicePrincipalId
+    - in: query
+      name: appId
+      description: >-
+        The application ID of the service principal (enterprise application)
+        to retrieve properties for.
+      required: true
+      schema:
+        $ref: common.yml#/components/schemas/applicationId
+    - in: query
+      name: loadLogo
+      description: Whether to load the application logo in the response.
+      schema:
+        type: boolean
+    get:
+      tags: [Application]
+      responses:
+        '200':
+          description: OK
+
   /EnterpriseApplications/{spId}/ServicePrincipalPermissions:
     parameters:
     - in: path

@@ -253,7 +253,7 @@ paths:
         schema:
           type: boolean
         required: false
-      - $ref: common.yml#/components/parameters/$filter
+      - $ref: common.yml#/components/parameters/filter
       responses:
         '200':
           description: OK
@@ -306,9 +306,9 @@ paths:
       responses:
         '204':
           description: No Content
-        '400':
-          $ref: common.yml#/components/responses/ClientException
-        '500':
+        '401':
+          $ref: common.yml#/components/responses/Unauthorized
+        4XX:
           $ref: common.yml#/components/responses/ClientException
 
   /AccountSkus/AssignUpdateRemove:

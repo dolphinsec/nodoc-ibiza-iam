@@ -7,6 +7,10 @@ paths:
       schema:
         type: boolean
     get:
+      summary: Get current permissions.
+      description: >-
+        Retrieve a summary of the effective permissions for the currently authenticated user.
+      operationId: GetEffectivePermissions
       tags: [Permissions]
       responses:
         '200':

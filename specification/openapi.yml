@@ -132,6 +132,8 @@ paths:
     $ref: directories.yml#/paths/~1directoryObjects~1{objectId}
   /DirectoryObjectPicker/DirectoryMembersFromIds:
     $ref: directories.yml#/paths/~1DirectoryObjectPicker~1DirectoryMembersFromIds
+  /EnterpriseApplications/{spId}/Properties:
+    $ref: applications.yml#/paths/~1EnterpriseApplications~1{spId}~1Properties
   /EnterpriseApplications/{spId}/ServicePrincipalPermissions:
     $ref: applications.yml#/paths/~1EnterpriseApplications~1{spId}~1ServicePrincipalPermissions
   /EnterpriseApplications/UserSettings:

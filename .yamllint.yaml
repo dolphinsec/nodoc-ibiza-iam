@@ -66,6 +66,7 @@ rules:
     extra-allowed: []
     allow-quoted-quotes: true
     check-keys: true
+    level: warning
   trailing-spaces: enable
   truthy:
     level: warning

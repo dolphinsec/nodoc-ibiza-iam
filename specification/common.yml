@@ -55,19 +55,35 @@ components:
       description: Generic 4XX exception
       content:
         text/html:
+          description: HTML response page containing error message.
           type: object
 
     Unauthorized:
       description: Unauthorized
       content:
         text/html:
-          type: object
+          schema:
+            description: HTML response page containing unauthorized error message.
+            type: object
 
     NotFound:
       description: Item not found
       content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                description: The item not found error message.
+                type: string
+                examples:
+                - >-
+                    No HTTP resource was found that matches the request URI
+                    'https://main.iam.ad.ext.azure.com/api/xxx'
         text/html:
-          type: object
+          schema:
+            description: HTML response page containing item not found error message.
+            type: object
 
     ClientException:
       description: A structured client exception
@@ -108,11 +124,13 @@ components:
               ClassName:
                 description: The class name of the exception object.
                 type: string
+                minLength: 1
                 examples:
                 - Microsoft.Portal.Framework.Exceptions.ClientException
               Message:
                 description: The error message.
                 type: string
+                minLength: 1
                 examples:
                 - One or more errors occurred.
               Data:
@@ -133,7 +151,9 @@ components:
                 - c4865529-7684-47dd-8bd0-7224f80657cd
               Source:
                 description: The source of the exception.
-                type: string
+                type:
+                - string
+                - 'null'
                 examples:
                 - Microsoft.ActiveDirectory.PortalExtension.ADExtension
               HttpStatusCode:
@@ -148,30 +168,53 @@ components:
                   errorCode:
                     description: The error code of the exception.
                     type: string
+                    minLength: 1
                     examples:
                     - LicenseAssignmentError
                   localizedErrorDetails:
                     description: A localized copy of error details.
-                    type:
-                    - string
-                    - 'null'
-                    examples:
-                    - null
+                    type: object
                   operationResults:
                     type: array
                     items:
                       type: object
+                      properties:
+                        objectId:
+                          $ref: '#/components/schemas/objectId'
+                        displayName:
+                          type:
+                          - string
+                          - 'null'
+                          examples:
+                          - null
+                        status:
+                          type: integer
+                          example: 0
+                        details:
+                          type:
+                          - string
+                          - 'null'
+                          examples:
+                          - 'AADSTS500133: Assertion is not within its valid time range...'
+                      required:
+                      - objectId
+                      - displayName
+                      - status
+                      - details
                   timeStampUtc:
                     description: The UTC timestamp of the raised exception.
                     type: string
                     format: date-time
+                    minLength: 20
                     examples:
                     - 2024-05-03T09:49:09.8618153Z
                   clientRequestId:
                     description: >-
                       The client request identifier,
                       as provided in the `X-Ms-Client-Request-Id` request header.
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     format: uuid
                     examples:
                     - 839a1c0b-5f71-31f5-413f-94d00b06700b
@@ -179,6 +222,7 @@ components:
                     description: An internal tracking identifier.
                     type: string
                     format: uuid
+                    minLength: 1
                     examples:
                     - 0426f673-d518-471b-a9b7-3a6a012949a5
                   tenantId:
@@ -188,8 +232,75 @@ components:
                   exceptionType:
                     description: The type of the exception.
                     type: string
+                    minLength: 1
                     examples:
                     - AggregateException
+                required:
+                - errorCode
+                - localizedErrorDetails
+                - operationResults
+                - timeStampUtc
+                - clientRequestId
+                - internalTransactionId
+                - tenantId
+                - userObjectId
+                - exceptionType
+            required:
+            - ClassName
+            - Message
+            - Data
+            - HResult
+            - XMsServerRequestId
+            - Source
+            - HttpStatusCode
+            - ClientData
+            examples:
+            - ClassName: Microsoft.Portal.Framework.Exceptions.ClientException
+              Message: >-
+                AADSTS500133: Assertion is not within its valid time range.
+                Ensure that the access token is not expired before using it for user assertion,
+                or request a new token.
+                Current time: 2024-05-03T10:48:14.0106581Z,
+                expiry time of assertion 2024-05-03T10:46:43.0000000Z.
+                Trace ID: 559c1294-0605-425e-b43f-e81cb9a65600
+                Correlation ID: 4e908f90-9762-4be4-b022-98367f6e9964
+                Timestamp: 2024-05-03 10:48:14Z
+              Data: {}
+              HResult: -2146233088
+              XMsServerRequestId: null
+              Source: null
+              HttpStatusCode: 400
+              ClientData:
+                errorCode: msalautherror_invalid_grant
+                localizedErrorDetails:
+                  errorDetail: >-
+                    AADSTS500133: Assertion is not within its valid time range.
+                    Ensure that the access token is not expired before using it for user assertion,
+                    or request a new token.
+                    Current time: 2024-05-03T10:48:14.0106581Z,
+                    expiry time of assertion 2024-05-03T10:46:43.0000000Z.
+                    Trace ID: 559c1294-0605-425e-b43f-e81cb9a65600
+                    Correlation ID: 4e908f90-9762-4be4-b022-98367f6e9964
+                    Timestamp: 2024-05-03 10:48:14Z
+                operationResults:
+                - objectId: null
+                  displayName: null
+                  status: 0
+                  details: >-
+                    AADSTS500133: Assertion is not within its valid time range.
+                    Ensure that the access token is not expired before using it for user assertion,
+                    or request a new token.
+                    Current time: 2024-05-03T10:48:14.0106581Z,
+                    expiry time of assertion 2024-05-03T10:46:43.0000000Z.
+                    Trace ID: 559c1294-0605-425e-b43f-e81cb9a65600
+                    Correlation ID: 4e908f90-9762-4be4-b022-98367f6e9964
+                    Timestamp: 2024-05-03 10:48:14Z
+                timeStampUtc: 2024-05-03T10:48:14.097851Z
+                clientRequestId: d2cca72b-9942-4b80-8343-f88c2332f012
+                internalTransactionId: 1bb2fcd6-fe22-487e-b82b-28f3e47164a9
+                tenantId: null
+                userObjectId: 6934698c-5dcf-4596-809d-bc5b566518e5
+                exceptionType: MsalUiRequiredException
 
   parameters:
     XMsClientRequestId:
@@ -238,7 +349,7 @@ components:
       in: query
       schema:
         type: integer
-    $filter:
+    filter:
       name: $filter
       description: A filter query to apply to results.
       in: query
