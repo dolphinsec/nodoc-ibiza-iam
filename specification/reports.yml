@@ -7,103 +7,103 @@ components:
       in: query
       name: request
       schema:
-        $ref: '#/components/schemas/request'
+        $ref: "#/components/schemas/request"
 
 paths:
   /Reports:
     get:
       tags: [Reports]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Reports/{reportId}:
     parameters:
-    - in: path
-      name: reportId
-      required: true
-      schema:
-        type: string
+      - in: path
+        name: reportId
+        required: true
+        schema:
+          type: string
     get:
       tags: [Reports]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Reports/AuditActivityTypes:
     get:
       tags: [Reports]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Reports/AuditActivityTypesV2:
     get:
       tags: [Reports]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Reports/Groups/{groupId}:
     parameters:
-    - in: path
-      name: groupId
-      required: true
-      schema:
-        $ref: common.yml#/components/schemas/groupId
+      - in: path
+        name: groupId
+        required: true
+        schema:
+          $ref: common.yml#/components/schemas/groupId
     get:
       tags: [Reports]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Reports/GroupsActivitySummary:
     parameters:
-    - $ref: '#/components/parameters/Request'
+      - $ref: "#/components/parameters/Request"
     get:
       tags: [Reports]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Reports/ServicePrincipals/{spId}:
     parameters:
-    - in: path
-      name: spId
-      required: true
-      schema:
-        $ref: common.yml#/components/schemas/servicePrincipalId
+      - in: path
+        name: spId
+        required: true
+        schema:
+          $ref: common.yml#/components/schemas/servicePrincipalId
     get:
       tags: [Reports]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Reports/SignInEventsV2:
     post:
       tags: [Reports]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Reports/Users/{userId}:
     parameters:
-    - in: path
-      name: userId
-      required: true
-      schema:
-        $ref: common.yml#/components/schemas/userId
+      - in: path
+        name: userId
+        required: true
+        schema:
+          $ref: common.yml#/components/schemas/userId
     get:
       tags: [Reports]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Reports/UsersActivitySummary:
     parameters:
-    - $ref: '#/components/parameters/Request'
+      - $ref: "#/components/parameters/Request"
     get:
       tags: [Reports]
       responses:
-        '200':
+        "200":
           description: OK

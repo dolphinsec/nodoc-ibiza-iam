@@ -1,13 +1,16 @@
-openapi: 3.1.0
+openapi: 3.0.1
 info:
   title: IAM API
   description: IAM API description
-  version: '1.0'
+  version: "1.0"
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-- url: https://main.iam.ad.ext.azure.com/api
+  - url: https://main.iam.ad.ext.azure.com/api
 
 security:
-- OAuth2: [read]
+  - OAuth2: [read]
 
 components:
   securitySchemes:
@@ -20,30 +23,30 @@ components:
           scopes: {}
 
 tags:
-- name: Application
-  description: >-
-    Operations relating to Application management,
-    including both Enterprise Applications, and Application Registrations.
-- name: Authentication
-  description: >-
-    Operations relating to Authentication,
-    including authentication methods and password policies.
-- name: Directory
-  description: Operations relating to Directory management.
-- name: Licensing
-  description: Operations relating to user and group licensing.
-- name: Permissions
-  description: Operations relating to permission management.
-- name: Policies
-  description: >-
-    Operations relating to policy management,
-    including Conditional Access policies.
-- name: Reports
-  description: Operations relating to report generation and management.
-- name: Roles
-  description: Operations relating to role management.
-- name: Users and Groups
-  description: Operations relating to user and group management.
+  - name: Application
+    description: >-
+      Operations relating to Application management,
+      including both Enterprise Applications, and Application Registrations.
+  - name: Authentication
+    description: >-
+      Operations relating to Authentication,
+      including authentication methods and password policies.
+  - name: Directory
+    description: Operations relating to Directory management.
+  - name: Licensing
+    description: Operations relating to user and group licensing.
+  - name: Permissions
+    description: Read-only operations relating to assigned permissions and roles.
+  - name: Policies
+    description: >-
+      Operations relating to policy management,
+      including Conditional Access policies.
+  - name: Reports
+    description: Operations relating to report generation and management.
+  - name: Roles
+    description: Operations relating to role management.
+  - name: Users and Groups
+    description: Operations relating to user and group management.
 
 paths:
   /AccountSkus:

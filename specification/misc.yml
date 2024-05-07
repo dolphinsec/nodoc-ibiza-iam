@@ -2,87 +2,86 @@ paths:
   /B2B/b2bpolicy:
     get:
       responses:
-        '200':
+        "200":
           description: OK
 
   /BrowserOperations:
     get:
       responses:
-        '200':
+        "200":
           description: OK
 
   /Common/GetObjectsByObjectIds:
     post:
       responses:
-        '200':
+        "200":
           description: OK
 
   /Devices:
     get:
       responses:
-        '200':
+        "200":
           description: OK
 
   /FeatureConfigurations:
     get:
       parameters:
-      - in: query
-        name: SupportAU
-        schema:
-          type: boolean
+        - in: query
+          name: SupportAU
+          schema:
+            type: boolean
       responses:
-        '200':
+        "200":
           description: OK
 
   /MoeraDomain:
     post:
       responses:
-        '200':
+        "200":
           description: OK
 
   /NamedNetworksV2:
     get:
       responses:
-        '200':
+        "200":
           description: OK
 
   /NamedNetworksV2/CountryCodes:
     get:
       responses:
-        '200':
+        "200":
           description: OK
 
   /NamedNetworksV2/{id}:
     parameters:
-    - in: path
-      name: id
-      schema:
-        type: string
+      - in: path
+        name: id
+        schema:
+          type: string
     get:
       responses:
-        '200':
+        "200":
           description: OK
 
   /NamedNetworksV2/ValidatePolicySize:
     get:
       responses:
-        '200':
+        "200":
           description: OK
-
 
   /NamedNetworksV2/ValidatePolicySize/{id}:
     parameters:
-    - in: path
-      name: id
-      schema:
-        type: string
+      - in: path
+        name: id
+        schema:
+          type: string
     get:
       responses:
-        '200':
+        "200":
           description: OK
 
   /RoamingSettings:
     get:
       responses:
-        '200':
+        "200":
           description: OK

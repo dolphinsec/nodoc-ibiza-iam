@@ -27,25 +27,24 @@ components:
     DeletionRestriction:
       type: string
       enum:
-      - UserCountExceeded
-      - LinkedInApplicationProvisioned
-      - ActiveApplicationObject
-      - ActiveServicePrincipal
-      - TenantHasCommerceSubscriptions
-      - TenantHasActiveAzureSubscription
-      - TenantHasViralSubscription
-      - TenantHasDcaasConstraint
-      - TenantHasMfaCustomer
-      - VpnEnabled
+        - UserCountExceeded
+        - LinkedInApplicationProvisioned
+        - ActiveApplicationObject
+        - ActiveServicePrincipal
+        - TenantHasCommerceSubscriptions
+        - TenantHasActiveAzureSubscription
+        - TenantHasViralSubscription
+        - TenantHasDcaasConstraint
+        - TenantHasMfaCustomer
+        - VpnEnabled
     directoryProperties:
       type: object
       properties:
         objectId:
           $ref: common.yml#/components/schemas/tenantId
         displayName:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
           description: The display name of the directory.
           example: Contoso
         usersCanRegisterApps:
@@ -57,59 +56,47 @@ components:
         showMyGroupsFeature:
           type: boolean
         myGroupsFeatureValue:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         myGroupsGroupId:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         myGroupsGroupName:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         showMyAppsFeature:
           type: boolean
         myAppsFeatureValue:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         myAppsGroupId:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         myAppsGroupName:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         showUserActivityReportsFeature:
           type: boolean
         userActivityReportsFeatureValue:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         userActivityReportsGroupId:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         userActivityReportsGroupName:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         showRegisteredAuthMethodFeature:
           type: boolean
         registeredAuthMethodFeatureValue:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         registeredAuthMethodGroupId:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         registeredAuthMethodGroupName:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         usersCanAddExternalUsers:
           type: boolean
         limitedAccessCanAddExternalUsers:
@@ -123,39 +110,32 @@ components:
         securityGroupsEnabled:
           type: boolean
         usersCanManageSecurityGroups:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         office365GroupsEnabled:
           type: boolean
         usersCanManageOfficeGroups:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         allUsersGroupEnabled:
           type: boolean
         scopingGroupIdForManagingSecurityGroups:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
           format: uuid
         scopingGroupIdForManagingOfficeGroups:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
           format: uuid
         scopingGroupNameForManagingSecurityGroups:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         scopingGroupNameForManagingOfficeGroups:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         objectIdForAllUserGroup:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         allowInvitations:
           type: boolean
         isB2CTenant:
@@ -171,48 +151,44 @@ components:
           type: integer
           format: int32
         toEnableLinkedInUsers:
-          type:
-          - array
-          - 'null'
+          type: array
+          nullable: true
           items:
             type: object
         toDisableLinkedInUsers:
-          type:
-          - array
-          - 'null'
+          type: array
+          nullable: true
           items:
             type: object
         linkedInSelectedGroupObjectId:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         linkedInSelectedGroupDisplayName:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
 
 paths:
   /Directories:
     post:
       tags: [Directory]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Directories/B2C:
     post:
       tags: [Directory]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Directories/ADConnectStatus:
     get:
       tags: [Directory]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Cache-Control:
@@ -255,29 +231,26 @@ paths:
                   federatedDomainCount:
                     type: integer
                   numberOfHoursFromLastSync:
-                    type:
-                    - integer
-                    - 'null'
+                    type: integer
+                    nullable: true
                   dirSyncEnabled:
                     type: boolean
                   dirSyncConfigured:
                     type: boolean
                   passThroughAuthenticationEnabled:
-                    type:
-                    - boolean
-                    - 'null'
+                    type: boolean
+                    nullable: true
                   seamlessSingleSignOnEnabled:
-                    type:
-                    - boolean
-                    - 'null'
+                    type: boolean
+                    nullable: true
 
   /Directories/DeletionRestrictions:
     get:
       tags: [Directory]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Cache-Control:
@@ -313,24 +286,24 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/DeletionRestriction'
+                  $ref: "#/components/schemas/DeletionRestriction"
 
   /Directories/DomainAvailability:
     post:
       tags: [Directory]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        '200':
+        "200":
           description: OK
 
   /Directories/GetSeamlessSingleSignOnDomains:
     get:
       tags: [Directory]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Cache-Control:
@@ -372,7 +345,7 @@ paths:
     get:
       tags: [Directory]
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -410,24 +383,24 @@ paths:
 
   /Directories/List:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       tags: [Directory]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Directories/Properties:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Directory]
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/directoryProperties'
+                $ref: "#/components/schemas/directoryProperties"
           description: OK
           headers:
             Cache-Control:
@@ -463,16 +436,16 @@ paths:
     put:
       tags: [Directory]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Directories/RecommendedPayloads:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Directory]
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Cache-Control:
@@ -515,36 +488,35 @@ paths:
                     feature:
                       type: string
                     name:
-                      type:
-                      - string
-                      - 'null'
+                      type: string
+                      nullable: true
                     locale:
                       type: string
                     payloadContent:
                       type: object
                       properties:
                         title:
-                          $ref: '#/components/schemas/PayloadContent'
+                          $ref: "#/components/schemas/PayloadContent"
                         description:
-                          $ref: '#/components/schemas/PayloadContent'
+                          $ref: "#/components/schemas/PayloadContent"
                         link:
-                          $ref: '#/components/schemas/PayloadContent'
+                          $ref: "#/components/schemas/PayloadContent"
                         linkTet:
-                          $ref: '#/components/schemas/PayloadContent'
+                          $ref: "#/components/schemas/PayloadContent"
                         image:
-                          $ref: '#/components/schemas/PayloadContent'
+                          $ref: "#/components/schemas/PayloadContent"
 
   /Directories/SsgmProperties:
     get:
       tags: [Directory]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/directoryProperties'
+                $ref: "#/components/schemas/directoryProperties"
           description: OK
           headers:
             Cache-Control:
@@ -580,9 +552,9 @@ paths:
     get:
       tags: [Directory]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        '200':
+        "200":
           description: OK
           headers:
             Cache-Control:
@@ -642,81 +614,81 @@ paths:
 
   /directoryObjects/{objectId}:
     parameters:
-    - in: path
-      name: objectId
-      required: true
-      schema:
-        $ref: common.yml#/components/schemas/objectId
+      - in: path
+        name: objectId
+        required: true
+        schema:
+          $ref: common.yml#/components/schemas/objectId
     get:
       tags: [Directory]
       responses:
-        '200':
+        "200":
           description: OK
 
   /DirectoryObjectPicker/DirectoryMembersFromIds:
     get:
       tags: [Directory]
       responses:
-        '200':
+        "200":
           description: OK
 
   /LoginTenantBrandings:
     get:
       tags: [Directory]
       responses:
-        '200':
+        "200":
           description: OK
 
   /LoginTenantBrandings/0:
     get:
       tags: [Directory]
       responses:
-        '200':
+        "200":
           description: OK
 
   /LoginTenantBrandings/BannerImage/{unknown}:
     parameters:
-    - in: path
-      name: unknown
-      required: true
-      schema:
-        type: string
+      - in: path
+        name: unknown
+        required: true
+        schema:
+          type: string
     get:
       tags: [Directory]
       responses:
-        '200':
+        "200":
           description: OK
 
   /SecurityDefaults/Configuration:
     get:
       tags: [Directory]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        '200':
+        "200":
           description: OK
 
   /SecurityDefaults/GetSecurityDefaultStatus:
     get:
       tags: [Directory]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecurityDefaultsConfiguration'
+                $ref: "#/components/schemas/SecurityDefaultsConfiguration"
 
   /SecurityDefaults/UpdateSecurityDefaultOnSave:
     get:
       tags: [Directory]
       parameters:
-      - in: query
-        name: enableSecurityDefaults
-        schema:
-          type: boolean
+        - in: query
+          name: enableSecurityDefaults
+          schema:
+            type: boolean
       responses:
-        '200':
+        "200":
           description: OK

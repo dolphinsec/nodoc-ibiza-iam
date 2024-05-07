@@ -10,13 +10,12 @@ components:
               type: integer
               enum: [2]
             included:
-              $ref: '#/components/schemas/PolicyInclusivity'
+              $ref: "#/components/schemas/PolicyInclusivity"
             excluded:
-              $ref: '#/components/schemas/PolicyInclusivity'
+              $ref: "#/components/schemas/PolicyInclusivity"
         templateId:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
           format: uuid
         servicePrincipals:
           type: object
@@ -39,25 +38,21 @@ components:
                   items:
                     $ref: common.yml#/components/schemas/servicePrincipalId
             filter:
-              type:
-              - string
-              - 'null'
+              type: string
+              nullable: true
             includeAllMicrosoftApps:
               type: boolean
             excludeAllMicrosoftApps:
               type: boolean
             userActions:
-              type:
-              - object
-              - 'null'
+              type: object
+              nullable: true
             stepUpTags:
-              type:
-              - object
-              - 'null'
+              type: object
+              nullable: true
             networkAccess:
-              type:
-              - object
-              - 'null'
+              type: object
+              nullable: true
         controls:
           type: object
           properties:
@@ -68,9 +63,8 @@ components:
             challengeWithMfa:
               type: boolean
             requireAuthStrength:
-              type:
-              - object
-              - 'null'
+              type: object
+              nullable: true
             compliantDevice:
               type: boolean
             domainJoinedDevice:
@@ -129,9 +123,8 @@ components:
             secureApp:
               type: boolean
             networkAccessSecurity:
-              type:
-              - object
-              - 'null'
+              type: object
+              nullable: true
         conditions:
           type: object
           properties:
@@ -297,9 +290,9 @@ components:
                   type: integer
                   enum: [0]
                 included:
-                  $ref: '#/components/schemas/PolicyTimeInclusivity'
+                  $ref: "#/components/schemas/PolicyTimeInclusivity"
                 excluded:
-                  $ref: '#/components/schemas/PolicyTimeInclusivity'
+                  $ref: "#/components/schemas/PolicyTimeInclusivity"
                 applyCondition:
                   type: boolean
             deviceState:
@@ -313,7 +306,7 @@ components:
                 excludeCompliantDevice:
                   type: boolean
                 filter:
-                  $ref: '#/components/schemas/PolicyFilter'
+                  $ref: "#/components/schemas/PolicyFilter"
                 applyCondition:
                   type: boolean
         clientApplications:
@@ -323,17 +316,15 @@ components:
               type: integer
               enum: [0]
             filter:
-              $ref: '#/components/schemas/PolicyFilter'
+              $ref: "#/components/schemas/PolicyFilter"
             includedServicePrincipals:
-              type:
-              - array
-              - 'null'
+              type: array
+              nullable: true
               items:
                 $ref: common.yml#/components/schemas/servicePrincipalId
             excludedServicePrincipals:
-              type:
-              - array
-              - 'null'
+              type: array
+              nullable: true
               items:
                 $ref: common.yml#/components/schemas/servicePrincipalId
         isAllProtocolsEnabled:
@@ -373,9 +364,8 @@ components:
           type: integer
           enum: [0]
         timezoneId:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         dateRange:
           type: object
           properties:
@@ -414,9 +404,8 @@ components:
           items:
             $ref: common.yml#/components/schemas/objectId
         externalUsers:
-          type:
-          - object
-          - 'null'
+          type: object
+          nullable: true
           properties:
             guestOrExternalUserTypes:
               type: string
@@ -427,9 +416,9 @@ components:
                 membershipKind:
                   type: string
                   enum: [all]
-                '@odata.type':
+                "@odata.type":
                   type: string
-                  enum: ['#microsoft.graph.conditionalAccessAllExternalTenants']
+                  enum: ["#microsoft.graph.conditionalAccessAllExternalTenants"]
         groupIds:
           type: array
           items:
@@ -439,9 +428,8 @@ components:
           items:
             $ref: common.yml#/components/schemas/userId
     PolicyFilter:
-      type:
-      - object
-      - 'null'
+      type: object
+      nullable: true
       properties:
         mode:
           type: string
@@ -454,113 +442,113 @@ paths:
     post:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
     get:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
     put:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
     delete:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
 
   /ClaimProviders/Controls:
     get:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
 
   /ClaimProviders/Validate:
     post:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
 
   /ClassicPolicies:
     get:
       tags: [Policies]
       parameters:
-      - $ref: common.yml#/components/parameters/nextLink
-      - $ref: common.yml#/components/parameters/top
-      - in: query
-        name: filter
-        schema:
-          type: string
+        - $ref: common.yml#/components/parameters/nextLink
+        - $ref: common.yml#/components/parameters/top
+        - in: query
+          name: filter
+          schema:
+            type: string
       responses:
-        '200':
+        "200":
           description: OK
 
   /ClassicPolicies/Delete:
     delete:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
 
   /ClassicPolicies/Detail2:
     get:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
 
   /ClassicPolicies/Disable:
     put:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
 
   /ClassicPolicies/Migrate:
     post:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
 
   /ClassicPolicies/Save:
     post:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Policies:
     post:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Policies/Evaluate:
     post:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Policies/Validate:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       tags: [Policies]
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PolicyConfiguration'
+              $ref: "#/components/schemas/PolicyConfiguration"
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -572,28 +560,28 @@ paths:
     get:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Policies/Policies:
     get:
       tags: [Policies]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-      - in: query
-        name: top
-        required: true
-        schema:
-          type: integer
-          minimum: 1
-          maximum: 999
-      - in: query
-        name: nextLink
-        required: true
-        schema:
-          $ref: common.yml#/components/schemas/nextLink
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - in: query
+          name: top
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 999
+        - in: query
+          name: nextLink
+          required: true
+          schema:
+            $ref: common.yml#/components/schemas/nextLink
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -624,9 +612,8 @@ paths:
                           type: string
                           format: date-time
                         modifiedDateTime:
-                          type:
-                          - string
-                          - 'null'
+                          type: string
+                          nullable: true
                           format: date-time
                   nextLink:
                     $ref: common.yml#/components/schemas/nextLink
@@ -635,31 +622,31 @@ paths:
 
   /Policies/{policyId}:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
-    - in: path
-      name: policyId
-      required: true
-      schema:
-        type: string
-        format: uuid
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - in: path
+        name: policyId
+        required: true
+        schema:
+          type: string
+          format: uuid
     put:
       tags: [Policies]
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PolicyConfiguration'
+              $ref: "#/components/schemas/PolicyConfiguration"
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PolicyConfiguration'
+                $ref: "#/components/schemas/PolicyConfiguration"
     delete:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -668,16 +655,16 @@ paths:
     get:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PolicyConfiguration'
+                $ref: "#/components/schemas/PolicyConfiguration"
 
   /WhatIf/Evaluate:
     get:
       tags: [Policies]
       responses:
-        '200':
+        "200":
           description: OK

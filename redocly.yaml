@@ -1,10 +1,7 @@
-# See https://redocly.com/docs/cli/configuration/
-
 extends:
-- recommended
+  - recommended
 
 rules:
-  # A sample custom rule. Read more about rules: https://redocly.com/docs/cli/rules/
   operation-description: warn
   component-name-unique: error
   no-required-schema-properties-undefined: error
@@ -17,30 +14,19 @@ rules:
     severity: warn
     names:
       2XX:
-      - Cache-Control
-      - Pragma
-      - Expired
-      - X-Content-Type-Options
-      - X-XSS-Protection
-      - x-ms-version
-      - Strict-Transport-Security
-      - Access-Control-Expose-Headers
-      - x-ms-correlation-id
-      - x-ms-operation-maturity
-      - x-ms-expected-duration
-      - X-UA-Compatible
-      - Date
+        - Cache-Control
+        - X-Content-Type-Options
+        - X-XSS-Protection
+        - x-ms-version
+        - Strict-Transport-Security
+        - Access-Control-Expose-Headers
+        - x-ms-correlation-id
+        - x-ms-operation-maturity
+        - x-ms-expected-duration
+        - X-UA-Compatible
+        - Date
 
   scalar-property-missing-example: warn
   spec-strict-refs: error
   tag-description: warn
   tags-alphabetical: warn
-
-
-theme:
-  openapi:
-    generateCodeSamples:
-      languages:
-      - lang: curl
-      - lang: Node.js
-      - lang: Python

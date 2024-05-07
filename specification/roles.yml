@@ -1,32 +1,32 @@
 paths:
   /Roles/User/{userId}:
     parameters:
-    - in: path
-      name: userId
-      description: The object ID of the user to retrieve role assignments for.
-      required: true
-      schema:
-        $ref: common.yml#/components/schemas/userId
+      - in: path
+        name: userId
+        description: The object ID of the user to retrieve role assignments for.
+        required: true
+        schema:
+          $ref: common.yml#/components/schemas/userId
     put:
       tags: [Roles]
       responses:
-        '200':
+        "200":
           description: OK
 
   /Roles/User/{userId}/RoleAssignments:
     parameters:
-    - in: path
-      name: userId
-      description: The object ID of the user to retrieve role assignments for.
-      required: true
-      schema:
-        $ref: common.yml#/components/schemas/userId
-    - in: query
-      name: scope
-      schema:
-        type: string
+      - in: path
+        name: userId
+        description: The object ID of the user to retrieve role assignments for.
+        required: true
+        schema:
+          $ref: common.yml#/components/schemas/userId
+      - in: query
+        name: scope
+        schema:
+          type: string
     get:
       tags: [Roles]
       responses:
-        '200':
+        "200":
           description: OK

@@ -4,40 +4,32 @@ components:
       type: object
       properties:
         name:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         description:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         mail:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         mailNickname:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         source:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
           enum: [Cloud]
         deletionTimestamp:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
           format: datetime
         permanentDeletionTimestamp:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
           format: datetime
         ownerDisplayNames:
-          type:
-          - array
-          - 'null'
+          type: array
+          nullable: true
           items:
             type: string
         groupTypeDisplayName:
@@ -47,26 +39,21 @@ components:
           type: string
           enum: [Assigned]
         externalSource:
-          type:
-          - object
-          - 'null'
+          type: object
+          nullable: true
         customAttributes:
-          type:
-          - object
-          - 'null'
+          type: object
+          nullable: true
         dirSyncEnabled:
-          type:
-          - boolean
-          - 'null'
+          type: boolean
+          nullable: true
         lastDirSyncTime:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
           format: datetime
         selectedUserIds:
-          type:
-          - array
-          - 'null'
+          type: array
+          nullable: true
           items:
             $ref: common.yml#/components/schemas/userId
         dynamicGroupProperties:
@@ -79,32 +66,26 @@ components:
             isDynamic:
               type: boolean
             membershipRule:
-              type:
-              - string
-              - 'null'
+              type: string
+              nullable: true
             membershipRuleProcessingState:
-              type:
-              - string
-              - 'null'
-              enum: ['']
+              type: string
+              nullable: true
+              enum: [""]
             membershipProcessingStatus:
-              type:
-              - string
-              - 'null'
-              enum: ['']
+              type: string
+              nullable: true
+              enum: [""]
             membershipProcessingError:
-              type:
-              - object
-              - 'null'
+              type: object
+              nullable: true
             lastMembershipUpdateTime:
-              type:
-              - string
-              - 'null'
+              type: string
+              nullable: true
               format: date-time
             lastRefreshTime:
-              type:
-              - string
-              - 'null'
+              type: string
+              nullable: true
               format: date-time
             groupId:
               $ref: common.yml#/components/schemas/groupId
@@ -124,18 +105,15 @@ components:
           type: string
           format: uri
         userType:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
           enum: [Member, Guest]
         thumbnailPhoto@odata.mediaContentType:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         hasThumbnail:
-          type:
-          - boolean
-          - 'null'
+          type: boolean
+          nullable: true
         isUser:
           type: boolean
         isGroup:
@@ -146,11 +124,11 @@ components:
 paths:
   /Groups:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Users and Groups]
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -160,40 +138,40 @@ paths:
                   items:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Group'
+                      $ref: "#/components/schemas/Group"
                   nextLink:
                     type: string
 
   /Groups/{groupId}:
     parameters:
-    - in: path
-      name: groupId
-      required: true
-      schema:
-        $ref: common.yml#/components/schemas/groupId
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - in: path
+        name: groupId
+        required: true
+        schema:
+          $ref: common.yml#/components/schemas/groupId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Users and Groups]
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Group'
+                $ref: "#/components/schemas/Group"
 
   /Groups/{groupId}/owners/count:
     parameters:
-    - in: path
-      name: groupId
-      required: true
-      schema:
-        $ref: common.yml#/components/schemas/groupId
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - in: path
+        name: groupId
+        required: true
+        schema:
+          $ref: common.yml#/components/schemas/groupId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Users and Groups]
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
