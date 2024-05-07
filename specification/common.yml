@@ -77,8 +77,8 @@ components:
                 description: The item not found error message.
                 type: string
                 example: >-
-                    No HTTP resource was found that matches the request URI
-                    'https://main.iam.ad.ext.azure.com/api/xxx'
+                  No HTTP resource was found that matches the request URI
+                  'https://main.iam.ad.ext.azure.com/api/xxx'
         text/html:
           schema:
             description: HTML response page containing item not found error message.
@@ -171,7 +171,7 @@ components:
                       type: object
                       properties:
                         objectId:
-                          $ref: "#/components/schemas/objectId"
+                          $ref: '#/components/schemas/objectId'
                         displayName:
                           type: string
                           nullable: true
@@ -182,7 +182,7 @@ components:
                         details:
                           type: string
                           nullable: true
-                          example: "AADSTS500133: Assertion is not within its valid time range..."
+                          example: 'AADSTS500133: Assertion is not within its valid time range...'
                       required:
                         - objectId
                         - displayName
@@ -392,7 +392,7 @@ components:
       description: The `nextLink` string to use for paging results.
       type: string
       nullable: true
-      example: ""
+      example: ''
     PagedResponse:
       type: object
       properties:
@@ -405,7 +405,7 @@ components:
           type: boolean
           example: true
         nextLink:
-          $ref: "#/components/schemas/nextLink"
+          $ref: '#/components/schemas/nextLink'
       required:
         - firstPage
         - lastPage

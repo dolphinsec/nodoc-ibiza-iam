@@ -71,11 +71,11 @@ components:
             membershipRuleProcessingState:
               type: string
               nullable: true
-              enum: [""]
+              enum: ['']
             membershipProcessingStatus:
               type: string
               nullable: true
-              enum: [""]
+              enum: ['']
             membershipProcessingError:
               type: object
               nullable: true
@@ -128,7 +128,7 @@ paths:
     get:
       tags: [Users and Groups]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -138,7 +138,7 @@ paths:
                   items:
                     type: array
                     items:
-                      $ref: "#/components/schemas/Group"
+                      $ref: '#/components/schemas/Group'
                   nextLink:
                     type: string
 
@@ -153,12 +153,12 @@ paths:
     get:
       tags: [Users and Groups]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Group"
+                $ref: '#/components/schemas/Group'
 
   /Groups/{groupId}/owners/count:
     parameters:
@@ -171,7 +171,7 @@ paths:
     get:
       tags: [Users and Groups]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:

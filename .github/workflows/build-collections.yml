@@ -1,0 +1,25 @@
+name: build postman collections with postman CLI
+on: [push]
+jobs:
+  build-collections:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+      - name: Install Postman CLI
+        run: |
+          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+      - name: Build postman collection
+        run: |
+          npm run build-collection
+      - name: Commit collection
+        run: |
+          git config --global user.name 'collection-builder'
+          git config --global user.email 'x-delfino@users.noreply.github.com'
+          git add ./postman
+          git commit -m "automated collection build"
+          git push

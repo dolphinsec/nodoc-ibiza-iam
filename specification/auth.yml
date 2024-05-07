@@ -266,7 +266,7 @@ paths:
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -276,7 +276,7 @@ paths:
                   authenticationMethods:
                     type: array
                     items:
-                      $ref: "#/components/schemas/AuthenticationMethod"
+                      $ref: '#/components/schemas/AuthenticationMethod'
                   policyObjectId:
                     $ref: common.yml#/components/schemas/objectId
                   lastModifiedTime:
@@ -295,11 +295,11 @@ paths:
                 authenticationMethods:
                   type: array
                   items:
-                    $ref: "#/components/schemas/AuthenticationMethod"
+                    $ref: '#/components/schemas/AuthenticationMethod'
                 policyObjectId:
                   $ref: common.yml#/components/schemas/objectId
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -309,7 +309,7 @@ paths:
                   authenticationMethods:
                     type: array
                     items:
-                      $ref: "#/components/schemas/AuthenticationMethod"
+                      $ref: '#/components/schemas/AuthenticationMethod'
                   policyObjectId:
                     $ref: common.yml#/components/schemas/objectId
                   lastModifiedTime:
@@ -329,11 +329,11 @@ paths:
                 authenticationMethods:
                   type: array
                   items:
-                    $ref: "#/components/schemas/AuthenticationMethod"
+                    $ref: '#/components/schemas/AuthenticationMethod'
                 policyObjectId:
                   $ref: common.yml#/components/schemas/objectId
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -343,7 +343,7 @@ paths:
                   authenticationMethods:
                     type: array
                     items:
-                      $ref: "#/components/schemas/AuthenticationMethod"
+                      $ref: '#/components/schemas/AuthenticationMethod'
                   policyObjectId:
                     $ref: common.yml#/components/schemas/objectId
                   lastModifiedTime:
@@ -356,21 +356,21 @@ paths:
     get:
       tags: [Authentication]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PasswordPolicy"
+                $ref: '#/components/schemas/PasswordPolicy'
     post:
       tags: [Authentication]
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PasswordPolicy"
+              $ref: '#/components/schemas/PasswordPolicy'
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -388,13 +388,13 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 allOf:
-                  - $ref: "#/components/schemas/TenantModel"
+                  - $ref: '#/components/schemas/TenantModel'
                   - type: object
                     properties:
                       etag:
@@ -414,7 +414,7 @@ paths:
     get:
       tags: [Authentication]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -430,7 +430,7 @@ paths:
             schema:
               type: object
               properties:
-                "@enableAction":
+                '@enableAction':
                   type: string
                   enum: [Activate]
                 oathId:
@@ -440,14 +440,14 @@ paths:
                 verificationCode:
                   type: string
       responses:
-        "200":
+        '200':
           description: OK
 
   /MultiFactorAuthentication/HardwareToken/listUploads:
     get:
       tags: [Authentication]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -476,7 +476,7 @@ paths:
           schema:
             type: boolean
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -500,13 +500,13 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 allOf:
-                  - ref: "#/components/schemas/TenantModel"
+                  - ref: '#/components/schemas/TenantModel'
                   - type: object
                     properties:
                       etag:
@@ -522,9 +522,9 @@ paths:
         content:
           application/json:
             schema:
-              ref: "#/components/schemas/TenantModel"
+              ref: '#/components/schemas/TenantModel'
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -537,17 +537,17 @@ paths:
     get:
       tags: [Authentication]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OnPremisesPasswordResetPolicy"
+                $ref: '#/components/schemas/OnPremisesPasswordResetPolicy'
     put:
       tags: [Authentication]
       responses:
         # need to update
-        "200":
+        '200':
           description: OK
 
   /PasswordReset/PasswordResetPolicies:
@@ -556,21 +556,21 @@ paths:
     get:
       tags: [Authentication]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PasswordResetPolicy"
+                $ref: '#/components/schemas/PasswordResetPolicy'
     put:
       tags: [Authentication]
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PasswordResetPolicy"
+              $ref: '#/components/schemas/PasswordResetPolicy'
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -592,7 +592,7 @@ paths:
             schema:
               type: object
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:

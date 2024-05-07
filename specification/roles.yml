@@ -10,7 +10,7 @@ paths:
     put:
       tags: [Roles]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Roles/User/{userId}/RoleAssignments:
@@ -21,12 +21,13 @@ paths:
         required: true
         schema:
           $ref: common.yml#/components/schemas/userId
-      - in: query
-        name: scope
+      - name: scope
+        description: The scope of role assignments to retrieve.
+        in: query
         schema:
           type: string
     get:
       tags: [Roles]
       responses:
-        "200":
+        '200':
           description: OK

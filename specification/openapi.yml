@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: IAM API
   description: IAM API description
-  version: "1.0"
+  version: '1.0'
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
@@ -247,6 +247,8 @@ paths:
     $ref: users.yml#/paths/~1Users~1IsUPNUniqueOrPending~1{userPrincipalName}
   /UserDetails:
     $ref: users.yml#/paths/~1UserDetails
+  /UserDetails/{userId}:
+    $ref: users.yml#/paths/~1UserDetails~1{userId}
   /ViralSubscriptions:
     $ref: account_sku.yml#/paths/~1ViralSubscriptions
   /ViralSku/delete:

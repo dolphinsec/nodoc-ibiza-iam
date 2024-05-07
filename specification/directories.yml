@@ -172,14 +172,14 @@ paths:
     post:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Directories/B2C:
     post:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Directories/ADConnectStatus:
@@ -188,7 +188,7 @@ paths:
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Cache-Control:
@@ -250,7 +250,7 @@ paths:
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Cache-Control:
@@ -286,7 +286,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/DeletionRestriction"
+                  $ref: '#/components/schemas/DeletionRestriction'
 
   /Directories/DomainAvailability:
     post:
@@ -294,7 +294,7 @@ paths:
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
 
   /Directories/GetSeamlessSingleSignOnDomains:
@@ -303,7 +303,7 @@ paths:
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Cache-Control:
@@ -345,7 +345,7 @@ paths:
     get:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -387,7 +387,7 @@ paths:
     post:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Directories/Properties:
@@ -396,11 +396,11 @@ paths:
     get:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/directoryProperties"
+                $ref: '#/components/schemas/directoryProperties'
           description: OK
           headers:
             Cache-Control:
@@ -436,7 +436,7 @@ paths:
     put:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Directories/RecommendedPayloads:
@@ -445,7 +445,7 @@ paths:
     get:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Cache-Control:
@@ -496,15 +496,15 @@ paths:
                       type: object
                       properties:
                         title:
-                          $ref: "#/components/schemas/PayloadContent"
+                          $ref: '#/components/schemas/PayloadContent'
                         description:
-                          $ref: "#/components/schemas/PayloadContent"
+                          $ref: '#/components/schemas/PayloadContent'
                         link:
-                          $ref: "#/components/schemas/PayloadContent"
+                          $ref: '#/components/schemas/PayloadContent'
                         linkTet:
-                          $ref: "#/components/schemas/PayloadContent"
+                          $ref: '#/components/schemas/PayloadContent'
                         image:
-                          $ref: "#/components/schemas/PayloadContent"
+                          $ref: '#/components/schemas/PayloadContent'
 
   /Directories/SsgmProperties:
     get:
@@ -512,11 +512,11 @@ paths:
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/directoryProperties"
+                $ref: '#/components/schemas/directoryProperties'
           description: OK
           headers:
             Cache-Control:
@@ -554,7 +554,7 @@ paths:
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Cache-Control:
@@ -622,28 +622,28 @@ paths:
     get:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /DirectoryObjectPicker/DirectoryMembersFromIds:
     get:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /LoginTenantBrandings:
     get:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /LoginTenantBrandings/0:
     get:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /LoginTenantBrandings/BannerImage/{unknown}:
@@ -656,7 +656,7 @@ paths:
     get:
       tags: [Directory]
       responses:
-        "200":
+        '200':
           description: OK
 
   /SecurityDefaults/Configuration:
@@ -665,7 +665,7 @@ paths:
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
 
   /SecurityDefaults/GetSecurityDefaultStatus:
@@ -674,12 +674,12 @@ paths:
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SecurityDefaultsConfiguration"
+                $ref: '#/components/schemas/SecurityDefaultsConfiguration'
 
   /SecurityDefaults/UpdateSecurityDefaultOnSave:
     get:
@@ -690,5 +690,5 @@ paths:
           schema:
             type: boolean
       responses:
-        "200":
+        '200':
           description: OK

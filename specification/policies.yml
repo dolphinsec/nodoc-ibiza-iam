@@ -10,9 +10,9 @@ components:
               type: integer
               enum: [2]
             included:
-              $ref: "#/components/schemas/PolicyInclusivity"
+              $ref: '#/components/schemas/PolicyInclusivity'
             excluded:
-              $ref: "#/components/schemas/PolicyInclusivity"
+              $ref: '#/components/schemas/PolicyInclusivity'
         templateId:
           type: string
           nullable: true
@@ -290,9 +290,9 @@ components:
                   type: integer
                   enum: [0]
                 included:
-                  $ref: "#/components/schemas/PolicyTimeInclusivity"
+                  $ref: '#/components/schemas/PolicyTimeInclusivity'
                 excluded:
-                  $ref: "#/components/schemas/PolicyTimeInclusivity"
+                  $ref: '#/components/schemas/PolicyTimeInclusivity'
                 applyCondition:
                   type: boolean
             deviceState:
@@ -306,7 +306,7 @@ components:
                 excludeCompliantDevice:
                   type: boolean
                 filter:
-                  $ref: "#/components/schemas/PolicyFilter"
+                  $ref: '#/components/schemas/PolicyFilter'
                 applyCondition:
                   type: boolean
         clientApplications:
@@ -316,7 +316,7 @@ components:
               type: integer
               enum: [0]
             filter:
-              $ref: "#/components/schemas/PolicyFilter"
+              $ref: '#/components/schemas/PolicyFilter'
             includedServicePrincipals:
               type: array
               nullable: true
@@ -416,9 +416,9 @@ components:
                 membershipKind:
                   type: string
                   enum: [all]
-                "@odata.type":
+                '@odata.type':
                   type: string
-                  enum: ["#microsoft.graph.conditionalAccessAllExternalTenants"]
+                  enum: ['#microsoft.graph.conditionalAccessAllExternalTenants']
         groupIds:
           type: array
           items:
@@ -442,36 +442,36 @@ paths:
     post:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
     get:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
     put:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
     delete:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
 
   /ClaimProviders/Controls:
     get:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
 
   /ClaimProviders/Validate:
     post:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
 
   /ClassicPolicies:
@@ -485,56 +485,56 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: OK
 
   /ClassicPolicies/Delete:
     delete:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
 
   /ClassicPolicies/Detail2:
     get:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
 
   /ClassicPolicies/Disable:
     put:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
 
   /ClassicPolicies/Migrate:
     post:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
 
   /ClassicPolicies/Save:
     post:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Policies:
     post:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Policies/Evaluate:
     post:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Policies/Validate:
@@ -546,9 +546,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PolicyConfiguration"
+              $ref: '#/components/schemas/PolicyConfiguration'
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -560,7 +560,7 @@ paths:
     get:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Policies/Policies:
@@ -581,7 +581,7 @@ paths:
           schema:
             $ref: common.yml#/components/schemas/nextLink
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -635,18 +635,18 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PolicyConfiguration"
+              $ref: '#/components/schemas/PolicyConfiguration'
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PolicyConfiguration"
+                $ref: '#/components/schemas/PolicyConfiguration'
     delete:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -655,16 +655,16 @@ paths:
     get:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PolicyConfiguration"
+                $ref: '#/components/schemas/PolicyConfiguration'
 
   /WhatIf/Evaluate:
     get:
       tags: [Policies]
       responses:
-        "200":
+        '200':
           description: OK

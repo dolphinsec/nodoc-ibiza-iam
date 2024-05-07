@@ -4,7 +4,7 @@ components:
       in: query
       name: accountSkuId
       schema:
-        $ref: "#/components/schemas/AccountSkuId"
+        $ref: '#/components/schemas/AccountSkuId'
       required: true
   schemas:
     AccountSku:
@@ -17,7 +17,7 @@ components:
           type: string
           description: The unique ID of the account (tenant) that the SKU is associated with.
         accountSkuId:
-          $ref: "#/components/schemas/AccountSkuId"
+          $ref: '#/components/schemas/AccountSkuId'
         availableUnits:
           type: integer
           description: The number of available licences.
@@ -41,7 +41,7 @@ components:
           type: array
           description: A list of service statuses.
           items:
-            $ref: "#/components/schemas/ServicePlanStatus"
+            $ref: '#/components/schemas/ServicePlanStatus'
     AccountSkuId:
       type: string
       description: The unique string ID of the account (tenant) & SKU combination.
@@ -61,7 +61,7 @@ components:
           description: A list of licenses assigned to the group.
           items:
             allOf:
-              - $ref: "#/components/schemas/License"
+              - $ref: '#/components/schemas/License'
               - type: object
                 properties:
                   hasErrors:
@@ -80,16 +80,16 @@ components:
           example: Ready
         groupType:
           type: string
-          enum: ["", security, mailenabledsecurity]
+          enum: ['', security, mailenabledsecurity]
           example: security
     IndirectLicenseError:
       type: object
       description: pending
       properties:
         accountSkuId:
-          $ref: "#/components/schemas/AccountSkuId"
+          $ref: '#/components/schemas/AccountSkuId'
         error:
-          $ref: "#/components/schemas/LicenseErrorType"
+          $ref: '#/components/schemas/LicenseErrorType'
         referencedObjectId:
           $ref: common.yml#/components/schemas/objectId
         referencedObjectDisplayName:
@@ -99,7 +99,7 @@ components:
       description: A license.
       properties:
         accountSkuId:
-          $ref: "#/components/schemas/AccountSkuId"
+          $ref: '#/components/schemas/AccountSkuId'
         disabledServicePlans:
           type: array
           items:
@@ -111,7 +111,7 @@ components:
       type: object
       properties:
         accountSkuId:
-          $ref: "#/components/schemas/AccountSkuId"
+          $ref: '#/components/schemas/AccountSkuId'
         assignments:
           type: object
           properties:
@@ -120,7 +120,7 @@ components:
               items:
                 type: string
             error:
-              $ref: "#/components/schemas/LicenseErrorType"
+              $ref: '#/components/schemas/LicenseErrorType'
             referencedObjectId:
               $ref: common.yml#/components/schemas/objectId
             referencedObjectDisplayName:
@@ -159,7 +159,7 @@ components:
                 type: array
                 description: A list of licenses to add.
                 items:
-                  $ref: "#/components/schemas/License"
+                  $ref: '#/components/schemas/License'
               removeLicenses:
                 type: array
                 description: A list of licences to remove.
@@ -170,7 +170,7 @@ components:
                 type: array
                 description: A list of licences to update.
                 items:
-                  $ref: "#/components/schemas/License"
+                  $ref: '#/components/schemas/License'
             required:
               - objectId
               - addLicenses
@@ -223,7 +223,7 @@ components:
             type: object
             properties:
               accountSkuId:
-                $ref: "#/components/schemas/AccountSkuId"
+                $ref: '#/components/schemas/AccountSkuId'
               groupsAssigningLicense:
                 type: array
                 items:
@@ -231,15 +231,15 @@ components:
               serviceStatuses:
                 type: array
                 items:
-                  $ref: "#/components/schemas/ServicePlanStatus"
+                  $ref: '#/components/schemas/ServicePlanStatus'
         indirectLicenseErrors:
           type: array
           items:
-            $ref: "#/components/schemas/IndirectLicenseError"
+            $ref: '#/components/schemas/IndirectLicenseError'
         licenseAssignmentDetails:
           type: array
           items:
-            $ref: "#/components/schemas/LicenseAssignmentDetail"
+            $ref: '#/components/schemas/LicenseAssignmentDetail'
 
 paths:
   /AccountSkus:
@@ -253,7 +253,7 @@ paths:
           required: false
         - $ref: common.yml#/components/parameters/filter
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Cache-Control:
@@ -289,7 +289,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/AccountSku"
+                  $ref: '#/components/schemas/AccountSku'
 
   /AccountSkus/Assign:
     post:
@@ -300,11 +300,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LicenseModify"
+              $ref: '#/components/schemas/LicenseModify'
       responses:
-        "204":
+        '204':
           description: No Content
-        "401":
+        '401':
           $ref: common.yml#/components/responses/Unauthorized
         4XX:
           $ref: common.yml#/components/responses/ClientException
@@ -318,13 +318,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LicenseModify"
+              $ref: '#/components/schemas/LicenseModify'
       responses:
-        "204":
+        '204':
           description: No Content
-        "400":
+        '400':
           $ref: common.yml#/components/responses/ClientException
-        "500":
+        '500':
           $ref: common.yml#/components/responses/ClientException
 
   /AccountSkus/CreateTrial:
@@ -341,7 +341,7 @@ paths:
                 quantity:
                   type: integer
       responses:
-        "204":
+        '204':
           description: No Content
 
   /AccountSkus/Group/{groupId}:
@@ -355,7 +355,7 @@ paths:
     get:
       tags: [Licensing]
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Cache-Control:
@@ -389,7 +389,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GroupAssignment"
+                $ref: '#/components/schemas/GroupAssignment'
 
   /AccountSkus/Group/{groupId}/AssignmentErrors:
     parameters:
@@ -405,7 +405,7 @@ paths:
     get:
       tags: [Licensing]
       responses:
-        "200":
+        '200':
           description: Ok
           headers:
             Cache-Control:
@@ -448,7 +448,7 @@ paths:
                         items:
                           type: array
                           items:
-                            $ref: "#/components/schemas/UserAssignment"
+                            $ref: '#/components/schemas/UserAssignment'
 
   /AccountSkus/Group/{groupId}/Reprocess:
     parameters:
@@ -462,7 +462,7 @@ paths:
     post:
       tags: [Licensing]
       responses:
-        "204":
+        '204':
           description: No Content
           headers:
             Cache-Control:
@@ -492,11 +492,11 @@ paths:
     get:
       tags: [Licensing]
       parameters:
-        - $ref: "#/components/parameters/accountSkuId"
+        - $ref: '#/components/parameters/accountSkuId'
         - $ref: common.yml#/components/parameters/searchText
         - $ref: common.yml#/components/parameters/sortOrder
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Cache-Control:
@@ -537,7 +537,7 @@ paths:
                       items:
                         type: array
                         items:
-                          $ref: "#/components/schemas/GroupAssignment"
+                          $ref: '#/components/schemas/GroupAssignment'
 
   /AccountSkus/GroupsWithLicensingErrors:
     get:
@@ -550,7 +550,7 @@ paths:
           schema:
             type: boolean
       responses:
-        "200":
+        '200':
           description: Ok
           headers:
             Cache-Control:
@@ -591,7 +591,7 @@ paths:
                       items:
                         type: array
                         items:
-                          $ref: "#/components/schemas/GroupAssignment"
+                          $ref: '#/components/schemas/GroupAssignment'
 
   /AccountSkus/Remove:
     post:
@@ -602,13 +602,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LicenseModify"
+              $ref: '#/components/schemas/LicenseModify'
       responses:
-        "204":
+        '204':
           description: No Content
-        "400":
+        '400':
           $ref: common.yml#/components/responses/ClientException
-        "500":
+        '500':
           $ref: common.yml#/components/responses/ClientException
 
   /AccountSkus/User/{userId}:
@@ -624,12 +624,12 @@ paths:
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
-        "200":
+        '200':
           description: Ok
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UserAssignment"
+                $ref: '#/components/schemas/UserAssignment'
 
   /AccountSkus/User/{userId}/Reprocess:
     parameters:
@@ -642,7 +642,7 @@ paths:
     post:
       tags: [Licensing]
       responses:
-        "204":
+        '204':
           description: No Content
           headers:
             Cache-Control:
@@ -673,13 +673,13 @@ paths:
       tags: [Licensing]
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
-        - $ref: "#/components/parameters/accountSkuId"
+        - $ref: '#/components/parameters/accountSkuId'
         - $ref: common.yml#/components/parameters/nextLink
         - $ref: common.yml#/components/parameters/searchText
         - $ref: common.yml#/components/parameters/sortOrder
         - $ref: common.yml#/components/parameters/columnName
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
@@ -693,7 +693,7 @@ paths:
                       items:
                         type: array
                         items:
-                          $ref: "#/components/schemas/UserAssignment"
+                          $ref: '#/components/schemas/UserAssignment'
 
   /AccountSkus/Update:
     post:
@@ -704,13 +704,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LicenseModify"
+              $ref: '#/components/schemas/LicenseModify'
       responses:
-        "204":
+        '204':
           description: No Content
-        "400":
+        '400':
           $ref: common.yml#/components/responses/ClientException
-        "500":
+        '500':
           $ref: common.yml#/components/responses/ClientException
 
   /Licenses/DirectoryMembersImageUrlFromIds:
@@ -726,7 +726,7 @@ paths:
               items:
                 $ref: common.yml#/components/schemas/userId
       responses:
-        "200":
+        '200':
           description: Ok
           headers:
             Cache-Control:
@@ -767,7 +767,7 @@ paths:
     get:
       tags: [Licensing]
       responses:
-        "200":
+        '200':
           description: OK
 
   /ViralSubscriptions:
@@ -776,7 +776,7 @@ paths:
     get:
       tags: [Licensing]
       responses:
-        "200":
+        '200':
           description: List of viral subscriptions.
           headers:
             Cache-Control:
@@ -841,5 +841,5 @@ paths:
                   type: string
                   format: uuid
       responses:
-        "204":
+        '204':
           description: No Content

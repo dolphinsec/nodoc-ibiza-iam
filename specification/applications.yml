@@ -101,7 +101,7 @@ paths:
     get:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
 
   /EnterpriseApplications/{spId}/ServicePrincipalPermissions:
@@ -117,14 +117,14 @@ paths:
     get:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
 
   /EnterpriseApplications/UserSettings:
     get:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
 
   /ManagedApplications/List:
@@ -134,9 +134,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/managedApplicationList"
+              $ref: '#/components/schemas/managedApplicationList'
       responses:
-        "200":
+        '200':
           description: OK
 
   /ManagedApplications/{appId}/AppRoleAssignments:
@@ -151,12 +151,12 @@ paths:
     post:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
     get:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
 
   /MdmApplications/{appId}:
@@ -170,12 +170,12 @@ paths:
     put:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
     get:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
 
   /RegisteredApplications/{appId}:
@@ -189,7 +189,7 @@ paths:
     get:
       tags: [Application]
       responses:
-        "200":
+        '200':
           description: OK
 
   /RegisteredApplications/{appId}/Consent:
@@ -208,5 +208,5 @@ paths:
           schema:
             type: boolean
       responses:
-        "200":
+        '200':
           description: OK

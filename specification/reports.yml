@@ -7,14 +7,14 @@ components:
       in: query
       name: request
       schema:
-        $ref: "#/components/schemas/request"
+        $ref: '#/components/schemas/request'
 
 paths:
   /Reports:
     get:
       tags: [Reports]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Reports/{reportId}:
@@ -27,21 +27,21 @@ paths:
     get:
       tags: [Reports]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Reports/AuditActivityTypes:
     get:
       tags: [Reports]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Reports/AuditActivityTypesV2:
     get:
       tags: [Reports]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Reports/Groups/{groupId}:
@@ -54,16 +54,16 @@ paths:
     get:
       tags: [Reports]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Reports/GroupsActivitySummary:
     parameters:
-      - $ref: "#/components/parameters/Request"
+      - $ref: '#/components/parameters/Request'
     get:
       tags: [Reports]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Reports/ServicePrincipals/{spId}:
@@ -76,14 +76,14 @@ paths:
     get:
       tags: [Reports]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Reports/SignInEventsV2:
     post:
       tags: [Reports]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Reports/Users/{userId}:
@@ -96,14 +96,14 @@ paths:
     get:
       tags: [Reports]
       responses:
-        "200":
+        '200':
           description: OK
 
   /Reports/UsersActivitySummary:
     parameters:
-      - $ref: "#/components/parameters/Request"
+      - $ref: '#/components/parameters/Request'
     get:
       tags: [Reports]
       responses:
-        "200":
+        '200':
           description: OK
