@@ -4,7 +4,9 @@
     "@redocly/cli": "^1.12.0"
   },
   "scripts": {
+    "lint-spec": "redocly lint specification/openapi.yml",
     "bundle-spec": "redocly bundle -o build/openapi.yml specification/openapi.yml",
-    "build-collection": "npm run bundle-spec && openapi2postmanv2 -s build/openapi.yml -o postman/collections/collection.json -c postman_to_openapi.json"
+    "build-collection": "openapi2postmanv2 -s build/openapi.yml -o postman/collections/collection.json -c postman_to_openapi.json",
+    "build": "npm run bundle-spec && npm run build-collection"
   }
 }

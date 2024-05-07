@@ -1,3 +1,7 @@
+apis:
+  ibiza-iam:
+    root: specification/openapi.yml
+
 extends:
   - recommended
 
