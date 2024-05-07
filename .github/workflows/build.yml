@@ -18,8 +18,6 @@ jobs:
         run: npm install -g @redocly/cli@latest
       - name: Install OpenAPI-to-Postman
         run: npm install -g openapi-to-postmanv2@latest
-      - name: Install node dependencies
-        run: npm ci
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
@@ -43,6 +41,14 @@ jobs:
           git add ./postman
           git commit -m "automated collection build"
           git push
+      - name: Tag the repo
+        id: tag
+        run: |
+          TAG=v$(date -Iseconds | sed 's/[T:\+]/-/g')
+          echo "$TAG"
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          git tag -a $TAG -m "Published version $TAG"
+          git push origin $TAG
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
