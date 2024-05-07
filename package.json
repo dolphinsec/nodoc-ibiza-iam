@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "openapi-to-postmanv2": "^4.20.1",
-        "@redocly/cli": "^1.12.0"
+    "@redocly/cli": "^1.12.0"
   },
   "scripts": {
     "bundle-spec": "redocly bundle -o build/openapi.yml specification/openapi.yml",
