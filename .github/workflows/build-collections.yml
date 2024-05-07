@@ -3,6 +3,8 @@ on: [push]
 jobs:
   build-collections:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -21,8 +23,8 @@ jobs:
           npm run build-collection
       - name: Commit collection
         run: |
-          git config --global user.name 'collection-builder'
-          git config --global user.email 'x-delfino@users.noreply.github.com'
+          git config user.name 'collection-builder'
+          git config user.email 'x-delfino@users.noreply.github.com'
           git add ./postman
           git commit -m "automated collection build"
           git push
