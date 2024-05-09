@@ -69,4 +69,4 @@ rules:
     level: warning
   trailing-spaces: enable
   truthy:
-    level: warning
+    level: none

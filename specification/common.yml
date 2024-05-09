@@ -123,12 +123,10 @@ components:
               ClassName:
                 description: The class name of the exception object.
                 type: string
-                minLength: 1
                 example: Microsoft.Portal.Framework.Exceptions.ClientException
               Message:
                 description: The error message.
                 type: string
-                minLength: 1
                 example: One or more errors occurred.
               Data:
                 description: An object containing data relating to the exception.
@@ -142,6 +140,8 @@ components:
                 type: string
                 nullable: true
                 format: uuid
+                minLength: 36
+                maxLength: 36
                 example: c4865529-7684-47dd-8bd0-7224f80657cd
               Source:
                 description: The source of the exception.
@@ -167,6 +167,7 @@ components:
                     nullable: true
                   operationResults:
                     type: array
+                    nullable: true
                     items:
                       type: object
                       properties:
@@ -175,6 +176,7 @@ components:
                         displayName:
                           type: string
                           nullable: true
+                          minLength: 1
                           example: null
                         status:
                           type: integer
@@ -182,6 +184,7 @@ components:
                         details:
                           type: string
                           nullable: true
+                          minLength: 1
                           example: 'AADSTS500133: Assertion is not within its valid time range...'
                       required:
                         - objectId
@@ -326,8 +329,8 @@ components:
                   clientRequestId: null
                   internalTransactionId: 4d985488-68f1-451b-87bf-1c8ab776cd18
                   tenantId: null
-                  userObjectId": 6934698c-5dcf-4596-809d-bc5b566518e5
-                  exceptionType": ArgumentNullException
+                  userObjectId: 6934698c-5dcf-4596-809d-bc5b566518e5
+                  exceptionType: ArgumentNullException
 
   parameters:
     XMsClientRequestId:
@@ -380,6 +383,8 @@ components:
       required: true
       schema:
         type: integer
+        minimum: 1
+        maximum: 999
     filter:
       name: $filter
       description: A filter query to apply to results.

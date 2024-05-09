@@ -27,6 +27,9 @@ tags:
     description: >-
       Operations relating to Application management,
       including both Enterprise Applications, and Application Registrations.
+  - name: Application Registration
+    description: >-
+      Operations relating to Application Registration management.
   - name: Authentication
     description: >-
       Operations relating to Authentication,
@@ -45,8 +48,27 @@ tags:
     description: Operations relating to report generation and management.
   - name: Roles
     description: Operations relating to role management.
+  - name: Service Principal
+    description: >-
+      Operations relating to Service Principal (Enterprise Application) management.
   - name: Users and Groups
     description: Operations relating to user and group management.
+x-tagGroups: 
+  - name: Applicationb
+    tags:
+      - Application
+      - Application Registration
+      - Service Principal
+  - name: General
+    tags: 
+      - Authentication
+      - Directory
+      - Licensing
+      - Permissions
+      - Policies
+      - Reports
+      - Roles
+      - Users and Groups
 
 paths:
   /AccountSkus:
@@ -77,6 +99,20 @@ paths:
     $ref: account_sku.yml#/paths/~1AccountSkus~1UserAssignments
   /AccountSkus/Update:
     $ref: account_sku.yml#/paths/~1AccountSkus~1Update
+  /ApplicationSso/{spId}/SingleSignOn:
+    $ref: applications.yml#/paths/~1ApplicationSso~1{spId}~1SingleSignOn
+  /ApplicationSso/FederatedSsoDefaultClaimsV2:
+    $ref: applications.yml#/paths/~1ApplicationSso~1FederatedSsoDefaultClaimsV2
+  /ApplicationSso/UserExtensionProperties:
+    $ref: applications.yml#/paths/~1ApplicationSso~1UserExtensionProperties
+  /ApplicationSso/{spId}/ClaimIssuancePolicyId:
+    $ref: applications.yml#/paths/~1ApplicationSso~1{spId}~1ClaimIssuancePolicyId
+  /ApplicationSso/{spId}/SsoApplication:
+    $ref: applications.yml#/paths/~1ApplicationSso~1{spId}~1SsoApplication
+  /ApplicationSso/{spId}/FederatedClaimsPolicyV2:
+    $ref: applications.yml#/paths/~1ApplicationSso~1{spId}~1FederatedClaimsPolicyV2
+  /ApplicationSso/{spId}/FederatedSsoV2:
+    $ref: applications.yml#/paths/~1ApplicationSso~1{spId}~1FederatedSsoV2
   /AuthenticationMethods/AuthenticationMethodsPolicy:
     $ref: auth.yml#/paths/~1AuthenticationMethods~1AuthenticationMethodsPolicy
   /AuthenticationMethods/PasswordPolicy:
@@ -147,6 +183,8 @@ paths:
     $ref: groups.yml#/paths/~1Groups
   /Groups/{groupId}:
     $ref: groups.yml#/paths/~1Groups~1{groupId}
+  /Groups/{groupId}/GetDynamicGroupProperties:
+    $ref: groups.yml#/paths/~1Groups~1{groupId}~1GetDynamicGroupProperties
   /Groups/{groupId}/owners/count:
     $ref: groups.yml#/paths/~1Groups~1{groupId}~1owners~1count
   /Licenses/DirectoryMembersImageUrlFromIds:
@@ -159,8 +197,10 @@ paths:
     $ref: directories.yml#/paths/~1LoginTenantBrandings~1BannerImage~1{unknown}
   /ManagedApplications/List:
     $ref: applications.yml#/paths/~1ManagedApplications~1List
-  /ManagedApplications/{appId}/AppRoleAssignments:
-    $ref: applications.yml#/paths/~1ManagedApplications~1{appId}~1AppRoleAssignments
+  /ManagedApplications/{spId}:
+    $ref: applications.yml#/paths/~1ManagedApplications~1{spId}
+  /ManagedApplications/{spId}/AppRoleAssignments:
+    $ref: applications.yml#/paths/~1ManagedApplications~1{spId}~1AppRoleAssignments
   /MdmApplications/{appId}:
     $ref: applications.yml#/paths/~1MdmApplications~1{appId}
   /MoeraDomain:
@@ -197,14 +237,16 @@ paths:
     $ref: policies.yml#/paths/~1Policies~1PolicyCountUnderMaxAllowedLimit
   /Policies/Validate:
     $ref: policies.yml#/paths/~1Policies~1Validate
+  /RegisteredApplications:
+    $ref: applications.yml#/paths/~1RegisteredApplications
   /RegisteredApplications/{appId}:
     $ref: applications.yml#/paths/~1RegisteredApplications~1{appId}
   /RegisteredApplications/{appId}/Consent:
     $ref: applications.yml#/paths/~1RegisteredApplications~1{appId}~1Consent
-  /Reports:
-    $ref: reports.yml#/paths/~1Reports
-  /Reports/{reportId}:
-    $ref: reports.yml#/paths/~1Reports~1{reportId}
+  #  /Reports:
+  #    $ref: reports.yml#/paths/~1Reports
+  #  /Reports/{reportId}:
+  #    $ref: reports.yml#/paths/~1Reports~1{reportId}
   /Reports/AuditActivityTypes:
     $ref: reports.yml#/paths/~1Reports~1AuditActivityTypes
   /Reports/AuditActivityTypesV2:
@@ -213,8 +255,8 @@ paths:
     $ref: reports.yml#/paths/~1Reports~1Groups~1{groupId}
   /Reports/GroupsActivitySummary:
     $ref: reports.yml#/paths/~1Reports~1GroupsActivitySummary
-  /Reports/ServicePrincipals/{spId}:
-    $ref: reports.yml#/paths/~1Reports~1ServicePrincipals~1{spId}
+  #  /Reports/ServicePrincipals/{spId}:
+  #    $ref: reports.yml#/paths/~1Reports~1ServicePrincipals~1{spId}
   /Reports/SignInEventsV2:
     $ref: reports.yml#/paths/~1Reports~1SignInEventsV2
   /Reports/Users/{userId}:
@@ -223,8 +265,8 @@ paths:
     $ref: reports.yml#/paths/~1Reports~1UsersActivitySummary
   /RoamingSettings:
     $ref: misc.yml#/paths/~1RoamingSettings
-  /Roles/User/{userId}:
-    $ref: roles.yml#/paths/~1Roles~1User~1{userId}
+  #  /Roles/User/{userId}:
+  #    $ref: roles.yml#/paths/~1Roles~1User~1{userId}
   /Roles/User/{userId}/RoleAssignments:
     $ref: roles.yml#/paths/~1Roles~1User~1{userId}~1RoleAssignments
   /SecurityDefaults/GetSecurityDefaultStatus:

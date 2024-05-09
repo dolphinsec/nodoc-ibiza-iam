@@ -41,14 +41,10 @@ jobs:
           git add ./postman
           git commit -m "automated collection build"
           git push
-      - name: Tag the repo
+      - name: Generate tag string
         id: tag
         run: |
-          TAG=v$(date -Iseconds | sed 's/[T:\+]/-/g')
-          echo "$TAG"
-          echo "tag=$TAG" >> $GITHUB_OUTPUT
-      #    git tag -a $TAG -m "Published version $TAG"
-      #    git push origin $TAG
+          echo "tag=v$(date -u +%Y-%m-%dT%T)" >> $GITHUB_OUTPUT
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
