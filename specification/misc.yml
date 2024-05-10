@@ -26,10 +26,10 @@ paths:
   /FeatureConfigurations:
     get:
       parameters:
-      - in: query
-        name: SupportAU
-        schema:
-          type: boolean
+        - in: query
+          name: SupportAU
+          schema:
+            type: boolean
       responses:
         '200':
           description: OK
@@ -54,10 +54,10 @@ paths:
 
   /NamedNetworksV2/{id}:
     parameters:
-    - in: path
-      name: id
-      schema:
-        type: string
+      - in: path
+        name: id
+        schema:
+          type: string
     get:
       responses:
         '200':
@@ -69,13 +69,12 @@ paths:
         '200':
           description: OK
 
-
   /NamedNetworksV2/ValidatePolicySize/{id}:
     parameters:
-    - in: path
-      name: id
-      schema:
-        type: string
+      - in: path
+        name: id
+        schema:
+          type: string
     get:
       responses:
         '200':

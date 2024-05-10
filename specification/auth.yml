@@ -10,94 +10,78 @@ components:
         customerId:
           type: integer
         accountLockoutDurationMinutes:
-          type:
-          - integer
-          - 'null'
+          type: integer
+          nullable: true
         accountLockoutResetMinutes:
-          type:
-          - integer
-          - 'null'
+          type: integer
+          nullable: true
         accountLockoutThreshold:
-          type:
-          - integer
-          - 'null'
+          type: integer
+          nullable: true
         allowPhoneMenu:
           type: boolean
         blockForFraud:
           type: boolean
         callerId:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         defaultBypassTimespan:
           type: number
           format: float
         enableFraudAlert:
           type: boolean
         fraudCode:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         fraudNotificationEmailAddresses:
-          type:
-          - array
-          - 'null'
+          type: array
+          nullable: true
           items:
             type: string
         oneTimeBypassEmailAddresses:
-          type:
-          - array
-          - 'null'
+          type: array
+          nullable: true
           items:
             type: string
         pinAttempts:
-          type:
-          - integer
-          - 'null'
+          type: integer
+          nullable: true
         sayExtensionDigits:
           type: boolean
         smsTimeoutSeconds:
-          type:
-          - integer
-          - 'null'
+          type: integer
+          nullable: true
         caches:
-          type:
-          - array
-          - 'null'
+          type: array
+          nullable: true
           items:
             type: object
         notifications:
-          type:
-          - object
-          - 'null'
+          type: object
+          nullable: true
         notificationEmailAddresses:
-          type:
-          - array
-          - 'null'
+          type: array
+          nullable: true
           items:
             type: string
         greetings:
-          type:
-          - array
-          - 'null'
+          type: array
+          nullable: true
           items:
             type: object
         blockedUsers:
-          type:
-          - array
-          - 'null'
+          type: array
+          nullable: true
           items:
             type: string
         bypassedUsers:
-          type:
-          - array
-          - 'null'
+          type: array
+          nullable: true
           items:
             type: string
         groups:
-          type:
-          - array
-          - 'null'
+          type: array
+          nullable: true
           items:
             type: object
             properties:
@@ -106,16 +90,14 @@ components:
               groupName:
                 type: string
         etag:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
     OnPremisesPasswordResetPolicy:
       type: object
       properties:
         objectId:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         passwordWritebackSupported:
           type: boolean
         accountUnlockSupporte:
@@ -236,13 +218,11 @@ components:
               useForSignIn:
                 type: boolean
         voiceSettings:
-          type:
-          - object
-          - 'null'
+          type: object
+          nullable: true
         fidoSettings:
-          type:
-          - object
-          - 'null'
+          type: object
+          nullable: true
           properties:
             allowSelfServiceSetup:
               type: boolean
@@ -262,9 +242,8 @@ components:
                     type: string
                     format: uuid
         accessPassSettings:
-          type:
-          - object
-          - 'null'
+          type: object
+          nullable: true
           properties:
             passLifetimeInMinutes:
               type: integer
@@ -277,16 +256,15 @@ components:
             isUsableOnce:
               type: boolean
             notificationEmail:
-              type:
-              - string
-              - 'null'
+              type: string
+              nullable: true
 
 paths:
   /AuthenticationMethods/AuthenticationMethodsPolicy:
     get:
       tags: [Authentication]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
         '200':
           description: OK
@@ -307,7 +285,7 @@ paths:
     post:
       tags: [Authentication]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       requestBody:
         content:
           application/json:
@@ -341,7 +319,7 @@ paths:
     delete:
       tags: [Authentication]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       requestBody:
         content:
           application/json:
@@ -374,7 +352,7 @@ paths:
 
   /AuthenticationMethods/PasswordPolicy:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Authentication]
       responses:
@@ -399,17 +377,16 @@ paths:
               schema:
                 type: boolean
 
-
   /MultiFactorAuthentication/GetOrCreateExpandedTenantModel:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Authentication]
       parameters:
-      - in: query
-        name: tenantName
-        schema:
-          type: string
+        - in: query
+          name: tenantName
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -417,24 +394,23 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/TenantModel'
-                - type: object
-                  properties:
-                    etag:
-                      type:
-                      - string
-                      - 'null'
+                  - $ref: '#/components/schemas/TenantModel'
+                  - type: object
+                    properties:
+                      etag:
+                        type: string
+                        nullable: true
 
   /MultiFactorAuthentication/HasPaidSubscription:
     parameters:
-    - in: query
-      name: ignoreEnforcementDate
-      schema:
-        type: boolean
-    - in: query
-      name: trialRestrictionKey
-      schema:
-        type: string
+      - in: query
+        name: ignoreEnforcementDate
+        schema:
+          type: boolean
+      - in: query
+        name: trialRestrictionKey
+        schema:
+          type: string
     get:
       tags: [Authentication]
       responses:
@@ -487,18 +463,18 @@ paths:
     get:
       tags: [Authentication]
       parameters:
-      - in: query
-        name: skipToken
-        schema:
-          type: string
-      - in: query
-        name: upn
-        schema:
-          $ref: common.yml#/components/schemas/userPrincipalName
-      - in: query
-        name: enabledFilter
-        schema:
-          type: boolean
+        - in: query
+          name: skipToken
+          schema:
+            type: string
+        - in: query
+          name: upn
+          schema:
+            $ref: common.yml#/components/schemas/userPrincipalName
+        - in: query
+          name: enabledFilter
+          schema:
+            type: boolean
       responses:
         '200':
           description: OK
@@ -508,9 +484,8 @@ paths:
                 type: object
                 properties:
                   skipToken:
-                    type:
-                    - string
-                    - 'null'
+                    type: string
+                    nullable: true
                   items:
                     type: array
                     items:
@@ -520,10 +495,10 @@ paths:
     get:
       tags: [Authentication]
       parameters:
-      - in: query
-        name: licenseKey
-        schema:
-          type: string
+        - in: query
+          name: licenseKey
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -531,18 +506,18 @@ paths:
             application/json:
               schema:
                 allOf:
-                - ref: '#/components/schemas/TenantModel'
-                - type: object
-                  properties:
-                    etag:
-                      type: string
+                  - ref: '#/components/schemas/TenantModel'
+                  - type: object
+                    properties:
+                      etag:
+                        type: string
     patch:
       tags: [Authentication]
       parameters:
-      - in: query
-        name: licenseKey
-        schema:
-          type: string
+        - in: query
+          name: licenseKey
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -556,10 +531,9 @@ paths:
               schema:
                 type: string
 
-
   /PasswordReset/OnPremisesPasswordResetPolicies:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Authentication]
       responses:
@@ -578,7 +552,7 @@ paths:
 
   /PasswordReset/PasswordResetPolicies:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Authentication]
       responses:
@@ -605,11 +579,11 @@ paths:
 
   /PasswordReset/ResetPasswordByUpn:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
-    - in: query
-      name: UserPrincipalName
-      schema:
-        $ref: common.yml#/components/schemas/userPrincipalName
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - in: query
+        name: UserPrincipalName
+        schema:
+          $ref: common.yml#/components/schemas/userPrincipalName
     put:
       tags: [Authentication]
       requestBody:

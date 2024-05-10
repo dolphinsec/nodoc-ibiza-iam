@@ -14,9 +14,8 @@ components:
             excluded:
               $ref: '#/components/schemas/PolicyInclusivity'
         templateId:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
           format: uuid
         servicePrincipals:
           type: object
@@ -39,25 +38,21 @@ components:
                   items:
                     $ref: common.yml#/components/schemas/servicePrincipalId
             filter:
-              type:
-              - string
-              - 'null'
+              type: string
+              nullable: true
             includeAllMicrosoftApps:
               type: boolean
             excludeAllMicrosoftApps:
               type: boolean
             userActions:
-              type:
-              - object
-              - 'null'
+              type: object
+              nullable: true
             stepUpTags:
-              type:
-              - object
-              - 'null'
+              type: object
+              nullable: true
             networkAccess:
-              type:
-              - object
-              - 'null'
+              type: object
+              nullable: true
         controls:
           type: object
           properties:
@@ -68,9 +63,8 @@ components:
             challengeWithMfa:
               type: boolean
             requireAuthStrength:
-              type:
-              - object
-              - 'null'
+              type: object
+              nullable: true
             compliantDevice:
               type: boolean
             domainJoinedDevice:
@@ -129,9 +123,8 @@ components:
             secureApp:
               type: boolean
             networkAccessSecurity:
-              type:
-              - object
-              - 'null'
+              type: object
+              nullable: true
         conditions:
           type: object
           properties:
@@ -325,15 +318,13 @@ components:
             filter:
               $ref: '#/components/schemas/PolicyFilter'
             includedServicePrincipals:
-              type:
-              - array
-              - 'null'
+              type: array
+              nullable: true
               items:
                 $ref: common.yml#/components/schemas/servicePrincipalId
             excludedServicePrincipals:
-              type:
-              - array
-              - 'null'
+              type: array
+              nullable: true
               items:
                 $ref: common.yml#/components/schemas/servicePrincipalId
         isAllProtocolsEnabled:
@@ -373,9 +364,8 @@ components:
           type: integer
           enum: [0]
         timezoneId:
-          type:
-          - string
-          - 'null'
+          type: string
+          nullable: true
         dateRange:
           type: object
           properties:
@@ -414,9 +404,8 @@ components:
           items:
             $ref: common.yml#/components/schemas/objectId
         externalUsers:
-          type:
-          - object
-          - 'null'
+          type: object
+          nullable: true
           properties:
             guestOrExternalUserTypes:
               type: string
@@ -439,9 +428,8 @@ components:
           items:
             $ref: common.yml#/components/schemas/userId
     PolicyFilter:
-      type:
-      - object
-      - 'null'
+      type: object
+      nullable: true
       properties:
         mode:
           type: string
@@ -490,12 +478,12 @@ paths:
     get:
       tags: [Policies]
       parameters:
-      - $ref: common.yml#/components/parameters/nextLink
-      - $ref: common.yml#/components/parameters/top
-      - in: query
-        name: filter
-        schema:
-          type: string
+        - $ref: common.yml#/components/parameters/nextLink
+        - $ref: common.yml#/components/parameters/top
+        - in: query
+          name: filter
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -551,7 +539,7 @@ paths:
 
   /Policies/Validate:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       tags: [Policies]
       requestBody:
@@ -579,19 +567,19 @@ paths:
     get:
       tags: [Policies]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-      - in: query
-        name: top
-        required: true
-        schema:
-          type: integer
-          minimum: 1
-          maximum: 999
-      - in: query
-        name: nextLink
-        required: true
-        schema:
-          $ref: common.yml#/components/schemas/nextLink
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - in: query
+          name: top
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 999
+        - in: query
+          name: nextLink
+          required: true
+          schema:
+            $ref: common.yml#/components/schemas/nextLink
       responses:
         '200':
           description: OK
@@ -624,9 +612,8 @@ paths:
                           type: string
                           format: date-time
                         modifiedDateTime:
-                          type:
-                          - string
-                          - 'null'
+                          type: string
+                          nullable: true
                           format: date-time
                   nextLink:
                     $ref: common.yml#/components/schemas/nextLink
@@ -635,13 +622,13 @@ paths:
 
   /Policies/{policyId}:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
-    - in: path
-      name: policyId
-      required: true
-      schema:
-        type: string
-        format: uuid
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - in: path
+        name: policyId
+        required: true
+        schema:
+          type: string
+          format: uuid
     put:
       tags: [Policies]
       requestBody:

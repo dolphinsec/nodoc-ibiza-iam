@@ -47,8 +47,8 @@ rules:
     max-spaces-after: 1
   indentation:
     spaces: 2
-    indent-sequences: false
-    check-multi-line-strings: true
+    indent-sequences: true
+    check-multi-line-strings: false
   key-duplicates: enable
   key-ordering: disable
   line-length:
@@ -69,4 +69,4 @@ rules:
     level: warning
   trailing-spaces: enable
   truthy:
-    level: warning
+    level: none

@@ -46,8 +46,7 @@ components:
       type: string
       description: The unique string ID of the account (tenant) & SKU combination.
       minLength: 36
-      examples:
-      - contoso:DEVELOPERPACK_E5
+      example: contoso:DEVELOPERPACK_E5
     GroupAssignment:
       type: object
       description: pending
@@ -62,28 +61,27 @@ components:
           description: A list of licenses assigned to the group.
           items:
             allOf:
-            - $ref: '#/components/schemas/License'
-            - type: object
-              properties:
-                hasErrors:
-                  type:
-                  - boolean
-                  - 'null'
-                  description: Does the license assignment have errors?
-                  examples: [true]
-                errorCount:
-                  type: number
-                  description: Number of errors that the license assignment has.
-                  examples: [1]
+              - $ref: '#/components/schemas/License'
+              - type: object
+                properties:
+                  hasErrors:
+                    type: boolean
+                    nullable: true
+                    description: Does the license assignment have errors?
+                    example: true
+                  errorCount:
+                    type: number
+                    description: Number of errors that the license assignment has.
+                    example: 1
         licenseProcessingStatus:
           type: string
           enum: [Unknown, Queued, Ready, Processing]
           description: The status of license processing.
-          examples: [Ready]
+          example: Ready
         groupType:
           type: string
           enum: ['', security, mailenabledsecurity]
-          examples: [security]
+          example: security
     IndirectLicenseError:
       type: object
       description: pending
@@ -107,8 +105,8 @@ components:
           items:
             type: string
       required:
-      - accountSkuId
-      - disabledServicePlans
+        - accountSkuId
+        - disabledServicePlans
     LicenseAssignmentDetail:
       type: object
       properties:
@@ -133,13 +131,13 @@ components:
     LicenseErrorType:
       type: string
       enum:
-      - none
-      - mutuallyexclusiveviolation
-      - countviolation
-      - other
-      - dependencyviolation
-      - prohibitedinusagelocationviolation
-      - uniquenessviolation
+        - none
+        - mutuallyexclusiveviolation
+        - countviolation
+        - other
+        - dependencyviolation
+        - prohibitedinusagelocationviolation
+        - uniquenessviolation
     LicenseModify:
       type: object
       properties:
@@ -174,12 +172,12 @@ components:
                 items:
                   $ref: '#/components/schemas/License'
             required:
-            - objectId
-            - addLicenses
-            - removeLicenses
-            - updateLicenses
+              - objectId
+              - addLicenses
+              - removeLicenses
+              - updateLicenses
       required:
-      - assignments
+        - assignments
     ServicePlanStatus:
       type: object
       description: The status of the SKU service.
@@ -248,12 +246,12 @@ paths:
     get:
       tags: [Licensing]
       parameters:
-      - in: query
-        name: backfillTenants
-        schema:
-          type: boolean
-        required: false
-      - $ref: common.yml#/components/parameters/filter
+        - in: query
+          name: backfillTenants
+          schema:
+            type: boolean
+          required: false
+        - $ref: common.yml#/components/parameters/filter
       responses:
         '200':
           description: OK
@@ -297,7 +295,7 @@ paths:
     post:
       tags: [Licensing]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       requestBody:
         content:
           application/json:
@@ -315,7 +313,7 @@ paths:
     post:
       tags: [Licensing]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       requestBody:
         content:
           application/json:
@@ -348,12 +346,12 @@ paths:
 
   /AccountSkus/Group/{groupId}:
     parameters:
-    - in: path
-      name: groupId
-      description: The object ID of the group to retrieve Account SKU records for.
-      required: true
-      schema:
-        $ref: common.yml#/components/schemas/userId
+      - in: path
+        name: groupId
+        description: The object ID of the group to retrieve Account SKU records for.
+        required: true
+        schema:
+          $ref: common.yml#/components/schemas/userId
     get:
       tags: [Licensing]
       responses:
@@ -395,15 +393,15 @@ paths:
 
   /AccountSkus/Group/{groupId}/AssignmentErrors:
     parameters:
-    - in: path
-      name: groupId
-      description: The object ID of the group to retrieve assignment errors for.
-      required: true
-      schema:
-        $ref: common.yml#/components/schemas/groupId
-    - $ref: common.yml#/components/parameters/top
-    - $ref: common.yml#/components/parameters/nextLink
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - in: path
+        name: groupId
+        description: The object ID of the group to retrieve assignment errors for.
+        required: true
+        schema:
+          $ref: common.yml#/components/schemas/groupId
+      - $ref: common.yml#/components/parameters/top
+      - $ref: common.yml#/components/parameters/nextLink
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Licensing]
       responses:
@@ -442,25 +440,25 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: common.yml#/components/schemas/PagedResponse
-                - type: object
-                  properties:
-                    sortedList:
-                      type: boolean
-                      items:
-                        type: array
+                  - $ref: common.yml#/components/schemas/PagedResponse
+                  - type: object
+                    properties:
+                      sortedList:
+                        type: boolean
                         items:
-                          $ref: '#/components/schemas/UserAssignment'
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/UserAssignment'
 
   /AccountSkus/Group/{groupId}/Reprocess:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
-    - in: path
-      name: groupId
-      description: The object ID of the group to reprocess Account SKU records for.
-      required: true
-      schema:
-        $ref: common.yml#/components/schemas/groupId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - in: path
+        name: groupId
+        description: The object ID of the group to reprocess Account SKU records for.
+        required: true
+        schema:
+          $ref: common.yml#/components/schemas/groupId
     post:
       tags: [Licensing]
       responses:
@@ -494,9 +492,9 @@ paths:
     get:
       tags: [Licensing]
       parameters:
-      - $ref: '#/components/parameters/accountSkuId'
-      - $ref: common.yml#/components/parameters/searchText
-      - $ref: common.yml#/components/parameters/sortOrder
+        - $ref: '#/components/parameters/accountSkuId'
+        - $ref: common.yml#/components/parameters/searchText
+        - $ref: common.yml#/components/parameters/sortOrder
       responses:
         '200':
           description: OK
@@ -533,24 +531,24 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: common.yml#/components/schemas/PagedResponse
-                - type: object
-                  properties:
-                    items:
-                      type: array
+                  - $ref: common.yml#/components/schemas/PagedResponse
+                  - type: object
+                    properties:
                       items:
-                        $ref: '#/components/schemas/GroupAssignment'
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/GroupAssignment'
 
   /AccountSkus/GroupsWithLicensingErrors:
     get:
       tags: [Licensing]
       parameters:
-      - $ref: common.yml#/components/parameters/top
-      - $ref: common.yml#/components/parameters/nextLink
-      - in: query
-        name: includeErrorCount
-        schema:
-          type: boolean
+        - $ref: common.yml#/components/parameters/top
+        - $ref: common.yml#/components/parameters/nextLink
+        - in: query
+          name: includeErrorCount
+          schema:
+            type: boolean
       responses:
         '200':
           description: Ok
@@ -587,19 +585,19 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: common.yml#/components/schemas/PagedResponse
-                - type: object
-                  properties:
-                    items:
-                      type: array
+                  - $ref: common.yml#/components/schemas/PagedResponse
+                  - type: object
+                    properties:
                       items:
-                        $ref: '#/components/schemas/GroupAssignment'
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/GroupAssignment'
 
   /AccountSkus/Remove:
     post:
       tags: [Licensing]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       requestBody:
         content:
           application/json:
@@ -615,16 +613,16 @@ paths:
 
   /AccountSkus/User/{userId}:
     parameters:
-    - in: path
-      name: userId
-      description: The object ID of the user to retrieve Account SKU records for.
-      required: true
-      schema:
-        $ref: common.yml#/components/schemas/userId
+      - in: path
+        name: userId
+        description: The object ID of the user to retrieve Account SKU records for.
+        required: true
+        schema:
+          $ref: common.yml#/components/schemas/userId
     get:
       tags: [Licensing]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
         '200':
           description: Ok
@@ -635,12 +633,12 @@ paths:
 
   /AccountSkus/User/{userId}/Reprocess:
     parameters:
-    - in: path
-      name: userId
-      description: The object ID of the user to reprocess Account SKU records for.
-      required: true
-      schema:
-        $ref: common.yml#/components/schemas/userId
+      - in: path
+        name: userId
+        description: The object ID of the user to reprocess Account SKU records for.
+        required: true
+        schema:
+          $ref: common.yml#/components/schemas/userId
     post:
       tags: [Licensing]
       responses:
@@ -674,12 +672,12 @@ paths:
     get:
       tags: [Licensing]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-      - $ref: '#/components/parameters/accountSkuId'
-      - $ref: common.yml#/components/parameters/nextLink
-      - $ref: common.yml#/components/parameters/searchText
-      - $ref: common.yml#/components/parameters/sortOrder
-      - $ref: common.yml#/components/parameters/columnName
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: '#/components/parameters/accountSkuId'
+        - $ref: common.yml#/components/parameters/nextLink
+        - $ref: common.yml#/components/parameters/searchText
+        - $ref: common.yml#/components/parameters/sortOrder
+        - $ref: common.yml#/components/parameters/columnName
       responses:
         '200':
           description: OK
@@ -687,21 +685,21 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: common.yml#/components/schemas/PagedResponse
-                - type: object
-                  properties:
-                    isSorted:
-                      type: boolean
-                    items:
-                      type: array
+                  - $ref: common.yml#/components/schemas/PagedResponse
+                  - type: object
+                    properties:
+                      isSorted:
+                        type: boolean
                       items:
-                        $ref: '#/components/schemas/UserAssignment'
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/UserAssignment'
 
   /AccountSkus/Update:
     post:
       tags: [Licensing]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       requestBody:
         content:
           application/json:
@@ -717,7 +715,7 @@ paths:
 
   /Licenses/DirectoryMembersImageUrlFromIds:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       tags: [Licensing]
       requestBody:
@@ -774,7 +772,7 @@ paths:
 
   /ViralSubscriptions:
     parameters:
-    - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       tags: [Licensing]
       responses:
@@ -832,7 +830,7 @@ paths:
     delete:
       tags: [Licensing]
       parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
+        - $ref: common.yml#/components/parameters/XMsClientRequestId
       requestBody:
         content:
           application/json:
