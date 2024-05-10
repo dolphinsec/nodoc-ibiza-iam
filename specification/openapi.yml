@@ -7,7 +7,7 @@ servers:
 - url: https://main.iam.ad.ext.azure.com/api
 
 security:
-- OAuth2: [read]
+- OAuth2: [74658136-14ec-4630-ad9b-26e160ff0fc6/user_impersonation]
 
 components:
   securitySchemes:
@@ -17,7 +17,8 @@ components:
         authorizationCode:
           authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
           tokenUrl: https://login.microsoftonline.com/common/oauth2/token
-          scopes: {}
+          scopes:
+            74658136-14ec-4630-ad9b-26e160ff0fc6/user_impersonation: User impersonation scope
 
 tags:
 - name: Application
