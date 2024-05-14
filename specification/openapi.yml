@@ -138,6 +138,8 @@ paths:
     $ref: policies.yml#/paths/~1ClassicPolicies
   /ClassicPolicies/Delete:
     $ref: policies.yml#/paths/~1ClassicPolicies~1Delete
+  /ClassicPolicies/Detail:
+    $ref: policies.yml#/paths/~1ClassicPolicies~1Detail
   /ClassicPolicies/Detail2:
     $ref: policies.yml#/paths/~1ClassicPolicies~1Detail2
   /ClassicPolicies/Disable:
