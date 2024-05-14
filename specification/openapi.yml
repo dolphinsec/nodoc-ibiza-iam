@@ -100,6 +100,12 @@ paths:
     $ref: account_sku.yml#/paths/~1AccountSkus~1UserAssignments
   /AccountSkus/Update:
     $ref: account_sku.yml#/paths/~1AccountSkus~1Update
+  /Applications/Gallery:
+   $ref: applications.yml#/paths/~1Applications~1Gallery
+  /Applications/Gallery/{appId}:
+   $ref: applications.yml#/paths/~1Applications~1Gallery~1{appId}
+  /ApplicationManagement/ApplicationObject/{appId}:
+   $ref: applications.yml#/paths/~1ApplicationManagement~1ApplicationObject~1{appId}
   /ApplicationSso/{spId}/SingleSignOn:
     $ref: applications.yml#/paths/~1ApplicationSso~1{spId}~1SingleSignOn
   /ApplicationSso/FederatedSsoDefaultClaimsV2:
@@ -110,8 +116,8 @@ paths:
     $ref: applications.yml#/paths/~1ApplicationSso~1{spId}~1ClaimIssuancePolicyId
   /ApplicationSso/{spId}/SsoApplication:
     $ref: applications.yml#/paths/~1ApplicationSso~1{spId}~1SsoApplication
-  /ApplicationSso/{spId}/FederatedClaimsPolicyV2:
-    $ref: applications.yml#/paths/~1ApplicationSso~1{spId}~1FederatedClaimsPolicyV2
+  /ApplicationSso/{spId}/FederatedSsoClaimsPolicyV2:
+    $ref: applications.yml#/paths/~1ApplicationSso~1{spId}~1FederatedSsoClaimsPolicyV2
   /ApplicationSso/{spId}/FederatedSsoV2:
     $ref: applications.yml#/paths/~1ApplicationSso~1{spId}~1FederatedSsoV2
   /AuthenticationMethods/AuthenticationMethodsPolicy:
@@ -202,8 +208,10 @@ paths:
     $ref: applications.yml#/paths/~1ManagedApplications~1{spId}
   /ManagedApplications/{spId}/AppRoleAssignments:
     $ref: applications.yml#/paths/~1ManagedApplications~1{spId}~1AppRoleAssignments
-  /MdmApplications/{appId}:
-    $ref: applications.yml#/paths/~1MdmApplications~1{appId}
+  /MdmApplications:
+    $ref: applications.yml#/paths/~1MdmApplications
+  /MdmApplications/{spId}:
+    $ref: applications.yml#/paths/~1MdmApplications~1{spId}
   /MoeraDomain:
     $ref: misc.yml#/paths/~1MoeraDomain
   /MultiFactorAuthentication/GetOrCreateExpandedTenantModel:

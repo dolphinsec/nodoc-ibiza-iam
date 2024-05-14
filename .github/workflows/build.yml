@@ -44,7 +44,7 @@ jobs:
       - name: Generate tag string
         id: tag
         run: |
-          echo "tag=v$(date -u +%Y-%m-%dT%T)" >> $GITHUB_OUTPUT
+          echo "tag=v$(date -u +%Y-%m-%dT%H-%M-%S)" >> $GITHUB_OUTPUT
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
