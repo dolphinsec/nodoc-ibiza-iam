@@ -1775,6 +1775,10 @@ paths:
 
   /WhatIf/Evaluate:
     post:
+      summary: Evaluate policy
+      description: >-
+        Evaluate policy using WhatIf service.
+      operationId: WhatIf.Evaluate
       tags: [Policies]
       requestBody:
         content:
@@ -1809,9 +1813,13 @@ paths:
                         deviceState:
                           $ref: '#/components/schemas/deviceStateBase'
                 ipAddress:
+                  description: IP address of the access scenario to query.
                   type: string
+                  example: 123.123.123.x
                 country:
+                  description: Country of the access scenario to query.
                   type: string
+                  example: UnknownAreas
                 device:
                   type: object
                 authenticationStrengths:

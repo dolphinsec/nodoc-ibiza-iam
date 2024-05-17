@@ -152,20 +152,22 @@ paths:
     $ref: misc.yml#/paths/~1Common~1GetObjectsByObjectIds
   /Devices:
     $ref: misc.yml#/paths/~1Devices
-  /Directories:
-    $ref: directories.yml#/paths/~1Directories
+#  /Directories:
+#    $ref: directories.yml#/paths/~1Directories
   /Directories/ADConnectStatus:
     $ref: directories.yml#/paths/~1Directories~1ADConnectStatus
-  /Directories/DomainAvailability:
-    $ref: directories.yml#/paths/~1Directories~1DomainAvailability
+  /Directories/B2C:
+    $ref: directories.yml#/paths/~1Directories~1B2C
+  /Directories/DomainAvailability/{domainPrefix}:
+    $ref: directories.yml#/paths/~1Directories~1DomainAvailability~1{domainPrefix}
   /Directories/DeletionRestrictions:
     $ref: directories.yml#/paths/~1Directories~1DeletionRestrictions
   /Directories/GetSeamlessSingleSignOnDomains:
     $ref: directories.yml#/paths/~1Directories~1GetSeamlessSingleSignOnDomains
   /Directories/GetPasswordSyncStatus:
     $ref: directories.yml#/paths/~1Directories~1GetPasswordSyncStatus
-  /Directories/List:
-    $ref: directories.yml#/paths/~1Directories~1List
+#  /Directories/List:
+#    $ref: directories.yml#/paths/~1Directories~1List
   /Directories/Properties:
     $ref: directories.yml#/paths/~1Directories~1Properties
   /Directories/PropertiesV2:
@@ -200,10 +202,10 @@ paths:
     $ref: account_sku.yml#/paths/~1Licenses~1DirectoryMembersImageUrlFromIds
   /LoginTenantBrandings:
     $ref: directories.yml#/paths/~1LoginTenantBrandings
-  /LoginTenantBrandings/0:
-    $ref: directories.yml#/paths/~1LoginTenantBrandings~10
-  /LoginTenantBrandings/BannerImage/{unknown}:
-    $ref: directories.yml#/paths/~1LoginTenantBrandings~1BannerImage~1{unknown}
+  /LoginTenantBrandings/{locale}:
+    $ref: directories.yml#/paths/~1LoginTenantBrandings~1{locale}
+  /LoginTenantBrandings/BannerImage/{locale}:
+    $ref: directories.yml#/paths/~1LoginTenantBrandings~1BannerImage~1{locale}
   /ManagedApplications/List:
     $ref: applications.yml#/paths/~1ManagedApplications~1List
   /ManagedApplications/{spId}:
@@ -284,6 +286,8 @@ paths:
   #    $ref: roles.yml#/paths/~1Roles~1User~1{userId}
   /Roles/User/{userId}/RoleAssignments:
     $ref: roles.yml#/paths/~1Roles~1User~1{userId}~1RoleAssignments
+  /SecurityDefaults/Configuration:
+    $ref: directories.yml#/paths/~1SecurityDefaults~1Configuration
   /SecurityDefaults/GetSecurityDefaultStatus:
     $ref: directories.yml#/paths/~1SecurityDefaults~1GetSecurityDefaultStatus
   /SecurityDefaults/UpdateSecurityDefaultOnSave:

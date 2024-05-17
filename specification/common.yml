@@ -436,6 +436,7 @@ components:
     objectId:
       description: The ID of the directory object.
       type: string
+      nullable: true
       format: uuid
       minLength: 36
       maxLength: 36
@@ -443,6 +444,7 @@ components:
     tenantId:
       description: The unique ID of the tenant.
       type: string
+      nullable: true
       format: uuid
       minLength: 36
       maxLength: 36

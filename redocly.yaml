@@ -13,7 +13,7 @@ rules:
   operation-summary: warn
   operation-tag-defined: warn
   parameter-description: warn
-  required-string-property-missing-min-length: warn
+  required-string-property-missing-min-length: off
   response-contains-header:
     severity: warn
     names:
