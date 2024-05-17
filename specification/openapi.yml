@@ -220,10 +220,14 @@ paths:
     $ref: auth.yml#/paths/~1MultiFactorAuthentication~1GetOrCreateExpandedTenantModel
   /MultiFactorAuthentication/HardwareToken/enable:
     $ref: auth.yml#/paths/~1MultiFactorAuthentication~1HardwareToken~1enable
+  /MultiFactorAuthentication/HardwareToken/listUploads:
+    $ref: auth.yml#/paths/~1MultiFactorAuthentication~1HardwareToken~1listUploads
   /MultiFactorAuthentication/HardwareToken/users:
     $ref: auth.yml#/paths/~1MultiFactorAuthentication~1HardwareToken~1users
   /MultiFactorAuthentication/HasPaidSubscription:
     $ref: auth.yml#/paths/~1MultiFactorAuthentication~1HasPaidSubscription
+  /MultiFactorAuthentication/TenantModel:
+    $ref: auth.yml#/paths/~1MultiFactorAuthentication~1TenantModel
   /PasswordReset/OnPremisesPasswordResetPolicies:
     $ref: auth.yml#/paths/~1PasswordReset~1OnPremisesPasswordResetPolicies
   /PasswordReset/PasswordResetPolicies:
