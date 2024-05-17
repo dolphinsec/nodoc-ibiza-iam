@@ -390,7 +390,7 @@ components:
       description: A filter query to apply to results.
       in: query
       schema:
-        type: integer
+        type: string
 
   schemas:
     nextLink:
