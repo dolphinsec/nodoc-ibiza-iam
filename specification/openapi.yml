@@ -216,8 +216,8 @@ paths:
     $ref: applications.yml#/paths/~1MdmApplications
   /MdmApplications/{spId}:
     $ref: applications.yml#/paths/~1MdmApplications~1{spId}
-  /MoeraDomain:
-    $ref: misc.yml#/paths/~1MoeraDomain
+#  /MoeraDomain:
+#    $ref: misc.yml#/paths/~1MoeraDomain
   /MultiFactorAuthentication/GetOrCreateExpandedTenantModel:
     $ref: auth.yml#/paths/~1MultiFactorAuthentication~1GetOrCreateExpandedTenantModel
   /MultiFactorAuthentication/HardwareToken/enable:
@@ -230,6 +230,16 @@ paths:
     $ref: auth.yml#/paths/~1MultiFactorAuthentication~1HasPaidSubscription
   /MultiFactorAuthentication/TenantModel:
     $ref: auth.yml#/paths/~1MultiFactorAuthentication~1TenantModel
+  /NamedNetworksV2:
+    $ref: misc.yml#/paths/~1NamedNetworksV2
+  /NamedNetworksV2/CountryCodes:
+    $ref: misc.yml#/paths/~1NamedNetworksV2~1CountryCodes
+  /NamedNetworksV2/{id}:
+    $ref: misc.yml#/paths/~1NamedNetworksV2~1{id}
+  /NamedNetworksV2/ValidatePolicySize:
+    $ref: misc.yml#/paths/~1NamedNetworksV2~1ValidatePolicySize
+  /NamedNetworksV2/ValidatePolicySize/{id}:
+    $ref: misc.yml#/paths/~1NamedNetworksV2~1ValidatePolicySize~1{id}
   /PasswordReset/OnPremisesPasswordResetPolicies:
     $ref: auth.yml#/paths/~1PasswordReset~1OnPremisesPasswordResetPolicies
   /PasswordReset/PasswordResetPolicies:
@@ -280,8 +290,8 @@ paths:
     $ref: reports.yml#/paths/~1Reports~1Users~1{userId}
   /Reports/UsersActivitySummary:
     $ref: reports.yml#/paths/~1Reports~1UsersActivitySummary
-  /RoamingSettings:
-    $ref: misc.yml#/paths/~1RoamingSettings
+#  /RoamingSettings:
+#    $ref: misc.yml#/paths/~1RoamingSettings
   #  /Roles/User/{userId}:
   #    $ref: roles.yml#/paths/~1Roles~1User~1{userId}
   /Roles/User/{userId}/RoleAssignments:
