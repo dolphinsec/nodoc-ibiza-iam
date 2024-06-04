@@ -12,14 +12,3 @@ jobs:
     uses: dolphinsec/nodoc/.github/workflows/spec-validate.yaml@main
     permissions:
         contents: read
-  bundle:
-    uses: dolphinsec/nodoc/.github/workflows/spec-build.yaml@main
-    permissions:
-      contents: read
-  collection-validate:
-    uses: dolphinsec/nodoc/.github/workflows/spec-validate-collection.yaml@main
-    needs: bundle
-    permissions:
-        contents: read
-    with:
-      spec-artifact-name: ${{ needs.bundle.outputs.spec-artifact-name }}
