@@ -9,7 +9,7 @@ id = 302f26e0-2cee-4306-8062-6a0a4cfad305
 
 [config.relations.collections]
 rootDirectory = postman/collections
-files[] = {"id":"18149627-134ddc8e-d71f-4dda-8889-44736cfb6ec6","path":"collection.json","metaData":{}}
+files[] = {"id":"18149627-a1d44a35-0886-49d2-9fc3-78937113c898","path":"Ibiza IAM.json","metaData":{}}
 
 [config.relations.collections.metaData]
 
