@@ -66,7 +66,6 @@ paths:
       responses:
         '200':
           description: OK
-                
 
   /Common/GetObjectsByObjectIds:
     parameters:
@@ -183,11 +182,11 @@ paths:
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
-#  /MoeraDomain:
-#    post:
-#      responses:
-#        '200':
-#          description: OK
+  #  /MoeraDomain:
+  #    post:
+  #      responses:
+  #        '200':
+  #          description: OK
 
   /NamedNetworks:
     parameters:
@@ -330,12 +329,25 @@ paths:
                       example: AF
         4XX:
           $ref: common.yml#/components/responses/ClientException
-                    
+
+  /RequestApprovals/V2/PolicyTemplates:
+    get:
+      parameters:
+        - name: type
+          description: The type of policy template
+          in: query
+          schema:
+            type: string
+            enum: [AdminConsentFlow]
+      responses:
+        '200':
+          description: OK
 
   /NamedNetworksV2/{id}:
     parameters:
       - in: path
         name: id
+        required: true
         schema:
           type: string
     get:
@@ -355,6 +367,7 @@ paths:
     parameters:
       - in: path
         name: id
+        required: true
         schema:
           type: string
     get:

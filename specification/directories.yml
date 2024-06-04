@@ -333,12 +333,12 @@ components:
           example: LinkedIn Users
 
 paths:
-#  /Directories:
-#    post:
-#      tags: [Directory]
-#      responses:
-#        '200':
-#          description: OK
+  #  /Directories:
+  #    post:
+  #      tags: [Directory]
+  #      responses:
+  #        '200':
+  #          description: OK
 
   /Directories/B2C:
     post:
@@ -533,6 +533,7 @@ paths:
       - name: domainPrefix
         description: The domain prefix to check.
         in: path
+        required: true
         schema:
           type: string
           example: contoso
@@ -688,6 +689,24 @@ paths:
   #      responses:
   #        '200':
   #          description: OK
+
+  /Directories/FeatureSettingsProperties:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+    get:
+      tags: [Directory]
+      responses:
+        '200':
+          description: OK
+
+  /Directories/LcmSettings:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+    get:
+      tags: [Directory]
+      responses:
+        '200':
+          description: OK
 
   /Directories/Properties:
     parameters:
@@ -1071,6 +1090,19 @@ paths:
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
+  /Directories/{tenantId}/Details:
+    parameters:
+      - name: tenantId
+        description: The unique identifier of the tenant to retrieve details for.
+        in: path
+        required: true
+        schema:
+          $ref: common.yml#/components/schemas/tenantId
+    get:
+      responses:
+        '200':
+          description: OK
+
   /directoryObjects/{objectId}:
     parameters:
       - $ref: common.yml#/components/parameters/XMsClientRequestId
@@ -1384,6 +1416,7 @@ paths:
       - name: locale
         description: A specific tenant branding locale.
         in: path
+        required: true
         schema:
           type: string
     get:
@@ -1505,6 +1538,7 @@ paths:
       - name: locale
         description: A specific tenant branding locale.
         in: path
+        required: true
         schema:
           type: string
     get:

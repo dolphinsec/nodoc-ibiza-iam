@@ -92,7 +92,7 @@ paths:
               schema:
                 type: array
                 items:
-                  - $ref: '#/components/schemas/auditActivityType'
+                  $ref: '#/components/schemas/auditActivityType'
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
@@ -142,7 +142,7 @@ paths:
               schema:
                 type: array
                 items:
-                  - $ref: '#/components/schemas/auditActivityType'
+                  $ref: '#/components/schemas/auditActivityType'
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
@@ -455,31 +455,31 @@ paths:
                     conditionalAccessPolicies:
                       type: array
                       items:
-                        - type: object
-                          properties:
-                            id:
-                              description: The unique ID of the conditional access policy.
+                        type: object
+                        properties:
+                          id:
+                            description: The unique ID of the conditional access policy.
+                            type: string
+                            example: e426398b-38bb-4413-9978-87514f2b6194
+                          displayName:
+                            description: The display name of the conditional access policy.
+                            type: string
+                            example: Require MFA for all users
+                          enforcedAccessControls:
+                            description: The access controls enforced by the policy.
+                            type: array
+                            items:
                               type: string
-                              example: e426398b-38bb-4413-9978-87514f2b6194
-                            displayName:
-                              description: The display name of the conditional access policy.
+                              example: Mfa
+                          enforcedSessionControls:
+                            description: The session controls enforced by the policy.
+                            type: array
+                            items:
                               type: string
-                              example: Require MFA for all users
-                            enforcedAccessControls:
-                              description: The access controls enforced by the policy.
-                              type: array
-                              items:
-                                type: string
-                                example: Mfa
-                            enforcedSessionControls:
-                              description: The session controls enforced by the policy.
-                              type: array
-                              items:
-                                type: string
-                                example: ResiliencyDefaults
-                            result:
-                              type: integer
-                              example: 2
+                              example: ResiliencyDefaults
+                          result:
+                            type: integer
+                            example: 2
         4XX:
           $ref: common.yml#/components/responses/ClientException
 

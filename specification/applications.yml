@@ -1756,7 +1756,7 @@ paths:
                     principalIds:
                       type: array
                       items:
-                        - $ref: common.yml#/components/schemas/userId
+                        $ref: common.yml#/components/schemas/userId
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
