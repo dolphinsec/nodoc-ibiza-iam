@@ -26,6 +26,6 @@ jobs:
       postman-api-version: '${{github.ref_name}}'
       api-root-path: './specification/openapi.yml'
       release-tag: ${{ github.ref_name }}
-      postman-api-id: ${{ vars.postmanApiId }}
+      postman-api-id: ${{ vars.POSTMANAPIID }}
     secrets:
-      postman-api-key: ${{ secrets.postmanApiKey }}
+      postman-api-key: ${{ secrets.POSTMANAPIKEY }}
