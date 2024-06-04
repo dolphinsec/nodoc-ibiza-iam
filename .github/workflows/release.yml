@@ -11,6 +11,8 @@ permissions: {}
 jobs:
   bundle:
     uses: dolphinsec/nodoc/.github/workflows/spec-build.yaml@main
+    permissions:
+        contents: read
 
   create-release:
     name: Create release

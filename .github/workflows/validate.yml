@@ -1,6 +1,8 @@
 ---
 name: Validate OpenAPI Spec
 
+permissions: {}
+
 on:
   pull_request:
     branches:
@@ -8,3 +10,5 @@ on:
 jobs:
   validate:
     uses: dolphinsec/nodoc/.github/workflows/spec-validate.yaml@main
+    permissions:
+        contents: read

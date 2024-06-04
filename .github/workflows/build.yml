@@ -6,9 +6,14 @@ on:
     branches:
       - main
 
+
 jobs:
   validate:
     uses: dolphinsec/nodoc/.github/workflows/spec-validate.yaml@main
+    permissions:
+        contents: read
   bundle:
     uses: dolphinsec/nodoc/.github/workflows/spec-build.yaml@main
     needs: validate
+    permissions:
+        contents: read
