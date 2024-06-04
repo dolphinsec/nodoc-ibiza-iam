@@ -27,5 +27,6 @@ jobs:
       api-root-path: 'specification/openapi.yml'
       release-tag: ${{ github.ref_name }}
       postman-api-id: ${{ vars.POSTMANAPIID }}
+      postman-collection-path: 'postman/collections/Ibiza IAM.json'
     secrets:
       postman-api-key: ${{ secrets.POSTMANAPIKEY }}
