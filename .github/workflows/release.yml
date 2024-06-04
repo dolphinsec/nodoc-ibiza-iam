@@ -29,4 +29,4 @@ jobs:
       release-tag: ${{ github.ref_name }}
       postman-api-id: ${{ vars.postmanApiId }}
     secrets:
-      postman-api-key: 'test'
+      postman-api-key: 'testb'
