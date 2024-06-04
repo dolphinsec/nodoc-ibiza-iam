@@ -88,33 +88,33 @@ components:
       description: A structured client exception
       headers:
         Cache-Control:
-          $ref: common.yml#/components/headers/Cache-Control
+          $ref: '#/components/headers/Cache-Control'
         Pragma:
-          $ref: common.yml#/components/headers/Pragma
+          $ref: '#/components/headers/Pragma'
         X-Content-Type-Options:
-          $ref: common.yml#/components/headers/X-Content-Type-Options
+          $ref: '#/components/headers/X-Content-Type-Options'
         X-XSS-Protection:
-          $ref: common.yml#/components/headers/X-XSS-Protection
+          $ref: '#/components/headers/X-XSS-Protection'
         x-ms-version:
-          $ref: common.yml#/components/headers/x-ms-version
+          $ref: '#/components/headers/x-ms-version'
         Strict-Transport-Security:
-          $ref: common.yml#/components/headers/Strict-Transport-Security
+          $ref: '#/components/headers/Strict-Transport-Security'
         Access-Control-Expose-Headers:
-          $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+          $ref: '#/components/headers/Access-Control-Expose-Headers'
         x-ms-correlation-id:
-          $ref: common.yml#/components/headers/x-ms-correlation-id
+          $ref: '#/components/headers/x-ms-correlation-id'
         x-ms-operation-maturity:
-          $ref: common.yml#/components/headers/x-ms-operation-maturity
+          $ref: '#/components/headers/x-ms-operation-maturity'
         x-ms-expected-duration:
-          $ref: common.yml#/components/headers/x-ms-expected-duration
+          $ref: '#/components/headers/x-ms-expected-duration'
         X-UA-Compatible:
-          $ref: common.yml#/components/headers/X-UA-Compatible
+          $ref: '#/components/headers/X-UA-Compatible'
         Date:
-          $ref: common.yml#/components/headers/Date
+          $ref: '#/components/headers/Date'
         Content-Length:
-          $ref: common.yml#/components/headers/Content-Length
+          $ref: '#/components/headers/Content-Length'
         Expires:
-          $ref: common.yml#/components/headers/Expires
+          $ref: '#/components/headers/Expires'
       content:
         application/json:
           schema:
@@ -212,9 +212,9 @@ components:
                     minLength: 1
                     example: 0426f673-d518-471b-a9b7-3a6a012949a5
                   tenantId:
-                    $ref: common.yml#/components/schemas/tenantId
+                    $ref: '#/components/schemas/tenantId'
                   userObjectId:
-                    $ref: common.yml#/components/schemas/userId
+                    $ref: '#/components/schemas/userId'
                   exceptionType:
                     description: The type of the exception.
                     type: string
