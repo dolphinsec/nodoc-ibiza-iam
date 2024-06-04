@@ -168,6 +168,10 @@ paths:
     $ref: directories.yml#/paths/~1Directories~1GetPasswordSyncStatus
 #  /Directories/List:
 #    $ref: directories.yml#/paths/~1Directories~1List
+  /Directories/FeatureSettingsProperties:
+    $ref: directories.yml#/paths/~1Directories~1FeatureSettingsProperties
+  /Directories/LcmSettings:
+    $ref: directories.yml#/paths/~1Directories~1LcmSettings
   /Directories/Properties:
     $ref: directories.yml#/paths/~1Directories~1Properties
   /Directories/PropertiesV2:
@@ -178,6 +182,8 @@ paths:
     $ref: directories.yml#/paths/~1Directories~1SsgmProperties
   /Directories/Summary:
     $ref: directories.yml#/paths/~1Directories~1Summary
+  /Directories/{tenantId}/Details:
+    $ref: directories.yml#/paths/~1Directories~1{tenantId}~1Details
   /directoryObjects/{objectId}:
     $ref: directories.yml#/paths/~1directoryObjects~1{objectId}
   /DirectoryObjectPicker/DirectoryMembersFromIds:
@@ -294,6 +300,8 @@ paths:
 #    $ref: misc.yml#/paths/~1RoamingSettings
   #  /Roles/User/{userId}:
   #    $ref: roles.yml#/paths/~1Roles~1User~1{userId}
+  /RequestApprovals/V2/PolicyTemplates:
+    $ref: misc.yml#/paths/~1RequestApprovals~1V2~1PolicyTemplates
   /Roles/User/{userId}/RoleAssignments:
     $ref: roles.yml#/paths/~1Roles~1User~1{userId}~1RoleAssignments
   /SecurityDefaults/Configuration:

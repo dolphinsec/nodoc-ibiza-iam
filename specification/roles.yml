@@ -136,19 +136,19 @@ paths:
                           items:
                             type: object
                             properties:
-                                resourceActions:
-                                  type: object
-                                  description: The permitted resource actions for the role definition.
-                                  properties:
-                                    allowedResourceActions:
-                                      type: array
-                                      items:
-                                        type: string
-                                        example: microsoft.directory/customSecurityAttributeAuditLogs/allProperties/read
-                                condition:
-                                  description: pending.
-                                  type: string
-                                  example: null
+                              resourceActions:
+                                type: object
+                                description: The permitted resource actions for the role definition.
+                                properties:
+                                  allowedResourceActions:
+                                    type: array
+                                    items:
+                                      type: string
+                                      example: microsoft.directory/customSecurityAttributeAuditLogs/allProperties/read
+                              condition:
+                                description: pending.
+                                type: string
+                                example: null
                         objectId:
                           $ref: common.yml#/components/schemas/objectId
                         templateId:

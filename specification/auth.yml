@@ -1230,6 +1230,13 @@ paths:
         Get password reset policies.
       operationId: PasswordReset.PasswordResetPolicies.Get
       tags: [Authentication]
+      parameters:
+        - name: getPasswordResetEnabledGroup
+          description: Whether to get password reset enabled group
+          in: query
+          schema:
+            type: boolean
+            example: true
       responses:
         '200':
           description: OK
