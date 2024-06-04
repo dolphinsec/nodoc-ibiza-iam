@@ -21,8 +21,8 @@ jobs:
     permissions:
       contents: write
     with:
-      spec-artifact-id: '${{ needs.bundle.outputs.spec-artifact-id }}'
-      stats-artifact-id: '${{ needs.bundle.outputs.stats-artifact-id }}'
+      spec-artifact-id: '${{ needs.bundle.outputs.spec-artifact-name }}'
+      stats-artifact-id: '${{ needs.bundle.outputs.stats-artifact-name }}'
       build-run-id: '${{ needs.bundle.outputs.run-id }}'
       postman-api-version: 'current'
       api-root-path: './specification/openapi.yml'
