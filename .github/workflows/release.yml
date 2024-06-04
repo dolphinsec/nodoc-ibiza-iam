@@ -1,9 +1,10 @@
 ---
 name: Release API definition
+
 on:
   push:
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
+    branches:
+      - main
 
 permissions: {}
 
@@ -21,7 +22,7 @@ jobs:
       spec-artifact-id: ${{ needs.bundle.outputs.spec-artifact-id }}
       stats-artifact-id: ${{ needs.bundle.outputs.stats-artifact-id }}
       build-run-id: ${{ needs.bundle.outputs.run-id }}
-      postman-api-version: ${{ github.ref_name }}
+      postman-api-version: 'current'
       api-root-path: './specification/openapi.yml'
       release-tag: ${{ github.ref_name }}
       postman-api-id: ${{ vars.postmanApiId }}

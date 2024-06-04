@@ -6,5 +6,5 @@ on:
     branches:
       - main
 jobs:
-    validate:
-        uses: dolphinsec/nodoc/.github/workflows/spec-validate.yaml@main
+  validate:
+    uses: dolphinsec/nodoc/.github/workflows/spec-validate.yaml@main

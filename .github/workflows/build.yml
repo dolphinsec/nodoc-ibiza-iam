@@ -1,10 +1,14 @@
 ---
 name: Bundle API
-on: push
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-    validate:
-      uses: dolphinsec/nodoc/.github/workflows/spec-validate.yaml@main
-    bundle:
-        uses: dolphinsec/nodoc/.github/workflows/spec-build.yaml@main
-        needs: validate
+  validate:
+    uses: dolphinsec/nodoc/.github/workflows/spec-validate.yaml@main
+  bundle:
+    uses: dolphinsec/nodoc/.github/workflows/spec-build.yaml@main
+    needs: validate
