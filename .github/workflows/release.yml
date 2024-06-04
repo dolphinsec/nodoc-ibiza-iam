@@ -1,25 +1,27 @@
 ---
 name: Release API definition
 on:
-    push:
-      tags:
-        - 'v[0-9]+.[0-9]+.[0-9]+'
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
-permissions: { }
+permissions: {}
 
 jobs:
-    bundle:
-        uses: dolphinsec/nodoc/.github/workflows/spec-build.yaml@main
-    
-    create-release:
-      name: Create release
-      needs: bundle
-      uses: dolphinsec/nodoc/.github/workflows/spec-publish.yaml@main
-      with:
-        spec-artifact-id: ${{ needs.bundle.outputs.spec-artifact-id }}
-        stats-artifact-id: ${{ needs.bundle.outputs.stats-artifact-id }}
-        build-run-id: ${{ needs.bundle.outputs.run-id }}
-        postman-api-version: ${{ github.ref_name }}
-        api-root-path: './specification/openapi.yml'
-        release-tag: ${{ github.ref_name }}
-        postman-api-id: ${{ vars.postmanApiId }}
+  bundle:
+    uses: dolphinsec/nodoc/.github/workflows/spec-build.yaml@main
+
+  create-release:
+    name: Create release
+    needs: bundle
+    uses: dolphinsec/nodoc/.github/workflows/spec-publish.yaml@main
+    permissions:
+      contents: write
+    with:
+      spec-artifact-id: ${{ needs.bundle.outputs.spec-artifact-id }}
+      stats-artifact-id: ${{ needs.bundle.outputs.stats-artifact-id }}
+      build-run-id: ${{ needs.bundle.outputs.run-id }}
+      postman-api-version: ${{ github.ref_name }}
+      api-root-path: './specification/openapi.yml'
+      release-tag: ${{ github.ref_name }}
+      postman-api-id: ${{ vars.postmanApiId }}
