@@ -336,6 +336,7 @@ paths:
     parameters:
       - in: path
         name: id
+        required: true
         schema:
           type: string
     get:
@@ -355,6 +356,7 @@ paths:
     parameters:
       - in: path
         name: id
+        required: true
         schema:
           type: string
     get:

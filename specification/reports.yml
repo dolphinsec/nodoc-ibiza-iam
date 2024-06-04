@@ -92,7 +92,7 @@ paths:
               schema:
                 type: array
                 items:
-                  - $ref: '#/components/schemas/auditActivityType'
+                  $ref: '#/components/schemas/auditActivityType'
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
@@ -142,7 +142,7 @@ paths:
               schema:
                 type: array
                 items:
-                  - $ref: '#/components/schemas/auditActivityType'
+                  $ref: '#/components/schemas/auditActivityType'
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
@@ -455,7 +455,7 @@ paths:
                     conditionalAccessPolicies:
                       type: array
                       items:
-                        - type: object
+                          type: object
                           properties:
                             id:
                               description: The unique ID of the conditional access policy.
