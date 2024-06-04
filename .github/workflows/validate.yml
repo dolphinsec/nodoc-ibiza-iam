@@ -1,24 +1,10 @@
-name: build postman collections with postman CLI
+---
+name: Validate OpenAPI Spec
+
 on:
   pull_request:
     branches:
       - main
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-      - name: Install Redocly CLI
-        run: npm install -g @redocly/cli@latest
-      - name: Validate configuration
-        run: |
-          redocly check-config
-      - name: Validate specification
-        run: |
-          redocly lint
+    validate:
+        uses: dolphinsec/nodoc/.github/workflows/spec-validate.yaml@main

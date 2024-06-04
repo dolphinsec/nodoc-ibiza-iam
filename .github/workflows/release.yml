@@ -1,0 +1,47 @@
+---
+name: Release API definition
+on:
+    push:
+      tags:
+        - 'v[0-9]+.[0-9]+.[0-9]+'
+
+permissions: { }
+
+jobs:
+    bundle:
+        uses: dolphinsec/nodoc/.github/workflows/spec-build.yaml@main
+    
+    create-release:
+      name: Create release
+      needs: bundle
+      uses: dolphinsec/nodoc/.github/workflows/spec-publish.yaml@main
+      with:
+        spec-artifact-id: ${{ needs.bundle.outputs.spec-artifact-id }}
+        stats-artifact-id: ${{ needs.bundle.outputs.stats-artifact-id }}
+        build-run-id: ''
+        postman-api-version: ${{ github.ref_name }}
+        api-root-path: './specification/openapi.yml'
+        release-tag: ${{ github.ref_name }}
+      secrets:
+        postman-api-id: ''
+        
+  
+      permissions:
+        contents: write
+  
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+  
+        - name: Download build
+          id: download
+          uses: actions/download-artifact@v4
+          with:
+            name: ${{needs.build.outputs.versioned-name}}
+  
+        - name: Create release
+          run: gh release create --verify-tag --notes-from-tag ${{ github.ref_name }} ${{ steps.download.outputs.download-path }}
+          env:
+            GH_TOKEN: ${{ github.token }}
