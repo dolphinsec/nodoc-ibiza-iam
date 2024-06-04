@@ -24,4 +24,5 @@ jobs:
         contents: read
     with:
       spec-artifact-name: ${{ needs.bundle.outputs.spec-artifact-name }}
-      postman-collection-path: 'postman/collections/Ibiza IAM.json'
+      postman-collection-path: 'postman/collections/Ibiza\ IAM.json'
+      postman-collection-patch-path: 'postman/collection-patch.json'
