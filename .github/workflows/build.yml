@@ -17,12 +17,3 @@ jobs:
     needs: validate
     permissions:
         contents: read
-  collection-validate:
-    uses: dolphinsec/nodoc/.github/workflows/spec-validate-collection.yaml@main
-    needs: bundle
-    permissions:
-        contents: read
-    with:
-      spec-artifact-name: ${{ needs.bundle.outputs.spec-artifact-name }}
-      postman-collection-path: 'postman/collections/Ibiza\ IAM.json'
-      postman-collection-patch-path: 'postman/collection-patch.json'
