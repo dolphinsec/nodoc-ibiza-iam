@@ -57,50 +57,54 @@ components:
             74658136-14ec-4630-ad9b-26e160ff0fc6/user_impersonation: User impersonation scope
 
 tags:
-  - name: Application
-    description: >-
-      Operations relating to Application management,
-      including both Enterprise Applications, and Application Registrations.
   - name: Application Registration
     description: >-
       Operations relating to Application Registration management.
-  - name: Authentication Methods
-    description: |
-      Operations relating to Authentication Methods.
-  - name: B2C
-  - name: Classic Policies
-    description: |
-      Operations relating to Classic Conditional Access policy management.
-  - name: Device
-  - name: Directory
-    description: Operations relating to Directory management.
-  - name: General
-  - name: Groups
-    description: | 
-      Operations relating to group management, including the ability to retrieve group properties.
-  - name: Licensing
-    description: Operations relating to user and group licensing.
-  - name: MDM
-  - name: Microsoft Entra Connect
-  - name: Multi Factor Authentication
-  - name: Password Reset
-  - name: Permissions
-    description: Read-only operations relating to assigned permissions and roles.
-  - name: Policies
-    description: |
-      Operations relating to Conditional Access policy management, including functionality to manage claim providers and named locations.
-  - name: Reports
-    description: Operations relating to report generation and management.
-  - name: Roles
-    description: Operations relating to role management.
-  - name: Security Defaults
   - name: Service Principal
     description: >-
       Operations relating to Service Principal (Enterprise Application) management.
+
+  - name: Authentication Methods
+    description: |
+      Operations relating to Authentication Methods.
+  - name: Multi Factor Authentication
+  - name: Password Reset
+
+  - name: Classic Policies
+    description: |
+      Operations relating to Classic Conditional Access policy management.
+  - name: Policies
+    description: |
+      Operations relating to Conditional Access policy management, including functionality to manage claim providers and named locations.
+  - name: Security Defaults
+
+  - name: Device
+  - name: MDM
+
+  - name: B2C
+  - name: Directory
+    description: Operations relating to Directory management.
+  - name: Microsoft Entra Connect
+
+  - name: Permissions
+    description: Read-only operations relating to assigned permissions and roles.
+  - name: Roles
+    description: Operations relating to role management.
+
   - name: Users
     description: | 
       Operations relating to user management, including the ability to retrieve, create, modify, and delete, users.
       Additionally offers functionality to check the validity of user principal names.
+  - name: Groups
+    description: | 
+      Operations relating to group management, including the ability to retrieve group properties.
+
+  - name: General
+  - name: Licensing
+    description: Operations relating to user and group licensing.
+  - name: Reports
+    description: Operations relating to report generation and management.
+
 x-tagGroups: 
   - name: Application
     tags:
@@ -108,12 +112,13 @@ x-tagGroups:
       - Service Principal
   - name: Authentication
     tags:
-      - Password Reset
+      - Authentication Methods
       - Multi Factor Authentication
+      - Password Reset
   - name: Conditional Access
     tags: 
-      - Policies
       - Classic Policies
+      - Policies
       - Security Defaults
   - name: Device Management
     tags:
@@ -134,9 +139,9 @@ x-tagGroups:
       -  Groups
   - name: General
     tags: 
+      - General
       - Licensing
       - Reports
-      - General
 
 paths:
   /AccountSkus:
