@@ -1,0 +1,7 @@
+paths:
+  /Devices:
+    get:
+      tags: [Device]
+      responses:
+        '200':
+          description: OK

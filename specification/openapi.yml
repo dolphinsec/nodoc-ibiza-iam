@@ -11,9 +11,10 @@ info:
       - Directories
       - Policies
 
-    It includes functionality available through standard APIs (e.g. Microsoft Graph), as well as some additional functionality.
+    It includes functionality available through standard APIs (e.g. Microsoft Graph), as well as some additional capabilities.
 
-    This API only supports delegated authentication flows such as the Authorization Code flow, and does not support client credentials.
+    This API only supports delegated authentication flows such as the [authorization code flow](https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow),
+    and does not support service principals or the [client credentials flow](https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-client-creds-grant-flow).
 
     | Application Name | Application ID                         | Scope                |
     | ---------------- | -------------------------------------- | -------------------- |
@@ -25,6 +26,12 @@ info:
     | ------------------- | -------------------------------------- |
     | Azure Portal        | `c44b4083-3bb0-49c1-b47d-974e53cbdf3c` |
     | Microsoft Azure CLI | `04b07795-8ddb-461a-bbee-02f9e1bf7b46` |
+
+    For example, you can obtain a token using the [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/) command:
+
+    ```bash
+    az account get-access-token --resource 74658136-14ec-4630-ad9b-26e160ff0fc6
+    ```
 
     Documentation and specifications have been provided on a best efforts basis and may not be 100% accurate.
 
@@ -57,45 +64,81 @@ tags:
   - name: Application Registration
     description: >-
       Operations relating to Application Registration management.
-  - name: Authentication
-    description: >-
-      Operations relating to Authentication,
-      including authentication methods and password policies.
+  - name: Authentication Methods
+    description: |
+      Operations relating to Authentication Methods.
+  - name: B2C
+  - name: Classic Policies
+    description: |
+      Operations relating to Classic Conditional Access policy management.
+  - name: Device
   - name: Directory
     description: Operations relating to Directory management.
+  - name: General
+  - name: Groups
+    description: | 
+      Operations relating to group management, including the ability to retrieve group properties.
   - name: Licensing
     description: Operations relating to user and group licensing.
+  - name: MDM
+  - name: Microsoft Entra Connect
+  - name: Multi Factor Authentication
+  - name: Password Reset
   - name: Permissions
     description: Read-only operations relating to assigned permissions and roles.
   - name: Policies
-    description: >-
-      Operations relating to policy management,
-      including Conditional Access policies.
+    description: |
+      Operations relating to Conditional Access policy management, including functionality to manage claim providers and named locations.
   - name: Reports
     description: Operations relating to report generation and management.
   - name: Roles
     description: Operations relating to role management.
+  - name: Security Defaults
   - name: Service Principal
     description: >-
       Operations relating to Service Principal (Enterprise Application) management.
-  - name: Users and Groups
-    description: Operations relating to user and group management.
+  - name: Users
+    description: | 
+      Operations relating to user management, including the ability to retrieve, create, modify, and delete, users.
+      Additionally offers functionality to check the validity of user principal names.
 x-tagGroups: 
-  - name: Applicationb
+  - name: Application
     tags:
-      - Application
       - Application Registration
       - Service Principal
+  - name: Device Management
+    tags:
+      - Device
+      - MDM
+  - name: Conditional Access
+    tags: 
+      - Policies
+      - Classic Policies
+      - Security Defaults
+  - name: Users and Groups
+    tags: 
+      -  Users
+      -  Groups
+  - name: Authentication
+    tags:
+      - Password Reset
+      - Multi Factor Authentication
+  - name: Directory
+    tags:
+      - B2C
+      - Directory
+      - Microsoft Entra Connect
   - name: General
     tags: 
-      - Authentication
-      - Directory
       - Licensing
-      - Permissions
-      - Policies
       - Reports
+  - name: Roles and Permissions
+    tags:
+      - Permissions
       - Roles
-      - Users and Groups
+  - name: Generl
+    tags:
+      - General
 
 paths:
   /AccountSkus:
@@ -151,7 +194,7 @@ paths:
   /AuthenticationMethods/PasswordPolicy:
     $ref: auth.yml#/paths/~1AuthenticationMethods~1PasswordPolicy
   /B2B/b2bpolicy:
-    $ref: misc.yml#/paths/~1B2B~1b2bpolicy
+    $ref: directories.yml#/paths/~1B2B~1b2bpolicy
   /BrowserOperations:
     $ref: misc.yml#/paths/~1BrowserOperations
   /ClaimProviders:
@@ -177,7 +220,7 @@ paths:
   /Common/GetObjectsByObjectIds:
     $ref: misc.yml#/paths/~1Common~1GetObjectsByObjectIds
   /Devices:
-    $ref: misc.yml#/paths/~1Devices
+    $ref: devices.yml#/paths/~1Devices
 #  /Directories:
 #    $ref: directories.yml#/paths/~1Directories
   /Directories/ADConnectStatus:
@@ -262,16 +305,18 @@ paths:
     $ref: auth.yml#/paths/~1MultiFactorAuthentication~1HasPaidSubscription
   /MultiFactorAuthentication/TenantModel:
     $ref: auth.yml#/paths/~1MultiFactorAuthentication~1TenantModel
+  /NamedNetworks:
+    $ref: policies.yml#/paths/~1NamedNetworks
   /NamedNetworksV2:
-    $ref: misc.yml#/paths/~1NamedNetworksV2
+    $ref: policies.yml#/paths/~1NamedNetworksV2
   /NamedNetworksV2/CountryCodes:
-    $ref: misc.yml#/paths/~1NamedNetworksV2~1CountryCodes
+    $ref: policies.yml#/paths/~1NamedNetworksV2~1CountryCodes
   /NamedNetworksV2/{id}:
-    $ref: misc.yml#/paths/~1NamedNetworksV2~1{id}
+    $ref: policies.yml#/paths/~1NamedNetworksV2~1{id}
   /NamedNetworksV2/ValidatePolicySize:
-    $ref: misc.yml#/paths/~1NamedNetworksV2~1ValidatePolicySize
+    $ref: policies.yml#/paths/~1NamedNetworksV2~1ValidatePolicySize
   /NamedNetworksV2/ValidatePolicySize/{id}:
-    $ref: misc.yml#/paths/~1NamedNetworksV2~1ValidatePolicySize~1{id}
+    $ref: policies.yml#/paths/~1NamedNetworksV2~1ValidatePolicySize~1{id}
   /PasswordReset/OnPremisesPasswordResetPolicies:
     $ref: auth.yml#/paths/~1PasswordReset~1OnPremisesPasswordResetPolicies
   /PasswordReset/PasswordResetPolicies:

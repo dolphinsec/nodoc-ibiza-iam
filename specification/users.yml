@@ -344,7 +344,7 @@ paths:
       description: >-
         Generate a temporary password string. Does not assign the password to any user.
       operationId: User.TemporaryPassword.Get
-      tags: [Users and Groups]
+      tags: [Users]
       responses:
         '200':
           description: OK
@@ -392,7 +392,7 @@ paths:
       description: >-
         Query users from the directory, returning a list of user records.
       operationId: User.Query
-      tags: [Users and Groups]
+      tags: [Users]
       parameters:
         - $ref: common.yml#/components/parameters/top
         - $ref: common.yml#/components/parameters/nextLink
@@ -481,7 +481,7 @@ paths:
       description: >-
         Delete users by providing a list of user Object IDs.
       operationId: User.Delete
-      tags: [Users and Groups]
+      tags: [Users]
       requestBody:
         required: true
         content:
@@ -547,7 +547,7 @@ paths:
       description: >-
         Permanently delete users by providing a list of user Object IDs.
       operationId: User.Permanent.Delete
-      tags: [Users and Groups]
+      tags: [Users]
       requestBody:
         required: true
         content:
@@ -619,7 +619,7 @@ paths:
       description: >-
         Retrieve basic details about a user using their Object ID.
       operationId: User.Id.Get
-      tags: [Users and Groups]
+      tags: [Users]
       responses:
         '200':
           description: OK
@@ -661,7 +661,7 @@ paths:
         4XX:
           $ref: common.yml#/components/responses/ClientException
     delete:
-      tags: [Users and Groups]
+      tags: [Users]
       summary: Delete a specific user
       description: >-
         Delete a user using their Object ID.
@@ -721,7 +721,7 @@ paths:
       description: >-
         Check whether a specific User Principal Name (UPN) is unique within the current directory.
       operationId: User.UPNUnique.Check
-      tags: [Users and Groups]
+      tags: [Users]
       responses:
         '200':
           description: OK
@@ -770,7 +770,7 @@ paths:
       description: >-
         Create a new user.
       operationId: UserDetails.Create
-      tags: [Users and Groups]
+      tags: [Users]
       requestBody:
         content:
           application/json:
@@ -829,7 +829,7 @@ paths:
       description: >-
         Retrieve details about a user using their Object ID.
       operationId: UserDetails.Id.Get
-      tags: [Users and Groups]
+      tags: [Users]
       responses:
         '200':
           description: OK

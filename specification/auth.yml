@@ -464,7 +464,7 @@ paths:
       description: >-
         Get authentication methods policy.
       operationId: AuthenticationMethods.AuthenticationMethodsPolicy.Get
-      tags: [Authentication]
+      tags: [Authentication Methods]
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
@@ -522,7 +522,7 @@ paths:
       description: >-
         Update authentication methods policy.
       operationId: AuthenticationMethods.AuthenticationMethodsPolicy.Update
-      tags: [Authentication]
+      tags: [Authentication Methods]
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
       requestBody:
@@ -587,7 +587,7 @@ paths:
       description: >-
         Delete authentication methods policy.
       operationId: AuthenticationMethods.AuthenticationMethodsPolicy.Delete
-      tags: [Authentication]
+      tags: [Authentication Methods]
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
       requestBody:
@@ -663,7 +663,7 @@ paths:
       operationId: AuthenticationMethods.PasswordPolicy.Get
       parameters:
         - $ref: common.yml#/components/parameters/XMsClientRequestId
-      tags: [Authentication]
+      tags: [Authentication Methods]
       responses:
         '200':
           description: OK
@@ -707,7 +707,7 @@ paths:
       description: >-
         Update Tenant password policy.
       operationId: AuthenticationMethods.PasswordPolicy.Update
-      tags: [Authentication]
+      tags: [Authentication Methods]
       requestBody:
         content:
           application/json:
@@ -760,7 +760,7 @@ paths:
       description: >-
         Get expanded multi-factor authentication tenant model.
       operationId: MultiFactorAuthentication.Get
-      tags: [Authentication]
+      tags: [Multi Factor Authentication]
       parameters:
         - name: tenantName
           description: The name of the tenant.
@@ -833,7 +833,7 @@ paths:
       description: >-
         Check if tenant has paid MFA subscription.
       operationId: MultiFactorAuthentication.PaidSubscription.Check
-      tags: [Authentication]
+      tags: [Multi Factor Authentication]
       responses:
         '200':
           description: OK
@@ -879,7 +879,7 @@ paths:
       description: >-
         Enable hardware MFA tokens.
       operationId: MultiFactorAuthentication.HardwareToken.Enable
-      tags: [Authentication]
+      tags: [Multi Factor Authentication]
       requestBody:
         content:
           application/json:
@@ -932,7 +932,7 @@ paths:
       description: >-
         List uploads for hardware MFA tokens.
       operationId: MultiFactorAuthentication.HardwareToken.Uploads.List
-      tags: [Authentication]
+      tags: [Multi Factor Authentication]
       responses:
         '200':
           description: OK
@@ -985,7 +985,7 @@ paths:
       description: >-
         List user hardware MFA tokens.
       operationId: MultiFactorAuthentication.HardwareToken.Users.List
-      tags: [Authentication]
+      tags: [Multi Factor Authentication]
       parameters:
         - name: skipToken
           description: Skip token.
@@ -1058,7 +1058,7 @@ paths:
       description: >-
         Get multi-factor authentication tenant model.
       operationId: MultiFactorAuthentication.TenantModel.Get
-      tags: [Authentication]
+      tags: [Multi Factor Authentication]
       parameters:
         - name: licenseKey
           description: pending
@@ -1116,7 +1116,7 @@ paths:
       description: >-
         Update multi-factor authentication tenant model.
       operationId: MultiFactorAuthentication.TenantModel.Update
-      tags: [Authentication]
+      tags: [Multi Factor Authentication]
       parameters:
         - name: licenseKey
           description: pending
@@ -1175,7 +1175,7 @@ paths:
       description: >-
         Get on-premises password reset policies.
       operationId: PasswordReset.OnPremisesPasswordResetPolicies.Get
-      tags: [Authentication]
+      tags: [Password Reset]
       responses:
         '200':
           description: OK
@@ -1229,7 +1229,7 @@ paths:
       description: >-
         Get password reset policies.
       operationId: PasswordReset.PasswordResetPolicies.Get
-      tags: [Authentication]
+      tags: [Password Reset]
       parameters:
         - name: getPasswordResetEnabledGroup
           description: Whether to get password reset enabled group
@@ -1280,7 +1280,7 @@ paths:
       description: >-
         Update password reset policies.
       operationId: PasswordReset.PasswordResetPolicies.Update
-      tags: [Authentication]
+      tags: [Password Reset]
       requestBody:
         content:
           application/json:
@@ -1338,7 +1338,7 @@ paths:
       description: >-
         Reset user password by user principal name (UPN).
       operationId: PasswordReset.Execute
-      tags: [Authentication]
+      tags: [Password Reset]
       requestBody:
         content:
           application/json:

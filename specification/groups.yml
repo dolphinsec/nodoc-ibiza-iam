@@ -212,7 +212,7 @@ paths:
       description: >-
         List Microsoft Entra groups.
       operationId: Group.list
-      tags: [Users and Groups]
+      tags: [Groups]
       responses:
         '200':
           description: OK
@@ -273,7 +273,7 @@ paths:
       description: >-
         Get Microsoft Entra group by object ID.
       operationId: Group.id.get
-      tags: [Users and Groups]
+      tags: [Groups]
       responses:
         '200':
           description: OK
@@ -327,7 +327,7 @@ paths:
       description: >-
         Get the dynamic group properties for a Microsoft Entra group by object ID.
       operationId: Group.id.dynamic,get
-      tags: [Users and Groups]
+      tags: [Groups]
       responses:
         '200':
           description: OK
@@ -382,7 +382,7 @@ paths:
       description: >-
         Get a count of the owners of a group by the group's object ID.
       operationId: Group.id.owner.count.get
-      tags: [Users and Groups]
+      tags: [Groups]
       responses:
         '200':
           description: OK

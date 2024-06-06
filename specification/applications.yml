@@ -2089,7 +2089,7 @@ paths:
       description: >-
         List MDM applications (service principals).
       operationId: MdmApplication.List
-      tags: [Service Principal]
+      tags: [MDM]
       responses:
         '200':
           description: OK
@@ -2158,7 +2158,7 @@ paths:
       description: >-
         Update MDM application (service principals) by object ID.
       operationId: MdmApplication.Update
-      tags: [Service Principal]
+      tags: [MDM]
       responses:
         '204':
           description: No Content
@@ -2192,7 +2192,7 @@ paths:
       description: >-
         Get MDM application (service principals) by object ID.
       operationId: MdmApplication.Get
-      tags: [Service Principal]
+      tags: [MDM]
       responses:
         '200':
           description: OK
