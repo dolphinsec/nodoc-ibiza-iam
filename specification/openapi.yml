@@ -106,38 +106,36 @@ x-tagGroups:
     tags:
       - Application Registration
       - Service Principal
-  - name: Device Management
+  - name: Authentication
     tags:
-      - Device
-      - MDM
+      - Password Reset
+      - Multi Factor Authentication
   - name: Conditional Access
     tags: 
       - Policies
       - Classic Policies
       - Security Defaults
-  - name: Users and Groups
-    tags: 
-      -  Users
-      -  Groups
-  - name: Authentication
+  - name: Device Management
     tags:
-      - Password Reset
-      - Multi Factor Authentication
+      - Device
+      - MDM
   - name: Directory
     tags:
       - B2C
       - Directory
       - Microsoft Entra Connect
-  - name: General
-    tags: 
-      - Licensing
-      - Reports
   - name: Roles and Permissions
     tags:
       - Permissions
       - Roles
-  - name: Generl
-    tags:
+  - name: Users and Groups
+    tags: 
+      -  Users
+      -  Groups
+  - name: General
+    tags: 
+      - Licensing
+      - Reports
       - General
 
 paths:
