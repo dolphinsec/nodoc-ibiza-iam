@@ -1357,6 +1357,7 @@ paths:
     parameters:
       - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
+      tags: [Policies]
       responses:
         '200':
           description: OK
@@ -1400,6 +1401,7 @@ paths:
     parameters:
       - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
+      tags: [Policies]
       responses:
         '200':
           description: OK
@@ -1439,12 +1441,14 @@ paths:
         4XX:
           $ref: common.yml#/components/responses/ClientException
     post:
+      tags: [Policies]
       responses:
         '200':
           description: OK
 
   /NamedNetworksV2/CountryCodes:
     get:
+      tags: [Policies]
       responses:
         '200':
           description: OK
@@ -1494,6 +1498,42 @@ paths:
                       example: AF
         4XX:
           $ref: common.yml#/components/responses/ClientException
+
+  /NamedNetworksV2/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Policies]
+      responses:
+        '200':
+          description: OK
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /NamedNetworksV2/ValidatePolicySize:
+    get:
+      tags: [Policies]
+      responses:
+        '200':
+          description: OK
+
+  /NamedNetworksV2/ValidatePolicySize/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Policies]
+      responses:
+        '200':
+          description: OK
+
   /Policies:
     parameters:
       - $ref: common.yml#/components/parameters/XMsClientRequestId
