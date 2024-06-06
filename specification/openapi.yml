@@ -1,7 +1,33 @@
 openapi: 3.0.1
 info:
-  title: IAM API
-  description: IAM API description
+  title: Ibiza IAM
+  description: |
+    The Ibiza IAM API is used by Microsoft web portals for managing Identity and Access Management features, including:
+
+      - Users
+      - Groups
+      - Service Principals
+      - Applications
+      - Directories
+      - Policies
+
+    It includes functionality available through standard APIs (e.g. Microsoft Graph), as well as some additional functionality.
+
+    This API only supports delegated authentication flows such as the Authorization Code flow, and does not support client credentials.
+
+    | Application Name | Application ID                         | Scope                |
+    | ---------------- | -------------------------------------- | -------------------- |
+    | ADIbizaUX        | `74658136-14ec-4630-ad9b-26e160ff0fc6` | `user_impersonation` |
+
+    The following clients have pre-consented scopes for accessing this resource:
+
+    | Application Name    | Application ID                         |
+    | ------------------- | -------------------------------------- |
+    | Azure Portal        | `c44b4083-3bb0-49c1-b47d-974e53cbdf3c` |
+    | Microsoft Azure CLI | `04b07795-8ddb-461a-bbee-02f9e1bf7b46` |
+
+    Documentation and specifications have been provided on a best efforts basis and may not be 100% accurate.
+
   version: '1.0'
   license:
     name: Apache 2.0
