@@ -1,426 +1,460 @@
 components:
   parameters:
-    tenantId:
-      name: tenantId
-      description: The ID of the tenant.
-      in: path
-      required: true
+    licenseKey:
+      name: licenseKey
+      description: pending
+      in: query
       schema:
-        $ref: common.yml#/components/schemas/tenantId
+        type: string
   schemas:
-    lcmSettings:
+    mfaGroup:
       type: object
       properties:
-        expiresAfterDays:
-          type: integer
-          example: 180
-        groupLifetimeCustomValueInDays:
-          type: integer
-          example: 0
-        managedGroupTypesEnum:
-          type: integer
-          example: 2
-        managedGroupTypes:
-          type: integer
-          example: 2
-        adminNotificationEmails:
-          type: array
-        groupIdsToMonitorExpirations:
-          type: array
-          items:
-            $ref: common.yml#/components/schemas/groupId
-        policyIdentifier:
+        id:
+          type: number
+          example: 9880468
+        groupName:
           type: string
-          format: uuid
+          example: Azure Default
+        etag:
+          description: Entity tag for the group.
+          type: string
+          nullable: true
+          example: null
+    cacheConfig:
+      type: object
+      properties:
+        applicationName:
+          type: string
+          example: My Application
+        id:
+          type: integer
           readOnly: true
-          example: 00000000-0000-0000-0000-000000000000
-    loginTenantBranding:
+          example: 13594
+        authType:
+          type: string
+          enum:
+            - Terminal_services
+          nullable: true
+          example: Terminal_services
+        cacheDurationSeconds:
+          type: integer
+          example: 120
+        cacheType:
+          type: string
+          enum:
+            - Ip
+            - User
+            - App
+          example: Ip
+        etag:
+          type: string
+          readOnly: true
+          example: 1717842657.218722_3ee9ddd5
+    bypassedUser:
       type: object
       properties:
-        locale:
-          type: string
-          example: 0
-        signInUserIdLabel:
-          type: string
-          nullable: true
-          example: null
-        signInPageText:
-          type: string
-          nullable: true
-          example: null
-        signInPageTextHeading:
-          type: string
-          nullable: true
-          example: null
-        signInBackColor:
-          type: string
-          nullable: true
-          example: null
-        bannerLogoUrl:
-          type: string
-          nullable: true
-          example: null
-        squareLogoDarkUrl:
-          type: string
-          nullable: true
-          example: null
-        tileLogoUrl:
-          type: string
-          nullable: true
-          example: null
-        illustrationUrl:
-          type: string
-          nullable: true
-          example: null
-        hideKeepMeSignedIn:
-          type: boolean
-          nullable: true
-          example: null
-        postSignoutUrl:
-          type: string
-          nullable: true
-          example: null
-        postSignoutUrlText:
-          type: string
-          nullable: true
-          example: null
-        localeDisplayName:
-          type: string
-          example: Default
-        isIllustrationImageUpdated:
-          type: boolean
-          example: false
-        isBannerLogoUpdated:
-          type: boolean
-          example: false
-        isTileLogoUpdated:
-          type: boolean
-          example: false
-        isSquareDarkLogoUpdated:
-          type: boolean
-          example: false
-        isConfigured:
-          type: boolean
-          example: false
-    directoryObject:
-      allOf:
-        - $ref: '#/components/schemas/directoryObjectSummary'
-        - type: object
-          properties:
-            userType:
-              type: string
-              nullable: true
-              example: null
-            'thumbnailPhoto@odata.mediaContentType':
-              type: string
-              nullable: true
-              example: null
-    directoryObjectSummary:
-      type: object
-      properties:
-        imageUrl:
-          description: The URL to the object image.
-          type: string
-          format: uri
-          example: https://main.iam.ad.ext.azure.com/Client/Users/Images/guestUserIcon.svg"
-        displayName:
-          description: The display name of the object.
-          type: string
-          example: User AB
+        groupId:
+          description: The identifier of the group
+          type: integer
+          example: 9880468
         objectId:
-          $ref: common.yml#/components/schemas/objectId
-        objectType:
-          description: The object type.
+          $ref: common.yml#/components/schemas/userId
+        username:
+          description: The username of the bypassed account.
           type: string
-          enum: [User, Group, AppRole, Worker]
-          example: User
-        hasThumbnail:
-          description: Whether the object has a thumbnail.
-          type: boolean
-          example: false
-        isUser:
-          description: Whether the object is a user.
-          type: boolean
-          example: true
-        isGroup:
-          description: Whether the object is a group.
-          type: boolean
-          example: false
-        isGuest:
-          description: Whether the object is a guest.
-          type: boolean
-          example: true
-    payloadContent:
+          example: user@contoso.com
+        reason:
+          description: The reason for the account MFA being bypassed.
+          type: string
+          example: Lost phone
+        bypassTimestamp:
+          description: The timestamp of the user MFA being bypassed.
+          type: string
+          format: date-time
+          readOnly: true
+          example: 2024-06-08T09:57:40.443905+00:00
+        unbypassTimestamp:
+          description: The timestamp of the user MFA bypass being removed.
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+          example: null
+        unblockReason:
+          description: The reason for the user MFA bypass being removed.
+          type: string
+          nullable: true
+          readOnly: true
+          example: null
+        etag:
+          description: The e-tag for caching.
+          type: string
+          nullable: true
+          readOnly: true
+          example: null
+    blockedUser:
       type: object
       properties:
-        content:
-          description: Payload content.
+        groupId:
+          description: The identifier of the group
+          type: integer
+          example: 9880468
+        objectId:
+          $ref: common.yml#/components/schemas/userId
+        username:
+          description: The username of the blocked account.
           type: string
-          example: Sync with Windows Server AD
-        reference:
-          description: Payload reference.
+          example: user@contoso.com
+        reason:
+          description: The reason for the account being blocked.
+          type: string
+          example: Lost phone
+        blockTimestamp:
+          description: The timestamp of the user being blocked.
+          type: string
+          format: date-time
+          readOnly: true
+          example: 2024-06-08T09:57:40.443905+00:00
+        unblockTimestamp:
+          description: The timestamp of the user being unblocked.
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+          example: null
+        unblockReason:
+          description: The reason for the user being unblocked.
           type: string
           nullable: true
+          readOnly: true
           example: null
-        preferReference:
-          description: Whether to prefer reference.
-          type: boolean
-          example: false
-    deletionRestriction:
-      type: string
-      enum:
-        - UserCountExceeded
-        - LinkedInApplicationProvisioned
-        - ActiveApplicationObject
-        - ActiveServicePrincipal
-        - TenantHasCommerceSubscriptions
-        - TenantHasActiveAzureSubscription
-        - TenantHasViralSubscription
-        - TenantHasDcaasConstraint
-        - TenantHasMfaCustomer
-        - VpnEnabled
-    featureSettings:
+        etag:
+          description: The e-tag for caching.
+          type: string
+          nullable: true
+          readOnly: true
+          example: null
+    TenantModel:
       type: object
       properties:
-        isAnyAccessPanelPreviewFeaturesAvailable:
-          description: Whether Any access panel preview features are avaialble.
+        tenantId:
+          $ref: common.yml#/components/schemas/tenantId
+        licenseKey:
+          description: License key for the customer.
+          type: string
+          example: ABCD1ABC12AB
+        customerId:
+          description: Identifier for the customer.
+          type: integer
+          example: 9911991
+        accountLockoutDurationMinutes:
+          description: Minutes until account is automatically unblocked.
+          type: integer
+          nullable: true
+          minimum: 0
+          example: null
+        accountLockoutResetMinutes:
+          description: Minutes until account lockout counter is reset.
+          type: integer
+          minimum: 0
+          nullable: true
+          example: 20
+        accountLockoutThreshold:
+          description: Number of multifactor authentication denials to trigger account lockout.
+          type: integer
+          nullable: true
+          example: null
+        allowPhoneMenu:
+          description: Whether to allow phone menu.
           type: boolean
           example: false
-        showMyGroupsFeature:
-          description: Whether to show the My Groups feature.
+        blockForFraud:
+          description: Automatically block users who report fraud.
+          type: boolean
+          example: true
+        callerId:
+          description: Multifactor authentication caller ID number (US phone number only).
+          type: string
+          nullable: true
+          example: null
+        defaultBypassTimespan:
+          type: number
+          format: float
+          example: 300.0
+        enableFraudAlert:
+          description: Allow users to submit fraud alerts.
+          type: boolean
+          example: true
+        fraudCode:
+          type: string
+          nullable: true
+          example: null
+        fraudNotificationEmailAddresses:
+          type: array
+          nullable: true
+          items:
+            type: string
+        oneTimeBypassEmailAddresses:
+          type: array
+          nullable: true
+          items:
+            type: string
+        pinAttempts:
+          description: Number of PIN attempts allowed per call.
+          type: integer
+          nullable: true
+          example: null
+        sayExtensionDigits:
+          description: Operator required to transfer extensions.
           type: boolean
           example: false
-        myGroupsFeatureValue:
-          type: string
+        smsTimeoutSeconds:
+          description: Timeout of SMS MFA timeout (seconds).
+          type: integer
           nullable: true
           example: null
-        myGroupsGroupId:
+        caches:
+          type: array
+          nullable: true
+          items:
+            type: object
+        notifications:
+          type: object
+          nullable: true
+        notificationEmailAddresses:
+          description: MFA notification recipient email addresses.
+          type: array
+          nullable: true
+          items:
+            type: string
+        greetings:
+          description: User greeting objects.
+          type: array
+          nullable: true
+          items:
+            type: object
+        blockedUsers:
+          description: Blocked users.
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/blockedUser'
+        bypassedUsers:
+          description: Bypassed users.
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/bypassedUser'
+        groups:
+          type: array
+          nullable: true
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/mfaGroup'
+        etag:
+          description: Entity tag for the resource.
           type: string
           nullable: true
-          example: null
-        myGroupsGroupName:
-          type: string
-          nullable: true
-          example: null
-        showMyAppsFeature:
-          description: Whether to show the My Apps feature
-          type: boolean
-          example: false
-        myAppsFeatureValue:
-          type: string
-          nullable: true
-          example: null
-        myAppsGroupId:
-          type: string
-          nullable: true
-          example: null
-        myAppsGroupName:
-          type: string
-          nullable: true
-          example: null
-        showUserActivityReportsFeature:
-          description: Whether to show user activity reports.
-          type: boolean
-          example: false
-        userActivityReportsFeatureValue:
-          type: string
-          nullable: true
-          example: null
-        userActivityReportsGroupId:
-          type: string
-          nullable: true
-          example: null
-        userActivityReportsGroupName:
-          type: string
-          nullable: true
-          example: null
-        showRegisteredAuthMethodFeature:
-          description: Whether to show the registerd auth methods feature.
-          type: boolean
-          example: false
-        registeredAuthMethodFeatureValue:
-          type: string
-          nullable: true
-          example: null
-        registeredAuthMethodGroupId:
-          type: string
-          nullable: true
-          example: null
-        registeredAuthMethodGroupName:
-          type: string
-          nullable: true
-          example: null
-    featureSettingsProperties:
-      allOf:
-        - $ref: '#/components/schemas/featureSettings'
-        - type: object
-          properties:
-            showConvergedUXV2Feature:
-              type: boolean
-              example: true
-            convergedUXV2FeatureValue:
-              type: integer
-              example: 0
-            convergedUXV2GroupId:
-              type: string
-              example: ''
-            convergedUXV2GroupName:
-              type: string
-              example: ''
-            showMyStaffFeature:
-              type: boolean
-              example: true
-            myStaffFeatureValue:
-              type: integer
-              example: 2
-            myStaffGroupId:
-              type: string
-              example: ''
-            myStaffGroupName:
-              type: string
-              example: ''
-    directoryProperties:
-      allOf:
-        - $ref: '#/components/schemas/featureSettings'
-        - type: object
-          properties:
-            objectId:
-              $ref: common.yml#/components/schemas/tenantId
-            displayName:
-              description: The display name of the directory.
-              type: string
-              nullable: true
-              example: Contoso
-            usersCanRegisterApps:
-              description: Whether users can register applications with Entra.
-              type: boolean
-              example: true
-            usersCanAddExternalUsers:
-              description: Whether users can add external users.
-              type: boolean
-              example: false
-            limitedAccessCanAddExternalUsers:
-              description: Whether limited access users can add external users.
-              type: boolean
-              example: false
-            restrictDirectoryAccess:
-              description: Whether to restrict directory access.
-              type: boolean
-              example: false
-            groupsInAccessPanelEnabled:
-              description: Whether groups in the access panel is enabled.
-              type: boolean
-              example: false
-            selfServiceGroupManagementEnabled:
-              description: Whether self-service group management is enabled.
-              type: boolean
-              example: true
-            securityGroupsEnabled:
-              description: Whether security groups are enabled.
-              type: boolean
-              example: false
-            usersCanManageSecurityGroups:
-              description: Whether users can manage security groups.
-              type: string
-              nullable: true
-              example: null
-            office365GroupsEnabled:
-              description: Whether Offie 365 groups are enabled.
-              type: boolean
-              example: false
-            usersCanManageOfficeGroups:
-              description: Where users can manage office groups.
-              type: boolean
-              nullable: true
-              example: null
-            allUsersGroupEnabled:
-              description: Whether the all users group is enabled.
-              type: boolean
-              example: false
-            scopingGroupIdForManagingSecurityGroups:
-              type: string
-              nullable: true
-              format: uuid
-              example: null
-            scopingGroupIdForManagingOfficeGroups:
-              type: string
-              nullable: true
-              format: uuid
-              example: null
-            scopingGroupNameForManagingSecurityGroups:
-              type: string
-              nullable: true
-              example: null
-            scopingGroupNameForManagingOfficeGroups:
-              type: string
-              nullable: true
-              example: null
-            objectIdForAllUserGroup:
-              description: Object ID of the all users group.
-              type: string
-              format: uuid
-              nullable: true
-              example: null
-            allowInvitations:
-              description: Whether to allow invitations.
-              type: boolean
-              example: false
-            isB2CTenant:
-              type: boolean
-              description: Whether the directory is an Azure AD B2C tenant.
-              example: true
-            restrictNonAdminUsers:
-              type: boolean
-              description: >-
-                Whether to restrict non-admin users from accessing the Microsoft Entra admin center.
-              example: true
-            enableLinkedInAppFamily:
-              type: integer
-              format: int32
-              example: 4
-            toEnableLinkedInUsers:
-              type: array
-              nullable: true
-              items:
-                type: object
-            toDisableLinkedInUsers:
-              type: array
-              nullable: true
-              items:
-                type: object
-            linkedInSelectedGroupObjectId:
-              description: The object ID of group enabled for LinkedIn.
-              type: string
-              format: uuid
-              nullable: true
-              example: 654b04f3-e357-4490-af29-de4efc0c4051
-            linkedInSelectedGroupDisplayName:
-              description: The display name of group enabled for LinkedIn.
-              type: string
-              nullable: true
-              example: LinkedIn Users
+          example: 1713791283.533179_d80bab12
 
 paths:
-  /Directories/DirectoryWhatsNew:
+  /RevokeMFA/{0}:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - name: '0'
+        description: Unknown
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: keyIdentifier
+        description: The identifier of the key
+        in: query
+        schema:
+          type: string
+    put:
+      summary: Revoke MFA
+      description: >-
+        Revoke MFA.
+      operationId: Mfa.Revoke
+      tags: [Multi Factor Authentication]
+      responses:
+        '200':
+          $ref: common.yml#/components/responses/UnknownResponse
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/ActivationCredentials:
     parameters:
       - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
-      summary: List Entra ID news
+      summary: Get MFA activation credentials
       description: >-
-        List Entra ID news.
-      operationId: Directories.WhatsNew.List
+        Get activation credentials. e.g. for configuring an MFA provider.
+      operationId: Mfa.ActivationCredentials.Get
+      tags: [Multi Factor Authentication]
       parameters:
-        - name: top
-          description: The number of records to return.
-          in: query
-          required: true
-          schema:
-            type: number
-            example: 10
-      tags: [Directory]
+        - $ref: '#/components/parameters/licenseKey'
       responses:
         '200':
-          description: OK
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    description: The username for MFA activation.
+                    type: string
+                    example: ABCD1ABCD1@azureadmin.com
+                  password:
+                    type: string
+                    description: The password for MFA activation.
+                    example: 123456ABCDEF654321FEDCBA
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/AuthenticationReport:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+    post:
+      summary: Get MFA authentication report
+      description: >-
+        Get MFA authentication report.
+      operationId: MFA.AuthenticationReport.Get
+      tags: [Multi Factor Authentication]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                startDateTime:
+                  type: string
+                  format: date-time
+                  example: 2024-05-09T10:54:46.010Z
+                endDateTime:
+                  type: string
+                  format: date-time
+                  example: 2024-06-08T10:54:46.010Z
+                authenticationModes:
+                  type: array
+                  items:
+                    type: string
+                  example: []
+                authenticationTypes:
+                  type: array
+                  items:
+                    type: string
+                  example: []
+                usernames:
+                  type: array
+                  items:
+                    type: string
+                  example: []
+                tenantId:
+                  $ref: common.yml#/components/schemas/tenantId
+                continuationToken:
+                  type: string
+                  example: ''
+                licenseKey:
+                  type: string
+                  example: ''
+                resultsPerPage:
+                  type: integer
+                  example: 25
+      responses:
+        '200':
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pageResults:
+                    type: array
+                  hasMorePages:
+                    type: boolean
+                    example: false
+                  continuationToken:
+                    type: string
+                    nullable: true
+                    example: null
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/BlockedUser:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: '#/components/parameters/licenseKey'
+    get:
+      summary: List MFA blocked users
+      description: >-
+        List MFA blocked users.
+      operationId: Mfa.BlockedUsers.List
+      tags: [Multi Factor Authentication]
+      responses:
+        '200':
+          description: Ok
           headers:
             Cache-Control:
               $ref: common.yml#/components/headers/Cache-Control
@@ -455,374 +489,985 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  properties:
-                    link:
-                      type: string
-                      example: https://blogs.technet.microsoft.com/enterprisemobility/2017/06/12/azure-ad-makes-the-leader-quadrant-in-gartners-2017-magic-quadrant-for-access-management/
-                    contentReference:
-                      type: string
-                      example: AzureADLeaderQuadrant
-                    content:
-                      type: string
-                      example: Azure AD makes the leaders quadrant in Gartners 2017 Magic Quadrant for Access Management
-                    contentLocale:
-                      type: string
-                      example: ''
-                    preferContentReference:
-                      type: boolean
-                      example: true
+                  $ref: '#/components/schemas/blockedUser'
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+    post:
+      summary: Block user from MFA
+      description: >-
+        Block user from MFA.
+      operationId: Mfa.BlockedUsers.Create
+      tags: [Multi Factor Authentication]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/blockedUser'
+      responses:
+        '200':
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/blockedUser'
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+    delete:
+      summary: Unlock user from MFA
+      description: >-
+        Unlock user from MFA.
+      operationId: Mfa.BlockedUsers.Delete
+      parameters:
+        - name: groupId
+          description: The group ID of the block group.
+          in: query
+          required: true
+          schema:
+            type: integer
+            example: 9880468
+        - name: username
+          description: The username of the user to unblock.
+          in: query
+          required: true
+          schema:
+            type: string
+            example: user@con
+        - name: reason
+          description: The reason for unblocking the user.
+          in: query
+          required: true
+          schema:
+            type: string
+            example: Phone found
+      tags: [Multi Factor Authentication]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/blockedUser'
+      responses:
+        '200':
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                type: boolean
+                example: true
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
-  /Directories/{tenantId}/OnPremisesAgents:
+  /MultiFactorAuthentication/BypassedUser:
     parameters:
       - $ref: common.yml#/components/parameters/XMsClientRequestId
-      - $ref: '#/components/parameters/tenantId'
+      - $ref: '#/components/parameters/licenseKey'
     get:
-      summary: List on premises agents
+      tags: [Multi Factor Authentication]
+      summary: List MFA bypassed users
       description: >-
-        List on premises agents.
-      operationId: Directories.OnPremisesAgents.List
-      tags: [Directory]
+        List MFA bypassed users.
+      operationId: Mfa.BypassedUsers.List
+      responses:
+        '200':
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bypassedUser'
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+    post:
+      tags: [Multi Factor Authentication]
+      summary: Bypass MFA for user
+      description: >-
+        Bypass MFA for user.
+      operationId: Mfa.BypassedUsers.Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bypassedUser'
+      responses:
+        '200':
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bypassedUser'
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+    delete:
+      parameters:
+        - name: groupId
+          description: The group ID of the bypass group.
+          in: query
+          required: true
+          schema:
+            type: integer
+            example: 9880468
+        - name: username
+          description: The username of the user to remove bypass for.
+          in: query
+          required: true
+          schema:
+            type: string
+            example: user@con
+        - name: reason
+          description: The reason for removing the bypass for the user.
+          in: query
+          required: true
+          schema:
+            type: string
+            example: Phone found
+      tags: [Multi Factor Authentication]
+      summary: Remove MFA bypass for user
+      description: >-
+        Remove MFA bypass for user.
+      operationId: Mfa.BypassedUsers.Delete
+      responses:
+        '200':
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                type: boolean
+                example: true
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/CacheConfig/{configId}:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: '#/components/parameters/licenseKey'
+      - name: configId
+        description: The ID of the cache config.
+        in: path
+        required: true
+        schema:
+          type: number
+          example: 13596
+    patch:
+      summary: Update MFA cache config
+      description: >-
+        Update MFA cache config.
+      operationId: Mfa.CacheConfig.Update
+      tags: [Multi Factor Authentication]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/cacheConfig'
+      responses:
+        '200':
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                type: string
+                description: etag of the updated resource.
+                example: 1717843376.338953_1a921e51
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/CacheConfig:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: '#/components/parameters/licenseKey'
+    get:
+      summary: List MFA cache configs
+      description: >-
+        List MFA cache configs.
+      operationId: Mfa.CacheConfig.List
+      tags: [Multi Factor Authentication]
+      responses:
+        '200':
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/cacheConfig'
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+    post:
+      summary: Create MFA cache config
+      description: >-
+        Create MFA cache configs
+      operationId: Mfa.CacheConfig.Create
+      tags: [Multi Factor Authentication]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/cacheConfig'
+      responses:
+        '200':
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cacheConfig'
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+    delete:
+      summary: Delete MFA cache config
+      description: >-
+        Delete MFA cache configs
+      operationId: Mfa.CacheConfig.Delete
+      tags: [Multi Factor Authentication]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Group ID to e-tag map
+      responses:
+        '204':
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+          description: No Content
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/DownloadAuthenticationReport:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+    post:
+      summary: Download MFA Authentication report
+      description: >-
+        Download MFA Authentication report.
+      operationId: Mfa.AuthenticationReport.Download
+      tags: [Multi Factor Authentication]
       responses:
         '200':
           $ref: common.yml#/components/responses/UnknownResponse
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
-  /DirectoryObjectPicker/Search:
+  /MultiFactorAuthentication/DownloadServerStatusReport:
     parameters:
       - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
-      summary: Search for directory objects
-      description: Search for directory objects.
-      operationId: Directories.Search
-      tags: [Directory]
+      summary: Download MFA server status report
+      description: >-
+        Download MFA server status report.
+      operationId: Mfa.ServerStatusReport.Download
+      tags: [Multi Factor Authentication]
+      responses:
+        '200':
+          $ref: common.yml#/components/responses/UnknownResponse
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/ExpandedTenantModel:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: '#/components/parameters/licenseKey'
+    get:
+      summary: Get MFA expanded tenant model
+      description: >-
+        Get MFA expanded tenant model.
+      operationId: Mfa.ExpandedTenantModel.Get
+      tags: [Multi Factor Authentication]
+      responses:
+        '200':
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantModel'
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/Greeting:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: '#/components/parameters/licenseKey'
+    get:
+      summary: List MFA greetings
+      description: >-
+        List MFA greetings.
+      operationId: Mfa.Greetings.List
+      tags: [Multi Factor Authentication]
+      responses:
+        '200':
+          $ref: common.yml#/components/responses/UnknownResponse
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+    post:
+      summary: Create MFA greetings
+      description: >-
+        Create MFA greetings.
+      operationId: Mfa.Greetings.Create
+      tags: [Multi Factor Authentication]
+      responses:
+        '200':
+          $ref: common.yml#/components/responses/UnknownResponse
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+    delete:
+      summary: Delete MFA greetings
+      description: >-
+        Delete MFA greetings.
+      operationId: Mfa.Greetings.Delete
+      tags: [Multi Factor Authentication]
+      responses:
+        '200':
+          $ref: common.yml#/components/responses/UnknownResponse
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/Group:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: '#/components/parameters/licenseKey'
+    get:
+      summary: List MFA groups
+      description: >-
+        List MFA groups.
+      operationId: Mfa.Groups.List
+      tags: [Multi Factor Authentication]
+      responses:
+        '200':
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/mfaGroup'
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/HardwareToken/remove:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+    post:
+      summary: Remove MFA hardware token
+      description: >-
+        Remote MFA hardware token.
+      operationId: Mfa.HardwareToken.Delete
+      tags: [Multi Factor Authentication]
+      responses:
+        '200':
+          $ref: common.yml#/components/responses/UnknownResponse
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/HardwareToken/upload:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+    post:
+      summary: Create MFA hardware token
+      description: >-
+        Create MFA hardware token.
+      operationId: Mfa.HardwareToken.Create
+      tags: [Multi Factor Authentication]
+      responses:
+        '200':
+          $ref: common.yml#/components/responses/UnknownResponse
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/HardwareToken/upload/{tokenId}:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - name: tokenId
+        description: The ID of the uploaded token
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      summary: Remove MFA hardware token upload
+      description: >-
+        Remote MFA hardware token upload.
+      operationId: Mfa.HardwareToken.Upload
+      tags: [Multi Factor Authentication]
+      responses:
+        '200':
+          $ref: common.yml#/components/responses/UnknownResponse
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/HardwareToken/users/download:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+    get:
+      summary: Download hardware token user assignments
+      description: >-
+        Download hardware token user assignments.
+      operationId: Mfa.HardwareToken.Users.Download
+      tags: [Multi Factor Authentication]
+      parameters:
+        - name: upn
+          description: The user principal name.
+          in: query
+          schema:
+            $ref: common.yml#/components/schemas/userPrincipalName
+        - name: enabledFilter
+          description: Whether to filter for enabled results only.
+          in: query
+          schema:
+            type: boolean
+      responses:
+        '200':
+          $ref: common.yml#/components/responses/UnknownResponse
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/Providers:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+    get:
+      summary: List MFA providers
+      description: >-
+        List MFA providers.
+      operationId: Mfa.Providers.List
+      tags: [Multi Factor Authentication]
+      responses:
+        '200':
+          $ref: common.yml#/components/responses/UnknownResponse
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/ServerStatusReport:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+    post:
+      summary: Get MFA server status report
+      description: >-
+        Get MFA server status report.
+      operationId: Mfa.ServerStatusReport.Get
+      tags: [Multi Factor Authentication]
+      parameters:
+        - $ref: '#/components/parameters/licenseKey'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                licenseKey:
+                  type: string
+                  example: ''
+      responses:
+        '200':
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                type: array
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/Soundfile:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+    post:
+      summary: Create MFA sound file
+      description: >-
+        Create MFA sound file.
+      operationId: Mfa.SoundFile.Create
+      tags: [Multi Factor Authentication]
+      parameters:
+        - $ref: '#/components/parameters/licenseKey'
       requestBody:
         $ref: common.yml#/components/requestBodies/unknownRequest
       responses:
         '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  member:
-                    type: array
-                  searchTerm:
-                    type: string
-                    example: ''
-                  tooManyResults:
-                    type: boolean
-                    example: false
-                  isInvitable:
-                    type: boolean
-                    example: false
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /directoryObjects/{objectId}/memberOf/count:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-      - name: objectId
-        description: The object ID of the principal
-        in: path
-        required: true
-        schema:
-          $ref: common.yml#/components/schemas/objectId
-    get:
-      summary: Get the membership count (memberOf) for a principal
-      description: >-
-        Get the membership count for a principal.
-      operationId: Directories.MemberOfCount.Get
-      tags: [Directory]
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  value:
-                    type: integer
-                    description: The number of groups that the user is a member of.
-                    example: 2
-                  valueRange:
-                    type: integer
-                    example: 0
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /Directories/{tenantId}/OnPremisesPublishedResources:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-      - $ref: '#/components/parameters/tenantId'
-    get:
-      summary: List on premises published resources
-      description: >-
-        List on premises published resources.
-      operationId: Directories.OnPremisesPublishedResources.List
-      tags: [Directory]
-      responses:
-        '200':
           $ref: common.yml#/components/responses/UnknownResponse
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
-  /Directories/{tenantId}/OnPremisesPublishedResources/{publishedResourceId}:
+  /MultiFactorAuthentication/TenantModel/LicenseKey:
     parameters:
       - $ref: common.yml#/components/parameters/XMsClientRequestId
-      - $ref: '#/components/parameters/tenantId'
-      - name: publishedResourceId
-        description: The ID of the published resource
-        in: path
-        required: true
+      - name: tenantName
+        description: The name of the tenant
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: hasMFALicense
+        description: Whether the tenant has MFA license
+        in: query
+        required: false
+        schema:
+          type: boolean
+    get:
+      summary: Get tenant MFA license key
+      description: >-
+        Get tenant MFA license key.
+      operationId: Mfa.LicenseKey.Get
+      tags: [Multi Factor Authentication]
+      responses:
+        '200':
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                type: string
+                example: ABC123CBA321
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/GetOrCreateExpandedTenantModel:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+    get:
+      summary: Get expanded MFA tenant model
+      description: >-
+        Get expanded multi-factor authentication tenant model.
+      operationId: MultiFactorAuthentication.Get
+      tags: [Multi Factor Authentication]
+      parameters:
+        - name: tenantName
+          description: The name of the tenant.
+          in: query
+          schema:
+            type: string
+            example: contoso
+      responses:
+        '200':
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/TenantModel'
+                  - type: object
+                    properties:
+                      etag:
+                        description: Entity tag for the resource.
+                        type: string
+                        nullable: true
+                        example: 1713791283.533179_d80bab12
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+
+  /MultiFactorAuthentication/HasPaidSubscription:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - name: ignoreEnforcementDate
+        description: Whether to ignore enforcement date.
+        in: query
+        schema:
+          type: boolean
+          example: true
+      - name: trialRestrictionKey
+        description: pending
+        in: query
         schema:
           type: string
     get:
-      tags: [Directory]
-      summary: Get on premises published resource
+      summary: Check if tenant has paid MFA subscription
       description: >-
-        Get on premises published resource.
-      operationId: Directories.OnPremisesPublishedResources.Get
-      responses:
-        '200':
-          $ref: common.yml#/components/responses/UnknownResponse
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /Directories/DeletionRestrictions:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-    get:
-      summary: Get directory deletion restrictions
-      description: >-
-        Get directory deletion restrictions.
-      operationId: Directories.DeletionRestrictions.Get
-      tags: [Directory]
-      parameters:
-        - $ref: common.yml#/components/parameters/XMsClientRequestId
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/deletionRestriction'
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /Directories/DomainAvailability/{domainPrefix}:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-      - name: domainPrefix
-        description: The domain prefix to check.
-        in: path
-        required: true
-        schema:
-          type: string
-          example: contoso
-    get:
-      summary: Check directory domain prefix availability
-      description: >-
-        Check directory domain prefix availability.
-      operationId: Directories.DomainAvailability.Check
-      tags: [Directory]
-      parameters:
-        - $ref: common.yml#/components/parameters/XMsClientRequestId
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                type: boolean
-                example: true
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /Directories/GetSeamlessSingleSignOnDomains:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-    get:
-      summary: Get seamless single sign-on domains
-      description: >-
-        Get seamless single sign-on domains.
-      operationId: Directories.SeamlessSigleSignOnDomains.Get
-      tags: [Directory]
-      parameters:
-        - $ref: common.yml#/components/parameters/XMsClientRequestId
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /Directories/GetPasswordSyncStatus:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-    get:
-      summary: Get password sync status
-      description: >-
-        Get password sync status.
-      operationId: Directories.PasswordSync.Check
-      tags: [Microsoft Entra Connect]
+        Check if tenant has paid MFA subscription.
+      operationId: MultiFactorAuthentication.PaidSubscription.Check
+      tags: [Multi Factor Authentication]
       responses:
         '200':
           description: OK
@@ -862,313 +1507,38 @@ paths:
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
-  /Directories/FeatureSettingsProperties:
+  /MultiFactorAuthentication/HardwareToken/enable:
     parameters:
       - $ref: common.yml#/components/parameters/XMsClientRequestId
-    get:
-      summary: Get directory feature setting properties
-      description: Get directory feature setting properties.
-      operationId: Directories.FeatureSettingsProperties.Get
-      tags: [Directory]
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/featureSettingsProperties'
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-    put:
-      summary: Update directory feature setting properties
-      description: Update directory feature setting properties.
-      operationId: Directories.FeatureSettingsProperties.Update
-      tags: [Directory]
+    post:
+      summary: Enable hardware MFA tokens
+      description: >-
+        Enable hardware MFA tokens.
+      operationId: MultiFactorAuthentication.HardwareToken.Enable
+      tags: [Multi Factor Authentication]
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/featureSettingsProperties'
-      responses:
-        '204':
-          description: No Content
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /Directories/LcmSettings:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-    get:
-      summary: Get directory LCM setings
-      description: >-
-        Get directory LCM setings.
-      operationId: Directories.LcmSettings.Get
-      tags: [Directory]
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/lcmSettings'
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-    put:
-      summary: Update directory LCM setings
-      description: >-
-        Update directory LCM setings.
-      operationId: Directories.LcmSettings.Update
-      tags: [Directory]
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/lcmSettings'
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                type: boolean
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /Directories/Properties:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-    get:
-      summary: Get directory properties
-      description: >-
-        Get directory properties.
-      operationId: Directories.Properties.Get
-      tags: [Directory]
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/directoryProperties'
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-    put:
-      summary: Set directory properties
-      description: >-
-        Set directory properties.
-      operationId: Directories.Properties.Set
-      tags: [Directory]
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/directoryProperties'
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                type: boolean
-                example: true
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /Directories/PropertiesV2:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-    put:
-      summary: Set directory properties (V2)
-      description: >-
-        Set directory properties (version 2).
-      operationId: Directories.PropertiesV2.Set
-      tags: [Directory]
-      requestBody:
-        content:
-          application/json:
-            schema:
-              description: Unknown body schema.
               type: object
+              properties:
+                '@enableAction':
+                  type: string
+                  enum: [Activate]
+                  example: Activate
+                oathId:
+                  $ref: common.yml#/components/schemas/objectId
+                objectId:
+                  $ref: common.yml#/components/schemas/objectId
+                verificationCode:
+                  type: string
+                  example: abc123abc123
       responses:
         '200':
           description: OK
           headers:
             Cache-Control:
               $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
             X-Content-Type-Options:
               $ref: common.yml#/components/headers/X-Content-Type-Options
             X-XSS-Protection:
@@ -1189,263 +1559,18 @@ paths:
               $ref: common.yml#/components/headers/X-UA-Compatible
             Date:
               $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                type: boolean
-                example: true
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
-  /Directories/RecommendedPayloads:
+  /MultiFactorAuthentication/HardwareToken/listUploads:
     parameters:
       - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
-      summary: Get recommended payloads (portal)
+      summary: List uploads for hardware MFA tokens
       description: >-
-        Get recommended portal payload metadata.
-      operationId: Directories.RecommendedPayloads.Get
-      tags: [Directory]
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    priority:
-                      description: Payload priortity.
-                      type: string
-                      example: '0010'
-                    feature:
-                      description: Payload feature name.
-                      type: string
-                      example: ADIbizaUXOverviewRecommended
-                    name:
-                      description: Payload name.
-                      type: string
-                      nullable: true
-                      example: null
-                    locale:
-                      description: Payload locale.
-                      type: string
-                      example: ''
-                    payloadContent:
-                      type: object
-                      properties:
-                        title:
-                          $ref: '#/components/schemas/payloadContent'
-                        description:
-                          $ref: '#/components/schemas/payloadContent'
-                        link:
-                          $ref: '#/components/schemas/payloadContent'
-                        linkTet:
-                          $ref: '#/components/schemas/payloadContent'
-                        image:
-                          $ref: '#/components/schemas/payloadContent'
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /Directories/SsgmProperties:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-    get:
-      summary: Get self-service group management properties
-      description: >-
-        Get self-service group management properties.
-      operationId: Directories.SsgmProperties.Get
-      tags: [Directory]
-      parameters:
-        - $ref: common.yml#/components/parameters/XMsClientRequestId
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/directoryProperties'
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-    put:
-      summary: Set self-service group management properties
-      description: >-
-        Set self-service group management properties.
-      operationId: Directories.SsgmProperties.Set
-      tags: [Directory]
-      parameters:
-        - $ref: common.yml#/components/parameters/XMsClientRequestId
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/directoryProperties'
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                type: boolean
-                example: true
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /Directories/Summary:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-    get:
-      summary: Get a summary of directory objects
-      description: >-
-        Get a summary of directory objects.
-      operationId: Directories.Summary.Get
-      tags: [Directory]
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/directoryObjectSummary'
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /Directories/{tenantId}/Details:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-      - name: tenantId
-        description: The unique identifier of the tenant to retrieve details for.
-        in: path
-        required: true
-        schema:
-          $ref: common.yml#/components/schemas/tenantId
-    get:
-      summary: Get directory details
-      description: >-
-        Get directory details.
-      operationId: Directories.Details.Get
+        List uploads for hardware MFA tokens.
+      operationId: MultiFactorAuthentication.HardwareToken.Uploads.List
+      tags: [Multi Factor Authentication]
       responses:
         '200':
           description: OK
@@ -1483,142 +1608,38 @@ paths:
               schema:
                 type: object
                 properties:
-                  tenantId:
-                    $ref: common.yml#/components/schemas/tenantId
-                  usersCount:
-                    type: integer
-                    description: The number of users in the directory.
-                    example: 333
-                  groupsCount:
-                    type: integer
-                    description: The number of groups in the directory.
-                    example: 140
-                  devicesCount:
-                    type: integer
-                    description: The number of devices in the directory.
-                    example: 333
-                  applicationsCount:
-                    type: integer
-                    description: The number of applications in the directory.
-                    example: 53
-                  userObjectId:
-                    $ref: common.yml#/components/schemas/userId
-                  userDisplayName:
-                    description: The display name of the current user.
-                    type: string
-                    example: User
-                  isSubscriptionLinked:
-                    type: boolean
-                    example: false
-                  userRoles:
+                  items:
                     type: array
-                    description: Roles assigned to the current user.
                     items:
                       type: object
-                      properties:
-                        id:
-                          $ref: common.yml#/components/schemas/objectId
-                        displayName:
-                          description: The display name of the role.
-                          type: string
-                          example: Global Administrator
-                  signInEventsSummary:
-                    type: object
-                    properties:
-                      id:
-                        $ref: common.yml#/components/schemas/objectId
-                      userId:
-                        $ref: common.yml#/components/schemas/userId
-                      appId:
-                        $ref: common.yml#/components/schemas/applicationId
-                      activityData:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            dateTime:
-                              type: string
-                              format: date-time
-                              example: 2024-06-07T00:00:00Z
-                            dateTimeInMillis:
-                              type: integer
-                              example: 1717718400000
-                            activityCount:
-                              type: integer
-                              example: 3
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
-  /directoryObjects/{objectId}:
+  /MultiFactorAuthentication/HardwareToken/users:
     parameters:
       - $ref: common.yml#/components/parameters/XMsClientRequestId
-      - name: objectId
-        description: The object ID of the directory object to retrieve.
-        in: path
-        required: true
-        schema:
-          $ref: common.yml#/components/schemas/objectId
     get:
-      summary: Get a directory object
+      summary: List user hardware MFA tokens
       description: >-
-        Get a directory object by object ID.
-      operationId: Directories.Object.Get
-      tags: [Directory]
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/directoryObject'
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /DirectoryObjectPicker/DirectoryMembersFromIds:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-    post:
-      summary: Get directory members
-      description: >-
-        Get directory members by object IDs.
-      operationId: Directories.Member.Get
-      tags: [Directory]
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                $ref: common.yml#/components/schemas/objectId
+        List user hardware MFA tokens.
+      operationId: MultiFactorAuthentication.HardwareToken.Users.List
+      tags: [Multi Factor Authentication]
+      parameters:
+        - name: skipToken
+          description: Skip token.
+          in: query
+          schema:
+            type: string
+        - name: upn
+          description: User Principal Name to filter results to.
+          in: query
+          schema:
+            $ref: common.yml#/components/schemas/userPrincipalName
+        - name: enabledFilter
+          description: Whether results should be filtered to enabled results only.
+          in: query
+          schema:
+            type: boolean
       responses:
         '200':
           description: OK
@@ -1656,116 +1677,34 @@ paths:
               schema:
                 type: object
                 properties:
-                  objectId:
-                    $ref: common.yml#/components/schemas/objectId
-                  email:
-                    description: Email for the object.
-                    type: string
-                    nullable: true
-                    example: allcompany@contoso.onmicrosoft.com
-                  displayName:
-                    description: Display name for the object.
-                    type: string
-                    example: All Company
-                  type:
-                    description: >
-                      Object type:
-                        - `1`: User
-                        - `2`: Group
-                        - `3`: Unknown
-                        - `4`: Service Principal
-                    type: integer
-                    enum: [1, 2, 3, 4]
-                    example: 2
-                  thumbnailPhoto@odata.mediaContentType:
+                  skipToken:
+                    description: Skip token.
                     type: string
                     nullable: true
                     example: null
-                  hasThumbnail:
-                    description: Whether the object has a thumbnail.
-                    type: boolean
-                    example: false
-                  imageUrl:
-                    description: URL to object image.
-                    type: string
-                    format: url
-                    example: https://main.iam.ad.ext.azure.com/api/Images/...
-                  isUser:
-                    description: Whether the object is a user.
-                    type: boolean
-                    example: false
-                  isGroup:
-                    description: Whether the object is a group.
-                    type: boolean
-                    example: true
-                  isGuest:
-                    description: Whether the object is a guest.
-                    type: boolean
-                    example: false
-                  userType:
-                    description: The type of user object.
-                    type: string
-                    nullable: true
-                    enum: [Member, Guest]
-                    example: null
-                  objectType:
-                    description: The type of object.
-                    type: string
-                    enum: [User, Group, ServicePrincipal]
-                    example: Group
-                  userPrincipalName:
-                    description: User principal name for user object.
-                    type: string
-                    nullable: true
-                    example: null
-                  mail:
-                    description: Mail attribute for object.
-                    type: string
-                    example: allcompany@contoso.onmicrosoft.com
-                  dirSyncEnabled:
-                    description: Whether the object is directory synced.
-                    type: boolean
-                    nullable: true
-                    example: null
-                  lastDirSyncTime:
-                    description: Timestamp of the last directory sync.
-                    type: string
-                    nullable: true
-                    format: date-time
-                    example: null
-                  appId:
-                    $ref: common.yml#/components/schemas/applicationId
-                  groupTypes:
+                  items:
                     type: array
-                    nullable: true
-                    example: null
-                  mailEnabled:
-                    description: Whether the group is mail enabled.
-                    type: boolean
-                    example: true
-                  securityEnabled:
-                    description: Whether the group is mail enabled.
-                    type: boolean
-                    example: false
-                  appRoles:
-                    type: array
-                    nullable: true
-                    example: null
-                  isAssignableToRole:
-                    type: boolean
-                    example: false
+                    items:
+                      type: object
+                      description: Object schema unknown.
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
-  /LoginTenantBrandings:
+  /MultiFactorAuthentication/TenantModel:
     parameters:
       - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
-      summary: List login tenant branding
+      summary: Get MFA tenant model
       description: >-
-        List login tenant branding.
-      operationId: Directories.LoginTenantBranding.List
-      tags: [Directory]
+        Get multi-factor authentication tenant model.
+      operationId: MultiFactorAuthentication.TenantModel.Get
+      tags: [Multi Factor Authentication]
+      parameters:
+        - name: licenseKey
+          description: pending
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -1801,198 +1740,34 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/loginTenantBranding'
+                allOf:
+                  - $ref: '#/components/schemas/TenantModel'
+                  - type: object
+                    properties:
+                      etag:
+                        description: Entity tag for the resource.
+                        type: string
+                        nullable: true
+                        example: 1713791283.533179_d80bab12
         4XX:
           $ref: common.yml#/components/responses/ClientException
-    post:
-      summary: Create login tenant branding
+    patch:
+      summary: Update MFA tenant model
       description: >-
-        Create login tenant branding.
-      operationId: Directories.LoginTenantBranding.Create
-      tags: [Directory]
+        Update multi-factor authentication tenant model.
+      operationId: MultiFactorAuthentication.TenantModel.Update
+      tags: [Multi Factor Authentication]
+      parameters:
+        - name: licenseKey
+          description: pending
+          in: query
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/loginTenantBranding'
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/loginTenantBranding'
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /LoginTenantBrandings/{locale}:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-      - name: locale
-        description: A specific tenant branding locale.
-        in: path
-        required: true
-        schema:
-          type: string
-    get:
-      summary: Get login tenant branding
-      description: >-
-        Get login tenant branding.
-      operationId: Directories.LoginTenantBranding.Get
-      tags: [Directory]
-      responses:
-        '200':
-          description: OK
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            Content-Encoding:
-              $ref: common.yml#/components/headers/Content-Encoding
-            Vary:
-              $ref: common.yml#/components/headers/Vary
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-            Content-Length:
-              $ref: common.yml#/components/headers/Content-Length
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/loginTenantBranding'
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-    put:
-      summary: Set login tenant branding
-      description: >-
-        Set login tenant branding.
-      operationId: Directories.LoginTenantBranding.Set
-      tags: [Directory]
-      responses:
-        '204':
-          description: No Content
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-    delete:
-      summary: Delete login tenant branding
-      description: >-
-        Delete login tenant branding.
-      operationId: Directories.LoginTenantBranding.Delete
-      tags: [Directory]
-      responses:
-        '204':
-          description: No Content
-          headers:
-            Cache-Control:
-              $ref: common.yml#/components/headers/Cache-Control
-            X-Content-Type-Options:
-              $ref: common.yml#/components/headers/X-Content-Type-Options
-            X-XSS-Protection:
-              $ref: common.yml#/components/headers/X-XSS-Protection
-            x-ms-version:
-              $ref: common.yml#/components/headers/x-ms-version
-            Strict-Transport-Security:
-              $ref: common.yml#/components/headers/Strict-Transport-Security
-            Access-Control-Expose-Headers:
-              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-            x-ms-correlation-id:
-              $ref: common.yml#/components/headers/x-ms-correlation-id
-            x-ms-operation-maturity:
-              $ref: common.yml#/components/headers/x-ms-operation-maturity
-            x-ms-expected-duration:
-              $ref: common.yml#/components/headers/x-ms-expected-duration
-            X-UA-Compatible:
-              $ref: common.yml#/components/headers/X-UA-Compatible
-            Date:
-              $ref: common.yml#/components/headers/Date
-        4XX:
-          $ref: common.yml#/components/responses/ClientException
-
-  /LoginTenantBrandings/BannerImage/{locale}:
-    parameters:
-      - $ref: common.yml#/components/parameters/XMsClientRequestId
-      - name: locale
-        description: A specific tenant branding locale.
-        in: path
-        required: true
-        schema:
-          type: string
-    get:
-      summary: Get tenant branding banner image for locale
-      description: >-
-        Get tenant branding banner image for a specific locale.
-      operationId: Directories.LoginTenantBranding.BannerImage.Get
-      tags: [Directory]
+              $ref: '#/components/schemas/TenantModel'
       responses:
         '200':
           description: OK
