@@ -334,7 +334,7 @@ paths:
 
   /AccountSkus/Assign:
     post:
-      summary: Assign account SKUs.
+      summary: Assign account SKUs
       description: >-
         Assign account SKUs (licenses) to users or groups.
       operationId: AccountSkus.Assign
@@ -385,7 +385,7 @@ paths:
 
   /AccountSkus/AssignUpdateRemove:
     post:
-      summary: Assign, update, or remove account SKU assignments to users or groups.
+      summary: Assign, update, or remove account SKU assignments to users or groups
       description: >-
         Assign, update, or remove account SKUs (licenses) to users or groups.
       operationId: AccountSkus.AssignUpdateRemove
@@ -438,7 +438,7 @@ paths:
     parameters:
       - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
-      summary: Create license trial.
+      summary: Create license trial
       description: >-
         Register for a license trial for a specific number of licenses.
       operationId: AccountSkus.Trial.Create
@@ -496,7 +496,7 @@ paths:
         schema:
           $ref: common.yml#/components/schemas/userId
     get:
-      summary: Get group licence assignments.
+      summary: Get group licence assignments
       description: >-
         Get licence assignments for a specific group, by group ID.
       operationId: AccountSkus.Group.Get
@@ -552,7 +552,7 @@ paths:
       - $ref: common.yml#/components/parameters/nextLink
       - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
-      summary: Get group licence assignment errors.
+      summary: Get group licence assignment errors
       description: >-
         Get licence assignment errors for a specific group, by group ID.
       operationId: AccountSkus.Group.Errors.Get
@@ -617,7 +617,7 @@ paths:
         schema:
           $ref: common.yml#/components/schemas/groupId
     post:
-      summary: Reprocess group license assignment.
+      summary: Reprocess group license assignment
       description: >-
         Reprocess group license assignment, by group ID.
       operationId: AccountSkus.Group.Reprocess
@@ -653,7 +653,7 @@ paths:
 
   /AccountSkus/GroupAssignments:
     get:
-      summary: List group licence assignments.
+      summary: List group licence assignments
       description: >-
         List group license assignments.
       operationId: AccountSkus.Group.List
@@ -716,7 +716,7 @@ paths:
 
   /AccountSkus/GroupsWithLicensingErrors:
     get:
-      summary: List groups with licensing errors.
+      summary: List groups with licensing errors
       description: >-
         List groups with licensing errors.
       operationId: AccountSkus.Group.Error.List

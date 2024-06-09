@@ -1,36 +1,52 @@
 paths:
-  /Devices:
-    post:
-      summary: Create device
+  /B2B/customIdentityProviders:
+    get:
+      summary: List B2B custom identity providers
       description: >-
-        Create device.
-      operationId: Devices.Create
-      tags: [Device]
+        List B2B custom identity providers.
+      operationId: B2B.CustomIdentityProviders.List
+      tags: [B2B]
+      requestBody:
+        $ref: common.yml#/components/requestBodies/unknownRequest
       responses:
-        2XX:
+        '200':
+          $ref: common.yml#/components/responses/UnknownResponse
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+    post:
+      summary: Create B2B custom identity provider
+      description: >-
+        Create B2B custom identity providers.
+      operationId: B2B.CustomIdentityProviders.Create
+      tags: [B2B]
+      requestBody:
+        $ref: common.yml#/components/requestBodies/unknownRequest
+      responses:
+        '200':
+          $ref: common.yml#/components/responses/UnknownResponse
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
+    patch:
+      summary: Update B2B custom identity provider
+      description: >-
+        Update B2B custom identity providers.
+      operationId: B2B.CustomIdentityProviders.Update
+      tags: [B2B]
+      requestBody:
+        $ref: common.yml#/components/requestBodies/unknownRequest
+      responses:
+        '200':
           $ref: common.yml#/components/responses/UnknownResponse
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
-  /SyncingDevices/{0}/Download:
-    parameters:
-      - name: '0'
-        description: pending
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: syncV2
-        description: Use V2 of the SyncingDevices API
-        in: query
-        schema:
-          type: boolean
-    get:
-      summary: Download syncing device details
+  /B2B/getMetadataFile:
+    post:
+      summary: Get B2B metadata file
       description: >-
-        Download syncing device details.
-      operationId: SyncingDevices.Download
-      tags: [Device]
+        Get B2B metadata file.
+      operationId: B2B.MetadataFile.Get
+      tags: [B2B]
       responses:
         '200':
           description: OK
@@ -64,31 +80,20 @@ paths:
             Content-Length:
               $ref: common.yml#/components/headers/Content-Length
           content:
-            application/octet-stream:
+            application/json:
               schema:
                 type: string
         4XX:
           $ref: common.yml#/components/responses/ClientException
 
-  /SyncingDevices/{0}:
+  /B2B/b2bpolicy:
     parameters:
-      - name: '0'
-        description: pending
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: syncV2
-        description: Use V2 of the SyncingDevices API
-        in: query
-        schema:
-          type: boolean
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
-      summary: Get syncing device details
-      description: >-
-        Get syncing device details.
-      operationId: SyncingDevices.Get
-      tags: [Device]
+      summary: Get B2B policy
+      description: Get B2B policy.
+      operationId: Directories.B2BPolicy.Get
+      tags: [B2B]
       responses:
         '200':
           description: OK
@@ -126,14 +131,20 @@ paths:
               schema:
                 type: object
                 properties:
-                  preview:
+                  targetedDomains:
+                    type: array
+                  hasListEntries:
                     type: boolean
                     example: false
-                  errorMessage:
-                    type: string
-                    nullable: true
-                    example: null
-                  content:
+                  isAllowlist:
+                    type: boolean
+                    example: true
+                  otpEnabled:
+                    type: boolean
+                    example: false
+                  adminConsentedForUsersIntoTenantIds:
+                    type: array
+                  noAADConsentForUsersFromTenantsIds:
                     type: array
         4XX:
           $ref: common.yml#/components/responses/ClientException

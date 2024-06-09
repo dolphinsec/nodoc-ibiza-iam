@@ -33,3 +33,4 @@ rules:
   scalar-property-missing-example: warn
   spec-strict-refs: error
   tag-description: warn
+  no-ambiguous-paths: off
