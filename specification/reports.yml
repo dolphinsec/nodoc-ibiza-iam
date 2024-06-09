@@ -240,6 +240,7 @@ paths:
 
   /Reports/ServicePrincipals/{spId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: spId
         description: The object ID of the service principal.
         in: path
@@ -586,6 +587,7 @@ paths:
 
   /Reports/{reportId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: reportId
         description: The ID of the report
         in: path
@@ -611,6 +613,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /Reports/AuditEventsV2:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: List audit events (v2)
       description: List audit events (version 2)

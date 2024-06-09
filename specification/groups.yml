@@ -211,6 +211,7 @@ components:
 paths:
   /Groups/{groupId}/GetExtensionPropertiesByApp:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: '#/components/parameters/groupId'
     get:
       summary: Get group extension properties by app
@@ -225,6 +226,7 @@ paths:
 
   /Groups/{groupId}/members/count:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: '#/components/parameters/groupId'
     get:
       summary: Get group member count
@@ -298,6 +300,7 @@ paths:
 
   /Groups/GetSupportedDynamicMembershipBaseAttributes/{id}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: id
         description: pending
         in: path
@@ -316,6 +319,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /Groups/GetSupportedDynamicMembershipOperators:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List dynamic membership operators
       description: List dynamic membership operators.

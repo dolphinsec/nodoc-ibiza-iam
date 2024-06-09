@@ -49,6 +49,8 @@ components:
 
 paths:
   /RequestApprovals/V2/BusinessFlows:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Get request approval business flows (v2)
       description: >-
@@ -86,6 +88,7 @@ paths:
 
   /RequestApprovals/V2/PolicyTemplates/{templateId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: templateId
         description: The unique ID of the policy template.
         in: path
@@ -176,6 +179,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /RequestApprovals/V2/PolicyTemplates:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Create request approval policy template (v2)
       description: >-
@@ -235,6 +240,7 @@ paths:
 
   /RequestApprovals/V2/Requests/{requestId}/block/{0}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: requestId
         description: The unique ID of the request
         in: path
@@ -263,6 +269,7 @@ paths:
 
   /RequestApprovals/V2/Requests/{requestId}/deny:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: requestId
         description: The unique ID of the request
         in: path
@@ -284,6 +291,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /RequestApprovals/V2/Requests:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       parameters:
         - $ref: common.yml#/components/parameters/nextLink

@@ -159,6 +159,8 @@ components:
 
 paths:
   /AuthenticationMethods/AuthenticationMethodsPolicy:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Get authentication methods policy
       description: >-
@@ -454,6 +456,7 @@ paths:
 
   /RequireAuthMethodVerification/{0}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: '0'
         description: pending.
         in: path

@@ -1,6 +1,7 @@
 paths:
   /Roles/{roleId}/RoleAssignments:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: roleId
         description: The unique identifier of the role
         in: path
@@ -109,6 +110,7 @@ paths:
 
   /Roles/User/{userId}/RoleAssignments:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - in: path
         name: userId
         description: The object ID of the user to retrieve role assignments for.

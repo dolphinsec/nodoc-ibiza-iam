@@ -614,7 +614,7 @@ paths:
     $ref: multifactor_authentication.yml#/paths/~1RevokeMFA~1{0}
 
   /RoamingSettings:
-    $ref: misc.yml#/paths/~1RoamingSettings
+    $ref: devices.yml#/paths/~1RoamingSettings
 
   /Roles/{roleId}/RoleAssignments:
     $ref: roles.yml#/paths/~1Roles~1{roleId}~1RoleAssignments

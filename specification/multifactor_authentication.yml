@@ -261,6 +261,7 @@ components:
 paths:
   /RevokeMFA/{0}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: '0'
         description: Unknown
         in: path
@@ -285,6 +286,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /MultiFactorAuthentication/ActivationCredentials:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Get MFA activation credentials
       description: >-
@@ -342,6 +345,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /MultiFactorAuthentication/AuthenticationReport:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Get MFA authentication report
       description: >-
@@ -439,6 +444,7 @@ paths:
 
   /MultiFactorAuthentication/BlockedUser:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: '#/components/parameters/licenseKey'
     get:
       summary: List MFA blocked users
@@ -610,6 +616,7 @@ paths:
 
   /MultiFactorAuthentication/BypassedUser:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: '#/components/parameters/licenseKey'
     get:
       tags: [Multi Factor Authentication]
@@ -776,6 +783,7 @@ paths:
 
   /MultiFactorAuthentication/CacheConfig/{configId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: '#/components/parameters/licenseKey'
       - name: configId
         description: The ID of the cache config.
@@ -838,6 +846,7 @@ paths:
 
   /MultiFactorAuthentication/CacheConfig:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: '#/components/parameters/licenseKey'
     get:
       summary: List MFA cache configs
@@ -978,6 +987,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /MultiFactorAuthentication/DownloadAuthenticationReport:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Download MFA Authentication report
       description: >-
@@ -991,6 +1002,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /MultiFactorAuthentication/DownloadServerStatusReport:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Download MFA server status report
       description: >-
@@ -1005,6 +1018,7 @@ paths:
 
   /MultiFactorAuthentication/ExpandedTenantModel:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: '#/components/parameters/licenseKey'
     get:
       summary: Get MFA expanded tenant model
@@ -1053,6 +1067,7 @@ paths:
 
   /MultiFactorAuthentication/Greeting:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: '#/components/parameters/licenseKey'
     get:
       summary: List MFA greetings
@@ -1090,6 +1105,7 @@ paths:
 
   /MultiFactorAuthentication/Group:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: '#/components/parameters/licenseKey'
     get:
       summary: List MFA groups
@@ -1139,6 +1155,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /MultiFactorAuthentication/HardwareToken/remove:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Remove MFA hardware token
       description: >-
@@ -1152,6 +1170,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /MultiFactorAuthentication/HardwareToken/upload:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Create MFA hardware token
       description: >-
@@ -1166,6 +1186,7 @@ paths:
 
   /MultiFactorAuthentication/HardwareToken/upload/{tokenId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: tokenId
         description: The ID of the uploaded token
         in: path
@@ -1185,6 +1206,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /MultiFactorAuthentication/HardwareToken/users/download:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Download hardware token user assignments
       description: >-
@@ -1209,6 +1232,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /MultiFactorAuthentication/Providers:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List MFA providers
       description: >-
@@ -1222,6 +1247,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /MultiFactorAuthentication/ServerStatusReport:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Get MFA server status report
       description: >-
@@ -1279,6 +1306,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /MultiFactorAuthentication/Soundfile:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Create MFA sound file
       description: >-
@@ -1297,6 +1326,7 @@ paths:
 
   /MultiFactorAuthentication/TenantModel/LicenseKey:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: tenantName
         description: The name of the tenant
         in: query
@@ -1420,6 +1450,7 @@ paths:
 
   /MultiFactorAuthentication/HasPaidSubscription:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: ignoreEnforcementDate
         description: Whether to ignore enforcement date.
         in: query
@@ -1477,6 +1508,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /MultiFactorAuthentication/HardwareToken/enable:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Enable hardware MFA tokens
       description: >-
@@ -1530,6 +1563,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /MultiFactorAuthentication/HardwareToken/listUploads:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List uploads for hardware MFA tokens
       description: >-
@@ -1656,6 +1691,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /MultiFactorAuthentication/TenantModel:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Get MFA tenant model
       description: >-

@@ -353,6 +353,8 @@ components:
 
 paths:
   /User/TemporaryPassword:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Generate temporary password
       description: >-
@@ -1297,6 +1299,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /Users/ListVerifiedDomains:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List verified domains
       description: List verified domains
@@ -1345,6 +1349,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /Users/ReInvite:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     put:
       summary: Reinvite user
       description: >-
@@ -1360,6 +1366,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /Users/Settings:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List country code
       description: >-

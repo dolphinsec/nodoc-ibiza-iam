@@ -8,8 +8,6 @@ paths:
         Get Security Defaults configuration.
       operationId: SecurityDefaults.Configuration.Get
       tags: [Security Defaults]
-      parameters:
-        - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
         '200':
           description: OK
@@ -65,14 +63,14 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /SecurityDefaults/GetSecurityDefaultStatus:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Get Security Defaults status
       description: >-
         Get Security Defaults status.
       operationId: SecurityDefaults.Status.Get
       tags: [Security Defaults]
-      parameters:
-        - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
         '200':
           description: OK

@@ -301,6 +301,7 @@ paths:
 
   /RegisteredApplications/{appId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - in: path
         name: appId
         description: The application ID (client ID) of the application registration to manage.

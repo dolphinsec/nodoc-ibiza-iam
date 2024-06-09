@@ -277,6 +277,8 @@ components:
 
 paths:
   /AccountSkus:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List account SKUs
       description: >-
@@ -333,6 +335,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /AccountSkus/Assign:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Assign account SKUs
       description: >-
@@ -384,6 +388,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /AccountSkus/AssignUpdateRemove:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Assign, update, or remove account SKU assignments to users or groups
       description: >-
@@ -489,6 +495,7 @@ paths:
 
   /AccountSkus/Group/{groupId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - in: path
         name: groupId
         description: The object ID of the group to retrieve Account SKU records for.
@@ -652,6 +659,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /AccountSkus/GroupAssignments:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List group licence assignments
       description: >-
@@ -715,6 +724,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /AccountSkus/GroupsWithLicensingErrors:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List groups with licensing errors
       description: >-
@@ -777,6 +788,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /AccountSkus/Remove:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Remove account SKU assignments to users or groups.
       description: >-
@@ -829,6 +842,7 @@ paths:
 
   /AccountSkus/User/{userId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - in: path
         name: userId
         description: The object ID of the user to retrieve Account SKU records for.
@@ -884,6 +898,7 @@ paths:
 
   /AccountSkus/User/{userId}/Reprocess:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - in: path
         name: userId
         description: The object ID of the user to reprocess Account SKU records for.
@@ -926,6 +941,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /AccountSkus/UserAssignments:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List user licence assignments.
       description: >-
@@ -984,14 +1001,14 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /AccountSkus/Update:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Update account SKU assignments for users or groups.
       description: >-
         Update account SKUs (licenses) for users or groups.
       operationId: AccountSkus.Update
       tags: [Licensing]
-      parameters:
-        - $ref: common.yml#/components/parameters/XMsClientRequestId
       requestBody:
         content:
           application/json:

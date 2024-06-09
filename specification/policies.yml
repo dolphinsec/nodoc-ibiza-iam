@@ -926,6 +926,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /Policies/PolicyCountUnderMaxAllowedLimit:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Check if policy count is under max allowed limit
       description: >-
@@ -968,6 +970,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /Policies/Policies:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List policies
       description: >-
@@ -975,7 +979,6 @@ paths:
       operationId: Policies.List
       tags: [Policies]
       parameters:
-        - $ref: common.yml#/components/parameters/XMsClientRequestId
         - name: top
           description: The number of policies to return.
           in: query
@@ -1232,6 +1235,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /WhatIf/Evaluate:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Evaluate policy
       description: >-

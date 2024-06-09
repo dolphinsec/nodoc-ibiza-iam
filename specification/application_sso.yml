@@ -181,6 +181,7 @@ components:
 paths:
   /ApplicationSso/{spId}/CleanClaimTest:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     post:
       summary: Run Application SSO Clean Claim Test
@@ -221,6 +222,7 @@ paths:
 
   /ApplicationSso/{spId}/FederatedSsoConfigV2:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     post:
       summary: Update Application SSO federated SSO config (v2)
@@ -238,6 +240,7 @@ paths:
 
   /ApplicationSso/{spId}/FederatedSsoConfigV4/{appId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
       - $ref: common.yml#/components/parameters/appId
     get:
@@ -253,62 +256,64 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /ApplicationSso/{spId}/GetCertificateByThumbprintBase64String/{thumbprint}:
-      parameters:
-        - $ref: common.yml#/components/parameters/spId
-        - name: thumbprint
-          description: The certificate thumbprint base64 string
-          in: path
-          required: true
-          schema:
-            type: string
-      get:
-        summary: Get Application SSO certificate.
-        description: >-
-          Get Application SSO certificate by service principal ID and certificate thumbprint.
-        operationId: ApplicationSso.Certificate.Get
-        tags: [Application SSO]
-        responses:
-          '200':
-            description: Ok
-            headers:
-              Cache-Control:
-                $ref: common.yml#/components/headers/Cache-Control
-              Content-Encoding:
-                $ref: common.yml#/components/headers/Content-Encoding
-              Vary:
-                $ref: common.yml#/components/headers/Vary
-              X-Content-Type-Options:
-                $ref: common.yml#/components/headers/X-Content-Type-Options
-              X-XSS-Protection:
-                $ref: common.yml#/components/headers/X-XSS-Protection
-              x-ms-version:
-                $ref: common.yml#/components/headers/x-ms-version
-              Strict-Transport-Security:
-                $ref: common.yml#/components/headers/Strict-Transport-Security
-              Access-Control-Expose-Headers:
-                $ref: common.yml#/components/headers/Access-Control-Expose-Headers
-              x-ms-correlation-id:
-                $ref: common.yml#/components/headers/x-ms-correlation-id
-              x-ms-operation-maturity:
-                $ref: common.yml#/components/headers/x-ms-operation-maturity
-              x-ms-expected-duration:
-                $ref: common.yml#/components/headers/x-ms-expected-duration
-              X-UA-Compatible:
-                $ref: common.yml#/components/headers/X-UA-Compatible
-              Date:
-                $ref: common.yml#/components/headers/Date
-              Content-Length:
-                $ref: common.yml#/components/headers/Content-Length
-            content:
-              application/json:
-                schema:
-                  type: string
-                  description: The certificate content.
-          4XX:
-            $ref: common.yml#/components/responses/ClientException
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
+      - $ref: common.yml#/components/parameters/spId
+      - name: thumbprint
+        description: The certificate thumbprint base64 string
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get Application SSO certificate.
+      description: >-
+        Get Application SSO certificate by service principal ID and certificate thumbprint.
+      operationId: ApplicationSso.Certificate.Get
+      tags: [Application SSO]
+      responses:
+        '200':
+          description: Ok
+          headers:
+            Cache-Control:
+              $ref: common.yml#/components/headers/Cache-Control
+            Content-Encoding:
+              $ref: common.yml#/components/headers/Content-Encoding
+            Vary:
+              $ref: common.yml#/components/headers/Vary
+            X-Content-Type-Options:
+              $ref: common.yml#/components/headers/X-Content-Type-Options
+            X-XSS-Protection:
+              $ref: common.yml#/components/headers/X-XSS-Protection
+            x-ms-version:
+              $ref: common.yml#/components/headers/x-ms-version
+            Strict-Transport-Security:
+              $ref: common.yml#/components/headers/Strict-Transport-Security
+            Access-Control-Expose-Headers:
+              $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+            x-ms-correlation-id:
+              $ref: common.yml#/components/headers/x-ms-correlation-id
+            x-ms-operation-maturity:
+              $ref: common.yml#/components/headers/x-ms-operation-maturity
+            x-ms-expected-duration:
+              $ref: common.yml#/components/headers/x-ms-expected-duration
+            X-UA-Compatible:
+              $ref: common.yml#/components/headers/X-UA-Compatible
+            Date:
+              $ref: common.yml#/components/headers/Date
+            Content-Length:
+              $ref: common.yml#/components/headers/Content-Length
+          content:
+            application/json:
+              schema:
+                type: string
+                description: The certificate content.
+        4XX:
+          $ref: common.yml#/components/responses/ClientException
 
   /ApplicationSso/{spId}/GetFederatedOneClickSsoSetupData:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     get:
       summary: Get Application SSO federated one clieck SSO setup data
@@ -324,6 +329,7 @@ paths:
 
   /ApplicationSso/{spId}/GetSignInUrl:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     get:
       summary: Get Application SSO sign in URL
@@ -374,6 +380,7 @@ paths:
 
   /ApplicationSso/{spId}/LinkFederatedSsoClaimsPolicy:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     post:
       summary: Link federated SSO claims policy
@@ -396,6 +403,7 @@ paths:
 
   /ApplicationSso/{spId}/SetupClaimTest:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     post:
       summary: Setup federated SSO claims test
@@ -438,6 +446,7 @@ paths:
 
   /ApplicationSso/{spId}/SetupFederation:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     post:
       parameters:
@@ -447,7 +456,7 @@ paths:
           required: true
           schema:
             type: string
-      summary: Setup federation for SSO application 
+      summary: Setup federation for SSO application
       description: >-
         Setup federation for SSO application.
       operationId: ApplicationSso.SsoFederation.Setup
@@ -462,6 +471,7 @@ paths:
 
   /ApplicationSso/{spId}/SPsWithSharedPolicy:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     get:
       summary: List service principals with shared policies
@@ -512,6 +522,7 @@ paths:
 
   /ApplicationSso/{spId}/TestLink:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     get:
       summary: Get linked Application SSO tests
@@ -560,6 +571,7 @@ paths:
 
   /ApplicationSso/{spId}/TokenIssuancePolicyId:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     get:
       summary: Get Application SSO token issuance policy ID
@@ -607,6 +619,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /ApplicationSso/EvaluateRegexTransformation:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Evaluate Regex transformation
       description: >-
@@ -674,6 +688,7 @@ paths:
 
   /ApplicationSso/{spId}/LinkedSso:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     get:
       summary: Get Application SSO linked SSO
@@ -729,6 +744,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /ApplicationSso/IsValidIdentifierUriV2:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Check whether an application identifier URI is valid (v2)
       description: >-
@@ -787,6 +804,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /ApplicationSso/IsValidUri:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Check whether an application Uri is valid
       description: >-
@@ -837,6 +856,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /ApplicationSso/TokenSigningCert:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Update Application SSO token signing cert
       description: >-
@@ -844,7 +865,7 @@ paths:
       operationId: ApplicationSso.TokenSigningCert.Get
       tags: [Application SSO]
       requestBody:
-          $ref: common.yml#/components/requestBodies/unknownRequest
+        $ref: common.yml#/components/requestBodies/unknownRequest
       responses:
         '200':
           $ref: common.yml#/components/responses/UnknownResponse
@@ -1187,6 +1208,7 @@ paths:
 
   /ApplicationSso/{spId}/FederatedSsoClaimsPolicyV2:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     post:
       summary: Set Application Federated SSO claims policy (V2)
@@ -1236,6 +1258,7 @@ paths:
 
   /ApplicationSso/{spId}/FederatedSsoClaimsPolicyV3:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     post:
       summary: Set Application Federated SSO claims policy (V3)
@@ -1456,6 +1479,7 @@ paths:
 
   /ApplicationSso/{spId}/FederatedSsoV4/{appId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
       - $ref: common.yml#/components/parameters/appId
     get:

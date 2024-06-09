@@ -124,6 +124,7 @@ paths:
 
   /MdmApplications/{spId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - in: path
         name: spId
         description: The object ID of the service principal (enterprise application) for the MDM service.
@@ -224,6 +225,7 @@ paths:
 
   /MdmApplications/Application/{appId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: appId
         description: The application ID (client ID) of the MDM application.
         in: path
@@ -244,6 +246,7 @@ paths:
 
   /MdmApplications/Permissions/{appId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: appId
         description: The application ID (client ID) of the MDM application.
         in: path

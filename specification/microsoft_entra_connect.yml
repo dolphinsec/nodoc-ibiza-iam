@@ -1,13 +1,13 @@
 paths:
   /Directories/ADConnectStatus:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Get directory AD Connect status
       description: >-
         Get directory AD Connect status.
       operationId: Directories.ADConnectStatus.Get
       tags: [Microsoft Entra Connect]
-      parameters:
-        - $ref: common.yml#/components/parameters/XMsClientRequestId
       responses:
         '200':
           description: OK

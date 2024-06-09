@@ -73,6 +73,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /NamedNetworksV2/CountryCodes:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List named network country codes (v2)
       description: List named network country codes (version 2).
@@ -130,6 +132,7 @@ paths:
 
   /NamedNetworksV2/{id}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - in: path
         description: The unique identifier of the network.
         name: id
@@ -150,6 +153,7 @@ paths:
 
   /NamedNetworksV2/ValidatePolicySize/{id}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - in: path
         description: The unique identifier of the network.
         name: id

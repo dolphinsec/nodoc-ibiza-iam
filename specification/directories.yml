@@ -402,6 +402,8 @@ components:
 
 paths:
   /Directories/DirectoryWhatsNew:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List Entra ID news
       description: >-
@@ -475,6 +477,7 @@ paths:
 
   /Directories/{tenantId}/OnPremisesAgents:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: '#/components/parameters/tenantId'
     get:
       summary: List on premises agents
@@ -489,6 +492,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /DirectoryObjectPicker/Search:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Search for directory objects
       description: Search for directory objects.
@@ -549,6 +554,7 @@ paths:
 
   /directoryObjects/{objectId}/memberOf/count:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: objectId
         description: The object ID of the principal
         in: path
@@ -610,6 +616,7 @@ paths:
 
   /Directories/{tenantId}/OnPremisesPublishedResources:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: '#/components/parameters/tenantId'
     get:
       summary: List on premises published resources
@@ -625,6 +632,7 @@ paths:
 
   /Directories/{tenantId}/OnPremisesPublishedResources/{publishedResourceId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: '#/components/parameters/tenantId'
       - name: publishedResourceId
         description: The ID of the published resource
@@ -645,6 +653,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /Directories/DeletionRestrictions:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Get directory deletion restrictions
       description: >-
@@ -696,6 +706,7 @@ paths:
 
   /Directories/DomainAvailability/{domainPrefix}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: domainPrefix
         description: The domain prefix to check.
         in: path
@@ -752,6 +763,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /Directories/GetSeamlessSingleSignOnDomains:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Get seamless single sign-on domains
       description: >-
@@ -802,6 +815,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /Directories/GetPasswordSyncStatus:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Get password sync status
       description: >-
@@ -1130,6 +1145,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /Directories/PropertiesV2:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     put:
       summary: Set directory properties (V2)
       description: >-
@@ -1264,6 +1281,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /Directories/SsgmProperties:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Get self-service group management properties
       description: >-
@@ -1415,6 +1434,7 @@ paths:
 
   /Directories/{tenantId}/Details:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: tenantId
         description: The unique identifier of the tenant to retrieve details for.
         in: path

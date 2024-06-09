@@ -198,6 +198,7 @@ components:
 paths:
   /ManagedApplications/{spId}/PasswordSsoCustomApp:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     post:
       summary: Create managed application Password SSO custom app
@@ -248,6 +249,7 @@ paths:
 
   /ManagedApplications/{spId}/PasswordSsoCustomApp/{customAppId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
       - name: customAppId
         description: The ID of the custom app configuration
@@ -269,6 +271,7 @@ paths:
 
   /ManagedApplications/{spId}/PasswordSsoCredentials/{targetType}/{targetId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
       - name: targetType
         description: The type of the credential target.
@@ -343,6 +346,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /ManagedApplications/List:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: List managed applications
       description: >-

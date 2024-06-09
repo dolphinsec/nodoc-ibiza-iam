@@ -1,5 +1,7 @@
 paths:
   /DataInsights/GetCredentialUserRegistrationDetails:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: List user credential registration details
       description: >-
@@ -101,6 +103,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /DataInsights/GetUserCredentialUsageDetails:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: List user credential usage details
       description: >-

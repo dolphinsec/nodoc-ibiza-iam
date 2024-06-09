@@ -57,6 +57,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /ClassicPolicies/Detail2:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Get classic policy details (v2)
       description: >-
@@ -72,6 +74,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /ClassicPolicies/Disable:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     put:
       summary: Disable classic policy
       description: >-
@@ -87,6 +91,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /ClassicPolicies/Migrate:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Migrate classic policy
       description: >-
@@ -102,6 +108,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /ClassicPolicies/Save:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Save classic policy
       description: >-

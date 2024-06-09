@@ -1,5 +1,7 @@
 paths:
   /B2B/customIdentityProviders:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List B2B custom identity providers
       description: >-
@@ -41,6 +43,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /B2B/getMetadataFile:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Get B2B metadata file
       description: >-

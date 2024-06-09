@@ -60,6 +60,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /Permissions/IsTenantRegionScopeAllowed:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: Check if Tenant Region Scope is allowed
       description: >-
@@ -161,6 +163,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /Permissions/GetUserSystemRoleTemplateIds:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: >-
         Get the system role template IDs

@@ -67,6 +67,8 @@ components:
 
 paths:
   /Applications/Gallery:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List Gallery Applications
       description: >-
@@ -123,6 +125,7 @@ paths:
 
   /Applications/Gallery/{appId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: appId
         description: pending.
         in: path
@@ -176,6 +179,7 @@ paths:
 
   /ApplicationManagement/ApplicationObject/{appId}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: appId
         description: pending.
         in: path
@@ -285,6 +289,7 @@ paths:
 
   /IntegratedApplications/{spId}/GetFederatedOneClickSsoConfigureInfo:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - $ref: common.yml#/components/parameters/spId
     get:
       summary: Get integrated application federated one-click SSO configuration info

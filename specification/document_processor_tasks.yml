@@ -1,5 +1,7 @@
 paths:
   /DocumentProcessorTasks:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Create document processor task
       description: Create document processor task.
@@ -15,6 +17,7 @@ paths:
 
   /DocumentProcessorTasks/{id}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: id
         description: Document processor task download ID
         in: path
@@ -34,6 +37,7 @@ paths:
 
   /DocumentProcessorTasks/Download/{id}:
     parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
       - name: id
         description: Document processor task download ID
         in: path
@@ -52,6 +56,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /DocumentProcessorTasks/ListTasks:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     get:
       summary: List document processor tasks
       description: List document processor tasks.
@@ -64,6 +70,8 @@ paths:
           $ref: common.yml#/components/responses/ClientException
 
   /DocumentProcessorTasks/UploadTaskFile:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Upload document processor task file
       description: Upload document processor task file.

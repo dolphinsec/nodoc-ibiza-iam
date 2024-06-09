@@ -1,5 +1,7 @@
 paths:
   /Directories/B2C:
+    parameters:
+      - $ref: common.yml#/components/parameters/XMsClientRequestId
     post:
       summary: Create B2C tenant
       description: >-
