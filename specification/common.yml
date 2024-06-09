@@ -63,29 +63,29 @@ components:
       description: Unknown API response
       headers:
         Cache-Control:
-          $ref: common.yml#/components/headers/Cache-Control
+          $ref: '#/components/headers/Cache-Control'
         Vary:
-          $ref: common.yml#/components/headers/Vary
+          $ref: '#/components/headers/Vary'
         X-Content-Type-Options:
-          $ref: common.yml#/components/headers/X-Content-Type-Options
+          $ref: '#/components/headers/X-Content-Type-Options'
         X-XSS-Protection:
-          $ref: common.yml#/components/headers/X-XSS-Protection
+          $ref: '#/components/headers/X-XSS-Protection'
         x-ms-version:
-          $ref: common.yml#/components/headers/x-ms-version
+          $ref: '#/components/headers/x-ms-version'
         Strict-Transport-Security:
-          $ref: common.yml#/components/headers/Strict-Transport-Security
+          $ref: '#/components/headers/Strict-Transport-Security'
         Access-Control-Expose-Headers:
-          $ref: common.yml#/components/headers/Access-Control-Expose-Headers
+          $ref: '#/components/headers/Access-Control-Expose-Headers'
         x-ms-correlation-id:
-          $ref: common.yml#/components/headers/x-ms-correlation-id
+          $ref: '#/components/headers/x-ms-correlation-id'
         x-ms-operation-maturity:
-          $ref: common.yml#/components/headers/x-ms-operation-maturity
+          $ref: '#/components/headers/x-ms-operation-maturity'
         x-ms-expected-duration:
-          $ref: common.yml#/components/headers/x-ms-expected-duration
+          $ref: '#/components/headers/x-ms-expected-duration'
         X-UA-Compatible:
-          $ref: common.yml#/components/headers/X-UA-Compatible
+          $ref: '#/components/headers/X-UA-Compatible'
         Date:
-          $ref: common.yml#/components/headers/Date
+          $ref: '#/components/headers/Date'
       content:
         application/json:
           schema:
@@ -379,7 +379,7 @@ components:
         The object ID of the service principal (enterprise application).
       required: true
       schema:
-        $ref: common.yml#/components/schemas/servicePrincipalId
+        $ref: '#/components/schemas/servicePrincipalId'
     appId:
       name: appId
       in: path
@@ -387,7 +387,7 @@ components:
         The application ID of the application.
       required: true
       schema:
-        $ref: common.yml#/components/schemas/applicationId
+        $ref: '#/components/schemas/applicationId'
     XMsClientRequestId:
       name: X-Ms-Client-Request-Id
       description: X-Ms-Client-Request-Id header.
