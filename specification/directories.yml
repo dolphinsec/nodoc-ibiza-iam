@@ -1273,7 +1273,7 @@ paths:
                           $ref: '#/components/schemas/payloadContent'
                         link:
                           $ref: '#/components/schemas/payloadContent'
-                        linkTet:
+                        linkText:
                           $ref: '#/components/schemas/payloadContent'
                         image:
                           $ref: '#/components/schemas/payloadContent'

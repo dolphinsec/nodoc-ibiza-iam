@@ -276,11 +276,13 @@ paths:
       - name: targetType
         description: The type of the credential target.
         in: path
+        required: true
         schema:
           type: string
       - name: targetId
         description: The Id of the credential target.
         in: path
+        required: true
         schema:
           type: string
     get:
