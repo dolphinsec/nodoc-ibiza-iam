@@ -15,17 +15,38 @@ files[] = {"id":"18149627-a1d44a35-0886-49d2-9fc3-78937113c898","path":"Ibiza IA
 
 [config.relations.apiDefinition]
 files[] = {"path":"specification/account_sku.yml","metaData":{}}
+files[] = {"path":"specification/application_insights.yml","metaData":{}}
+files[] = {"path":"specification/application_proxy.yml","metaData":{}}
+files[] = {"path":"specification/application_sso.yml","metaData":{}}
 files[] = {"path":"specification/applications.yml","metaData":{}}
-files[] = {"path":"specification/auth.yml","metaData":{}}
+files[] = {"path":"specification/authentication_methods.yml","metaData":{}}
+files[] = {"path":"specification/b2b.yml","metaData":{}}
+files[] = {"path":"specification/b2c.yml","metaData":{}}
+files[] = {"path":"specification/claim_providers.yml","metaData":{}}
+files[] = {"path":"specification/classic_policies.yml","metaData":{}}
 files[] = {"path":"specification/common.yml","metaData":{}}
+files[] = {"path":"specification/data_insights.yml","metaData":{}}
+files[] = {"path":"specification/devices.yml","metaData":{}}
 files[] = {"path":"specification/directories.yml","metaData":{}}
+files[] = {"path":"specification/document_processor_tasks.yml","metaData":{}}
+files[] = {"path":"specification/enterprise_applications.yml","metaData":{}}
+files[] = {"path":"specification/gdpr.yml","metaData":{}}
 files[] = {"path":"specification/groups.yml","metaData":{}}
+files[] = {"path":"specification/managed_applications.yml","metaData":{}}
+files[] = {"path":"specification/mdm_applications.yml","metaData":{}}
+files[] = {"path":"specification/microsoft_entra_connect.yml","metaData":{}}
 files[] = {"path":"specification/misc.yml","metaData":{}}
+files[] = {"path":"specification/multifactor_authentication.yml","metaData":{}}
+files[] = {"path":"specification/named_networks.yml","metaData":{}}
 files[] = {"path":"specification/openapi.yml","metaData":{}}
+files[] = {"path":"specification/password_reset.yml","metaData":{}}
 files[] = {"path":"specification/permissions.yml","metaData":{}}
 files[] = {"path":"specification/policies.yml","metaData":{}}
+files[] = {"path":"specification/registered_applications.yml","metaData":{}}
 files[] = {"path":"specification/reports.yml","metaData":{}}
+files[] = {"path":"specification/request_approvals.yml","metaData":{}}
 files[] = {"path":"specification/roles.yml","metaData":{}}
+files[] = {"path":"specification/security_defaults.yml","metaData":{}}
 files[] = {"path":"specification/users.yml","metaData":{}}
 
 [config.relations.apiDefinition.metaData]
