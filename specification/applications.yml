@@ -296,6 +296,7 @@ paths:
       description: >-
         Get integrated application federated one-click SSO configuration info.
       operationId: ApplicationSso.FederatedOneClickSsoConfigureInfo.Get
+      tags: [Application SSO]
       responses:
         '200':
           description: Ok

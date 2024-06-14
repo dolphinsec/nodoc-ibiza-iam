@@ -7,6 +7,7 @@ paths:
       description: >-
         Initiate GDPR self delete.
       operationId: Gdpr.SelfDelete.Create
+      tags: [GDPR]
       requestBody:
         $ref: common.yml#/components/requestBodies/unknownRequest
       responses:
@@ -17,8 +18,9 @@ paths:
     delete:
       summary: Initiate GDPR self delete
       description: >-
-        Initiate GDPR self delete.
+        Cancel GDPR self delete.
       operationId: Gdpr.SelfDelete.Delete
+      tags: [GDPR]
       responses:
         '200':
           $ref: common.yml#/components/responses/UnknownResponse
@@ -33,6 +35,7 @@ paths:
       description: >-
         Initiate GDPR export request.
       operationId: Gdpr.ExportRequest.Create
+      tags: [GDPR]
       parameters:
         - name: markAsComplete
           description: Whether to mark the task as complete.
@@ -56,6 +59,7 @@ paths:
       description: >-
         Check if user is viral user.
       operationId: Gdpr.IsViralUser.Check
+      tags: [GDPR]
       responses:
         '200':
           description: OK
@@ -104,6 +108,7 @@ paths:
       description: >-
         List GDPR requests.
       operationId: Gdpr.Requests.List
+      tags: [GDPR]
       parameters:
         - name: markAsComplete
           description: Whether to mark the task as complete.

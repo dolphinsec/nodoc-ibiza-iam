@@ -1446,6 +1446,7 @@ paths:
       description: >-
         Get directory details.
       operationId: Directories.Details.Get
+      tags: [Directory]
       responses:
         '200':
           description: OK

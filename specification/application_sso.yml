@@ -1356,6 +1356,7 @@ paths:
       description: >-
         Set enterprise application federated single-signon state (version 2).
       operationId: ApplicationSso.FederatedSsoV2.Set
+      tags: [Application SSO]
       requestBody:
         content:
           application/json:
@@ -1443,6 +1444,7 @@ paths:
       description: >-
         Set enterprise application federated single-signon state (version 3).
       operationId: ApplicationSso.FederatedSsoV3.Set
+      tags: [Application SSO]
       requestBody:
         content:
           application/json:
