@@ -205,6 +205,7 @@ paths:
       description: >-
         List application registrations.
       operationId: RegisteredApplication.List
+      tags: [Application Registration]
       responses:
         '200':
           description: OK
@@ -255,6 +256,7 @@ paths:
       description: >-
         Create application registration.
       operationId: RegisteredApplication.Create
+      tags: [Application Registration]
       requestBody:
         content:
           application/json:

@@ -126,6 +126,8 @@ tags:
     description: Operations relating to data insights.
   - name: Document Processor Tasks
     description: Operations relating to document processor tasks.
+  - name: GDPR
+    description: Operations relating to General Data Protection Regulation (GDPR) functions.
   - name: Licensing
     description: Operations relating to user and group licensing.
   - name: Reports
@@ -174,6 +176,7 @@ x-tagGroups:
       - General
       - Data Insights
       - Document Processor Tasks
+      - GDPR
       - Licensing
       - Reports
 
